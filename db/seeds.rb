@@ -3,18 +3,18 @@ require 'uri'
 require 'net/http'
 require 'openssl'
 
-puts "🧹 Cleaning database"
-PantryItem.destroy_all
-RecipeIngredient.destroy_all
-Ingredient.destroy_all
-Recipe.destroy_all
-User.destroy_all
+# puts "🧹 Cleaning database"
+# PantryItem.destroy_all
+# RecipeIngredient.destroy_all
+# Ingredient.destroy_all
+# Recipe.destroy_all
+# User.destroy_all
 
 puts "🧑 Creating users..."
-elie = User.create!(first_name: "Elie", last_name: "Hymowitz", email: "elie@hello.com", encrypted_password: "123456")
-stephd = User.create!(first_name: "Stephanie", last_name: "Diep", email: "stephd@hello.com", encrypted_password: "123456")
-poyan = User.create!(first_name: "Poyan", last_name: "Ng", email: "poyan@hello.com", encrypted_password: "123456")
-stephbd = User.create!(first_name: "Stephanie", last_name: "BD", email: "stephbd@hello.com", encrypted_password: "123456")
+elie = User.find_or_create_by(first_name: "Elie", last_name: "Hymowitz", email: "elie@hello.com", encrypted_password: "123456")
+stephd = User.find_or_create_by(first_name: "Stephanie", last_name: "Diep", email: "stephd@hello.com", encrypted_password: "123456")
+poyan = User.find_or_create_by(first_name: "Poyan", last_name: "Ng", email: "poyan@hello.com", encrypted_password: "123456")
+stephbd = User.find_or_create_by(first_name: "Stephanie", last_name: "BD", email: "stephbd@hello.com", encrypted_password: "123456")
 
 puts "👩‍🍳 Creating recipes..."
 # Make three API calls to spooncular API
