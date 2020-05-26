@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.6'
 
+# Seed dump
+gem 'seed_dump'
 # Cloudinary
 gem 'cloudinary', '~> 1.12.0'
 # Devise
