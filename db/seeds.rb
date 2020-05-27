@@ -165,4 +165,7 @@ poyan_saved_recipes.each do |recipe_title|
   SavedRecipe.find_or_create_by(user: poyan, recipe: found_recipe)
 end
 
+puts "🥑 Creating food trades..."
+
+
 puts "🎉 Successfully created users, recipes, ingredients, recipe_ingredients, pantry items, saved_recipes!"
