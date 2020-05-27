@@ -14,6 +14,7 @@ class FoodTradesController < ApplicationController
   end
 
   def new
+    @user = User.find(params[:user_id])
     @food_trade = FoodTrade.new()
   end
 
