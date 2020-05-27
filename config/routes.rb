@@ -1,4 +1,17 @@
 Rails.application.routes.draw do
+  get 'messages/create'
+  get 'chatrooms/show'
+  get 'chatrooms/index'
+  get 'chatrooms/update'
+  get 'food_trades/index'
+  get 'food_trades/show'
+  get 'food_trades/new'
+  get 'food_trades/create'
+  get 'food_trades/destroy'
+  get 'food_trades/update'
+  get 'user_owned_ingredients/create'
+  get 'user_owned_ingredients/destroy'
+  get 'saved_recipes/create'
   devise_for :users
   root to: 'pages#home'
 
