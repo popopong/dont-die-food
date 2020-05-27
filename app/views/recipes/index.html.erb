@@ -1,0 +1,9 @@
+<div class="container">
+  <h1>Here are all our recipes</h1>
+
+  <ul>
+  <% @recipes.each do |recipe|%>
+    <li><%= link_to recipe.title, recipe_path(recipe) %></li>
+  <% end %>
+  </ul>
+</div>

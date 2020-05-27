@@ -20,8 +20,8 @@ UserOwnedIngredient.destroy_all
 SavedRecipe.destroy_all
 PantryItem.destroy_all
 RecipeIngredient.destroy_all
-# # Ingredient.destroy_all
-# # Recipe.destroy_all
+# Ingredient.destroy_all
+# Recipe.destroy_all
 User.destroy_all
 
 puts "🧑 Creating users..."
@@ -53,7 +53,8 @@ def get_recipe_ingredients_and_steps(recipe_array)
   recipe_array.each do |recipe|
     # API call #2 : Store the recipe ingredients in another variable, i.e response
     new_recipe = Recipe.new(title: recipe["title"])
-    next if Recipe.find_by(title: recipe["title"])
+    next if Recipe.find_by(title: recipe["title"]) || recipe["image"].nil?
+    new_recipe.photo = "https://spoonacular.com/recipeImages/#{recipe["image"]}"
     recipe_id = recipe["id"]
     # Make another API call to get ingredients
     url = URI("https://api.spoonacular.com/recipes/#{recipe_id}/information?apiKey=#{ENV["SPOONACULAR_APIKEY"]}")
@@ -91,8 +92,11 @@ def get_recipe_ingredients_and_steps(recipe_array)
 end
 
 # Create an array of keywords
+# Already in SD's master DB
 keywords = [{ name: "avocado", number: 5 }, { name: "apple", number: 5 }, { name: "pie", number: 5 }]
 # keywords = [{ name: "banana", number: 5 }, { name: "peach", number: 5 }, { name: "lemon", number: 5 }]
+
+# Not yet in SD's master DB
 # keywords = [{ name: "tomato", number: 5 }, { name: "cake", number: 5 }, { name: "cheese", number: 5 }, { name: "carrot", number: 5 }, { name: "eggplant", number: 5 }, { name: "pizza", number: 5 }]
 
 keywords.each do |keyword|
@@ -112,7 +116,7 @@ end
 puts "🔗 Linking ingredients and recipes together..."
 # Loops through recipes.ingredients_data
 # Assign recipe.id with each ingredient.id if ingredient is present in recipe
-recipes = Recipe.all
+# recipes = Recipe.all
 
 recipes.each do |recipe|
   new_recipe_ingredient = RecipeIngredient.new(recipe: recipe)
