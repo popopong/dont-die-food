@@ -1,4 +1,13 @@
-<h1>Chatrooms</h1>
-<% @chatrooms.each do |chatroom| %>
-  <% chatroom.%>
-<% end %>
+<div class="container">
+  <h1>chats</h1>
+
+  <ul>
+    <% @chatrooms.each do |chatroom| %>
+      <li><%= User.find(chatroom.messages.first.sender_id).first_name %> 
+      <%= User.find(chatroom.messages.first.sender_id).last_name %> 
+      <%= chatroom.messages.last.created_at%><br>
+      <em><%= chatroom.messages.last.content %></em></li>
+      <br>
+    <% end %>
+  </ul>
+</div>

@@ -10,6 +10,7 @@
   <p><strong>You will need</strong></p>
   <ul>
   <% @recipe.ingredients_data.each do |ingredient_data| %>
+    <%# Do a condition to round amount %>
     <li><strong><%= ingredient_data["measures"]["metric"]["amount"] %>
     <%= ingredient_data["measures"]["metric"]["unitLong"] %></strong>
     <%= ingredient_data["name"] %></li>

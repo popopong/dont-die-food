@@ -211,10 +211,10 @@ FoodTrade.find_or_create_by(user_owned_ingredient: poyan.user_owned_ingredients.
 
 puts "👋 Creating chatrooms..."
 Chatroom.find_or_create_by(food_trade: elie.food_trades.first, starred: true)
-Chatroom.find_or_create_by(food_trade: stephd.food_trades.first)
+Chatroom.find_or_create_by(food_trade: stephd.food_trades.first, starred: false)
 
 puts "💬 Creating messages..."
-Message.find_or_create_by(content: "Hi Elie! I would like to trade some lemon zest for an apple pie I'm planning to make this weekend!", sender_id: poyan, receiver_id: elie, chatroom: Chatroom.first)
-Message.find_or_create_by(content: "Hi Stephanie! I need 1 box of greek yogurt, thanks!", sender_id: stephbd, receiver_id: stephd, chatroom: Chatroom.first)
+Message.find_or_create_by(content: "Hi Elie! I would like to trade some lemon zest for an apple pie I'm planning to make this weekend!", sender_id: poyan.id, receiver_id: elie.id, chatroom: Chatroom.first)
+Message.find_or_create_by(content: "Hi Stephanie! I need 1 box of greek yogurt, thanks!", sender_id: stephbd.id, receiver_id: stephd.id, chatroom: Chatroom.last)
 
 puts "🎉 Successfully created users, recipes, ingredients, recipe_ingredients, pantry items, saved_recipes, user_owned_ingredients, food_trades, chatrooms and messages !"
