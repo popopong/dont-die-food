@@ -33,7 +33,7 @@ def find_recipe_by_keyword(search_term)
 
   request = Net::HTTP::Get.new(url)
   response = http.request(request)
-  puts response.read_body
+  # puts response.read_body
   recipes_array = JSON.parse(response.read_body)["results"]
   get_recipe_ingredients_and_steps(recipes_array)
 end
@@ -53,12 +53,12 @@ def get_recipe_ingredients_and_steps(recipe_array)
 
     request = Net::HTTP::Get.new(url)
     response = http.request(request)
-    puts response.read_body
+    # puts response.read_body
     extended_ingredients = JSON.parse(response.read_body)
     # Stores extendedIngredient as JSON in ingredients_data column:
     if extended_ingredients && extended_ingredients.size > 0
       extended_ingredients = extended_ingredients["extendedIngredients"]
-      new_recipe.ingredients_data = extended_ingredients 
+      new_recipe.ingredients_data = extended_ingredients
     end
 
     # API call #3 : Store the recipe steps in another variable, i.e response
@@ -70,11 +70,11 @@ def get_recipe_ingredients_and_steps(recipe_array)
 
     request = Net::HTTP::Get.new(url)
     response = http.request(request)
-    puts response.read_body
+    # puts response.read_body
     steps = JSON.parse(response.read_body)
     if steps && steps.size > 0
       steps = steps.first["steps"]
-      new_recipe.steps_data = steps 
+      new_recipe.steps_data = steps
       new_recipe.save!
     end
   end
