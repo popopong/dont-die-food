@@ -1,8 +1,8 @@
 class ChatroomsController < ApplicationController
-  def show
+  def index
   end
 
-  def index
+  def show
   end
 
   def update
