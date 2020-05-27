@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2020_05_26_194256) do
   end
 
   create_table "recipe_ingredients", force: :cascade do |t|
-    t.string "data"
+    t.json "data"
     t.bigint "recipe_id", null: false
     t.bigint "ingredient_id", null: false
     t.datetime "created_at", precision: 6, null: false
