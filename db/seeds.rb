@@ -13,6 +13,7 @@ def iterable?(object)
 end
 
 puts "🧹 Cleaning database"
+FoodTrade.destroy_all
 UserOwnedIngredient.destroy_all
 SavedRecipe.destroy_all
 PantryItem.destroy_all
@@ -191,7 +192,7 @@ end
 
 puts "🥑 Creating food trades..."
 # Elie's food trades
-FoodTrade.find_or_create_by(user_owned_ingredient: elie.user_owned_ingredients.first, location: "3819 Avenue Calixa-Lavallée, Montréal, QC H2L 3A7", amount: 2, unit: "cups", description: "I made too much lemon zest and am ready to share with any of you!")
+FoodTrade.find_or_create_by(user_owned_ingredient: User.first.user_owned_ingredients.first, location: "3819 Avenue Calixa-Lavallée, Montréal, QC H2L 3A7", amount: 2, unit: "cups", description: "I made too much lemon zest and am ready to share with any of you!")
 
 # Steph D's food trades
 FoodTrade.find_or_create_by(user_owned_ingredient: stephd.user_owned_ingredients.second, location: "4141 Pierre-de Coubertin Ave, Montreal, Quebec H1V 3N7", amount: 2, unit: "boxes", description: "I bought way too much greek yogurt and if I eat one more spoonful I'll have nausea. Anyone wants some greek yogurt?")
