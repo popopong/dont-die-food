@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_27_153333) do
+ActiveRecord::Schema.define(version: 2020_05_27_154042) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,14 @@ ActiveRecord::Schema.define(version: 2020_05_27_153333) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "chatrooms", force: :cascade do |t|
+    t.bigint "food_trade_id", null: false
+    t.boolean "starred", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["food_trade_id"], name: "index_chatrooms_on_food_trade_id"
+  end
+
   create_table "food_trades", force: :cascade do |t|
     t.string "status"
     t.bigint "user_owned_ingredient_id", null: false
@@ -49,6 +57,16 @@ ActiveRecord::Schema.define(version: 2020_05_27_153333) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "chatroom_id", null: false
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "pantry_items", force: :cascade do |t|
@@ -111,7 +129,10 @@ ActiveRecord::Schema.define(version: 2020_05_27_153333) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "chatrooms", "food_trades"
   add_foreign_key "food_trades", "user_owned_ingredients"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "pantry_items", "ingredients"
   add_foreign_key "pantry_items", "users"
   add_foreign_key "recipe_ingredients", "ingredients"
