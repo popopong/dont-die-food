@@ -1,8 +1,7 @@
 class Message < ApplicationRecord
-  belongs_to :user
+  belongs_to :sender, class_name: "User"
+  belongs_to :reciever, class_name: "User"
   belongs_to :chatroom
 
-  validates :content, presence: true
-  validates :user, presence: true
-  validates :chatroom, presence: true
+  validates :content, :sender, :reciever, :chatroom presence: true
 end

@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   def create
-    @message = message.new(message_params)
+    @message = Message.new(message_params)
     @message.chatroom = Chatroom.find(params[:chatroom_id])
     if @message.save
       redirect_to "chatrooms/show"

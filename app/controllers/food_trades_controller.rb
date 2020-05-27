@@ -1,5 +1,5 @@
 class FoodTradesController < ApplicationController
-  before_action find_food_trade
+  before_action find_food_trade, only: [:show, :destroy, :edit, :update]
 
   def index
     User.find(params[:user_id])

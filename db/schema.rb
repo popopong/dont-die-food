@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_27_182219) do
+ActiveRecord::Schema.define(version: 2020_05_27_201056) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,13 +63,15 @@ ActiveRecord::Schema.define(version: 2020_05_27_182219) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.bigint "user_id", null: false
     t.bigint "chatroom_id", null: false
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "sender_id"
+    t.bigint "reciever_id"
     t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
-    t.index ["user_id"], name: "index_messages_on_user_id"
+    t.index ["reciever_id"], name: "index_messages_on_reciever_id"
+    t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 
   create_table "pantry_items", force: :cascade do |t|
@@ -135,7 +137,8 @@ ActiveRecord::Schema.define(version: 2020_05_27_182219) do
   add_foreign_key "chatrooms", "food_trades"
   add_foreign_key "food_trades", "user_owned_ingredients"
   add_foreign_key "messages", "chatrooms"
-  add_foreign_key "messages", "users"
+  add_foreign_key "messages", "users", column: "reciever_id"
+  add_foreign_key "messages", "users", column: "sender_id"
   add_foreign_key "pantry_items", "ingredients"
   add_foreign_key "pantry_items", "users"
   add_foreign_key "recipe_ingredients", "ingredients"
