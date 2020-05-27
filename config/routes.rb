@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   resources :users, only: [] do
     resources :pantry_items, only: [:index, :create]
     resources :saved_recipes, only: [:index]
-    resources :food_trades, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+    resources :food_trades, only: [:show, :new, :create, :edit, :update, :destroy]
   end
 
 # SAVED_RECIPES
@@ -47,6 +47,10 @@ Rails.application.routes.draw do
 # I can share that I have food to trade   /users/:id/food_trades/new  GET / POST  food_trades new + create
 # I can delete a food trade               /users/:id/food_trades  DELETE  food_trades destroy
 # I can update a food trade               /users/:id/food_trades/:food_trade_id PATCH food_trades update
+
+  resources :food_trades, only: [:index]
+  # Get User Food Trades
+  get '/users/:user_id/food_trades', to: 'food_trades#user_food_trades'
 
 # CHAT
 # I can chat with my neighbors            /chatrooms/:id  GET chatrooms show
