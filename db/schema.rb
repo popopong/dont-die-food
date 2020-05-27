@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_26_194256) do
+ActiveRecord::Schema.define(version: 2020_05_27_154042) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,10 +36,37 @@ ActiveRecord::Schema.define(version: 2020_05_26_194256) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "chatrooms", force: :cascade do |t|
+    t.bigint "food_trade_id", null: false
+    t.boolean "starred", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["food_trade_id"], name: "index_chatrooms_on_food_trade_id"
+  end
+
+  create_table "food_trades", force: :cascade do |t|
+    t.string "status"
+    t.bigint "user_owned_ingredient_id", null: false
+    t.string "location"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_owned_ingredient_id"], name: "index_food_trades_on_user_owned_ingredient_id"
+  end
+
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "chatroom_id", null: false
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "pantry_items", force: :cascade do |t|
@@ -52,7 +79,6 @@ ActiveRecord::Schema.define(version: 2020_05_26_194256) do
   end
 
   create_table "recipe_ingredients", force: :cascade do |t|
-    t.string "data"
     t.bigint "recipe_id", null: false
     t.bigint "ingredient_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -69,6 +95,24 @@ ActiveRecord::Schema.define(version: 2020_05_26_194256) do
     t.json "steps_data"
   end
 
+  create_table "saved_recipes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "recipe_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipe_id"], name: "index_saved_recipes_on_recipe_id"
+    t.index ["user_id"], name: "index_saved_recipes_on_user_id"
+  end
+
+  create_table "user_owned_ingredients", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "ingredient_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["ingredient_id"], name: "index_user_owned_ingredients_on_ingredient_id"
+    t.index ["user_id"], name: "index_user_owned_ingredients_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -79,13 +123,22 @@ ActiveRecord::Schema.define(version: 2020_05_26_194256) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "first_name"
     t.string "last_name"
+    t.text "about"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "chatrooms", "food_trades"
+  add_foreign_key "food_trades", "user_owned_ingredients"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "pantry_items", "ingredients"
   add_foreign_key "pantry_items", "users"
   add_foreign_key "recipe_ingredients", "ingredients"
   add_foreign_key "recipe_ingredients", "recipes"
+  add_foreign_key "saved_recipes", "recipes"
+  add_foreign_key "saved_recipes", "users"
+  add_foreign_key "user_owned_ingredients", "ingredients"
+  add_foreign_key "user_owned_ingredients", "users"
 end
