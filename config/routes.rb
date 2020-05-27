@@ -1,17 +1,17 @@
 Rails.application.routes.draw do
-  get 'messages/create'
-  get 'chatrooms/show'
-  get 'chatrooms/index'
-  get 'chatrooms/update'
-  get 'food_trades/index'
-  get 'food_trades/show'
-  get 'food_trades/new'
-  get 'food_trades/create'
-  get 'food_trades/destroy'
-  get 'food_trades/update'
-  get 'user_owned_ingredients/create'
-  get 'user_owned_ingredients/destroy'
-  get 'saved_recipes/create'
+  # get 'messages/create'
+  # get 'chatrooms/show'
+  # get 'chatrooms/index'
+  # get 'chatrooms/update'
+  # get 'food_trades/index'
+  # get 'food_trades/show'
+  # get 'food_trades/new'
+  # get 'food_trades/create'
+  # get 'food_trades/destroy'
+  # get 'food_trades/update'
+  # get 'user_owned_ingredients/create'
+  # get 'user_owned_ingredients/destroy'
+  # get 'saved_recipes/create'
   devise_for :users
   root to: 'pages#home'
 
@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   resources :users, only: [] do
     resources :pantry_items, only: [:index, :create]
     resources :saved_recipes, only: [:index]
+    resources :food_trades, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   end
 
 # SAVED_RECIPES
@@ -46,8 +47,6 @@ Rails.application.routes.draw do
 # I can share that I have food to trade   /users/:id/food_trades/new  GET / POST  food_trades new + create
 # I can delete a food trade               /users/:id/food_trades  DELETE  food_trades destroy
 # I can update a food trade               /users/:id/food_trades/:food_trade_id PATCH food_trades update
-
-  resources :food_trades, only: [:index, :show, :new, :create, :update, :destroy]
 
 # CHAT
 # I can chat with my neighbors            /chatrooms/:id  GET chatrooms show
