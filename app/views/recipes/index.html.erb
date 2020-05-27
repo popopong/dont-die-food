@@ -1,10 +1,10 @@
 <div class="container">
-  <h1>Here are all our recipes</h1>
+  <h1>Find the perfect recipe to save</h1>
 
   <ul>
-  <% @recipes.shuffle.each do |recipe|%>
-    <li><%= image_tag("#{recipe.photo}", size:"300x100", alt: "Recipe image") %>
-    <%= link_to recipe.title, recipe_path(recipe) %></li>
-  <% end %>
+    <% @recipes.shuffle.each do |recipe|%>
+      <li><%= image_tag("#{recipe.photo}", size:"300x200", alt: "Recipe image", class: "recipe_index_img") %><br>
+      <%= link_to recipe.title, recipe_path(recipe) %></li>
+    <% end %>
   </ul>
 </div>

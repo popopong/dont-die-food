@@ -155,7 +155,7 @@ poyan_pantry_array.each do |pantry_item|
 end
 
 puts "🥧 Creating saved recipes for each user..."
-elie_saved_recipes = ["Avocado Lentil Enchiladas With Avocado Lime Cream", "Grilled Peach, Avocado, and Crab Salad with Avocado & Peach Dressing", "Avocado Salad", "Avocado Cream"]
+elie_saved_recipes = ["Apple-Cardamom Cakes with Apple Cider Icing", "Grilled Peach, Avocado, and Crab Salad with Avocado & Peach Dressing", "Avocado Salad", "Avocado Cream"]
 elie_saved_recipes.each do |recipe_title|
   found_recipe = Recipe.find_by(title: recipe_title)
   SavedRecipe.find_or_create_by(user: elie, recipe: found_recipe)
