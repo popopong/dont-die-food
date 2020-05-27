@@ -7,11 +7,21 @@ require 'openssl'
 # Run "rake db:seed:dump FILE=db/seed_dump.rb" to save seeds in db/seed_dump.rb
 # rails db:structure:dump to dump our data in a dump file
 
+# Method to check if object is iterable - for development purposes only
+def iterable?(object)
+  object.respond_to? :each
+end
+
 puts "🧹 Cleaning database"
+Message.destroy_all
+Chatroom.destroy_all
+FoodTrade.destroy_all
+UserOwnedIngredient.destroy_all
+SavedRecipe.destroy_all
 PantryItem.destroy_all
-# RecipeIngredient.destroy_all
-# Ingredient.destroy_all
-# Recipe.destroy_all
+RecipeIngredient.destroy_all
+# # Ingredient.destroy_all
+# # Recipe.destroy_all
 User.destroy_all
 
 puts "🧑 Creating users..."
@@ -21,7 +31,7 @@ poyan = User.create!(first_name: "Poyan", last_name: "Ng", email: "poyan@hello.c
 stephbd = User.create!(first_name: "Stephanie", last_name: "BD", email: "stephbd@hello.com", password: "1234567")
 
 puts "👩‍🍳 Creating recipes..."
-# # Make three API calls to spooncular API
+# Make three API calls to spooncular API
 
 # API call #1 : Store the recipe ID in a variable, i.e response, add a keyword into parameters JUST RETURN THE FIRST RESULT!!
 def find_recipe_by_keyword(search_term)
@@ -140,4 +150,67 @@ poyan_pantry_array.each do |pantry_item|
   PantryItem.find_or_create_by(user: poyan, ingredient: found_ingredient)
 end
 
-puts "🎉 Successfully created users, recipes, ingredients, recipe_ingredients and pantry items!"
+puts "🥧 Creating saved recipes for each user..."
+elie_saved_recipes = ["Avocado Lentil Enchiladas With Avocado Lime Cream", "Grilled Peach, Avocado, and Crab Salad with Avocado & Peach Dressing", "Avocado Salad", "Avocado Cream"]
+elie_saved_recipes.each do |recipe_title|
+  found_recipe = Recipe.find_by(title: recipe_title)
+  SavedRecipe.find_or_create_by(user: elie, recipe: found_recipe)
+end
+
+stephd_saved_recipes = ["Apple-Date Compote with Apple-Cider Yogurt Cheese", "Avocado Cream", "Spiced Apple Muffins with Apple Cinnamon Glaze"]
+stephd_saved_recipes.each do |recipe_title|
+  found_recipe = Recipe.find_by(title: recipe_title)
+  SavedRecipe.find_or_create_by(user: stephd, recipe: found_recipe)
+end
+
+stephbd_saved_recipes = ["Avocado Salad", "Tomato Pie", "Blueberry Pie", "Maple Pecan Pie"]
+stephbd_saved_recipes.each do |recipe_title|
+  found_recipe = Recipe.find_by(title: recipe_title)
+  SavedRecipe.find_or_create_by(user: stephbd, recipe: found_recipe)
+end
+
+poyan_saved_recipes = ["Blueberry Pie with Lemon Sauce", "Grilled Peach, Avocado, and Crab Salad with Avocado & Peach Dressing"]
+poyan_saved_recipes.each do |recipe_title|
+  found_recipe = Recipe.find_by(title: recipe_title)
+  SavedRecipe.find_or_create_by(user: poyan, recipe: found_recipe)
+end
+
+puts "🍎 Creating user_owned_ingredients..."
+elie.pantry_items.each do |pantry_item|
+  UserOwnedIngredient.find_or_create_by(user: elie, ingredient: pantry_item.ingredient)
+end
+
+stephd.pantry_items.each do |pantry_item|
+  UserOwnedIngredient.find_or_create_by(user: stephd, ingredient: pantry_item.ingredient)
+end
+
+stephbd.pantry_items.each do |pantry_item|
+  UserOwnedIngredient.find_or_create_by(user: stephbd, ingredient: pantry_item.ingredient)
+end
+
+poyan.pantry_items.each do |pantry_item|
+  UserOwnedIngredient.find_or_create_by(user: poyan, ingredient: pantry_item.ingredient)
+end
+
+puts "🥑 Creating food trades..."
+# Elie's food trades
+FoodTrade.find_or_create_by(user_owned_ingredient: User.first.user_owned_ingredients.first, location: "3819 Avenue Calixa-Lavallée, Montréal, QC H2L 3A7", amount: 2, unit: "cups", description: "I made too much lemon zest and am ready to share with any of you!")
+
+# Steph D's food trades
+FoodTrade.find_or_create_by(user_owned_ingredient: stephd.user_owned_ingredients.second, location: "4141 Pierre-de Coubertin Ave, Montreal, Quebec H1V 3N7", amount: 2, unit: "boxes", description: "I bought way too much greek yogurt and if I eat one more spoonful I'll have nausea. Anyone wants some greek yogurt?")
+
+# Steph BD's food trades
+FoodTrade.find_or_create_by(user_owned_ingredient: stephd.user_owned_ingredients.second, location: "705 Saint-Catherine St W, Montreal, Quebec H3B 4G5", amount: 5, description: "Looking for garlic for one of your recipes? I got too many garlics sitting around!")
+
+# Poyan's food trades
+FoodTrade.find_or_create_by(user_owned_ingredient: poyan.user_owned_ingredients.second, location: "329, 327 Avenue Melville, Westmount, Quebec H3Z 2J7", amount: 1, unit: "bottle", description: "Too much olive oil here in my house, need to get rid of them!")
+
+puts "👋 Creating chatrooms..."
+Chatroom.find_or_create_by(food_trade: elie.food_trades.first, starred: true)
+Chatroom.find_or_create_by(food_trade: stephd.food_trades.first)
+
+puts "💬 Creating messages..."
+Message.find_or_create_by(content: "Hi Elie! I would like to trade some lemon zest for an apple pie I'm planning to make this weekend!", user: poyan, chatroom: Chatroom.first)
+Message.find_or_create_by(content: "Hi Stephanie! I need 1 box of greek yogurt, thanks!", user: stephbd, chatroom: Chatroom.first)
+
+puts "🎉 Successfully created users, recipes, ingredients, recipe_ingredients, pantry items, saved_recipes, user_owned_ingredients, food_trades, chatrooms and messages !"
