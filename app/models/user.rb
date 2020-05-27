@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :pantry_items, dependent: :destroy
   has_many :messages
+  has_many :user_owned_ingredients
   has_many :food_trades, through: :user_owned_ingredients
   has_one_attached :photo
 
