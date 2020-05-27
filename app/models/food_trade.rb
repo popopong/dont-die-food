@@ -6,4 +6,6 @@ class FoodTrade < ApplicationRecord
   validates :status, presence: true
   validates :user_owned_ingredient, presence: true
   validates :location, presence: true
+  validates :amount, presence: true
+  validates :description, presence: true
 end
