@@ -1,1 +1,30 @@
-<h1>This is the recipe show page</h1>
+<div class="container my-5">
+  <%# Recipe title %>
+  <%= image_tag("#{@recipe.photo}", size:"500x400", alt: "Recipe image", class: "recipe_show_img") %><br>
+  <h1><%= @recipe.title %></h1>
+
+  <br>
+  <br>
+
+  <%# Ingredients %>
+  <p><strong>You will need</strong></p>
+  <ul>
+  <% @recipe.ingredients_data.each do |ingredient_data| %>
+    <%# Do a condition to round amount %>
+    <li><strong><%= ingredient_data["measures"]["metric"]["amount"] %>
+    <%= ingredient_data["measures"]["metric"]["unitLong"] %></strong>
+    <%= ingredient_data["name"] %></li>
+  <% end %>
+  </ul>
+  <br>
+
+  <%# Instructions %>
+  <p><strong>Directions</strong></p>
+  <ul>
+  <% @recipe.steps_data.each do |step_data| %>
+    <li><strong><%= step_data["number"] %></strong>
+    <%= step_data["step"]%>
+    </li>
+  <% end %>
+  </ul>
+</div>

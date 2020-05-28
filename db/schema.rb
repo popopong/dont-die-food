@@ -67,9 +67,9 @@ ActiveRecord::Schema.define(version: 2020_05_28_145647) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "sender_id"
-    t.bigint "reciever_id"
+    t.bigint "receiver_id"
     t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
-    t.index ["reciever_id"], name: "index_messages_on_reciever_id"
+    t.index ["receiver_id"], name: "index_messages_on_receiver_id"
     t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 
@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 2020_05_28_145647) do
     t.datetime "updated_at", precision: 6, null: false
     t.json "ingredients_data"
     t.json "steps_data"
+    t.string "photo"
   end
 
   create_table "saved_recipes", force: :cascade do |t|
@@ -136,7 +137,7 @@ ActiveRecord::Schema.define(version: 2020_05_28_145647) do
   add_foreign_key "chatrooms", "food_trades"
   add_foreign_key "food_trades", "user_owned_ingredients"
   add_foreign_key "messages", "chatrooms"
-  add_foreign_key "messages", "users", column: "reciever_id"
+  add_foreign_key "messages", "users", column: "receiver_id"
   add_foreign_key "messages", "users", column: "sender_id"
   add_foreign_key "pantry_items", "ingredients"
   add_foreign_key "pantry_items", "users"
