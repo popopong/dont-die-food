@@ -8,8 +8,8 @@
   <% end %>
 
   <%= link_to "/users/:id/show", class: "navbar-brand" do %>
-    <%# How do we add the avatar to User with Cloudinary? %>
-    <%= image_tag "current_user.avatar" %>
+    <%# How do we add the avatar to User with Cloudinary? Need to use current_user.avatar %>
+    <%= image_tag "/" %>
   <% end %>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -21,10 +21,10 @@
         <%= link_to "My pantry", user_pantry_items_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
-        <%= link_to "My cookbook", user_saved_recipes_path, class: "nav-link" %>
+        <%= link_to "My cookbook", user_saved_recipes_path(current_user), class: "nav-link" %>
       </li>
       <li class="nav-item">
-        <%= link_to "Chat", user_saved_recipes_path, class: "nav-link" %>
+        <%= link_to "Chat", chatrooms_path, class: "nav-link" %>
       </li>
     </ul>
   </div>
