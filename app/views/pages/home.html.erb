@@ -1,6 +1,15 @@
 <div class="container">
   <h1>Help your neighbours...</h1>
   <%= link_to "see more", food_trades_path %>
+  <% @food_trades = FoodTrade.where(status: "Available") %>
+  <ul>
+    <% @food_trades.last(10).shuffle.each do |food_trade| %>
+      <li>
+        <%= link_to food_trade.user_owned_ingredient.ingredient.name.capitalize,  user_food_trade_path(food_trade.user_owned_ingredient.user, food_trade) %>
+        <%= food_trade.location %>
+      </li>
+    <% end %>
+  </ul>
 </div>
 
 <div class="container">
