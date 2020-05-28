@@ -50,7 +50,7 @@ Rails.application.routes.draw do
 
   resources :food_trades, only: [:index]
   # Get User Food Trades
-  get '/users/:user_id/food_trades', to: 'food_trades#user_food_trades'
+  get '/users/:user_id/food_trades', to: 'food_trades#user_food_trades', as: 'private_user_food_trades'
 
 # CHAT
 # I can chat with my neighbors            /chatrooms/:id  GET chatrooms show
