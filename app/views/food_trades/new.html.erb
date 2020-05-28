@@ -1,7 +1,6 @@
 <h1>Tell Me More!</h1>
 
 <%= simple_form_for [ @user, @food_trade ] do |f|%>
-<%= f.input :unit, label: 'Ingredient Name' %>
 <%= f.input :description, label: 'Description' %>
 <%= f.submit %>
 <% end %>
