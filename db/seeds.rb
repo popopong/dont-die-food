@@ -24,6 +24,7 @@ RecipeIngredient.destroy_all
 # Recipe.destroy_all
 User.destroy_all
 
+puts "🧑 Creating users"
 elie = User.create!(first_name: "Elie", last_name: "Hymowitz", email: "elie@hello.com", password: "1234567", address: "3819 Avenue Calixa-Lavallée, Montréal, QC H2L 3A7")
 stephd = User.create!(first_name: "Stephanie", last_name: "Diep", email: "stephd@hello.com", password: "1234567", address: "4141 Pierre-de Coubertin Ave, Montreal, Quebec H1V 3N7")
 poyan = User.create!(first_name: "Poyan", last_name: "Ng", email: "poyan@hello.com", password: "1234567", address: "327 Avenue Melville, Westmount, Quebec H3Z 2J7")
