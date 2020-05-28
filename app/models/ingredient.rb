@@ -5,4 +5,5 @@ class Ingredient < ApplicationRecord
   has_many :user_owned_ingredients
 
   validates :name, presence: true, uniqueness: true
+  validates :photo, presence: true
 end
