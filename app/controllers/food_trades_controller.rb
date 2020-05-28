@@ -7,7 +7,7 @@ class FoodTradesController < ApplicationController
   end
 
   def index
-    @food_trades = FoodTrade.all
+    @food_trades = FoodTrade.where(status: "Available")
   end
 
   def show
