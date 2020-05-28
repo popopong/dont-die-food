@@ -1,2 +1,15 @@
-<h1>Chatrooms#show</h1>
-<p>Find me in app/views/chatrooms/show.html.erb</p>
+<h1>Chat with <%= @other_user.first_name %></h1>
+<% @chatroom.messages.each do |message| %>
+  <li>
+    <strong> <%= message.sender.first_name %></strong>
+    <%= message.content %>
+  </li>
+<% end %>
+
+<%= simple_form_for @message do |f| %>
+  <%= f.input :content, placeholder: "Type a Message" %>
+  <%= f.hidden_field :sender_id, value: current_user.id %>
+  <%= f.hidden_field :receiver_id, value: @other_user.id %>
+  <%= f.hidden_field :chatroom_id, value: @chatroom.id %>
+  <%= f.submit %>
+<% end %>
