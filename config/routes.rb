@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     resources :saved_recipes, only: [:create]
   end
 
-  resources :pantry_items, only: [:index, :new, :create]
+  resources :pantry_items, only: [:index, :new, :create,:destroy]
 
 # SAVED_RECIPES
 # I can click on a saved recipe   /recipes/:id  POST  saved_recipes create
@@ -59,4 +59,6 @@ Rails.application.routes.draw do
 
   resources :chatrooms, only: [:show, :index, :update]
   resources :messages, only: :create
+
+  resources :users, only: [:show, :edit, :update]
 end

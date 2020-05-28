@@ -204,7 +204,7 @@ FoodTrade.find_or_create_by(user_owned_ingredient: User.first.user_owned_ingredi
 FoodTrade.find_or_create_by(user_owned_ingredient: stephd.user_owned_ingredients.second, location: "4141 Pierre-de Coubertin Ave, Montreal, Quebec H1V 3N7", description: "I bought way too much greek yogurt and if I eat one more spoonful I'll have nausea. Anyone wants some greek yogurt? I have 2 boxes to offer!")
 
 # Steph BD's food trades
-FoodTrade.find_or_create_by(user_owned_ingredient: stephd.user_owned_ingredients.second, location: "705 Saint-Catherine St W, Montreal, Quebec H3B 4G5", description: "Looking for garlic for one of your recipes? I got too 5 extra garlics sitting around!")
+FoodTrade.find_or_create_by(user_owned_ingredient: stephbd.user_owned_ingredients.second, location: "705 Saint-Catherine St W, Montreal, Quebec H3B 4G5", description: "Looking for garlic for one of your recipes? I got too 5 extra garlics sitting around!")
 
 # Poyan's food trades
 FoodTrade.find_or_create_by(user_owned_ingredient: poyan.user_owned_ingredients.second, location: "327 Avenue Melville, Westmount, Quebec H3Z 2J7", description: "Too much olive oil here in my house, need to get rid of them! (1 bottle available only)")
