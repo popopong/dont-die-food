@@ -1,8 +1,7 @@
 <h1> My pantry items </h1>
-<% pantry_items = PantryItem.includes(:ingredient).where(user: User.find(params[:user_id])) %>
 
 <ul>
-  <% pantry_items.each do |pantry_item |%>
+  <% @pantry_items.each do |pantry_item |%>
     <li><%= pantry_item.ingredient.name %></li>
   <% end %>
 </ul>

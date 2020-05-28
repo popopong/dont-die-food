@@ -3,7 +3,7 @@ class FoodTradesController < ApplicationController
   before_action :find_food_trade, only: [:show, :destroy, :edit, :update]
 
   def user_food_trades
-    @user = User.find(params[:user_id])
+    @user = current_user
     @food_trades = @user.food_trades
   end
 
@@ -15,7 +15,6 @@ class FoodTradesController < ApplicationController
   end
 
   def new
-    @user = User.find(params[:user_id])
     @food_trade = FoodTrade.new()
   end
 

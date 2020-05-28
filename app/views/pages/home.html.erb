@@ -5,7 +5,7 @@
   <ul>
     <% @food_trades.last(10).shuffle.each do |food_trade| %>
       <li>
-        <%= link_to food_trade.user_owned_ingredient.ingredient.name.capitalize,  user_food_trade_path(food_trade.user_owned_ingredient.user, food_trade) %>
+        <%= link_to food_trade.user_owned_ingredient.ingredient.name.capitalize,  food_trade_path(food_trade.user_owned_ingredient.user, food_trade) %>
         <%= food_trade.location %>
       </li>
     <% end %>

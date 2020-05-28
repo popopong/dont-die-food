@@ -20,20 +20,19 @@ Rails.application.routes.draw do
 # /users/sign_out	DELETE	devise/sessions	destroy
 # /users/:id/pantry_items	POST	pantry_items	create
 # /recipes/:id	GET	recipes	show
-# /	POST	recipes	index (search a recipe)
+# /POST	recipes	index (search a recipe)
 
-  resources :recipes, only: [:index, :show]
-  resources :users, only: [] do
-    resources :pantry_items, only: [:index, :create]
-    resources :saved_recipes, only: [:index]
-    resources :food_trades, only: [:show, :new, :create, :edit, :update, :destroy]
+  resources :recipes, only: [:index, :show] do
+    resources :saved_recipes, only: [:create]
   end
+
+  resources :pantry_items, only: [:index, :new, :create]
 
 # SAVED_RECIPES
 # I can click on a saved recipe   /recipes/:id  POST  saved_recipes create
 # I can see my saved recipes      /users/:id/saved_recipes  GET saved_recipes index
 
-  resources :saved_recipes, only: [:create]
+  resources :saved_recipes, only: [:index]
 
 # USER_OWNED INGREDIENTS
 # I can check an ingredient on the ingredients list on the recipe show page    /recipes/:id  POST  user_owned_ingredients  Create
@@ -48,9 +47,9 @@ Rails.application.routes.draw do
 # I can delete a food trade               /users/:id/food_trades  DELETE  food_trades destroy
 # I can update a food trade               /users/:id/food_trades/:food_trade_id PATCH food_trades update
 
-  resources :food_trades, only: [:index]
+  resources :food_trades, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   # Get User Food Trades
-  get '/users/:user_id/food_trades', to: 'food_trades#user_food_trades', as: 'private_user_food_trades'
+  get '/my_food_trades', to: 'food_trades#user_food_trades', as: 'private_user_food_trades'
 
 # CHAT
 # I can chat with my neighbors            /chatrooms/:id  GET chatrooms show
