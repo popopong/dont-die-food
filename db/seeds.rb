@@ -24,7 +24,6 @@ RecipeIngredient.destroy_all
 # Recipe.destroy_all
 User.destroy_all
 
-puts "🧑 Creating users..."
 elie = User.create!(first_name: "Elie", last_name: "Hymowitz", email: "elie@hello.com", password: "1234567", address: "3819 Avenue Calixa-Lavallée, Montréal, QC H2L 3A7")
 stephd = User.create!(first_name: "Stephanie", last_name: "Diep", email: "stephd@hello.com", password: "1234567", address: "4141 Pierre-de Coubertin Ave, Montreal, Quebec H1V 3N7")
 poyan = User.create!(first_name: "Poyan", last_name: "Ng", email: "poyan@hello.com", password: "1234567", address: "327 Avenue Melville, Westmount, Quebec H3Z 2J7")
@@ -94,9 +93,10 @@ end
 # Create an array of keywords
 # Already in SD's master DB
 keywords = [{ name: "avocado", number: 5 }, { name: "apple", number: 5 }, { name: "pie", number: 5 }]
-# keywords = [{ name: "banana", number: 5 }, { name: "peach", number: 5 }, { name: "lemon", number: 5 }, { name: "tomato", number: 5 }, { name: "cake", number: 5 }, { name: "beans", number: 5 }, { name: "bacon", number: 5 }, { name: "cheese", number: 5 }, { name: "carrot", number: 5 }, { name: "eggplant", number: 5 }, { name: "pizza", number: 5 }, {name: "zucchini", number: 5}, {name: "bean sprouts"}, { name: "egg", number: 5 }, { name: "strawberry", number: 5 }, { name: "pancake", number: 5 }, { name: "burger", number: 5 }, { name: "beef", number: 5 }, { name: "chicken", number: 5 }, { name: "rice", number: 5 }, { name: "lamb", number: 5 }, { name: "coconut", number: 5 }]
+# keywords = [{ name: "banana", number: 5 }, { name: "peach", number: 5 }, { name: "lemon", number: 5 }, { name: "tomato", number: 5 }, { name: "cake", number: 5 }, { name: "beans", number: 5 }, { name: "bacon", number: 5 }, { name: "cheese", number: 5 }, { name: "carrot", number: 5 }, { name: "eggplant", number: 5 }, { name: "pizza", number: 5 }, {name: "zucchini", number: 5}, {name: "bean sprouts"}, { name: "egg", number: 5 }, { name: "strawberry", number: 5 }, { name: "pancake", number: 5 }, { name: "burger", number: 5 }, { name: "beef", number: 5 }, { name: "chicken", number: 5 }, { name: "rice", number: 5 }, { name: "lamb", number: 5 }, { name: "coconut", number: 5 }, { name: "cherry", number: 5}, { name: "tuna", number: 5}, { name: "mango", number: 5}, { name: "pear", number: 5}, { name: "bok choy", number: 5}, { name: "pumpkin", number: 5}, { name: "bacon", number: 5}, { name: "curry", number: 5}, { name: "grape", number: 5}, { name: "donut", number: 5}, { name: "wrap", number: 5}, { name: "potato", number: 5}]
 
 # Not yet in SD's master DB
+# keywords = [{ name: "juice", number: 5}, { name: "blueberry", number: 5}, { name: "crepe", number: 5}]
 
 keywords.each do |keyword|
   find_recipe_by_keyword(keyword)
