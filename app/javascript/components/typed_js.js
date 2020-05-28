@@ -19,7 +19,7 @@ var typed = new Typed('#typed', {
   /**
    * @property {number} typeSpeed type speed in milliseconds
    */
-  typeSpeed: 60,
+  typeSpeed: 50,
 
   /**
    * @property {number} startDelay time before typing starts in milliseconds
@@ -44,7 +44,7 @@ var typed = new Typed('#typed', {
   /**
    * @property {number} backDelay time before backspacing in milliseconds
    */
-  backDelay: 700,
+  backDelay: 1000,
 
   /**
    * @property {boolean} fadeOut Fade out instead of backspace
@@ -81,83 +81,6 @@ var typed = new Typed('#typed', {
    * @property {boolean} bindInputFocusEvents bind to focus and blur if el is text input
    */
   bindInputFocusEvents: false,
-
-  /**
-   * @property {string} contentType 'html' or 'null' for plaintext
-   */
-  contentType: 'html',
-
-  /**
-   * Before it begins typing
-   * @param {Typed} self
-   */
-  onBegin: (self) => {},
-
-  /**
-   * All typing is complete
-   * @param {Typed} self
-   */
-  onComplete: (self) => {},
-
-  /**
-   * Before each string is typed
-   * @param {number} arrayPos
-   * @param {Typed} self
-   */
-  preStringTyped: (arrayPos, self) => {},
-
-  /**
-   * After each string is typed
-   * @param {number} arrayPos
-   * @param {Typed} self
-   */
-  onStringTyped: (arrayPos, self) => {},
-
-  /**
-   * During looping, after last string is typed
-   * @param {Typed} self
-   */
-  onLastStringBackspaced: (self) => {},
-
-  /**
-   * Typing has been stopped
-   * @param {number} arrayPos
-   * @param {Typed} self
-   */
-  onTypingPaused: (arrayPos, self) => {},
-
-  /**
-   * Typing has been started after being stopped
-   * @param {number} arrayPos
-   * @param {Typed} self
-   */
-  onTypingResumed: (arrayPos, self) => {},
-
-  /**
-   * After reset
-   * @param {Typed} self
-   */
-  onReset: (self) => {},
-
-  /**
-   * After stop
-   * @param {number} arrayPos
-   * @param {Typed} self
-   */
-  onStop: (arrayPos, self) => {},
-
-  /**
-   * After start
-   * @param {number} arrayPos
-   * @param {Typed} self
-   */
-  onStart: (arrayPos, self) => {},
-
-  /**
-   * After destroy
-   * @param {Typed} self
-   */
-  onDestroy: (self) => {}
 });
 
 
