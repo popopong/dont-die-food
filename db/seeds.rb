@@ -24,11 +24,10 @@ RecipeIngredient.destroy_all
 # Recipe.destroy_all
 User.destroy_all
 
-puts "🧑 Creating users..."
-elie = User.create!(first_name: "Elie", last_name: "Hymowitz", email: "elie@hello.com", password: "1234567")
-stephd = User.create!(first_name: "Stephanie", last_name: "Diep", email: "stephd@hello.com", password: "1234567")
-poyan = User.create!(first_name: "Poyan", last_name: "Ng", email: "poyan@hello.com", password: "1234567")
-stephbd = User.create!(first_name: "Stephanie", last_name: "BD", email: "stephbd@hello.com", password: "1234567")
+elie = User.create!(first_name: "Elie", last_name: "Hymowitz", email: "elie@hello.com", password: "1234567", address: "3819 Avenue Calixa-Lavallée, Montréal, QC H2L 3A7")
+stephd = User.create!(first_name: "Stephanie", last_name: "Diep", email: "stephd@hello.com", password: "1234567", address: "4141 Pierre-de Coubertin Ave, Montreal, Quebec H1V 3N7")
+poyan = User.create!(first_name: "Poyan", last_name: "Ng", email: "poyan@hello.com", password: "1234567", address: "327 Avenue Melville, Westmount, Quebec H3Z 2J7")
+stephbd = User.create!(first_name: "Stephanie", last_name: "BD", email: "stephbd@hello.com", password: "1234567", address: "705 Saint-Catherine St W, Montreal, Quebec H3B 4G5")
 
 puts "👩‍🍳 Creating recipes..."
 # Make three API calls to spooncular API
@@ -109,7 +108,8 @@ recipes = Recipe.all
 
 recipes.each do |recipe|
   recipe.ingredients_data.each do |ingredient|
-    Ingredient.find_or_create_by(name: ingredient["name"])
+    ingredient_photo = ingredient["image"]
+    Ingredient.find_or_create_by(name: ingredient["name"], photo: "https://spoonacular.com/cdn/ingredients_100x100/#{ingredient_photo}")
   end
 end
 
@@ -198,16 +198,16 @@ end
 
 puts "🥑 Creating food trades..."
 # Elie's food trades
-FoodTrade.find_or_create_by(user_owned_ingredient: User.first.user_owned_ingredients.first, location: "3819 Avenue Calixa-Lavallée, Montréal, QC H2L 3A7", amount: 2, unit: "cups", description: "I made too much lemon zest and am ready to share with any of you!")
+FoodTrade.find_or_create_by(user_owned_ingredient: User.first.user_owned_ingredients.first, location: "3819 Avenue Calixa-Lavallée, Montréal, QC H2L 3A7", description: "I made too much lemon zest and am ready to share with any of you! I have 2 cups of lemon zest.")
 
 # Steph D's food trades
-FoodTrade.find_or_create_by(user_owned_ingredient: stephd.user_owned_ingredients.second, location: "4141 Pierre-de Coubertin Ave, Montreal, Quebec H1V 3N7", amount: 2, unit: "boxes", description: "I bought way too much greek yogurt and if I eat one more spoonful I'll have nausea. Anyone wants some greek yogurt?")
+FoodTrade.find_or_create_by(user_owned_ingredient: stephd.user_owned_ingredients.second, location: "4141 Pierre-de Coubertin Ave, Montreal, Quebec H1V 3N7", description: "I bought way too much greek yogurt and if I eat one more spoonful I'll have nausea. Anyone wants some greek yogurt? I have 2 boxes to offer!")
 
 # Steph BD's food trades
-FoodTrade.find_or_create_by(user_owned_ingredient: stephd.user_owned_ingredients.second, location: "705 Saint-Catherine St W, Montreal, Quebec H3B 4G5", amount: 5, description: "Looking for garlic for one of your recipes? I got too many garlics sitting around!")
+FoodTrade.find_or_create_by(user_owned_ingredient: stephbd.user_owned_ingredients.second, location: "705 Saint-Catherine St W, Montreal, Quebec H3B 4G5", description: "Looking for garlic for one of your recipes? I got too 5 extra garlics sitting around!")
 
 # Poyan's food trades
-FoodTrade.find_or_create_by(user_owned_ingredient: poyan.user_owned_ingredients.second, location: "329, 327 Avenue Melville, Westmount, Quebec H3Z 2J7", amount: 1, unit: "bottle", description: "Too much olive oil here in my house, need to get rid of them!")
+FoodTrade.find_or_create_by(user_owned_ingredient: poyan.user_owned_ingredients.second, location: "327 Avenue Melville, Westmount, Quebec H3Z 2J7", description: "Too much olive oil here in my house, need to get rid of them! (1 bottle available only)")
 
 puts "👋 Creating chatrooms..."
 Chatroom.find_or_create_by(food_trade: elie.food_trades.first, starred: true)

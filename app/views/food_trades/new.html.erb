@@ -1,2 +1,6 @@
-<h1>FoodTrades#new</h1>
-<p>Find me in app/views/food_trades/new.html.erb</p>
+<h1>Tell Me More!</h1>
+
+<%= simple_form_for [ @user, @food_trade ] do |f|%>
+<%= f.input :description, label: 'Description' %>
+<%= f.submit %>
+<% end %>

@@ -1,2 +1,14 @@
-<h1>FoodTrades#show</h1>
-<p>Find me in app/views/food_trades/show.html.erb</p>
+<h1>Food Trade Details</h1>
+<ul>
+  <li>
+    <p><%= @food_trade.user_owned_ingredient.ingredient.name.capitalize %></p>
+    <p><%= @food_trade.status %></p>
+    <p><%= @food_trade.location %></p>
+    <p><%= @food_trade.description %></p>
+    <p><%= @food_trade.created_at %></p>
+  </li>
+</ul>
+
+
+
+

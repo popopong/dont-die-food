@@ -1,6 +1,7 @@
 class PantryItemsController < ApplicationController
   def index
     @pantry_items = PantryItem.where(user: current_user)
+    # @pantry_items = PantryItem.includes(:ingredient).where(user: User.find(params[:user_id])) 
   end
 
   def create
@@ -13,5 +14,12 @@ class PantryItemsController < ApplicationController
       # Redirect to pantry_items index page for now because don't know how to render popup
       render "/users/:user_id/pantry_items"
     end
+  end
+
+  def destroy
+    @pantry_item = PantryItem.find(params[:id])
+
+    @pantry_item.destroy
+    redirect_to pantry_items_path
   end
 end

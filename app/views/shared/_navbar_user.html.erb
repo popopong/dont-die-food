@@ -1,0 +1,31 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <%= link_to "/", class: "navbar-brand" do %>
+    <%= image_tag "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/avocado_scream_avatar_food-512.png" %>
+  <% end %>
+
+  <%= link_to "/users/:id/show", class: "navbar-brand" do %>
+    <%# How do we add the avatar to User with Cloudinary? Need to use current_user.avatar %>
+    <%= image_tag "https://cdn0.iconfinder.com/data/icons/elasto-online-store/26/00-ELASTOFONT-STORE-READY_user-circle-512.png" %>
+  <% end %>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <%= link_to "Log out",  destroy_user_session_path, method: :delete, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "My pantry", pantry_items_path(current_user), class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "My cookbook", saved_recipes_path(current_user), class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Chat", chatrooms_path, class: "nav-link" %>
+      </li>
+    </ul>
+  </div>
+</div>

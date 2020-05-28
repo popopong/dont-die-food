@@ -1,0 +1,24 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <%= link_to root_path, class: "navbar-brand" do %>
+    <%= image_tag "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/avocado_scream_avatar_food-512.png" %>
+  <% end %>
+
+  <%= link_to new_user_session_path, class: "navbar-brand" do %>
+    <%= image_tag "https://cdn0.iconfinder.com/data/icons/elasto-online-store/26/00-ELASTOFONT-STORE-READY_user-circle-512.png" %>
+  <% end %>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <%= link_to "Sign up",  new_user_registration_path , class: "nav-link" %>
+      </li>
+      <li>
+        <%= link_to "Log in",  new_user_session_path , class: "nav-link" %>
+      </li>
+    </ul>
+  </div>
+</div>

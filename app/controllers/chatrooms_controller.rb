@@ -1,12 +1,14 @@
 class ChatroomsController < ApplicationController
   def index
-    @chatrooms = Chatroom.all
-    # chatrooms_including_current_user = Chatroom.all
-    # @chatrooms = chatrooms_including_current_user.messages.where("sender_id = ? OR receiver_id = ?", current_user.id, current_user.id)
+    @messages = Message.order(created_at: :desc)
+                        .where("sender_id = ? OR receiver_id = ?", current_user.id, current_user.id)
+                        .uniq{ |message| message.sender_id }
   end
 
   def show
     @chatroom = Chatroom.find(params[:id])
+    @other_user = @chatroom.other_user(current_user)
+    @message = Message.new()
   end
 
   def update

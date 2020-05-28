@@ -1,9 +1,14 @@
 class FoodTradesController < ApplicationController
-  before_action find_food_trade, only: [:show, :destroy, :edit, :update]
+  skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :find_food_trade, only: [:show, :destroy, :edit, :update]
+
+  def user_food_trades
+    @user = current_user
+    @food_trades = @user.food_trades
+  end
 
   def index
-    User.find(params[:user_id])
-    @food_trades = FoodTrade.where(user: @user)
+    @food_trades = FoodTrade.where(status: "Available")
   end
 
   def show
@@ -18,7 +23,7 @@ class FoodTradesController < ApplicationController
     if @food_trade.save
       redirect_to :show
     else
-      render: :new
+      render :new
     end
   end
 
@@ -38,7 +43,7 @@ class FoodTradesController < ApplicationController
     if @food_trade.save
       redirect_to :show
     else
-      render: :edit
+      render :edit
     end
   end
 
