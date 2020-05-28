@@ -15,4 +15,11 @@ class PantryItemsController < ApplicationController
       render "/users/:user_id/pantry_items"
     end
   end
+
+  def destroy
+    @pantry_item = PantryItem.find(params[:id])
+
+    @pantry_item.destroy
+    redirect_to pantry_items_path
+  end
 end
