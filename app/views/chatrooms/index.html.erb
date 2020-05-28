@@ -1,2 +1,13 @@
-<h1>Chatrooms#index</h1>
-<p>Find me in app/views/chatrooms/index.html.erb</p>
+<div class="container">
+  <h1>chats</h1>
+
+  <ul>
+    <% @chatrooms.each do |chatroom| %>
+      <li><%= User.find(chatroom.messages.first.sender_id).first_name %> 
+      <%= User.find(chatroom.messages.first.sender_id).last_name %> 
+      <%= chatroom.messages.last.created_at%><br>
+      <em><%= chatroom.messages.last.content %></em></li>
+      <br>
+    <% end %>
+  </ul>
+</div>
