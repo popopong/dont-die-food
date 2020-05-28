@@ -94,10 +94,9 @@ end
 # Create an array of keywords
 # Already in SD's master DB
 keywords = [{ name: "avocado", number: 5 }, { name: "apple", number: 5 }, { name: "pie", number: 5 }]
-# keywords = [{ name: "banana", number: 5 }, { name: "peach", number: 5 }, { name: "lemon", number: 5 }, { name: "tomato", number: 5 }, { name: "cake", number: 5 }, { name: "beans", number: 5 }, { name: "bacon", number: 5 }, { name: "cheese", number: 5 }, { name: "carrot", number: 5 }, { name: "eggplant", number: 5 }, { name: "pizza", number: 5 }, {name: "zucchini", number: 5}, {name: "bean sprouts"}, { name: "egg", number: 5 }, { name: "strawberry", number: 5 }, { name: "pancake", number: 5 }, { name: "burger", number: 5 }, { name: "beef", number: 5 }, { name: "chicken", number: 5 }]
+# keywords = [{ name: "banana", number: 5 }, { name: "peach", number: 5 }, { name: "lemon", number: 5 }, { name: "tomato", number: 5 }, { name: "cake", number: 5 }, { name: "beans", number: 5 }, { name: "bacon", number: 5 }, { name: "cheese", number: 5 }, { name: "carrot", number: 5 }, { name: "eggplant", number: 5 }, { name: "pizza", number: 5 }, {name: "zucchini", number: 5}, {name: "bean sprouts"}, { name: "egg", number: 5 }, { name: "strawberry", number: 5 }, { name: "pancake", number: 5 }, { name: "burger", number: 5 }, { name: "beef", number: 5 }, { name: "chicken", number: 5 }, { name: "rice", number: 5 }, { name: "lamb", number: 5 }, { name: "coconut", number: 5 }]
 
 # Not yet in SD's master DB
-# keywords = [{ name: "", number: 5 }, { name: "", number: 5 }, { name: "", number: 5 }]
 
 keywords.each do |keyword|
   find_recipe_by_keyword(keyword)
