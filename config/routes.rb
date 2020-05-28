@@ -57,8 +57,6 @@ Rails.application.routes.draw do
 # I can send a message in a chat          /chatrooms/:id/  POST  messages  create
 # I can star a chat                       /chatrooms  PATCH chatrooms update
 
-  resources :chatrooms, only: [:show, :index, :update] do
-    resources :messages, only: :create
-  end
-
+  resources :chatrooms, only: [:show, :index, :update]
+  resources :messages, only: :create
 end
