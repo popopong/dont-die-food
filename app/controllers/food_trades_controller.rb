@@ -3,11 +3,11 @@ class FoodTradesController < ApplicationController
 
   def user_food_trades
     @user = User.find(params[:user_id])
-    @food_trades = FoodTrade.where(user: @user)
+    @food_trades = @user.food_trades
   end
 
   def index
-    @food_trades = FoodTrade.all
+    @food_trades = FoodTrade.where(status: "Available")
   end
 
   def show

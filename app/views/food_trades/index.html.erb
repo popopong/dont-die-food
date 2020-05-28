@@ -1,9 +1,13 @@
 <h1>Help Your Neighbors</h1>
-<% @food_trades.each do |food_trade| %>
-<li>
-  <strong><%= food_trade.user_owned_ingredient.user.first_name %> : </strong>
-  <%= food_trade.description %>
-  <%= food_trade.amount %>
-  <%= food_trade.unit %>
-</li>
-<% end %>
+<ul>
+  <% @food_trades.each do |food_trade| %>
+    <li>
+      <strong><%= food_trade.user_owned_ingredient.user.first_name %> : </strong>
+      <%= food_trade.description %>
+      <%= food_trade.amount %>
+      <%= food_trade.unit %>
+      <%= food_trade.location %>
+    </li>
+  <% end %>
+</ul>
+
