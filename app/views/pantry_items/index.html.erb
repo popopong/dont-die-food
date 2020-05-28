@@ -1,1 +1,8 @@
-<h1>This is the pantry_items index page</h1>
+<h1> My pantry items </h1>
+<% pantry_items = PantryItem.includes(:ingredient).where(user: User.first) %>
+
+<ul>
+  <% pantry_items.each do |pantry_item |%>
+    <li><%= pantry_item.ingredient.name %></li>
+  <% end %>
+</ul>

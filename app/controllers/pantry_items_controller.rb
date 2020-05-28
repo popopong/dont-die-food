@@ -1,6 +1,7 @@
 class PantryItemsController < ApplicationController
   def index
     @pantry_items = PantryItem.where(user: current_user)
+    # pantry_items = PantryItem.includes(:ingredient).where(user: current_user)
   end
 
   def create
