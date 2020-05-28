@@ -14,5 +14,5 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :email, presence: true, uniqueness: true,
             format: { with: /\w+@\w+\.[a-z]{2,4}\z/, message: "Please enter a valid email address"}
-  validates :encrypted_password, presence: true, length: { minimum: 6 }
+  validates :encrypted_password, presence: true
 end
