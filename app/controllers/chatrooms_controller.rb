@@ -1,6 +1,8 @@
 class ChatroomsController < ApplicationController
   def index
-    @chatrooms = Chatroom.where("sender_id = ? OR reciever_id = ?", current_user.id, current_user.id)
+    @chatrooms = Chatroom.all
+    # chatrooms_including_current_user = Chatroom.all
+    # @chatrooms = chatrooms_including_current_user.messages.where("sender_id = ? OR receiver_id = ?", current_user.id, current_user.id)
   end
 
   def show
@@ -20,6 +22,6 @@ class ChatroomsController < ApplicationController
   private
 
   def chatroom_params
-    params.require(:chatroom).permit(:starred)
+    params.require(:chatroom).permit(:starred, :sender_id, :receiver_id)
   end
 end

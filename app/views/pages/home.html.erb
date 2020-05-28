@@ -1,2 +1,16 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+  <h1>Help your neighbours...</h1>
+  <%= link_to "see more", food_trades_path %>
+</div>
+
+<div class="container">
+  <h1>Popular recipes...</h1>
+  <%= link_to "see more", recipes_path %>
+  <ul>
+    <% @recipes = Recipe.all %>
+    <% @recipes.last(10).shuffle.each do |recipe|%>
+      <li><%= image_tag("#{recipe.photo}", size:"300x200", alt: "Recipe image", class: "recipe_index_img") %><br>
+      <%= link_to recipe.title, recipe_path(recipe) %></li>
+    <% end %>
+  </ul>
+</div>
