@@ -1,12 +1,17 @@
 <h1>Help Your Neighbors</h1>
 <ul>
-  <% @food_trades.shuffle.each do |food_trade| %>
+  <% @food_trades.last(10).shuffle.each do |food_trade| %>
     <li>
       <p><strong><%= food_trade.user_owned_ingredient.user.first_name %> : </strong><br>
+      Food to trade: <%= food_trade.user_owned_ingredient.ingredient.name.capitalize %><br>
       Description: <%= food_trade.description %><br>
       Catgeory: <%= food_trade.category %><br>
       Address: <%= food_trade.location %></p>
     </li>
   <% end %>
 </ul>
+
+<%= image_tag "https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/600x1000?access_token=#{ENV['MAPBOX_APIKEY']}" %>
+
+
 
