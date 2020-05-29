@@ -7,7 +7,7 @@
 <br>
 
 <ul>
-  <% @food_trades.last(5).shuffle.each do |food_trade| %>
+  <% @food_trades.shuffle.last(5).each do |food_trade| %>
     <li>
       <p><strong><%= food_trade.user_owned_ingredient.user.first_name %> : </strong><br>
       Food to trade: <%= food_trade.user_owned_ingredient.ingredient.name.capitalize %><br>
