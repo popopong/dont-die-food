@@ -1,4 +1,9 @@
 <div class="container">
+
+  <div id="typed_strings">
+    <h1 style="font-size: 38px;">Save my <span id="typed" style="text-decoration: underline;"></span></h1>
+  </div>
+
   <h1>Help your neighbours...</h1>
   <h3><%= link_to "see more", food_trades_path %></h3>
   <% @food_trades = FoodTrade.where(status: "Available") %>
