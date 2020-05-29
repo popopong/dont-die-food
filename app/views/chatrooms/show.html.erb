@@ -6,10 +6,15 @@
   </li>
 <% end %>
 
-<%= simple_form_for @message do |f| %>
-  <%= f.input :content, placeholder: "Type a Message" %>
-  <%= f.hidden_field :sender_id, value: current_user.id %>
-  <%= f.hidden_field :receiver_id, value: @other_user.id %>
-  <%= f.hidden_field :chatroom_id, value: @chatroom.id %>
-  <%= f.submit %>
-<% end %>
+<div class="data-form">
+  <%= simple_form_for @message do |f| %>
+    <%= f.input :content, placeholder: "Type a Message" %>
+    <%= f.hidden_field :sender_id, value: current_user.id %>
+    <%= f.hidden_field :receiver_id, value: @other_user.id %>
+    <%= f.hidden_field :chatroom_id, value: @chatroom.id %>
+    <div id="submit-button-container">
+      <%= f.button :submit, "Send Message", class: "button-dark"%>
+    </div>
+  <% end %>
+</div>
+
