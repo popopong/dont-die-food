@@ -26,9 +26,44 @@
   }
 }
 
-.signing-form {
+.signing-form .form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  padding-top: 0px;
 
+
+  input, label {
+    margin: 0 6%;
+  }
+
+  label {
+    margin-left: 10%;
+  }
+
+  input {
+    // Styling
+    background: $f-lightgrey;
+    border: 1px solid $f-nav-green;
+    box-sizing: border-box;
+    border-radius: 25px;
+
+    // Dimensions
+    width: 80%;
+    height: 40px;
+  }
+
+  .text-muted {
+    margin: auto;
+    padding-right: 30px;
+  }
 }
+
+#user_remember_me {
+    height: 20px;
+}
+
 
 #submit-button-container {
   width: 100%;
