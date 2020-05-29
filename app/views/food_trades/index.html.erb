@@ -1,12 +1,25 @@
-<h1>Help Your Neighbors</h1>
+<h1 style="text-align:center">Help Your Neighbors</h1>
+<br>
+
+<div class="container d-flex justify-content-center">
+  <%= link_to "Add your own giveaway", new_food_trade_path, class: "btn button-dark"%>
+</div>
+<br>
+
 <ul>
-  <% @food_trades.shuffle.each do |food_trade| %>
+  <% @food_trades.last(5).shuffle.each do |food_trade| %>
     <li>
       <p><strong><%= food_trade.user_owned_ingredient.user.first_name %> : </strong><br>
+      Food to trade: <%= food_trade.user_owned_ingredient.ingredient.name.capitalize %><br>
       Description: <%= food_trade.description %><br>
       Catgeory: <%= food_trade.category %><br>
       Address: <%= food_trade.location %></p>
     </li>
   <% end %>
 </ul>
+
+<%# The coordinates need to be replaced by the current_user's address %>
+<%= image_tag "https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/350x300?access_token=#{ENV["MAPBOX_APIKEY"]}" %>
+
+
 
