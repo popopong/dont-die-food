@@ -1,6 +1,6 @@
 class FoodTradesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :find_food_trade, only: [:show, :destroy, :edit, :update]
+  before_action :find_food_trade, only: [:destroy, :edit, :update]
 
   def user_food_trades
     @user = current_user
@@ -12,6 +12,7 @@ class FoodTradesController < ApplicationController
   end
 
   def show
+    @food_trade = FoodTrade.find(params[:format])
   end
 
   def new
