@@ -6,7 +6,7 @@
   padding-top: 10px;
 
   textarea, label {
-    margin: 0 6%;
+    margin: 0 auto;
   }
 
   label {
@@ -35,7 +35,7 @@
 
 
   input, label {
-    margin: 0 6%;
+    margin: 0 auto;
   }
 
   label {
@@ -61,9 +61,9 @@
 }
 
 #user_remember_me {
-    height: 20px;
+  height: 20px;
+  margin-left: 25px;
 }
-
 
 #submit-button-container {
   width: 100%;
