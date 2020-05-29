@@ -77,22 +77,77 @@
   }
 }
 
-.carosel-food-card {
+.carousel-food-card {
+  // Outer Box
+  left: 0%;
+  right: 2.42%;
+  top: 0%;
+  bottom: 0%;
 
+  background: #FBFBFF;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+
+  // Image
+  img {
+    position: absolute;
+    left: 0%;
+    right: 2.42%;
+    top: 0%;
+    bottom: 40%;
+    border-radius: 15px 15px 0px 0px;
+    object-fit: cover;
+  }
+
+   // Text Div
+  div {
+    h2 {
+      // Recipe Name
+      position: absolute;
+      left: 5.65%;
+      right: 27.42%;
+      top: 65.19%;
+      bottom: 22.96%;
+
+      font-family: Comfortaa;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 16px;
+      color: $f-green;
+    }
+
+    p {
+      // Ingredients had
+      position: absolute;
+      left: 5.65%;
+      right: 0%;
+      top: 80%;
+      bottom: 8.15%;
+
+      font-family: Hind Vadodara;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 10px;
+      line-height: 15px;
+      color: $f-green;
+
+    }
+  }
 }
 
-.small-food-card {
+// .small-food-card {
 
-}
+// }
 
-.food-listing-card {
+// .food-listing-card {
 
-}
+// }
 
-.food-to-share-picture {
+// .food-to-share-picture {
 
-}
+// }
 
-.pantry-card {
+// .pantry-card {
 
-}
+// }
