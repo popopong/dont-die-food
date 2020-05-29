@@ -1,12 +1,11 @@
 <h1>Help Your Neighbors</h1>
 <ul>
-  <% @food_trades.each do |food_trade| %>
+  <% @food_trades.shuffle.each do |food_trade| %>
     <li>
-      <strong><%= food_trade.user_owned_ingredient.user.first_name %> : </strong>
-      <%= food_trade.description %>
-      <%= food_trade.amount %>
-      <%= food_trade.unit %>
-      <%= food_trade.location %>
+      <p><strong><%= food_trade.user_owned_ingredient.user.first_name %> : </strong><br>
+      Description: <%= food_trade.description %><br>
+      Catgeory: <%= food_trade.category %><br>
+      Address: <%= food_trade.location %></p>
     </li>
   <% end %>
 </ul>
