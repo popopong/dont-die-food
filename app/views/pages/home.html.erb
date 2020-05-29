@@ -1,6 +1,6 @@
 <div class="container">
   <h1>Help your neighbours...</h1>
-  <%= link_to "see more", food_trades_path %>
+  <h3><%= link_to "see more", food_trades_path %></h3>
   <% @food_trades = FoodTrade.where(status: "Available") %>
   <ul>
     <% @food_trades.last(10).shuffle.each do |food_trade| %>
@@ -13,7 +13,7 @@
 </div>
 
 <div class="container">
-  <h1>Popular recipes...</h1>
+  <h2>Popular recipes...</h2>
   <%= link_to "see more", recipes_path %>
   <ul>
     <% @recipes = Recipe.all %>
