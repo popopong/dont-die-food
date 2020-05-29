@@ -294,14 +294,14 @@ elie_pantry_array.each do |pantry_item|
   PantryItem.find_or_create_by(user: User.first, ingredient: found_ingredient)
 end
 
-stephd_pantry_array = ["cayenne pepper", "whole-weat flour", "maple syrup", "bourbon"]
+stephd_pantry_array = ["cayenne pepper", "whole-wheat flour", "maple syrup", "bourbon"]
 stephd_pantry_array.each do |pantry_item|
   found_ingredient = Ingredient.find_by(name: pantry_item)
   PantryItem.find_or_create_by(user: User.second, ingredient: found_ingredient)
 end
 
 stephbd_pantry_array = ["salt", "garlic", "cinnamon", "extra virgin olive oil"]
-stephd_pantry_array.each do |pantry_item|
+stephbd_pantry_array.each do |pantry_item|
   found_ingredient = Ingredient.find_by(name: pantry_item)
   PantryItem.find_or_create_by(user: User.last, ingredient: found_ingredient)
 end
