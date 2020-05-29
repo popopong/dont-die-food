@@ -1,4 +1,3 @@
-
 puts "🧹 Cleaning database"
 Message.destroy_all
 Chatroom.destroy_all
