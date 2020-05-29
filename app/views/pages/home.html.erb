@@ -18,7 +18,7 @@
   <ul>
     <% @recipes = Recipe.all %>
     <% @recipes.last(10).shuffle.each do |recipe|%>
-      <li><%= image_tag("#{recipe.photo}", size:"300x200", alt: "Recipe image", class: "recipe_index_img") %><br>
+      <li><%= image_tag("#{recipe.photo}", size:"300x200", alt: "Recipe image", class: "recipe_show_img") %><br>
       <%= link_to recipe.title, recipe_path(recipe) %></li>
     <% end %>
   </ul>
