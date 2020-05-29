@@ -1,6 +1,11 @@
 <div class="container">
+
+  <div id="typed_strings">
+    <h1 style="font-size: 38px;">Save my <span id="typed" style="text-decoration: underline;"></span></h1>
+  </div>
+
   <h1>Help your neighbours...</h1>
-  <%= link_to "see more", food_trades_path %>
+  <h3><%= link_to "see more", food_trades_path %></h3>
   <% @food_trades = FoodTrade.where(status: "Available") %>
   <ul>
     <% @food_trades.last(10).shuffle.each do |food_trade| %>
@@ -13,12 +18,12 @@
 </div>
 
 <div class="container">
-  <h1>Popular recipes...</h1>
+  <h2>Popular recipes...</h2>
   <%= link_to "see more", recipes_path %>
   <ul>
     <% @recipes = Recipe.all %>
     <% @recipes.last(10).shuffle.each do |recipe|%>
-      <li><%= image_tag("#{recipe.photo}", size:"300x200", alt: "Recipe image", class: "recipe_index_img") %><br>
+      <li><%= image_tag("#{recipe.photo}", size:"300x200", alt: "Recipe image", class: "recipe_show_img") %><br>
       <%= link_to recipe.title, recipe_path(recipe) %></li>
     <% end %>
   </ul>
