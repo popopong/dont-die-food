@@ -1,5 +1,5 @@
-<div class="container">
-<h1>Tell Me More!</h1>
+<div class="container ">
+<h1 class="text-center">Tell Me More!</h1>
 
 <%= simple_form_for [ @user, @food_trade ] do |f|%>
 <%= f.association :user_owned_ingredient, collection: @ingredients_name, label: 'Name of the food' %>
@@ -12,6 +12,6 @@
   :crop => :limit, :width => 1000, :height => 1000,
   :eager => [{ :crop => :fill, :width => 150, :height => 100 }],
   :html => { }  )  %>
-<%= f.button :submit, class: "button-dark" %>
+<%= f.button :submit, class: "button-dark mx-auto mt-4", style: "display: block;" %>
 <% end %>
 </div>
