@@ -1,5 +1,79 @@
-.special-form {
-  input {
+.data-form .form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  padding-top: 10px;
 
+  textarea, label {
+    margin: 0 auto;
+  }
+
+  label {
+    margin-left: 13%;
+  }
+
+  textarea {
+    // Styling
+    background: $f-lightgrey;
+    border: 1px solid $f-nav-green;
+    box-sizing: border-box;
+    border-radius: 25px;
+
+    // Dimensions
+    width: 90%;
+    height: 40px;
   }
 }
+
+.signing-form .form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  padding-top: 0px;
+
+
+  input, label {
+    margin: 0 auto;
+  }
+
+  label {
+    margin-left: 10%;
+  }
+
+  input {
+    // Styling
+    background: $f-lightgrey;
+    border: 1px solid $f-nav-green;
+    box-sizing: border-box;
+    border-radius: 25px;
+
+    // Dimensions
+    width: 80%;
+    height: 40px;
+  }
+
+  .text-muted {
+    margin: auto;
+    padding-right: 30px;
+  }
+}
+
+#user_remember_me {
+  height: 20px;
+  margin-left: 25px;
+}
+
+#submit-button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  .button-dark {
+    width: 60%;
+  }
+}
+
+
+
+

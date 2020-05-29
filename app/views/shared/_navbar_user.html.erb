@@ -7,7 +7,7 @@
     <%= image_tag "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/avocado_scream_avatar_food-512.png" %>
   <% end %>
 
-  <%= link_to "/users/:id/show", class: "navbar-brand" do %>
+  <%= link_to user_path(current_user), class: "navbar-brand" do %>
     <%# How do we add the avatar to User with Cloudinary? Need to use current_user.avatar %>
     <%= image_tag "https://cdn0.iconfinder.com/data/icons/elasto-online-store/26/00-ELASTOFONT-STORE-READY_user-circle-512.png" %>
   <% end %>
@@ -22,6 +22,9 @@
       </li>
       <li class="nav-item">
         <%= link_to "My cookbook", saved_recipes_path(current_user), class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Community", food_trades_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
         <%= link_to "Chat", chatrooms_path, class: "nav-link" %>

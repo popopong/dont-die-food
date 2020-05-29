@@ -5,7 +5,7 @@
     <% @messages.each do |message| %>
     <li>
       <%= link_to(chatroom_path(message.chatroom.id)) do %>
-        <%= message.other_user(current_user).first_name %>
+        <%= message.other_user(current_user).first_name %><br>
         <%= message.content %>
       <% end %>
     </li>
