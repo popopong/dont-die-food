@@ -1,5 +1,41 @@
-.special-form {
-  input {
+.special-form .form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  padding-top: 10px;
 
+  textarea, label {
+    margin: 0 6%;
+  }
+
+  label {
+    margin-left: 13%;
+  }
+
+  textarea {
+    // Styling
+    background: $f-lightgrey;
+    border: 1px solid $f-nav-green;
+    box-sizing: border-box;
+    border-radius: 25px;
+    width: 90%;
+    // Dimensions
+    height: 40px;
+
+    // padding: 10px 10px;
   }
 }
+
+#submit-button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  .button-dark {
+    width: 60%;
+  }
+}
+
+
+
+
