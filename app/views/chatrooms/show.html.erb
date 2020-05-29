@@ -6,7 +6,7 @@
   </li>
 <% end %>
 
-<div class="special-form">
+<div class="data-form">
   <%= simple_form_for @message do |f| %>
     <%= f.input :content, placeholder: "Type a Message" %>
     <%= f.hidden_field :sender_id, value: current_user.id %>

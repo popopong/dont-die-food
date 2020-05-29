@@ -1,4 +1,4 @@
-.special-form .form-group {
+.data-form .form-group {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -19,12 +19,15 @@
     border: 1px solid $f-nav-green;
     box-sizing: border-box;
     border-radius: 25px;
-    width: 90%;
-    // Dimensions
-    height: 40px;
 
-    // padding: 10px 10px;
+    // Dimensions
+    width: 90%;
+    height: 40px;
   }
+}
+
+.signing-form {
+
 }
 
 #submit-button-container {
