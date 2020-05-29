@@ -177,7 +177,7 @@ poyan_saved_recipes = ["Blueberry Pie with Lemon Sauce", "Grilled Peach, Avocado
 poyan_saved_recipes.each do |recipe_title|
   found_recipe = Recipe.find_by(title: recipe_title)
   SavedRecipe.find_or_create_by(user: User.last, recipe: found_recipe)
-# end
+end
 
 puts "🍎 Creating user_owned_ingredients..."
 # Elie's owned ingredients
