@@ -15,13 +15,24 @@ class FoodTradesController < ApplicationController
   end
 
   def new
-    @food_trade = FoodTrade.new()
+    @food_trade = FoodTrade.new
+    @ingredients = Ingredient.all
+    @ingredients_name = @ingredients.map { |ing| ing.name }
+    @ingredients_name.sort!
   end
 
   def create
+    # find the ingredient and its id
+    ing = params[:food_trade][:user_owned_ingredient_id]
+    ing_id = Ingredient.where(name: ing).first.id
+    # create new user_owned_ingredient
+    new_user_own = UserOwnedIngredient.create(user_id: current_user.id, ingredient_id: ing_id)
+
     @food_trade = FoodTrade.new(food_trade_params)
+    @food_trade.user_owned_ingredient = new_user_own
+
     if @food_trade.save
-      redirect_to :show
+      redirect_to :index
     else
       render :new
     end
@@ -54,6 +65,6 @@ class FoodTradesController < ApplicationController
   end
 
   def food_trade_params
-    params.require(:food_trade).permit(:amount, :unit, :description, :location)
+    params.require(:food_trade).permit(:description, :location, :category)
   end
 end
