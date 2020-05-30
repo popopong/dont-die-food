@@ -6,208 +6,125 @@
   object-fit: cover;
 }
 
-// .recipe-card {
-//   object-fit: cover;
-//   // Outer Box
-//   background: #FBFBFF;
-//   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-//   border-radius: 25px;
-//   width: 353px;
-//   height: 410px;
-//   left: 31px;
-//   top: 139px;
+.recipe-big-card {
+  // Outer Box
+  flex-grow: 0;
+  flex-shrink:0;
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  height: 410px;
+  background: #FBFBFF;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 25px;
+  margin: 45px 0px;
+  // padding: 5px;
 
-//   // Image
-//   img {
-//     position: absolute;
-//     left: 0%;
-//     right: 0%;
-//     top: 0%;
-//     bottom: 40.4%;
-//     border-radius: 25px 25px 0px 0px;
-//   }
+  // Image
+  img {
+    object-fit: cover;
+    max-width: 100%;
+    overflow: hidden;
+    border-radius: 25px 25px 0px 0px;
+  }
 
-//   // Text Div
-//   div {
-//     h2 {
-//       // Recipe Name
-//       position: absolute;
-//       left: 2.55%;
-//       right: 0%;
-//       top: 65.59%;
-//       bottom: 26.54%;
+  // Recipe Name
+  .recipe-big-card-title a{
+    max-width: 100%;
+    font-family: Comfortaa;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 28px;
+    line-height: 36px;
+    color: $f-green;
+    margin-bottom: 0px;
+    padding: 5px;
+    // need to adjust the padding of the title
+  }
 
-//       font-family: Comfortaa;
-//       font-style: normal;
-//       font-weight: bold;
-//       font-size: 32px;
-//       line-height: 36px;
-//       color: $f-green;
-//     }
+  // Recipe Description
+  .recipe-big-card-content{
+    font-family: Hind Vadodara;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 27px;
+    color: $f-green;
+    margin-bottom: 0px;
+    padding: 5px;
+  }
 
-//     h3{
-//       // Recipe Description
-//       position: absolute;
-//       left: 2.5%;
-//       right: 56.42%;
-//       top: 76.06%;
-//       bottom: 18.03%;
+  // Ingredient that user have
+  // .recipe-big-card-ingredients{
+  //   font-family: Hind Vadodara;
+  //   font-style: normal;
+  //   font-weight: normal;
+  //   font-size: 12px;
+  //   line-height: 10px;
+  //   color: $f-nav-green;
+  //   margin-bottom: 0px;
+  //   padding: 5px;
+  // }
+}
 
-//       font-family: Hind Vadodara;
-//       font-style: normal;
-//       font-weight: normal;
-//       font-size: 18px;
-//       line-height: 27px;
-//       color: $f-green;
-//     }
 
-//     p {
-//       // Ingredients had
-//       position: absolute;
-//       left: 2.55%;
-//       right: 44.19%;
-//       top: 92.2%;
-//       bottom: 2.68%;
+.small-food-card {
+  // Outer Box
+  flex-grow: 0;
+  flex-shrink:0;
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+  height: 170px;
+  background: #FBFBFF;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  margin: 5px;
+  padding: 5px;
 
-//       font-family: Hind Vadodara;
-//       font-style: normal;
-//       font-weight: normal;
-//       font-size: 14px;
-//       line-height: 21px;
-//       color: $f-nav-green;
-//     }
-//   }
-// }
+  // Image (to adjust)
+  img {
+    object-fit: cover;
+    max-width: 80%;
+    overflow: hidden;
+    border-radius: 15px 15px 0px 0px;
+  }
 
-// .carousel-food-card {
-//   object-fit: cover;
-//   // Outer Box
-//   left: 0%;
-//   right: 2.42%;
-//   top: 0%;
-//   bottom: 0%;
-//   width: 124px;
-//   height: 135px;
-//   left: 173px;
-//   top: 547px;
-//   background: #FBFBFF;
-//   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-//   border-radius: 15px;
+  .small-card-title {
+    font-family: Comfortaa;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 16px;
+    color: $f-green;
+    margin-bottom: 0px;
+  }
 
-//   // Image
-//   img {
-//     position: absolute;
-//     left: 0%;
-//     right: 2.42%;
-//     top: 0%;
-//     bottom: 40%;
-//     border-radius: 15px 15px 0px 0px;
-//   }
 
-//    // Text Div
-//   div {
-//     h2 {
-//       // Recipe Name
-//       position: absolute;
-//       left: 5.65%;
-//       right: 27.42%;
-//       top: 65.19%;
-//       bottom: 22.96%;
+  .small-card-content{
+    font-family: Hind Vadodara;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 15px;
+    color: $f-green;
+    margin-bottom: 0px;
+  }
+}
 
-//       font-family: Comfortaa;
-//       font-style: normal;
-//       font-weight: bold;
-//       font-size: 14px;
-//       line-height: 16px;
-//       color: $f-green;
-//     }
 
-//     p {
-//       // Ingredients had
-//       position: absolute;
-//       left: 5.65%;
-//       right: 0%;
-//       top: 80%;
-//       bottom: 8.15%;
-
-//       font-family: Hind Vadodara;
-//       font-style: normal;
-//       font-weight: normal;
-//       font-size: 10px;
-//       line-height: 15px;
-//       color: $f-green;
-
-//     }
-//   }
-// }
-
-// .small-food-card {
-//   // Outer Box
-//   left: 0%;
-//   right: 0%;
-//   top: 0%;
-//   bottom: 0%;
-
-//   background: #FBFBFF;
-//   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-//   border-radius: 15px;
-
-//   // Image
-//   img {
-//     position: absolute;
-//     left: 0%;
-//     right: 0%;
-//     top: 0%;
-//     bottom: 44.9%;
-//     border-radius: 15px 15px 0px 0px;
-//     object-fit: cover;
-//   }
-
-//   // Text Div
-//   div {
-//     h2 {
-//       // Recipe Name
-//       position: absolute;
-//       left: 4.27%;
-//       right: 0%;
-//       top: 62.59%;
-//       bottom: 23.81%;
-
-//       font-family: Comfortaa;
-//       font-style: normal;
-//       font-weight: bold;
-//       font-size: 14px;
-//       line-height: 16px;
-
-//       color: $f-green;
-//       }
-//     p {
-//       // Km
-//       position: absolute;
-//       left: 5.65%;
-//       right: 0%;
-//       top: 80%;
-//       bottom: 8.15%;
-
-//       font-family: Hind Vadodara;
-//       font-style: normal;
-//       font-weight: normal;
-//       font-size: 10px;
-//       line-height: 15px;
-//       color: $f-green;
-
-//     }
-//   }
-// }
-.recipes-container {
+// Carousel container
+.carousel-card-ccontainer {
   width: 100vw;
   height: 250px;
   margin-top: 15px;
-  .recipes-carousel {
+  .cards-carousel {
     width: 100%;
     display: flex;
     overflow: scroll;
-    .recipe-card {
+
+    //Carousel card's
+    .carousel-card {
       flex-grow: 0;
       flex-shrink:0;
       display: flex;
@@ -218,27 +135,36 @@
       box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
       border-radius: 15px;
       margin: 5px;
-      padding: 5px;
+      // padding: 5px;
+
+      // Image (to adjust)
       img {
         object-fit: cover;
-        max-width: 80%;
+        max-width: 100%;
+        // max-width: 80%;
         overflow: hidden;
+        border-radius: 15px 15px 0px 0px;
       }
-      .recipe-card-content{
+
+      .carousel-card-title {
+        font-family: Comfortaa;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 15px;
+        line-height: 16px;
+        color: $f-green;
+        margin-bottom: 0px;
+      }
+
+
+      .carousel-card-content{
         font-family: Hind Vadodara;
         font-style: normal;
         font-weight: normal;
         font-size: 10px;
         line-height: 15px;
         color: $f-green;
-      }
-      .recipe-card-title {
-        font-family: Hind Vadodara;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 10px;
-        line-height: 10px;
-        color: $f-green;
+        margin-bottom: 0px;
       }
     }
   }

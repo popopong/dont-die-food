@@ -1,11 +1,13 @@
-<h1>My Cookbook</h1>
+<div class="container">
+  <h1>My Cookbook</h1>
 
 
-<ul>
-  <% @saved_recipes.each do |saved_recipe| %>
-  <li>
-    <%= image_tag( "#{saved_recipe.recipe.photo}", size: "300x200", alt: "Recipe image", class: "recipe_index_img" ) %> <br>
-    <%=  link_to saved_recipe.recipe.title, recipe_path(saved_recipe) %>
-  </li>
-  <% end %>
-</ul>
+  <div class="recipe-card">
+    <% @saved_recipes.each do |saved_recipe| %>
+    <div class="recipe-big-card">
+      <%= image_tag( "#{saved_recipe.recipe.photo}", size: "350x250", alt: "Recipe image", class: "recipe_index_img" ) %> <br>
+      <div class="recipe-big-card-title"><%=  link_to saved_recipe.recipe.title, recipe_path(saved_recipe) %></div>
+    </div>
+    <% end %>
+  </div>
+</div>
