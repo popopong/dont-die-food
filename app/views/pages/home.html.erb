@@ -4,27 +4,44 @@
     <h1 style="font-size: 28px;">Save my <span id="typed" style="text-decoration: underline;"></span></h1>
   </div>
 
-  <h1>Help your neighbours...</h1>
-  <h3><%= link_to "see more", food_trades_path %></h3>
-  <% @food_trades = FoodTrade.where(status: "Available") %>
-  <ul>
-    <% @food_trades.last(10).shuffle.each do |food_trade| %>
-      <li>
-        <%= link_to food_trade.user_owned_ingredient.ingredient.name.capitalize,  food_trade_path(food_trade.user_owned_ingredient.user, food_trade) %>
-        <%= food_trade.location %>
-      </li>
-    <% end %>
-  </ul>
+  <br>
+  
+  <div class="recipes-container">
+    <h2>Help your neighbours...</h2>
+
+    <h3><%= link_to "see more", food_trades_path %></h3>
+
+    <div class="recipes-carousel">
+    <% @food_trades = FoodTrade.where(status: "Available") %>
+      <% @food_trades.last(10).shuffle.each do |food_trade| %>
+        <div class="recipe-card">
+          <%= image_tag("#{food_trade.user_owned_ingredient.ingredient.photo}", alt: "#{food_trade.user_owned_ingredient.ingredient.photo}", class: "recipe-image") %><br>
+          <%= link_to food_trade.user_owned_ingredient.ingredient.name.capitalize,  food_trade_path(food_trade), class: "recipe-card-title" %>
+          <p class="recipe-card-content"> <%= food_trade.user_owned_ingredient.user.first_name %> </p>
+          <%#= food_trade.location %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
 </div>
 
-<div class="container">
+<br>
+<br>
+
+<div class="recipes-container">
   <h2>Popular recipes...</h2>
+
   <%= link_to "see more", recipes_path %>
-  <ul>
-    <% @recipes = Recipe.all %>
-    <% @recipes.last(10).shuffle.each do |recipe|%>
-      <li><%= image_tag("#{recipe.photo}", size:"300x200", alt: "Recipe image", class: "recipe_show_img") %><br>
-      <%= link_to recipe.title, recipe_path(recipe) %></li>
-    <% end %>
-  </ul>
+
+    <div class="recipes-carousel">
+      <% @recipes.last(10).shuffle.each do |recipe|%>
+        <%= link_to recipe_path(recipe), class: "recipe-card" do %>
+          <%= image_tag("#{recipe.photo}", alt: "#{recipe.title}", class: "recipe-image") %><br>
+          <p class="recipe-card-title"><%= recipe.title %></p>
+          <p class="recipe-card-content">content</p>
+        <% end %>
+      <% end %>
+
+    </div>
 </div>
