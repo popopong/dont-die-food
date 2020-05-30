@@ -18,7 +18,6 @@
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
   border-radius: 25px;
   margin: 45px auto;
-  // padding: 5px;
 
   // Image
   img {
@@ -30,7 +29,7 @@
 
   // Recipe Name
   .recipe-big-card-title {
-    margin: 10px;
+    margin: 15px;
     a{
       max-width: 100%;
       font-family: Comfortaa;
@@ -41,7 +40,6 @@
       color: $f-green;
       margin-bottom: 0px;
       padding: 5px;
-      // need to adjust the padding of the title
     }
   }
 
@@ -55,6 +53,9 @@
     color: $f-green;
     margin-bottom: 0px;
     padding: 5px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
   // Ingredient that user have
@@ -101,6 +102,9 @@
     line-height: 16px;
     color: $f-green;
     margin-bottom: 0px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
 
@@ -112,6 +116,9 @@
     line-height: 15px;
     color: $f-green;
     margin-bottom: 0px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 }
 
@@ -138,13 +145,12 @@
       box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
       border-radius: 15px;
       margin: 5px;
-      // padding: 5px;
 
-      // Image (to adjust)
+      // Image
       img {
-        object-fit: cover;
+        object-fit: cover !important;
         max-width: 100%;
-        // max-width: 80%;
+        max-height: 80%;
         overflow: hidden;
         border-radius: 15px 15px 0px 0px;
       }
@@ -156,9 +162,11 @@
         font-size: 15px;
         line-height: 16px;
         color: $f-green;
-        margin-bottom: 0px;
+        margin: 10px 10px 0px 10px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
       }
-
 
       .carousel-card-content{
         font-family: Hind Vadodara;
@@ -167,7 +175,10 @@
         font-size: 10px;
         line-height: 15px;
         color: $f-green;
-        margin-bottom: 0px;
+        margin: 5px 10px 10px 10px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
       }
     }
   }
@@ -188,24 +199,26 @@
 
   // Image
   img {
-    object-fit: cover;
-    max-width: 50%;
+    object-fit: cover !important;
+    max-width: 45%;
     max-height: 100%;
-    overflow: hidden;
     border-radius: 15px 0px 0px 15px;
   }
 
   // Food Name
   .wide-listing-card-title {
     margin: 10px;
-    a{
-    max-width: 50%;
-    font-family: Comfortaa;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 20px;
-    line-height: 22px;
-    color: $f-green;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 192.5px;
+        a {
+      font-family: Comfortaa;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 20px;
+      line-height: 22px;
+      color: $f-green;
     }
   }
 
@@ -219,8 +232,12 @@
     color: $f-green;
     margin-bottom: 0px;
     padding: 5px;
+    overflow: hidden;
+
   }
 }
+
+
 
 .food-to-share-picture {
   flex-grow: 0;
