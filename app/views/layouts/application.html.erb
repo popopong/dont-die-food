@@ -18,14 +18,14 @@
     <% else%>
       <%= render 'shared/navbar_visitor' %>
     <% end %>
+    <%= render 'shared/btm_navbar' %>
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
     <!-- Everything in a container -->
-    <div class="container">
+    <div class="container content">
       <%= yield %>
     </div>
-    <%= render 'shared/btm_navbar' %>
   </body>
 </html>
