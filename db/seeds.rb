@@ -7,8 +7,8 @@ UserOwnedIngredient.destroy_all
 SavedRecipe.destroy_all
 PantryItem.destroy_all
 RecipeIngredient.destroy_all
-# Ingredient.destroy_all
-# Recipe.destroy_all
+Ingredient.destroy_all
+Recipe.destroy_all
 User.destroy_all
 
 puts "🧑 Creating users"
