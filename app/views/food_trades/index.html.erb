@@ -19,7 +19,8 @@
 </ul>
 
 <%# The coordinates need to be replaced by the current_user's address %>
-<%= image_tag "https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/350x300?access_token=#{ENV["MAPBOX_APIKEY"]}" %>
-
-
-
+<div id="map"
+     style="width: 100%; height: 400px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_APIKEY'] %>"></div>
+<br>

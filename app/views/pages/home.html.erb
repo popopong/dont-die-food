@@ -1,23 +1,34 @@
 <div class="container">
-
   <div id="typed_strings">
     <h1 style="font-size: 28px;">Save my <span id="typed" style="text-decoration: underline;"></span></h1>
   </div>
+  <br>
+</div>
 
+  <%= form_tag recipes_path, method: :get do %>
+    <%= text_field_tag :query, params[:query], class: "form-control",    placeholder: "Enter an ingredient..." %><br>
+    <%= submit_tag "Make a dish!", class: "btn button-dark" %>
+    <%= submit_tag "Give away!", class: "btn button-dark" %>
+  <% end %>
   <br>
   
   <div class="recipes-container">
     <h2>Help your neighbours...</h2>
 
-    <h3><%= link_to "see more", food_trades_path %></h3>
+  <div class="carousel-card-ccontainer">
+    <div class="container">
+      <div class="carousel-title"><h2>Help your neighbours...</h2>
+        <%= link_to "see more", food_trades_path %>
+      </div>
+    </div>
 
-    <div class="recipes-carousel">
+    <div class="cards-carousel">
     <% @food_trades = FoodTrade.where(status: "Available") %>
       <% @food_trades.last(10).shuffle.each do |food_trade| %>
-        <div class="recipe-card">
-          <%= image_tag("#{food_trade.user_owned_ingredient.ingredient.photo}", alt: "#{food_trade.user_owned_ingredient.ingredient.photo}", class: "recipe-image") %><br>
-          <%= link_to food_trade.user_owned_ingredient.ingredient.name.capitalize,  food_trade_path(food_trade), class: "recipe-card-title" %>
-          <p class="recipe-card-content"> <%= food_trade.user_owned_ingredient.user.first_name %> </p>
+        <div class="carousel-card">
+          <%= image_tag("#{food_trade.user_owned_ingredient.ingredient.photo}", size:"150x90", alt: "#{food_trade.user_owned_ingredient.ingredient.photo}", class: "recipe-image") %>
+          <%= link_to food_trade.user_owned_ingredient.ingredient.name.capitalize,  food_trade_path(food_trade), class: "carousel-card-title" %>
+          <p class="carousel-card-content"> <%= food_trade.user_owned_ingredient.user.first_name %> </p>
           <%#= food_trade.location %>
         </div>
       <% end %>
@@ -29,19 +40,25 @@
 <br>
 <br>
 
-<div class="recipes-container">
+<div class="recipes-container mb-5">
   <h2>Popular recipes...</h2>
 
-  <%= link_to "see more", recipes_path %>
+  <div class="carousel-card-ccontainer">
+    <div class="container">
+      <div class="carousel-title"><h2>Popular recipes...</h2>
+        <%= link_to "see more", recipes_path %>
+      </div>
+    </div>
 
-    <div class="recipes-carousel">
+    <div class="cards-carousel">
       <% @recipes.last(10).shuffle.each do |recipe|%>
-        <%= link_to recipe_path(recipe), class: "recipe-card" do %>
-          <%= image_tag("#{recipe.photo}", alt: "#{recipe.title}", class: "recipe-image") %><br>
-          <p class="recipe-card-title"><%= recipe.title %></p>
-          <p class="recipe-card-content">content</p>
+        <%= link_to recipe_path(recipe), class: "carousel-card" do %>
+          <%= image_tag("#{recipe.photo}", size:"150x90", alt: "#{recipe.title}", class: "cards-carousel") %>
+          <div class="carousel-card-title"><%= recipe.title %></div>
         <% end %>
       <% end %>
-
     </div>
-</div>
+  </div>
+
+
+

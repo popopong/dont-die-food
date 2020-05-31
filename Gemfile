@@ -3,12 +3,16 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.6'
 
-# Seed dump
+# Custom gems added
+# Geocode for location
+gem 'geocode'
+# Seed dump for seeds
 gem 'seed_dump'
-# Cloudinary
+# Cloudinary for images
 gem 'cloudinary', '~> 1.12.0'
-# Devise
+# Devise for users
 gem 'devise'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
 # Use postgresql as the database for Active Record
