@@ -3,7 +3,7 @@
 
 <%= simple_form_for [ @user, @food_trade ] do |f|%>
 <%= f.association :user_owned_ingredient, collection: @ingredients_name, label: 'Name of the food' %>
-<%= f.input :category, label: 'Category', collection: ['Fruits', 'Veggies', 'Others'] %>
+<%= f.input :category, label: 'Category', collection: ["Veggies", "Fruits", "Dairy", "Meats", "Other"] %>
 <%= f.input :description, label: 'Description', value: "avocado?" %>
 <%= f.input :location, label: 'Address' %>
 

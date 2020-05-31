@@ -9,10 +9,21 @@ class FoodTradesController < ApplicationController
 
   def index
     @food_trades = FoodTrade.where(status: "Available")
+
+    @food_trades_geocoded = FoodTrade.geocoded
+
+    @markers = @food_trades_geocoded.map do |food_trade|
+      {
+        lat: food_trade.latitude,
+        lng: food_trade.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { food_trade: food_trade }),
+        # image_url: helpers.asset_url('icons/location.svg')
+      }
+    end
   end
 
   def show
-    @food_trade = FoodTrade.find(params[:format])
+    @food_trade = FoodTrade.find(params[:id])
   end
 
   def new

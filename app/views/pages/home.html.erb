@@ -5,6 +5,15 @@
   <br>
 </div>
 
+  <%= form_tag recipes_path, method: :get do %>
+    <%= text_field_tag :query, params[:query], class: "form-control",    placeholder: "Enter an ingredient..." %><br>
+    <%= submit_tag "Make a dish!", class: "btn button-dark" %>
+    <%= submit_tag "Give away!", class: "btn button-dark" %>
+  <% end %>
+  <br>
+  
+  <div class="recipes-container">
+    <h2>Help your neighbours...</h2>
 
 <div class="carousel-card-ccontainer">
   <div class="container">
