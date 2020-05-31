@@ -1,7 +1,17 @@
 <div class="btm-navbar" id="btm-navbar" >
-  <a href="#">Pantry</a>
-  <a href="#">Cookbook</a>
-  <a href="#">Search</a>
-  <a href="#">Community</a>
-  <a href="#">Chat</a>
+  <%= link_to pantry_items_path, class: "btm-nav-icons" do %>
+    <%= image_tag "icons/pantry.svg" %>
+  <% end %>
+  <%= link_to saved_recipes_path, class: "btm-nav-icons" do %>
+    <%= image_tag "icons/cookbook.svg" %>
+  <% end %>
+  <%= link_to root_path, class: "btm-nav-icons" do %>
+    <%= image_tag "icons/search-add.svg" %>
+  <% end %>
+  <%= link_to food_trades_path, class: "btm-nav-icons" do %>
+    <%= image_tag "icons/community.svg" %>
+  <% end %>
+  <%= link_to chatrooms_path, class: "btm-nav-icons" do %>
+    <%= image_tag "icons/message.svg" %>
+  <% end %>
 </div>
