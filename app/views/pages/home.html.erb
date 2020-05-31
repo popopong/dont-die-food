@@ -12,9 +12,6 @@
   <% end %>
   <br>
   
-  <div class="recipes-container">
-    <h2>Help your neighbours...</h2>
-
   <div class="carousel-card-ccontainer">
     <div class="container">
       <div class="carousel-title"><h2>Help your neighbours...</h2>
@@ -44,7 +41,7 @@
     </div>
 
     <div class="cards-carousel">
-      <% @recipes.last(10).shuffle.each do |recipe|%>
+      <% @recipes.shuffle.last(10).each do |recipe|%>
         <%= link_to recipe_path(recipe), class: "carousel-card" do %>
           <%= image_tag("#{recipe.photo}", size:"150x90", alt: "#{recipe.title}", class: "cards-carousel") %>
           <div class="carousel-card-title"><%= recipe.title %></div>

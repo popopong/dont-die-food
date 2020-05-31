@@ -7,7 +7,7 @@
 <br>
 
 <ul>
-  <% @food_trades.shuffle.last(5).each do |food_trade| %>
+  <% @food_trades.shuffle.each do |food_trade| %>
     <li>
       <p><strong><%= food_trade.user_owned_ingredient.user.first_name %> : </strong><br>
       Food to trade: <%= link_to food_trade.user_owned_ingredient.ingredient.name.capitalize, food_trade_path(food_trade) %><br>
@@ -18,7 +18,6 @@
   <% end %>
 </ul>
 
-<%# The coordinates need to be replaced by the current_user's address %>
 <div id="map"
      style="width: 100%; height: 400px;"
      data-markers="<%= @markers.to_json %>"
