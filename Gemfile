@@ -5,7 +5,7 @@ ruby '2.6.6'
 
 # Custom gems added
 # Geocode for location
-gem 'geocode'
+gem 'geocoder'
 # Seed dump for seeds
 gem 'seed_dump'
 # Cloudinary for images
