@@ -1,6 +1,43 @@
-.navbar-lewagon {
-  justify-content: space-between;
+.navbar{
+  .navbar-visitor{
+  position: relative;
+  display:flex;
+  justify-content: flex-end;
+  }
+}
+
+.flex-logo-visitor {
+  position: absolute;
+  margin: auto;
+  top: 20px; left: 0; bottom: 0; right: 0;
+  max-width: 155px;
+  max-height: 200px;
+  width: 100%;
+}
+
+.flex-logo {
+  position: absolute;
+  margin: auto;
+  top: 20px; left: 0; bottom: 0; right: 0;
+  max-width: 155px;
+  max-height: 500px;
+  width: 100%;
+}
+
+.navbar-light .navbar-toggler {
+  border-color: rgba(0, 0, 0, 0);
+}
+
+.curved-navbar {
   background: $turquoise;
+}
+
+.navbar-collapse {
+  flex-grow: 0;
+}
+
+.navbar-brand img {
+  width: 40px;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -10,3 +47,4 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
