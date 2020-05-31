@@ -5,7 +5,7 @@
   <% @saved_recipes.each do |saved_recipe| %>
   <li>
     <%= image_tag( "#{saved_recipe.recipe.photo}", size: "300x200", alt: "Recipe image", class: "recipe_index_img" ) %> <br>
-    <%=  link_to saved_recipe.recipe.title, recipe_path(saved_recipe) %>
+    <%=  link_to saved_recipe.recipe.title, recipe_path(saved_recipe.recipe) %>
   </li>
   <% end %>
 </ul>

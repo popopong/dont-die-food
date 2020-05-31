@@ -25,7 +25,12 @@ require("channels")
 // External imports
 import "bootstrap";
 import { typed } from "../components/typed_js"
+<<<<<<< HEAD
 import { btmNavbar } from "../components/btm_navbar"
+=======
+import { initMapbox } from '../plugins/init_mapbox';
+
+>>>>>>> e5833b9c0665f1893d89854c0b7ed9d6ba1e95e0
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
@@ -34,4 +39,5 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   typed();
   btmNavbar();
+  initMapbox();
 });
