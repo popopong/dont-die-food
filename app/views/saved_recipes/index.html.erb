@@ -5,9 +5,11 @@
     <% @saved_recipes.each do |saved_recipe| %>
     <div class="wide-listing-card">
       <%= image_tag( "#{saved_recipe.recipe.photo}", size: "350x250", alt: "Recipe image", class: "recipe_index_img") %>
+
       <div class="wide-listing-card-title">
-        <%=  link_to saved_recipe.recipe.title, recipe_path(saved_recipe) %> </i>
+        <%=  link_to saved_recipe.recipe.title, recipe_path(saved_recipe.recipe) %> </i>
       </div>
+
       <!-- missing the toggle heart -->
     </div>
     <% end %>
