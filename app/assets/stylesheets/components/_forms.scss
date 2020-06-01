@@ -74,6 +74,22 @@
   }
 }
 
+.message-form {
+  position: fixed;
+  bottom: 76px;
+  margin: auto 0;
+  display: inline;
+  textarea {
+    // Styling
+    background: $f-lightgrey;
+    border: 1px solid $f-nav-green;
+    box-sizing: border-box;
+    border-radius: 25px;
 
+    // Dimensions
+    width: 90%;
+    height: 40px;
+  }
+}
 
 
