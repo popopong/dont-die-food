@@ -17,7 +17,7 @@ class FoodTradesController < ApplicationController
         lat: food_trade.latitude,
         lng: food_trade.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { food_trade: food_trade }),
-        # image_url: helpers.asset_url('icons/location.svg')
+        image_url: helpers.asset_url('icons/location.svg')
       }
     end
   end
@@ -43,7 +43,7 @@ class FoodTradesController < ApplicationController
     @food_trade = FoodTrade.new(food_trade_params)
     @food_trade.user_owned_ingredient = new_user_own
 
-    if @food_trade.save
+    if @food_trade.save!
       redirect_to :index
     else
       render :new
