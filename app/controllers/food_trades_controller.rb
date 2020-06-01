@@ -4,13 +4,13 @@ class FoodTradesController < ApplicationController
 
   def user_food_trades
     @user = current_user
-    @food_trades = @user.food_trades
+    @food_trades = @user.food_trades.includes(user_owned_ingredient: [:user, :ingredient])
   end
 
   def index
-    @food_trades = FoodTrade.where(status: "Available")
+    @food_trades = FoodTrade.includes(user_owned_ingredient: [:user, :ingredient]).where(status: "Available")
 
-    @food_trades_geocoded = FoodTrade.geocoded
+    @food_trades_geocoded = FoodTrade.includes(user_owned_ingredient: [:user, :ingredient]).geocoded
 
     @markers = @food_trades_geocoded.map do |food_trade|
       {
