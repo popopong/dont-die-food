@@ -4,7 +4,7 @@
 
 .message {
   list-style: none;
-  margin-bottom: 32px;
+  margin-bottom: 12px;
   width: 65%;
   padding: 8px 16px;
   border-radius: 16px;
@@ -14,7 +14,7 @@
   background-color: $turquoise;
   text-align: right;
   // position: fixed;
-  right: 15px;
+  // right: 15px;
 }
 
 .message_other_user {
