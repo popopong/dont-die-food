@@ -43,7 +43,7 @@ class FoodTradesController < ApplicationController
     @food_trade = FoodTrade.new(food_trade_params)
     @food_trade.user_owned_ingredient = new_user_own
 
-    if @food_trade.save
+    if @food_trade.save!
       redirect_to :index
     else
       render :new
