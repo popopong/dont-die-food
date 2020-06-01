@@ -25,11 +25,13 @@
       <%= render 'shared/navbar_visitor' %>
     <% end %>
 
+    <!-- adding padding-bottom on all pages to avoid btm navbar -->
+    <div class="content">
+      <%= yield %>
+    </div>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-
-
-    <%= yield %>
     <%= render 'shared/btm_navbar' %>
 
   </body>
