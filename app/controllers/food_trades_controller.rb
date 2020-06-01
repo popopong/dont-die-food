@@ -5,9 +5,13 @@ class FoodTradesController < ApplicationController
   def user_food_trades
     @user = current_user
     @food_trades = @user.food_trades
+    authorize @food_trades
   end
 
   def index
+
+    @food_trades = policy_scope(FoodTrade)
+
     @food_trades = FoodTrade.where(status: "Available")
 
     @food_trades_geocoded = FoodTrade.geocoded
@@ -19,32 +23,47 @@ class FoodTradesController < ApplicationController
         infoWindow: render_to_string(partial: "info_window", locals: { food_trade: food_trade }),
         image_url: helpers.asset_url('icons/location.svg')
       }
+
+
     end
   end
 
   def show
     @food_trade = FoodTrade.find(params[:id])
+    authorize @food_trade
   end
 
   def new
     @food_trade = FoodTrade.new
+    # An ingredient list for the users to select
     @ingredients = Ingredient.all
     @ingredients_name = @ingredients.map { |ing| ing.name }
     @ingredients_name.sort!
+
+    authorize @food_trade
   end
 
   def create
-    # find the ingredient and its id
+    # An ingredient list for the users to select
+    @ingredients = Ingredient.all
+    @ingredients_name = @ingredients.map { |ing| ing.name }
+    @ingredients_name.sort!
+    # find the ingredient
     ing = params[:food_trade][:user_owned_ingredient_id]
-    ing_id = Ingredient.where(name: ing).first.id
+    ing_object = Ingredient.where(name: ing).first
     # create new user_owned_ingredient
-    new_user_own = UserOwnedIngredient.create(user_id: current_user.id, ingredient_id: ing_id)
+    user_owned = UserOwnedIngredient.new
+    user_owned.user = current_user
+    user_owned.ingredient = ing_object
+    user_owned.save
 
     @food_trade = FoodTrade.new(food_trade_params)
-    @food_trade.user_owned_ingredient = new_user_own
+    @food_trade.user_owned_ingredient = user_owned
+    authorize @food_trade
 
-    if @food_trade.save!
-      redirect_to :index
+    if @food_trade.save
+      flash.notice = "Thanks for sharing your #{ing}!"
+      redirect_to food_trades_path
     else
       render :new
     end
@@ -56,6 +75,8 @@ class FoodTradesController < ApplicationController
     else
       render :show
     end
+
+    # authorize @food_trade
   end
 
   def edit

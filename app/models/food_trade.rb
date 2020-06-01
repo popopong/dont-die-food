@@ -7,6 +7,7 @@ class FoodTrade < ApplicationRecord
 
   validates :status, inclusion: { in: ["Available", "Unavailable"]}
   validates :user_owned_ingredient, presence: true
+  validates :user_owned_ingredient_id, presence: true
   validates :location, presence: true
   validates :description, presence: true
   validates :category, presence: true, inclusion: { in: ["Veggies", "Fruits", "Dairy", "Meats", "Other"]}

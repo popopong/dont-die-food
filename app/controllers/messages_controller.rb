@@ -1,7 +1,11 @@
 class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
-    if @message.save!
+    @chatroom = Chatroom.find(params[:message][:chatroom_id])
+    @other_user = @chatroom.other_user(current_user)
+    
+    authorize @message
+    if @message.save
       redirect_to chatroom_path(@message.chatroom.id)
     else
       render "chatrooms/show"
