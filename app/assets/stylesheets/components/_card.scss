@@ -15,13 +15,24 @@
 //   background: $turquoise;
 // }
 
-// .curved-div {
+.curved-div {
+  position: relative;
+  margin-bottom: 30px;
 //   width: 100%;
 //   margin: 0px;
 //   overflow: hidden;
 //   background-image: url()
-// }
+}
 
+.img_recipe_abs {
+  position: absolute;
+
+}
+
+.svg_recipe_abs {
+  position: absolute;
+  bottom: -30px;
+}
 
 // Index Recipes
 .recipe-big-card {
