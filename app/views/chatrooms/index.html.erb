@@ -1,14 +1,52 @@
 <div class="container">
-  <h1>Inbox</h1>
+  <h1 style="text-align:center">Chats</h1>
 
-  <ul>
+  <div class="inbox-box overflow-auto">
     <% @messages.each do |message| %>
-    <li>
-      <%= link_to(chatroom_path(message.chatroom.id)) do %>
-        <%= message.other_user(current_user).first_name %><br>
-        <%= message.content %>
-      <% end %>
+
+      <div class="inbox-card">
+        <%= link_to(chatroom_path(message.chatroom.id)) do %>
+
+          <div class="user-avatar">
+            <%= image_tag("https://cdn0.iconfinder.com/data/icons/elasto-online-store/26/00-ELASTOFONT-STORE-READY_user-circle-512.png", height:'45', class:"message-user-avatar")%>
+          </div>
+
+          <div class="chat-info">
+
+            <div class="chat-info-top">
+              <div class="chat-user">
+                <%= message.other_user(current_user).first_name.downcase %> 
+              </div>
+
+              <div class="chat-last-mess-date">
+                <% if message.created_at.strftime("%a %b %e") == Date.today.strftime("%a %b %e") %>
+                  <small><%= message.created_at.strftime("Today at %l:%M%p") %></small>
+                <% elsif  message.created_at.strftime("%a %b %e") == Date.yesterday.strftime("%a %b %e") %>
+                  <small><%= message.created_at.strftime("Yesterday at %l:%M%p")%></small>
+                <% else %>
+                  <small><% message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+                <% end %>
+              </div>
+            </div>
+
+            <div class="chat-info-bottom">
+              <div class="chat-listing-and-message d-block">
+                <div class="chat-listing">
+                  <%= message.chatroom.food_trade.user_owned_ingredient.ingredient.name %>
+                </div>
+                <div class="chat-last-mess">
+                  <%= message.content %>
+                </div>
+              </div>
+
+              <div class="chat-notification">
+                <i class="fas fa-circle"></i>
+              </div>
+            </div>
+          </div>   
+        <% end %>
+      </div>
+
     <% end %>
-    </li>
-  </ul>
+  </div>
 </div>

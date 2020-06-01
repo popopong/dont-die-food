@@ -1,0 +1,14 @@
+<div class="message_current_user message d-block justify-content-left">
+  <li>
+    <div id="message-<%= message.id %>">
+      <%= message.content %><br>
+      <% if message.created_at.strftime("%a %b %e") == Date.today.strftime("%a %b %e") %>
+        <small><%= message.created_at.strftime("%l:%M%p") %></small>
+      <% elsif  message.created_at.strftime("%a %b %e") == Date.yesterday.strftime("%a %b %e") %>
+        <small><%= message.created_at.strftime("Yesterday at %l:%M%p")%></small>
+      <% else %>
+        <small><% message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+      <% end %>
+    </div>
+  </li>
+</div>

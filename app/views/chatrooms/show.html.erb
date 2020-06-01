@@ -2,42 +2,23 @@
   <h1><%= image_tag("https://cdn0.iconfinder.com/data/icons/elasto-online-store/26/00-ELASTOFONT-STORE-READY_user-circle-512.png", height:'45', class:"message-user-avatar")%> <%= @other_user.first_name %></h1>
   <br>
 
-  <div class="messages-box overflow-auto">
-    <%# Test %>
-      <%# <ul> %>
-        <%# @chatroom.messages.each do |message| %>
-          <%# <li>message.content</li> %>
-        <%# end %>
-      <%# </ul> %>
+  <div class="messages-box overflow-auto" id="messages" data-chatroom-id="<%= @chatroom.id %>">
 
-      <%# Actual chat %>
-      <ul>
-        <% @chatroom.messages.each do |message| %>
-            <% if message.sender == current_user %>
-              <div class="message_current_user message d-block justify-content-left">
-                <li>
-                  <%= message.content %><br>
-                  <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
-                </li>
-              </div>
-            <% else %>
-              <div class="message_other_user message">
-                <li>
-                  <%= message.content %><br>
-                  <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
-                </li>
-              </div>
-            <% end %>
+      <% @chatroom.messages.each do |message| %>
+        <% if message.sender == current_user %>
+          <%= render partial: "messages/sent_message", locals: { message: message }%>
+        <% else %>
+          <%= render partial: "messages/received_message", locals: { message: message }%>
         <% end %>
-      </ul>
+      <% end %>
 
     <div class="message-form m-auto d-flex justify-content-center">
       <%= simple_form_for @message do |f| %>
-        <%= f.input :content, placeholder: "Type a Message", label: false %>
+        <%= f.input :content, placeholder: "Message #{@other_user.first_name}", label: false, autocomplete: "off" %>
         <%= f.hidden_field :sender_id, value: current_user.id %>
         <%= f.hidden_field :receiver_id, value: @other_user.id %>
         <%= f.hidden_field :chatroom_id, value: @chatroom.id %>
-        <%= f.button :submit, "Send", class: "button-dark" %>
+        <%= f.button :submit, "Send", class: "button-dark", style: "display:none"; %>
       <% end %>
     </div>
   </div>
