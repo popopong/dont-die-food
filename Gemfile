@@ -12,6 +12,8 @@ gem 'seed_dump'
 gem 'cloudinary', '~> 1.12.0'
 # Devise for users
 gem 'devise'
+# pg search for searchbar
+gem 'pg_search', '~> 2.3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
