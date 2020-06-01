@@ -3,6 +3,7 @@
   margin-top: 12px;
   margin-bottom: 12px;
   padding: 8px 16px;
+  width: 90vw;
 
   // Borders
   border-radius: 16px;
@@ -33,6 +34,10 @@
 
 .chat-last-mess {
   font-weight: lighter;
+}
+
+.chat-info {
+  width: 100%;
 }
 
 .chat-info-top {

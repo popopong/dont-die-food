@@ -75,8 +75,10 @@
 }
 
 .message-form {
+  // Display
   position: fixed;
   bottom: 70px;
+  display: inline-block;
   textarea {
     // Styling
     background: $f-lightgrey;
@@ -85,7 +87,7 @@
     border-radius: 25px;
     
     // Dimensions
-    width: 100%;
+    width: 90vw;
     height: 40px;
 
     // Resizing

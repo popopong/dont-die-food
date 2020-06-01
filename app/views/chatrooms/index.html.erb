@@ -7,6 +7,7 @@
       <div class="inbox-card">
         <%= link_to(chatroom_path(message.chatroom.id)) do %>
 
+          <%# Showing the other user's avatar %>
           <div class="user-avatar">
             <%= image_tag("https://cdn0.iconfinder.com/data/icons/elasto-online-store/26/00-ELASTOFONT-STORE-READY_user-circle-512.png", height:'45', class:"message-user-avatar")%>
           </div>
@@ -14,10 +15,12 @@
           <div class="chat-info">
 
             <div class="chat-info-top">
+              <%# Showing the other user's first name  %>
               <div class="chat-user">
                 <%= message.other_user(current_user).first_name.downcase %> 
               </div>
 
+              <%# Showing the date and time %>
               <div class="chat-last-mess-date">
                 <% if message.created_at.strftime("%a %b %e") == Date.today.strftime("%a %b %e") %>
                   <small><%= message.created_at.strftime("Today at %l:%M%p") %></small>
@@ -27,13 +30,18 @@
                   <small><% message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
                 <% end %>
               </div>
+
             </div>
 
             <div class="chat-info-bottom">
               <div class="chat-listing-and-message d-block">
+
+                <%# Showing the food_trade's ingredient %>
                 <div class="chat-listing">
                   <%= message.chatroom.food_trade.user_owned_ingredient.ingredient.name %>
                 </div>
+
+                <%# Showing the latest message %>
                 <div class="chat-last-mess">
                   <%= message.content %>
                 </div>
