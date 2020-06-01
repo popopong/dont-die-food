@@ -1,17 +1,22 @@
 <div class="container ">
-<h1 class="text-center">Tell Me More!</h1>
+  <h1 class="text-center">Tell Me More!</h1>
+  
+  <div class="trade-form">
+    <%= simple_form_for [ @user, @food_trade ] do |f|%>
+      <div class="form-group">
+        <%= f.association :user_owned_ingredient, collection: @ingredients_name, label: 'Name of the food' %>
+        <%= f.input :category, label: 'Category', collection: ["Veggies", "Fruits", "Dairy", "Meats", "Other"] %>
+        <%= f.input :description, label: 'Description', value: "avocado?" %>
+        <%= f.input :location, label: 'Address' %>
 
-<%= simple_form_for [ @user, @food_trade ] do |f|%>
-<%= f.association :user_owned_ingredient, collection: @ingredients_name, label: 'Name of the food' %>
-<%= f.input :category, label: 'Category', collection: ["Veggies", "Fruits", "Dairy", "Meats", "Other"] %>
-<%= f.input :description, label: 'Description', value: "avocado?" %>
-<%= f.input :location, label: 'Address' %>
-
-<%= cl_image_upload_tag(:image_id,
-  :tags => "directly_uploaded",
-  :crop => :limit, :width => 1000, :height => 1000,
-  :eager => [{ :crop => :fill, :width => 150, :height => 100 }],
-  :html => { }  )  %>
-<%= f.button :submit, 'Share', class: "button-dark mx-auto mt-4", style: "display: block;" %>
-<% end %>
+        <label for="cloudinary-fileupload">Upload a photo</label>
+        <%= cl_image_upload_tag(:image_id,
+          :tags => "directly_uploaded",
+          :crop => :limit, :width => 1000, :height => 1000,
+          :eager => [{ :crop => :fill, :width => 150, :height => 100 }])  %>
+      </div>
+      <%= f.button :submit, 'Share', class: "button-dark mx-auto mt-4", style: "display: block;" %>
+    <% end %>
+  </div>
+  
 </div>
