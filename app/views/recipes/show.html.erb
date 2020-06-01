@@ -24,10 +24,12 @@
     <div>
       <% @recipe.ingredients_data.each do |ingredient_data| %>
         <%# Do a condition to round amount %>
-        <div class="container">
-          <input type="checkbox" name="ingredient_data"><p><strong><%= ingredient_data["measures"]["metric"]["amount"] %>
+        <div class="group">
+          <input type="checkbox" name="ingredient_data"/>
+          <label><p><strong><%= ingredient_data["measures"]["metric"]["amount"] %>
           <%= ingredient_data["measures"]["metric"]["unitLong"] %></strong>
           <%= ingredient_data["name"] %></p>
+          </label>
         </div>
       <% end %>
     </div>

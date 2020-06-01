@@ -1,3 +1,42 @@
 .recipe-direction p {
   color: $f-nav-green;
 }
+
+input[type="checkbox"] {
+  display: none !important;
+}
+
+label {
+  position: relative;
+}
+
+label::before {
+  content: "";
+  background: url("images/icons/tick.svg");
+  background-position: center;
+  background-size: contain;
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  left: -10px;
+  top: -5px;
+
+  transform: scale(0);
+  transition: all 0.4s
+}
+
+input [type="checkbox"]:checked + label::before {
+  transform: scale(0);
+  transition: all 0.4s
+}
+
+label::after {
+  content: "";
+  border: 2px solid $marine;
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  left: -8px;
+  top: -3px;
+  border-radius: 50%;
+}
