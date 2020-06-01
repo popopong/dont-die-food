@@ -5,9 +5,9 @@
   <br>
 
   <%= form_tag recipes_path, method: :get do %>
-    <%= text_field_tag :query, params[:query], class: "form-control",    placeholder: "Enter an ingredient..." %><br>
-    <%= submit_tag "Make a dish!", class: "button-dark" %>
-    <%= submit_tag "Give away!", class: "button-dark" %>
+    <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Select an ingredient..." %><br>
+    <%= link_to "Find a Recipe!", recipe_search_path, class: "button-dark" %>
+    <%= link_to "Give away!", new_food_trade_path, class: "button-dark" %>
   <% end %>
   <br>
 </div>
