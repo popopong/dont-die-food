@@ -10,6 +10,9 @@ class RecipesController < ApplicationController
   end
 
   def search
-    @results = Recipe.search_by_ing(params["query"])
+    @results = Recipe.all.to_a.select do |recipe|
+      params[:ingredients].all? { |id| recipe.ingredient_ids.map { |id| id.to_s }
+                          .include?(id) }
+    end
   end
 end

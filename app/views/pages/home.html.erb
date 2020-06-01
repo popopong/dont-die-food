@@ -6,6 +6,7 @@
 
   <%= form_tag recipes_path, method: :get do %>
     <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Select an ingredient..." %><br>
+    <%= select_tag "ingredients", options_from_collection_for_select(Ingredient.joins(:recipe_ingredients).uniq, "id", "name"), { multiple: true } %>
     <%= submit_tag "Find a Recipe!", formaction: recipe_search_path, class: "button-dark" %>
     <%= submit_tag "Give away!", formaction: new_food_trade_path, class: "button-dark" %>
   <% end %>

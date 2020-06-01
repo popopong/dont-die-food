@@ -25,7 +25,7 @@ require("channels")
 // External imports
 import "bootstrap";
 import { typed } from "../components/typed_js"
-import { btmNavbar } from "../components/btm_navbar";
+// import { btmNavbar } from "../components/btm_navbar";
 import { initMapbox } from '../plugins/init_mapbox';
 import { initSelect2 } from '../plugins/init_select2';
 
