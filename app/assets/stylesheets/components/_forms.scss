@@ -74,6 +74,73 @@
   }
 }
 
+.trade-form .form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  padding-top: 10px;
 
+  textarea, label, input, select, .select2  {
+    margin: 0 auto;
+  }
+
+  label {
+    margin-left: 13%;
+  }
+
+  textarea, input, select, .select2 {
+    // Styling
+    background: $f-lightgrey;
+    border: 1px solid $f-nav-green;
+    box-sizing: border-box;
+    border-radius: 25px;
+
+    // Dimensions
+    width: 80%;
+    height: 40px;
+  }
+
+  .select2-container {
+    width: 80% !important;
+    }
+
+  .select2-selection {
+    background-color: inherit;
+    border: none;
+  }
+  
+  // Image upload styles
+
+  .cloudinary-fileupload {
+    color: transparent;
+    position: relative;
+    color: $marine;
+    padding: 3px 0 3px 0;
+  }
+  .cloudinary-fileupload::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+
+  .cloudinary-fileupload::before {
+    content: 'Add';
+    color: $marine;
+    display: inline-block;
+    position: absolute;
+    right: 5px;
+    background: -webkit-linear-gradient(top, white, white);
+    border: 1px solid $f-nav-green;
+    border-radius: 25px;
+    padding: 2px 18px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 14px;
+  }
+}
 
 
