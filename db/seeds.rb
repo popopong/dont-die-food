@@ -258,7 +258,6 @@ Recipe.create!([
   {title: "Grapefruit Ambrosia", ingredients_data: [{"id"=>93788, "aisle"=>"Alcoholic Beverages", "image"=>"red-liqueur.png", "consistency"=>"solid", "name"=>"campari", "original"=>"2 tablespoons Campari", "originalString"=>"2 tablespoons Campari", "originalName"=>"Campari", "amount"=>2.0, "unit"=>"tablespoons", "meta"=>[], "metaInformation"=>[], "measures"=>{"us"=>{"amount"=>2.0, "unitShort"=>"Tbsps", "unitLong"=>"Tbsps"}, "metric"=>{"amount"=>2.0, "unitShort"=>"Tbsps", "unitLong"=>"Tbsps"}}}, {"id"=>12151, "aisle"=>"Nuts;Savory Snacks", "image"=>"pistachios.jpg", "consistency"=>"solid", "name"=>"pistachios", "original"=>"1/2 cup salted shelled natural pistachios, toasted and coarsely chopped", "originalString"=>"1/2 cup salted shelled natural pistachios, toasted and coarsely chopped", "originalName"=>"salted shelled natural pistachios, toasted and coarsely chopped", "amount"=>0.5, "unit"=>"cup", "meta"=>["salted", "shelled", "toasted", "coarsely chopped"], "metaInformation"=>["salted", "shelled", "toasted", "coarsely chopped"], "measures"=>{"us"=>{"amount"=>0.5, "unitShort"=>"cups", "unitLong"=>"cups"}, "metric"=>{"amount"=>118.294, "unitShort"=>"ml", "unitLong"=>"milliliters"}}}, {"id"=>1009112, "aisle"=>"Produce", "image"=>"red-grapefruit.jpg", "consistency"=>"solid", "name"=>"red grapefruit", "original"=>"5 lb grapefruit (preferably half pink and half red; about 6 total)", "originalString"=>"5 lb grapefruit (preferably half pink and half red; about 6 total)", "originalName"=>"grapefruit (preferably half pink and half red; about 6 total)", "amount"=>5.0, "unit"=>"lb", "meta"=>["red", "(preferably half pink and half ; 6 total)"], "metaInformation"=>["red", "(preferably half pink and half ; 6 total)"], "measures"=>{"us"=>{"amount"=>5.0, "unitShort"=>"lb", "unitLong"=>"pounds"}, "metric"=>{"amount"=>2.268, "unitShort"=>"kilogram", "unitLong"=>"kilograms"}}}, {"id"=>19335, "aisle"=>"Baking", "image"=>"sugar-in-bowl.png", "consistency"=>"solid", "name"=>"sugar", "original"=>"2 tablespoons sugar", "originalString"=>"2 tablespoons sugar", "originalName"=>"sugar", "amount"=>2.0, "unit"=>"tablespoons", "meta"=>[], "metaInformation"=>[], "measures"=>{"us"=>{"amount"=>2.0, "unitShort"=>"Tbsps", "unitLong"=>"Tbsps"}, "metric"=>{"amount"=>2.0, "unitShort"=>"Tbsps", "unitLong"=>"Tbsps"}}}, {"id"=>12109, "aisle"=>"Baking", "image"=>"coconut-flakes.png", "consistency"=>"solid", "name"=>"sweetened coconut", "original"=>"1 cup sweetened flaked coconut", "originalString"=>"1 cup sweetened flaked coconut", "originalName"=>"sweetened flaked coconut", "amount"=>1.0, "unit"=>"cup", "meta"=>["sweetened", "flaked"], "metaInformation"=>["sweetened", "flaked"], "measures"=>{"us"=>{"amount"=>1.0, "unitShort"=>"cup", "unitLong"=>"cup"}, "metric"=>{"amount"=>236.588, "unitShort"=>"ml", "unitLong"=>"milliliters"}}}], steps_data: [{"number"=>1, "step"=>"Cut peel, including all white pith, from fruit with a sharp paring knife and cut segments free from membranes. Halve grapefruit segments crosswise, then transfer to a bowl. Stir in coconut, Campari, sugar, and a pinch of salt and chill 15 minutes.", "ingredients"=>[{"id"=>9112, "name"=>"grapefruit", "image"=>"grapefruit.png"}, {"id"=>93788, "name"=>"campari", "image"=>"red-liqueur.png"}, {"id"=>19335, "name"=>"sugar", "image"=>"sugar-in-bowl.png"}], "equipment"=>[{"id"=>404745, "name"=>"knife", "image"=>"chefs-knife.jpg"}, {"id"=>404783, "name"=>"bowl", "image"=>"bowl.jpg"}], "length"=>{"number"=>15, "unit"=>"minutes"}}, {"number"=>2, "step"=>"Just before serving, stir in nuts.", "ingredients"=>[], "equipment"=>[]}], photo: "https://spoonacular.com/recipeImages/Grapefruit-Ambrosia-187256.jpg"}
 ])
 
-
 puts "🍅 Creating ingredients..."
 # loop through recipes and check if ingredient exists, if not create new ingredient
 recipes = Recipe.all
@@ -318,19 +317,19 @@ elie_saved_recipes.each do |recipe_title|
   SavedRecipe.find_or_create_by(user: User.first, recipe: found_recipe)
 end
 
-stephd_saved_recipes = ["Apple-Date Compote with Apple-Cider Yogurt Cheese", "Avocado Cream", "Spiced Apple Muffins with Apple Cinnamon Glaze"]
+stephd_saved_recipes = ["Rice Pizza", "Coconut Macaroons", "Spiced Apple Muffins with Apple Cinnamon Glaze", "Kiwi Caipirinha"]
 stephd_saved_recipes.each do |recipe_title|
   found_recipe = Recipe.find_by(title: recipe_title)
   SavedRecipe.find_or_create_by(user: User.second, recipe: found_recipe)
 end
 
-stephbd_saved_recipes = ["Avocado Salad", "Tomato Pie", "Blueberry Pie", "Maple Pecan Pie"]
+stephbd_saved_recipes = ["Pineapple Wassail", "Tomato Pie", "Blueberry Pie", "Maple Pecan Pie", "Mediterranean Tuna Wrap"]
 stephbd_saved_recipes.each do |recipe_title|
   found_recipe = Recipe.find_by(title: recipe_title)
   SavedRecipe.find_or_create_by(user: User.last, recipe: found_recipe)
 end
 
-poyan_saved_recipes = ["Blueberry Pie with Lemon Sauce", "Grilled Peach, Avocado, and Crab Salad with Avocado & Peach Dressing"]
+poyan_saved_recipes = ["Blueberry Pie with Lemon Sauce", "Grilled Peach, Avocado, and Crab Salad with Avocado & Peach Dressing", "Melon Smoothie"]
 poyan_saved_recipes.each do |recipe_title|
   found_recipe = Recipe.find_by(title: recipe_title)
   SavedRecipe.find_or_create_by(user: User.last, recipe: found_recipe)
