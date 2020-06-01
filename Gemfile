@@ -4,6 +4,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.6'
 
 # Custom gems added
+
+# Pundit for authorization
+gem 'pundit'
 # Geocode for location
 gem 'geocoder'
 # Seed dump for seeds

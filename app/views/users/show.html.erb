@@ -3,8 +3,9 @@
   <br>
   <%# User avatar goes here %>
   <br>
-  <p><strong>First name: </strong><%= @user.first_name %></p>
-  <p><strong>Last name: </strong><%= @user.last_name %></p>
-  <p><strong>Address: </strong><%= @user.address %></p>
-
+  <% if policy(@user).show? %>
+    <p><strong>First name: </strong><%= @user.first_name %></p>
+    <p><strong>Last name: </strong><%= @user.last_name %></p>
+    <p><strong>Address: </strong><%= @user.address %></p>
+  <% end %>
 </div>
