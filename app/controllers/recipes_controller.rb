@@ -10,6 +10,6 @@ class RecipesController < ApplicationController
   end
 
   def search
-    @results = Recipe.search_by_title(params["query"])
+    @results = Recipe.search_by_ing(params["query"])
   end
 end
