@@ -1,12 +1,14 @@
-<h1>My Trades</h1>
+<div class="container">
+  <h1>My Trades</h1>
 
-<ul>
-  <% @food_trades.each do |food_trade| %>
-    <li>
-      <p> <strong> <%= food_trade.user_owned_ingredient.ingredient.name.capitalize %> </strong> </p>
-      <p> <%= food_trade.description %> </p>
-      <p>   <%= food_trade.status %> </p>
-      <p>   <%= food_trade.created_at %> </p>
-    </li>
-  <% end %>
-</ul>
+  <ul>
+    <% @food_trades.each do |food_trade| %>
+      <li>
+        <p> <strong> <%= food_trade.user_owned_ingredient.ingredient.name.capitalize %> </strong> </p>
+        <p> <%= food_trade.description %> </p>
+        <p>   <%= food_trade.status %> </p>
+        <p>   <%= food_trade.created_at %> </p>
+      </li>
+    <% end %>
+  </ul>
+</div>
