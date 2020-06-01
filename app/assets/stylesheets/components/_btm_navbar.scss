@@ -36,17 +36,17 @@
 #btm-navbar {
   overflow: hidden;
   background-color: #FBFBFF;
-  position: fixed;
-  width: 100vw;
-  bottom: 0;
   border: 1px solid #A8E6CF;
   border-radius: 30px 30px 0 0;
+  // position: sticky;
+  // bottom: 0;
+  width: 100vw;
 }
 
 #btm-navbar a {
   float: left;
   display: block;
-  color: #A8E6CF;
+  color: #f2f2f2;
   text-align: center;
   width: 20%;
   padding: 14px 16px;
@@ -55,21 +55,23 @@
 }
 
 #btm-navbar a:hover {
-  color: #36827F;
+  background-color: #ddd;
+  color: black;
 }
 
 #btm-navbar a.active {
-  color: #36827F;
+  background-color: #4CAF50;
+  color: white;
 }
 
 .content {
   padding: 16px;
+  padding-bottom: 70px;
 }
 
 .sticky {
   position: fixed;
   bottom: 0;
-  width: 100%;
 }
 
 .sticky + .content {

@@ -1,4 +1,10 @@
-<div class="btm-navbar" id="btm-navbar" >
+<div class="btm-navbar sticky" id="btm-navbar" >
+
+<!--   <div class="container" style="border: 1px solid black; height: 100px;">
+  <object height="100" width="100" data="<%= asset_path("icons/pantry.svg") %>" type="image/svg+xml" style="fill: red;"></object>
+</div>
+</div> -->
+
   <%= link_to pantry_items_path, class: "btm-nav-icons" do %>
     <%= image_tag "icons/pantry.svg" %>
   <% end %>
@@ -14,4 +20,4 @@
   <%= link_to chatrooms_path, class: "btm-nav-icons" do %>
     <%= image_tag "icons/message.svg" %>
   <% end %>
-</div>
+  </div>
