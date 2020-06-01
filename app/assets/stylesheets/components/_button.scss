@@ -13,6 +13,10 @@
   padding: 15px 30px;
 }
 
+.button-dark:hover {
+  color: $turquoise;
+}
+
 .button-light {
   font-family: Comfortaa;
   font-style: normal;
@@ -26,4 +30,8 @@
   border-radius: 25px;
 
   padding: 15px 30px;
+}
+
+.button-light:hover {
+  color: $marine;
 }

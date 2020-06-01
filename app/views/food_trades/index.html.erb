@@ -1,10 +1,24 @@
-<h1 style="text-align:center">Help Your Neighbors</h1>
-<br>
+<div class="container">
+  <h1 style="text-align:center">Help Your Neighbors</h1>
+  <br>
 
-<div class="container d-flex justify-content-center">
-  <%= link_to "Add your own giveaway", new_food_trade_path, class: "btn button-dark"%>
-</div>
-<br>
+  <div class="d-flex justify-content-center">
+    <%= link_to "Add your own giveaway", new_food_trade_path, class: "btn button-dark"%>
+  </div>
+  <br>
+
+  <ul>
+    <% @food_trades.shuffle.last(5).each do |food_trade| %>
+      <li>
+        <p><strong><%= food_trade.user_owned_ingredient.user.first_name %> : </strong><br>
+        Food to trade: <%= link_to food_trade.user_owned_ingredient.ingredient.name.capitalize, food_trade_path(food_trade) %><br>
+        Description: <%= food_trade.description %><br>
+        Catgeory: <%= food_trade.category %><br>
+        Address: <%= food_trade.location %></p>
+      </li>
+    <% end %>
+  </ul>
+
 
 <ul>
   <% @food_trades.shuffle.each do |food_trade| %>
@@ -18,8 +32,11 @@
   <% end %>
 </ul>
 
-<div id="map"
-     style="width: 100%; height: 400px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_APIKEY'] %>"></div>
-<br>
+  <%# The coordinates need to be replaced by the current_user's address %>
+  <div id="map"
+       style="width: 100%; height: 400px;"
+       data-markers="<%= @markers.to_json %>"
+       data-mapbox-api-key="<%= ENV['MAPBOX_APIKEY'] %>"></div>
+  <br>
+</div>
+
