@@ -23,7 +23,7 @@
               <%# Showing the date and time %>
               <div class="chat-last-mess-date">
                 <% if message.created_at.strftime("%a %b %e") == Date.today.strftime("%a %b %e") %>
-                  <small><%= message.created_at.strftime("Today at %l:%M%p") %></small>
+                  <small><%= message.created_at.strftime("%l:%M%p") %></small>
                 <% elsif  message.created_at.strftime("%a %b %e") == Date.yesterday.strftime("%a %b %e") %>
                   <small><%= message.created_at.strftime("Yesterday at %l:%M%p")%></small>
                 <% else %>
@@ -51,6 +51,7 @@
                 </div>
               </div>
 
+              <%# Notification dot %>
               <div class="chat-notification">
                 <i class="fas fa-circle"></i>
               </div>

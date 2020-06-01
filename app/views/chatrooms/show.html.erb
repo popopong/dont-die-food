@@ -18,8 +18,7 @@
         <%= f.hidden_field :sender_id, value: current_user.id %>
         <%= f.hidden_field :receiver_id, value: @other_user.id %>
         <%= f.hidden_field :chatroom_id, value: @chatroom.id %>
-        <%= f.button :submit, "Send", class: "button-dark" %> 
-        <%#, style: "display:none"; %>
+        <%= f.button :submit, "Send", class: "button-dark", id: "submit-mess", style: "display:none"; %> 
       <% end %>
     </div>
   </div>
