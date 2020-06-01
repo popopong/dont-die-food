@@ -21,7 +21,7 @@
   </div>
 
   <div class="cards-carousel">
-  <% @food_trades = FoodTrade.includes([:user_owned_ingredient]).where(status: "Available") %>
+  <% @food_trades = FoodTrade.includes(user_owned_ingredient: [:ingredient, :user]).where(status: "Available") %>
     <% @food_trades.last(10).shuffle.each do |food_trade| %>
       <div class="carousel-card">
         <%= image_tag("#{food_trade.user_owned_ingredient.ingredient.photo}", size:"150x90", alt: "#{food_trade.user_owned_ingredient.ingredient.photo}", class: "recipe-image") %>
