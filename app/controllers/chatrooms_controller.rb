@@ -1,8 +1,11 @@
 class ChatroomsController < ApplicationController
   def index
-    @messages = Message.order(created_at: :desc)
-                        .where("sender_id = ? OR receiver_id = ?", current_user.id, current_user.id)
-                        .uniq{ |message| message.sender_id }
+    @messages = Message.includes([:chatroom])
+                       .includes([:sender])
+                       .includes([:receiver])
+                       .order(created_at: :desc)
+                       .where("sender_id = ? OR receiver_id = ?", current_user.id, current_user.id)
+                       .uniq{ |message| message.sender_id }
   end
 
   def show
