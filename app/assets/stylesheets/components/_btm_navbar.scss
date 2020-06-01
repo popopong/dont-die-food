@@ -1,37 +1,4 @@
-// /* Place the navbar at the bottom of the page, and make it stick */
-// .btm-navbar {
-//   background-color: #FBFBFF;
-//   overflow: hidden;
-//   position: fixed;
-//   bottom: 0;
-//   width: 100vw;
-//   padding-top: 8px;
-//   padding-bottom: 8px;
-//   border: 1px solid #A8E6CF;
-//   border-radius: 30px 30px 0 0;
-// }
 
-// /* Style the links inside the navigation bar */
-// .btm-navbar a {
-//   float: left;
-//   display: block;
-//   color: #A8E6CF;
-//   text-align: center;
-//   width: 20%;
-//   // padding: 14px 16px;
-//   text-decoration: none;
-//   font-size: 17px;
-// }
-
-// /* Change the color of links on hover */
-// .btm-navbar a:hover {
-//   color: #36827F;
-// }
-
-// /* Add a color to the active/current link */
-// .btm-navbar a.active {
-//   color: #36827F;
-// }
 
 #btm-navbar {
   overflow: hidden;
@@ -41,6 +8,7 @@
   // position: sticky;
   // bottom: 0;
   width: 100vw;
+  height: 65px;
 }
 
 #btm-navbar a {
@@ -54,62 +22,24 @@
   font-size: 17px;
 }
 
-#btm-navbar a:hover {
-  background-color: #ddd;
-  color: black;
-}
+// #btm-navbar a:hover {
+//   color: black;
+// }
 
-#btm-navbar a.active {
-  background-color: #4CAF50;
-  color: white;
-}
-
-.content {
-  padding: 16px;
-  padding-bottom: 70px;
-}
+// #btm-navbar a.active {
+//   background-color: #4CAF50;
+//   color: white;
+// }
 
 .sticky {
   position: fixed;
   bottom: 0;
 }
 
-.sticky + .content {
-  padding-top: 60px;
-}
-
-// /* Style the navbar */
-// #btm-navbar {
-//   overflow: hidden;
-//   background-color: #FBFBFF;
-//   width: 100vw;
-//   position: fixed;
-//   bottom: 0;
-// }
-
-// /* Navbar links */
-// #btm-navbar a {
-//   float: left;
-//   display: block;
-//   color: #A8E6CF;
-//   text-align: center;
-//   text-decoration: none;
-//   width: 20%;
-// }
-
-// /* Page content */
-// .content {
-//   padding: 16px;
-// }
-
-// /* The sticky class is added to the navbar with JS when it reaches its scroll position */
-// .sticky {
-//   position: fixed;
-//   bottom: 0;
-//   width: 100%;
-// }
-
-// /* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
 // .sticky + .content {
-//   padding-bottom: 60px;
+//   // padding-top: 60px;
 // }
+
+object {
+    pointer-events: none;
+}
