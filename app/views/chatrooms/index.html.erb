@@ -4,11 +4,11 @@
   <div class="inbox-box overflow-auto">
     <% @messages.each do |message| %>
 
-      <div class="inbox-card">
-        <%= link_to(chatroom_path(message.chatroom.id)) do %>
 
-          <%# Showing the other user's avatar %>
+        <%= link_to(chatroom_path(message.chatroom.id)) do %>
+        <div class="inbox-card">
           <div class="user-avatar">
+            <%# Showing the other user's avatar %>
             <%= image_tag("https://cdn0.iconfinder.com/data/icons/elasto-online-store/26/00-ELASTOFONT-STORE-READY_user-circle-512.png", height:'45', class:"message-user-avatar")%>
           </div>
 
@@ -43,7 +43,11 @@
 
                 <%# Showing the latest message %>
                 <div class="chat-last-mess">
-                  <%= message.content %>
+                  <% if message.content.chars.count <= 26 %>
+                    <%= message.content.chars.first(26).join %>
+                  <% else %>
+                    <%= message.content.chars.first(26).join %>...
+                  <% end %>
                 </div>
               </div>
 
