@@ -6,7 +6,10 @@
       <div class="pantry-card">
         <%= image_tag(pantry_item.ingredient.photo) %>
         <%= content_tag(:p, pantry_item.ingredient.name.capitalize) %>
-        <i class="fas fa-times"></i>
+        <%= link_to pantry_item_path(pantry_item.id), method: :delete do %>
+          <i class="text-right fas fa-times"></i>
+        <% end %>
+
       </div>
     <% end %>
   </div>
@@ -17,6 +20,5 @@
       <%= f.submit %>
     <% end %>
   </div>
-
 
 </div>

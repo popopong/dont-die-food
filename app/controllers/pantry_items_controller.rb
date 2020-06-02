@@ -12,11 +12,11 @@ class PantryItemsController < ApplicationController
     @pantry_item.ingredient_id = pantry_item_params[:ingredient_id]
 
     if @pantry_item.save
-      UserOwnedIngredient.find_or_create_by!(user: current_user, ingredient_id: params[:pantry_item][:ingredient_id])
+      UserOwnedIngredient.find_or_create_by(user: current_user, ingredient_id: params[:pantry_item][:ingredient_id])
 
       redirect_to pantry_items_path
     else
-      # Redirect to pantry_items index page for now because don't know how to render popup
+      flash[:notice] = "Item already in your pantry!"
       redirect_to pantry_items_path
     end
   end
