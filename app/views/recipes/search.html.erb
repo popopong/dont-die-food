@@ -3,7 +3,11 @@
 
   <% if @results %>
     <% @results.each do |result| %>
-    <li><%= result.title %></li>
+    <div class="recipe-big-card">
+      <div><%= image_tag(result.photo) %></div>
+      <div class="recipe-big-card-title"><%= link_to result.title, recipe_path(result) %></div>
+      <div class="recipe-big-card-content"><%= "You have #{@pantry_ings} ingredients already!" %></div>
+    </div>
     <% end %>
   <% end %>
 </div>
