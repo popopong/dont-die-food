@@ -4,6 +4,7 @@ class RecipesController < ApplicationController
   def index
     @recipes = policy_scope(Recipe)
     @recipes = Recipe.all
+    skip_authorization
   end
 
   def show

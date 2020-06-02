@@ -66,6 +66,7 @@ class FoodTradesController < ApplicationController
   end
 
   def edit
+    authorize @food_trade
     @user_owned_ingredient = @food_trade.user_owned_ingredient
     @ingredients = Ingredient.all
     @ingredients_name = @ingredients.map { |ing| ing.name }
@@ -73,6 +74,7 @@ class FoodTradesController < ApplicationController
   end
   
   def update
+    authorize @food_trade
     @food_trade.update(food_trade_params)
     if @food_trade.save
       redirect_to :show
@@ -96,20 +98,6 @@ class FoodTradesController < ApplicationController
     @food_trades = @user.food_trades.includes(user_owned_ingredient: [:user, :ingredient])
   end
 
-<<<<<<< HEAD
-  def edit
-    authorize @food_trade
-  end
-
-  def update
-    @food_trade.update(food_trade_params)
-    authorize @food_trade
-    if @food_trade.save
-      redirect_to :show
-    else
-      render :edit
-    end
-=======
   # FoodTrade categories start here
   def veggies
     @food_trades = FoodTrade.includes(user_owned_ingredient: [:user, :ingredient]).where(category: "Veggies")
@@ -129,7 +117,6 @@ class FoodTradesController < ApplicationController
 
   def other
     @food_trades = FoodTrade.includes(user_owned_ingredient: [:user, :ingredient]).where(category: "Other")
->>>>>>> 6bb50aa038e404a77f6e2252f98da79b340f4676
   end
 
   private

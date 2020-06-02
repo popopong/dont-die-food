@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
     @message.chatroom = @chatroom
     @message.sender = current_user
 
-    if @message.save!
+    if @message.save
       redirect_to chatroom_path(@message.chatroom.id, anchor: "message-#{
         @message.id}")
       ChatroomChannel.broadcast_to(
