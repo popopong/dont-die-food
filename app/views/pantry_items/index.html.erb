@@ -5,7 +5,7 @@
     <% @pantry_items.each do |pantry_item| %>
       <div class="pantry-card">
         <%= image_tag(pantry_item.ingredient.photo) %>
-        <%= content_tag(:p, pantry_item.ingredient.name) %>
+        <%= content_tag(:p, pantry_item.ingredient.name.capitalize) %>
       </div>
     <% end %>
   </div>

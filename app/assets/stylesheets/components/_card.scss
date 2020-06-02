@@ -285,12 +285,15 @@
 }
 
 .pantry-card {
-  width: 65%;
+  width: 75%;
   padding: 10px 0;
   display: flex;
   align-items: center;
   img {
-    padding: 0 8px 0 0;
+    margin: 0 8px 0 0;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.06);
+    border-radius: 10px;
+    padding: 2px;
   }
   p {
     font-family: $comfortaa;
