@@ -5,7 +5,7 @@
     <% @recipes.shuffle.each do |recipe|%>
       <div class="recipe-big-card"><%= image_tag("#{recipe.photo}", size:"350x250", alt: "Recipe image", class: "recipe-card") %>
         <div class="recipe-big-card-title"><%= link_to recipe.title, recipe_path(recipe) %></div>
-        <!-- Missing description and how many ingredient the user already have -->
+        <div class="recipe-big-card-ingredients"> You have <%= current_user.number_of_pantry_items_for(recipe) %> ingredients already!</div>
       </div>
     <% end %>
   </div>
