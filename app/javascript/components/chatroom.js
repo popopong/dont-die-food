@@ -16,7 +16,10 @@ const chatroom = () => {
     message.forEach((m) => {
       m.addEventListener("click", (event) => {
         // document.querySelectorAll('.message-time').forEach((time) => {
-        //   time.classList.add("d-none");
+        //   if (document.querySelectorAll('.d-none') === null) {
+        //     console.log(document.querySelectorAll('.d-none') === null);
+        //     time.classList.add("d-none");
+        //   }
         // })
         let id = event.currentTarget.id;
         // document.getElementById(`time-${id}`).classList.remove('d-none');
