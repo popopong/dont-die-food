@@ -1,17 +1,19 @@
 <div class="container">
-  <h1 class="text-center"> My pantry </h1>
+  <h1 class="text-center"> My pantry  <i class="fas fa-trash"></i> </h1>
 
   <div class="pantry-container">
     <% @pantry_items.each do |pantry_item| %>
       <div class="pantry-card">
         <%= image_tag(pantry_item.ingredient.photo) %>
         <%= content_tag(:p, pantry_item.ingredient.name.capitalize) %>
+        <i class="fas fa-times"></i>
       </div>
     <% end %>
   </div>
 
   <div class="pantry-form">
     <%= simple_form_for @pantry_item do |f| %>
+      <%= f.select :ingredient_id, collection: @addable_items %>
       <%= f.submit %>
     <% end %>
   </div>
