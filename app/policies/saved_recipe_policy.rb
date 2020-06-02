@@ -1,10 +1,12 @@
-class MessagePolicy < ApplicationPolicy
+class SavedRecipePolicy < ApplicationPolicy
   def index?
-    own_chatroom?
+    owned_by_user?
   end
+  
   def create?
     true
   end
+
   class Scope < Scope
     def resolve
       scope.all
@@ -12,7 +14,7 @@ class MessagePolicy < ApplicationPolicy
   end
 
   private
-  def own_chatroom?
-    record.each {|r| r.sender == user }
+  def owned_by_user?
+    record.each {|r| r.user == user }
   end
 end

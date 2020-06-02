@@ -1,6 +1,7 @@
 class ChatroomsController < ApplicationController
   def index
     @messages = policy_scope(Message)
+    authorize @messages
     @messages = Message.order(created_at: :desc)
                         .where("sender_id = ? OR receiver_id = ?", current_user.id, current_user.id)
                         .uniq{ |message| message.sender_id }
@@ -16,6 +17,8 @@ class ChatroomsController < ApplicationController
   def update
     @chatroom = Chatroom.find(params[:id])
     @chatroom.update(chatroom_params)
+    authorize @chatroom
+    
     if @chatroom.save
       redirect_to :show
     else

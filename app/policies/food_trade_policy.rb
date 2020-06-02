@@ -15,12 +15,18 @@ class FoodTradePolicy < ApplicationPolicy
     true
   end
 
-  # def destroy?
-  #   trade_owner?
-  # end
+  def destroy?
+    trade_owner?
+  end
 
+  def edit?
+    trade_owner?
+  end
+
+  def update?
+    trade_owner?
+  end
   
-
   def user_food_trades?
     trade_owner?
   end

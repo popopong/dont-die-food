@@ -9,12 +9,10 @@ class FoodTradesController < ApplicationController
   end
 
   def index
-
     @food_trades = policy_scope(FoodTrade)
-
     @food_trades = FoodTrade.where(status: "Available")
-
     @food_trades_geocoded = FoodTrade.geocoded
+    authorize @food_trades
 
     @markers = @food_trades_geocoded.map do |food_trade|
       {
@@ -23,8 +21,6 @@ class FoodTradesController < ApplicationController
         infoWindow: render_to_string(partial: "info_window", locals: { food_trade: food_trade }),
         image_url: helpers.asset_url('icons/location.svg')
       }
-
-
     end
   end
 

@@ -1,13 +1,15 @@
 class PantryItemsController < ApplicationController
   def index
+    @pantry_items = policy_scope(PantryItem)
     @pantry_items = PantryItem.where(user: current_user)
     # @pantry_items = PantryItem.includes(:ingredient).where(user: User.find(params[:user_id])) 
+    authorize @pantry_items
   end
 
   def create
     @pantry_item = PantryItem.new
     @pantry_item.user = current_user
-
+    authorize @pantry_item
     if @pantry_item.save
       redirect_to pantry "/users/:user_id/pantry_items"
     else
@@ -18,7 +20,8 @@ class PantryItemsController < ApplicationController
 
   def destroy
     @pantry_item = PantryItem.find(params[:id])
-
+    authorize @pantry_item
+    
     @pantry_item.destroy
     redirect_to pantry_items_path
   end
