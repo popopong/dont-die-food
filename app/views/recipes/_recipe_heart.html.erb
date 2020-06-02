@@ -1,10 +1,11 @@
-<% if @user_saved_recipes %>
-  <%= link_to saved_recipe_path(@saved_recipe), method: 'delete' do%>
-    <i class="saved fas fa-heart"></i>
+
+  <% if @user_saved_recipe.length > 0 %>
+    <%= link_to toggle_path(toggle_action: "destroy", recipe_id: recipe.id, saved_recipe_id: @user_saved_recipe.first.id)do%>
+      <i class="saved fas fa-heart"></i>
+    <% end %>
+  <% else %>
+    <%= link_to toggle_path(toggle_action: "create", recipe_id: recipe.id) do%>
+      <i class="saved far fa-heart "></i>
+    <% end %>
   <% end %>
-<% else %>
-  <%= link_to recipe_saved_recipes_path(@recipe), method: 'post' do%>
-    <i class="saved far fa-heart "></i>
-  <% end %>
-<% end %>
 

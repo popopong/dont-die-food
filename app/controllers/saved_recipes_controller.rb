@@ -28,9 +28,22 @@ class SavedRecipesController < ApplicationController
 
   end
 
+  def toggle
+    if params[:toggle_action] == "create"
+      @saved_recipe = SavedRecipe.new(recipe_id: params[:recipe_id])
+      @saved_recipe.user = current_user
+      @saved_recipe.save!
+      redirect_to recipe_path(params[:recipe_id])
+    else
+      @saved_recipe = SavedRecipe.find(params[:saved_recipe_id])
+      @saved_recipe.destroy!
+      redirect_to recipe_path(params[:recipe_id])
+    end
+  end
+
   private
 
   def saved_recipe_params
-    params.permit(:recipe_id)
+    params.permit(:recipe_id, :saved_recipe_id, :toggle_action)
   end
 end

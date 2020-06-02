@@ -14,7 +14,7 @@
     <%# Recipe title %>
     <div class=" title_heart d-flex">
       <h1><%= @recipe.title %></h1>
-      <%= render 'recipe_heart' %>
+      <%= render 'recipe_heart', recipe: @recipe %>
     </div>
 
     <br>
