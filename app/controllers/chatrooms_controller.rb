@@ -1,9 +1,10 @@
 class ChatroomsController < ApplicationController
+
   def index
     @messages = Message.includes({chatroom: {food_trade: {user_owned_ingredient: :ingredient}}}, :sender, :receiver)
                        .order(created_at: :desc)
                        .where("sender_id = ? OR receiver_id = ?", current_user.id, current_user.id)
-                       .uniq{ |message| message.sender_id }
+                       .uniq{ |message| message.sender_id && message.chatroom_id }
   end
 
   def show

@@ -2,6 +2,7 @@
   <h1 style="text-align:center">Chats</h1>
 
   <div class="inbox-box overflow-auto">
+
     <% @messages.each do |message| %>
 
 
@@ -43,18 +44,14 @@
 
                 <%# Showing the latest message %>
                 <div class="chat-last-mess">
-                  <% if message.content.chars.count <= 26 %>
-                    <%= message.content.chars.first(26).join %>
+                  <% if message.chatroom.messages.last.content.chars.count <= 26 %>
+                    <%= message.chatroom.messages.last.content.chars.first(26).join %>
                   <% else %>
-                    <%= message.content.chars.first(26).join %>...
+                    <%= message.chatroom.messages.last.content.chars.first(26).join %>...
                   <% end %>
                 </div>
               </div>
 
-              <%# Notification dot %>
-              <div class="chat-notification">
-                <i class="fas fa-circle"></i>
-              </div>
             </div>
           </div>   
         <% end %>

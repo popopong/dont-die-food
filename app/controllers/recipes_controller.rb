@@ -7,6 +7,8 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    @save_recipe = SavedRecipe.new
+    @user_saved_recipe = SavedRecipe.where(user: current_user, recipe: @recipe)
   end
 
   def search

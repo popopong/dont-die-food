@@ -22,8 +22,8 @@
     <% else%>
       <%= render 'shared/navbar_visitor' %>
     <% end %>
-    <%= render 'shared/btm_navbar' %>
-
+    
+    
     <div class="container">
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
@@ -33,8 +33,7 @@
     <div class="content">
       <%= yield %>
     </div>
-
+    
     <%= render 'shared/btm_navbar' %>
-
   </body>
 </html>
