@@ -135,17 +135,17 @@
 
   // Image upload styles
 
-  .cloudinary-fileupload {
+  .photo-upload {
     color: transparent;
     position: relative;
     color: $marine;
     padding: 3px 0 3px 0;
   }
-  .cloudinary-fileupload::-webkit-file-upload-button {
+  .photo-upload::-webkit-file-upload-button {
     visibility: hidden;
   }
 
-  .cloudinary-fileupload::before {
+  .photo-upload::before {
     content: 'Add';
     color: $marine;
     display: inline-block;
