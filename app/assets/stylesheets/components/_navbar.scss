@@ -29,6 +29,10 @@
 }
 
 .curved-navbar {
+  position: relative;
+  z-index: 10;
+}
+.navbar-green {
   background: $turquoise;
 }
 

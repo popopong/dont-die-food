@@ -8,21 +8,26 @@
   max-width: 100%;
 }
 
-// Recipe show card
-.curved-recipe-card {
-  // background-image: url();
-  // background: transparent;
-  // background: $turquoise;
+.curved-div {
+  position: relative;
+  margin-bottom: 30px;
+}
 
+
+.img_recipe_abs {
+  position: absolute;
 }
 
 .curved-div {
-  width: 100%;
-  margin: 0px;
-  overflow: hidden;
-  background-image: url()
+  position:relative;
+  margin-bottom: 30px;
 }
 
+.svg_recipe_abs {
+  position: absolute;
+  bottom: -30px;
+  margin-bottom: 10px;
+}
 
 // Index Recipes
 .recipe-big-card {
