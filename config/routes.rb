@@ -51,6 +51,13 @@ Rails.application.routes.draw do
   # Get User Food Trades
   get '/my_food_trades', to: 'food_trades#user_food_trades', as: 'private_user_food_trades'
 
+  # Routes for each food_trade category
+  get 'food_trades_veggies', to: 'food_trades#veggies'
+  get 'food_trades_fruits', to: 'food_trades#fruits'
+  get 'food_trades_dairy', to: 'food_trades#dairy'
+  get 'food_trades_meats', to: 'food_trades#meats'
+  get 'food_trades_other', to: 'food_trades#other'
+
 # CHAT
 # I can chat with my neighbors            /chatrooms/:id  GET chatrooms show
 # I can see my chats history              /chatrooms  GET chatrooms index
