@@ -1,15 +1,20 @@
 <div class="container">
   <h2>Recipes to the rescue</h2>
 
-<div class="recipe-card">
-  <% if @results.length > 0 %>
-    <% @results.each do |result| %>
-      <div class="recipe-big-card"><%= image_tag("#{result.photo}", size:"350x250", alt: "Recipe image", class: "recipe-card")%>
-        <div class="recipe-big-card-title"><%= link_to result.title, recipe_path(result) %></div>
-        <div class="recipe-big-card-ingredients"> You have <%= current_user.number_of_pantry_items_for(result) %> ingredients already!</div>
-      </div>
+  <div class="recipe-card">
+    <% if @results && @results.length > 0 %>
+      <% @results.each do |result| %>
+        <div class="recipe-big-card"><%= image_tag("#{result.photo}", size:"350x250", alt: "Recipe image", class: "recipe-card")%>
+          <div class="recipe-big-card-title">
+            <%= link_to result.title, recipe_path(result) %>
+            <div class="recipe-big-card-ingredients">
+              You have <%= current_user.number_of_pantry_items_for(result) %> ingredients already!
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <%= content_tag(:p, "No recipes match your selection!") %>
     <% end %>
-  <% else %>
-    <%= content_tag(:p, "No recipes match your selection!") %>
-  <% end %>
+  </div>
 </div>
