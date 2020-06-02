@@ -1,7 +1,9 @@
-<h1> My pantry items </h1>
+<div class="container">
+  <h1> My pantry items </h1>
 
-<ul>
-  <% @pantry_items.each do |pantry_item |%>
-    <li><%= pantry_item.ingredient.name %></li>
-  <% end %>
-</ul>
+  <ul>
+    <% @pantry_items.each do |pantry_item |%>
+      <li><%= pantry_item.ingredient.name %></li>
+    <% end %>
+  </ul>
+</div>
