@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :messages
   has_many :user_owned_ingredients
   has_many :food_trades, through: :user_owned_ingredients
+  has_many :ingredients, through: :user_owned_ingredients
   has_many :saved_recipes
   has_one_attached :photo
 
