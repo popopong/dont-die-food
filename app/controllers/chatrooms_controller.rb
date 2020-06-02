@@ -1,20 +1,10 @@
 class ChatroomsController < ApplicationController
 
-  def iterable?(object)
-    object.respond_to? :each
-  end
-
   def index
     @messages = Message.includes({chatroom: {food_trade: {user_owned_ingredient: :ingredient}}}, :sender, :receiver)
                        .order(created_at: :desc)
                        .where("sender_id = ? OR receiver_id = ?", current_user.id, current_user.id)
-                       .uniq{ |message| message.sender_id }
-
-    @chatrooms = Chatroom.select do |chatroom|
-      chatroom.messages.order(created_at: :desc).select do |message|
-        message.sender_id == current_user || message.receiver_id == current_user
-      end
-    end
+                       .uniq{ |message| message.sender_id && message.chatroom_id }
   end
 
   def show
