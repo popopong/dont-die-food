@@ -2,12 +2,6 @@ class FoodTradesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :find_food_trade, only: [:destroy, :edit, :update]
 
-  def user_food_trades
-    @user = current_user
-    @food_trades = @user.food_trades
-    authorize @food_trades
-  end
-
   def index
     @food_trades = policy_scope(FoodTrade)
     @food_trades = FoodTrade.where(status: "Available")
@@ -96,27 +90,33 @@ class FoodTradesController < ApplicationController
   def user_food_trades
     @user = current_user
     @food_trades = @user.food_trades.includes(user_owned_ingredient: [:user, :ingredient])
+    authorize @food_trades
   end
 
   # FoodTrade categories start here
   def veggies
     @food_trades = FoodTrade.includes(user_owned_ingredient: [:user, :ingredient]).where(category: "Veggies")
+    authorize @food_trades
   end
 
   def fruits
     @food_trades = FoodTrade.includes(user_owned_ingredient: [:user, :ingredient]).where(category: "Fruits")
+    authorize @food_trades
   end
 
   def dairy
     @food_trades = FoodTrade.includes(user_owned_ingredient: [:user, :ingredient]).where(category: "Dairy")
+    authorize @food_trades
   end
 
   def meats
     @food_trades = FoodTrade.includes(user_owned_ingredient: [:user, :ingredient]).where(category: "Meats")
+    authorize @food_trades
   end
 
   def other
     @food_trades = FoodTrade.includes(user_owned_ingredient: [:user, :ingredient]).where(category: "Other")
+    authorize @food_trades
   end
 
   private

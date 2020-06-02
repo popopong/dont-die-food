@@ -31,6 +31,26 @@ class FoodTradePolicy < ApplicationPolicy
     trade_owner?
   end
 
+  def veggies?
+    true
+  end
+
+  def fruits?
+    true
+  end
+
+  def dairy?
+    true
+  end
+
+  def meats?
+    true
+  end
+
+  def other?
+    true
+  end
+
 
   class Scope < Scope
     def resolve
