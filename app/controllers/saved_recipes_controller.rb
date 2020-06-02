@@ -3,6 +3,7 @@ class SavedRecipesController < ApplicationController
     @saved_recipes = policy_scope(SavedRecipe)
     user = current_user
     @saved_recipes = user.saved_recipes.includes([:recipe])
+
     authorize @saved_recipes
   end
 
