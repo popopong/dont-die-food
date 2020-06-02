@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 class="text-center"> My pantry  <i class="fas fa-trash"></i> </h1>
+  <h1 class="text-center"> My pantry  <i class="h6 mx-2 fas fa-trash" ></i> </h1>
 
   <div class="pantry-container">
     <% @pantry_items.each do |pantry_item| %>
@@ -17,7 +17,9 @@
   <div class="pantry-form">
     <%= simple_form_for @pantry_item do |f| %>
       <%= f.select :ingredient_id, collection: @addable_items %>
-      <%= f.submit %>
+      <%= f.submit do %>
+        <i class="fas fa-plus"></i>
+      <% end %>
     <% end %>
   </div>
 
