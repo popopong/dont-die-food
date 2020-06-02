@@ -15,9 +15,15 @@ const chatroom = () => {
 
     message.forEach((m) => {
       m.addEventListener("click", (event) => {
-        const time = document.querySelectorAll('.message-time');
-        // console.log(time);
-        // time.currentTarget.classList.toggle("time");
+        // document.querySelectorAll('.message-time').forEach((time) => {
+        //   if (document.querySelectorAll('.d-none') === null) {
+        //     console.log(document.querySelectorAll('.d-none') === null);
+        //     time.classList.add("d-none");
+        //   }
+        // })
+        let id = event.currentTarget.id;
+        // document.getElementById(`time-${id}`).classList.remove('d-none');
+        document.getElementById(`time-${id}`).classList.toggle("d-none");
       });
     })
 
