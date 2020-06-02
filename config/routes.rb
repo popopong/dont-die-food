@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 # /recipes/:id	GET	recipes	show
 # /POST	recipes	index (search a recipe)
 
+  get '/recipes/search', to: 'recipes#search', as: 'recipe_search'
   resources :recipes, only: [:index, :show] do
     resources :saved_recipes, only: [:create]
   end
@@ -51,6 +52,13 @@ Rails.application.routes.draw do
   resources :food_trades, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   # Get User Food Trades
   get '/my_food_trades', to: 'food_trades#user_food_trades', as: 'private_user_food_trades'
+
+  # Routes for each food_trade category
+  get 'food_trades_veggies', to: 'food_trades#veggies'
+  get 'food_trades_fruits', to: 'food_trades#fruits'
+  get 'food_trades_dairy', to: 'food_trades#dairy'
+  get 'food_trades_meats', to: 'food_trades#meats'
+  get 'food_trades_other', to: 'food_trades#other'
 
 # CHAT
 # I can chat with my neighbors            /chatrooms/:id  GET chatrooms show

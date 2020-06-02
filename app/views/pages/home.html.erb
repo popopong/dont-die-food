@@ -4,12 +4,14 @@
   </div>
   <br>
 
-  <%= form_tag recipes_path, method: :get do %>
-    <%= text_field_tag :query, params[:query], class: "form-control",    placeholder: "Enter an ingredient..." %><br>
-    <%= submit_tag "Make a dish!", class: "button-dark" %>
-    <%= submit_tag "Give away!", class: "button-dark" %>
+  <div class="search_form">
+    <%= form_tag recipes_path, method: :get do %>
+    <%= select_tag "ingredients", options_from_collection_for_select(Ingredient.joins(:recipe_ingredients).uniq, "id", "name"), { multiple: true } %> <br>
+    <%= submit_tag "Find a Recipe!", formaction: recipe_search_path, class: "button-dark" %>
+    <%= submit_tag "Give away!", formaction: new_food_trade_path, class: "button-dark" %>
   <% end %>
   <br>
+  </div>
 
 </div>
 
@@ -21,7 +23,7 @@
 </div>
 
   <div class="cards-carousel">
-  <% @food_trades = FoodTrade.where(status: "Available") %>
+  <% @food_trades = FoodTrade.includes(user_owned_ingredient: [:ingredient, :user]).where(status: "Available") %>
     <% @food_trades.last(10).shuffle.each do |food_trade| %>
       <div class="carousel-card">
         <%= image_tag("#{food_trade.user_owned_ingredient.ingredient.photo}", size:"150x90", alt: "#{food_trade.user_owned_ingredient.ingredient.photo}", class: "recipe-image") %>

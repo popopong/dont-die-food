@@ -1,7 +1,7 @@
 class SavedRecipesController < ApplicationController
   def index
     user = current_user
-    @saved_recipes = user.saved_recipes
+    @saved_recipes = user.saved_recipes.includes([:recipe])
   end
 
   def create

@@ -1,12 +1,24 @@
 class ChatroomsController < ApplicationController
+
+  def iterable?(object)
+    object.respond_to? :each
+  end
+
   def index
-    @messages = Message.order(created_at: :desc)
-                        .where("sender_id = ? OR receiver_id = ?", current_user.id, current_user.id)
-                        .uniq{ |message| message.sender_id }
+    @messages = Message.includes({chatroom: {food_trade: {user_owned_ingredient: :ingredient}}}, :sender, :receiver)
+                       .order(created_at: :desc)
+                       .where("sender_id = ? OR receiver_id = ?", current_user.id, current_user.id)
+                       .uniq{ |message| message.sender_id }
+
+    @chatrooms = Chatroom.select do |chatroom|
+      chatroom.messages.order(created_at: :desc).select do |message|
+        message.sender_id == current_user || message.receiver_id == current_user
+      end
+    end
   end
 
   def show
-    @chatroom = Chatroom.find(params[:id])
+    @chatroom = Chatroom.includes(messages: :sender).find(params[:id])
     @other_user = @chatroom.other_user(current_user)
     @message = Message.new()
   end

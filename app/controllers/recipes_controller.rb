@@ -10,4 +10,13 @@ class RecipesController < ApplicationController
     @save_recipe = SavedRecipe.new
     @user_saved_recipe = SavedRecipe.where(user: current_user, recipe: @recipe)
   end
+
+  def search
+    if params[:ingredients]
+      @results = Recipe.all.to_a.select do |recipe|
+        params[:ingredients].all? { |id| recipe.ingredient_ids.map { |id| id.to_s }
+                            .include?(id) }
+      end
+    end
+  end
 end
