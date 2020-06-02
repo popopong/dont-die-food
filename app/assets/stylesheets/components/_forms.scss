@@ -75,10 +75,10 @@
 }
 
 .message-form {
+  // Display
   position: fixed;
-  bottom: 76px;
-  margin: auto 0;
-  display: inline;
+  bottom: 70px;
+  display: inline-block;
   textarea {
     // Styling
     background: $f-lightgrey;
@@ -87,8 +87,13 @@
     border-radius: 25px;
 
     // Dimensions
-    width: 90%;
+    width: 90vw;
     height: 40px;
+
+    // Resizing
+    resize: vertical;
+    max-height: 100px;
+    min-height: 40px;
   }
 }
 

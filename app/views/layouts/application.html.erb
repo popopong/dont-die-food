@@ -29,7 +29,11 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
-    <%= yield %>
+    <!-- adding padding-bottom on all pages to avoid btm navbar -->
+    <div class="content">
+      <%= yield %>
+    </div>
+    
     <%= render 'shared/btm_navbar' %>
     
   </body>

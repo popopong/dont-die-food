@@ -25,16 +25,20 @@ require("channels")
 // External imports
 import "bootstrap";
 import { typed } from "../components/typed_js"
-// import { btmNavbar } from "../components/btm_navbar";
 import { initMapbox } from '../plugins/init_mapbox';
 import { initSelect2 } from '../plugins/init_select2';
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+import { typed } from "../components/typed_js"
+import { chatroom } from "../components/chatroom"
+import { initChatroomCable  } from '../channels/chatroom_channel';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   initSelect2();
   typed();
   initMapbox();
+  initChatroomCable();
+  chatroom();
 });

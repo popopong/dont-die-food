@@ -7,8 +7,16 @@
   </div>
   <br>
 
+  <div id="map"
+       style="width: 100%; height: 400px;"
+       data-markers="<%= @markers.to_json %>"
+       data-mapbox-api-key="<%= ENV['MAPBOX_APIKEY'] %>"></div>
+  <br>
+
+  <h2>Fruits</h2>
+  <small><%= link_to "See more", food_trades_fruits_path %></small>
   <ul>
-    <% @food_trades.shuffle.last(5).each do |food_trade| %>
+    <% @food_trades.where(category: "Fruits").shuffle.last(10).each do |food_trade| %>
       <li>
         <p><strong><%= food_trade.user_owned_ingredient.user.first_name %> : </strong><br>
         Food to trade: <%= link_to food_trade.user_owned_ingredient.ingredient.name.capitalize, food_trade_path(food_trade) %><br>
@@ -19,24 +27,62 @@
     <% end %>
   </ul>
 
+  <h2>Veggies</h2>
+  <small><%= link_to "See more", food_trades_veggies_path %></small>
+  <ul>
+    <% @food_trades.where(category: "Veggies").shuffle.last(10).each do |food_trade| %>
+      <li>
+        <p><strong><%= food_trade.user_owned_ingredient.user.first_name %> : </strong><br>
+        Food to trade: <%= link_to food_trade.user_owned_ingredient.ingredient.name.capitalize, food_trade_path(food_trade) %><br>
+        Description: <%= food_trade.description %><br>
+        Catgeory: <%= food_trade.category %><br>
+        Address: <%= food_trade.location %></p>
+      </li>
+    <% end %>
+  </ul>
 
-<ul>
-  <% @food_trades.shuffle.each do |food_trade| %>
-    <li>
-      <p><strong><%= food_trade.user_owned_ingredient.user.first_name %> : </strong><br>
-      Food to trade: <%= link_to food_trade.user_owned_ingredient.ingredient.name.capitalize, food_trade_path(food_trade) %><br>
-      Description: <%= food_trade.description %><br>
-      Catgeory: <%= food_trade.category %><br>
-      Address: <%= food_trade.location %></p>
-    </li>
-  <% end %>
-</ul>
+  <h2>Dairy</h2>
+  <small><%= link_to "See more", food_trades_dairy_path %></small>
+  <ul>
+    <% @food_trades.where(category: "Dairy").shuffle.last(10).each do |food_trade| %>
+      <li>
+        <p><strong><%= food_trade.user_owned_ingredient.user.first_name %> : </strong><br>
+        Food to trade: <%= link_to food_trade.user_owned_ingredient.ingredient.name.capitalize, food_trade_path(food_trade) %><br>
+        Description: <%= food_trade.description %><br>
+        Catgeory: <%= food_trade.category %><br>
+        Address: <%= food_trade.location %></p>
+      </li>
+    <% end %>
+  </ul>
 
-  <%# The coordinates need to be replaced by the current_user's address %>
-  <div id="map"
-       style="width: 100%; height: 400px;"
-       data-markers="<%= @markers.to_json %>"
-       data-mapbox-api-key="<%= ENV['MAPBOX_APIKEY'] %>"></div>
+  <h2>Meats</h2>
+  <small><%= link_to "See more", food_trades_meats_path %></small>
+  <ul>
+    <% @food_trades.where(category: "Meats").shuffle.last(10).each do |food_trade| %>
+      <li>
+        <p><strong><%= food_trade.user_owned_ingredient.user.first_name %> : </strong><br>
+        Food to trade: <%= link_to food_trade.user_owned_ingredient.ingredient.name.capitalize, food_trade_path(food_trade) %><br>
+        Description: <%= food_trade.description %><br>
+        Catgeory: <%= food_trade.category %><br>
+        Address: <%= food_trade.location %></p>
+      </li>
+    <% end %>
+  </ul>
+
+  <h2>Other</h2>
+  <small><%= link_to "See more", food_trades_other_path %></small>
+  <ul>
+    <% @food_trades.where(category: "Other").shuffle.last(10).each do |food_trade| %>
+      <li>
+        <p><strong><%= food_trade.user_owned_ingredient.user.first_name %> : </strong><br>
+        Food to trade: <%= link_to food_trade.user_owned_ingredient.ingredient.name.capitalize, food_trade_path(food_trade) %><br>
+        Description: <%= food_trade.description %><br>
+        Catgeory: <%= food_trade.category %><br>
+        Address: <%= food_trade.location %></p>
+      </li>
+    <% end %>
+  </ul>
+
   <br>
 </div>
 

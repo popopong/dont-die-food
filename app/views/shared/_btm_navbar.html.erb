@@ -1,23 +1,52 @@
+<!-- <svg display="none" >
+  <symbol id="pantry-svg">
+    <path d="M37.1291 27.6316C37.1291 29.5858 36.3468 31.46 34.9542 32.8418C33.5615 34.2237 31.6728 35 29.7033 35H24.1339C22.1645 35 20.2757 34.2237 18.8831 32.8418C17.4905 31.46 16.7081 29.5858 16.7081 27.6316V23.9474H29.3134L34.4373 15.1605L37.3333 16.8184L33.1749 23.9474H37.1291V27.6316ZM12.9952 35H0C0 29.4737 -1.6598e-07 23.9474 0.61263 18.1079C1.11387 13.4474 2.00497 8.58421 2.97033 3.68421H1.85646V0H11.1387V3.68421H10.0249C10.9902 8.58421 11.8813 13.4474 12.3826 18.1079C12.9952 23.9474 12.9952 29.4737 12.9952 35Z" />
+  </symbol>
+</svg> -->
+<!--     <svg>
+      <use xlink:href="#pantry-svg" />
+    </svg> -->
+
 <div class="btm-navbar sticky" id="btm-navbar" >
 
-<!--   <div class="container" style="border: 1px solid black; height: 100px;">
-  <object height="100" width="100" data="<%= asset_path("icons/pantry.svg") %>" type="image/svg+xml" style="fill: red;"></object>
-</div>
-</div> -->
-
   <%= link_to pantry_items_path, class: "btm-nav-icons" do %>
-    <%= image_tag "icons/pantry.svg" %>
+    <% if current_page?(controller: 'pantry_items') %>
+      <object data="<%= asset_path("icons/pantry-dark.svg") %>" type="image/svg+xml" ></object>
+    <% else %>
+      <object data="<%= asset_path("icons/pantry.svg") %>" type="image/svg+xml" ></object>
+    <% end %>
   <% end %>
+
   <%= link_to saved_recipes_path, class: "btm-nav-icons" do %>
-    <%= image_tag "icons/cookbook.svg" %>
+    <% if current_page?(controller: 'saved_recipes') %>
+      <object data="<%= asset_path("icons/cookbook-dark.svg") %>" type="image/svg+xml" ></object>
+    <% else %>
+      <object data="<%= asset_path("icons/cookbook.svg") %>" type="image/svg+xml" ></object>
+    <% end %>
   <% end %>
+
   <%= link_to root_path, class: "btm-nav-icons" do %>
-    <%= image_tag "icons/search-add.svg" %>
+    <% if current_page?('/') %>
+      <object data="<%= asset_path("icons/search-add-dark.svg") %>" type="image/svg+xml" ></object>
+    <% else %>
+      <object data="<%= asset_path("icons/search-add.svg") %>" type="image/svg+xml" ></object>
+    <% end %>
   <% end %>
+
   <%= link_to food_trades_path, class: "btm-nav-icons" do %>
-    <%= image_tag "icons/community.svg" %>
+    <% if current_page?(controller: 'food_trades') %>
+      <object data="<%= asset_path("icons/community-dark.svg") %>" type="image/svg+xml" ></object>
+    <% else %>
+      <object data="<%= asset_path("icons/community.svg") %>" type="image/svg+xml" ></object>
+    <% end %>
   <% end %>
+
   <%= link_to chatrooms_path, class: "btm-nav-icons" do %>
-    <%= image_tag "icons/message.svg" %>
+    <% if current_page?(controller: 'chatrooms') %>
+      <object data="<%= asset_path("icons/message-dark.svg") %>" type="image/svg+xml" ></object>
+    <% else %>
+      <object data="<%= asset_path("icons/message.svg") %>" type="image/svg+xml" ></object>
+    <% end %>
   <% end %>
-  </div>
+
+</div>
