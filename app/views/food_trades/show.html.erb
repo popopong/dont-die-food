@@ -6,8 +6,10 @@
 
   <div class="food_trade_show_top">
     <p>Posted on <%= @food_trade.created_at.localtime.strftime("%d %b, %Y") %></p>
+    <% if current_user != @food_trade.user_owned_ingredient.user %>
     <p>from <%= @food_trade.user_owned_ingredient.user.first_name.downcase  %></p>
-
+    <% end %>
+    
     <% if current_user == @food_trade.user_owned_ingredient.user %>
     <div class="food_trade_show_links">
       <%= link_to  edit_food_trade_path do %>
