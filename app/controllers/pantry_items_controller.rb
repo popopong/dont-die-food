@@ -4,7 +4,7 @@ class PantryItemsController < ApplicationController
   end
 
   def create
-    @pantry_item = PantryItem.new(pantry_item_params) # Need to finish this
+    @pantry_item = PantryItem.new(pantry_item_params)
     @pantry_item.user = current_user
 
     if @pantry_item.save
