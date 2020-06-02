@@ -10,11 +10,14 @@
 
 
   <div class="container">
+
     <%# Recipe title %>
-    <h1><%= @recipe.title %></h1> <i class="far fa-heart">
+    <div class=" title_heart d-flex">
+      <h1><%= @recipe.title %></h1>
+      <%= render 'recipe_heart' %>
+    </div>
 
     <br>
-
     <br>
 
     <%# Ingredients %>
@@ -24,13 +27,19 @@
         <%# Do a condition to round amount %>
         <div class="group">
           <input type="checkbox" name="ingredient_data"/>
-          <label><p><strong><%= ingredient_data["measures"]["metric"]["amount"] %>
-          <%= ingredient_data["measures"]["metric"]["unitLong"] %></strong>
-          <%= ingredient_data["name"] %></p>
+          <label>
+            <p>
+              <strong>
+                <%= ingredient_data["measures"]["metric"]["amount"] %>
+                <%= ingredient_data["measures"]["metric"]["unitLong"] %>
+              </strong>
+              <%= ingredient_data["name"] %>
+            </p>
           </label>
         </div>
       <% end %>
     </div>
+
     <br>
 
     <%# Instructions %>

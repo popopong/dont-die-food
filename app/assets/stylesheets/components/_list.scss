@@ -1,42 +1,46 @@
-.recipe-direction p {
-  color: $f-nav-green;
+.group {
+  padding-left: 25px;
+
+  input[type="checkbox"] {
+    opacity: 0;
+    position: relative;
+    z-index: 100;
+    margin-top: 20px;
+    transform: translate(-9px, -2px)
+  }
+
+  label {
+    position: relative;
+  }
+
+  label::before {
+    content: "";
+    background: url("icons/circle-tick.svg");
+    transform: translate(-9px, -2px) scale(0);
+    background-position: center;
+    background-size: contain;
+    width: 13px;
+    height: 13px;
+    position: absolute;
+    left: -15px;
+    top: 9px;
+    transition: all 0.2s
+  }
+
+  input[type="checkbox"]:checked + label::before {
+    transform: translate(-9px, -2px) scale(1);
+    transition: all 0.2s
+  }
+
+  label::after {
+    content: "";
+    border: 2px solid $marine;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    left: -25px;
+    top: 6px;
+    border-radius: 50%;
+  }
 }
 
-input[type="checkbox"] {
-  display: none !important;
-}
-
-label {
-  position: relative;
-}
-
-label::before {
-  content: "";
-  background: url("images/icons/tick.svg");
-  background-position: center;
-  background-size: contain;
-  width: 12px;
-  height: 12px;
-  position: absolute;
-  left: -10px;
-  top: -5px;
-
-  transform: scale(0);
-  transition: all 0.4s
-}
-
-input [type="checkbox"]:checked + label::before {
-  transform: scale(0);
-  transition: all 0.4s
-}
-
-label::after {
-  content: "";
-  border: 2px solid $marine;
-  width: 10px;
-  height: 10px;
-  position: absolute;
-  left: -8px;
-  top: -3px;
-  border-radius: 50%;
-}

@@ -32,7 +32,7 @@ Rails.application.routes.draw do
 # I can click on a saved recipe   /recipes/:id  POST  saved_recipes create
 # I can see my saved recipes      /users/:id/saved_recipes  GET saved_recipes index
 
-  resources :saved_recipes, only: [:index]
+  resources :saved_recipes, only: [:index, :destroy]
 
 # USER_OWNED INGREDIENTS
 # I can check an ingredient on the ingredients list on the recipe show page    /recipes/:id  POST  user_owned_ingredients  Create
