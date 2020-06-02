@@ -9,13 +9,6 @@ class SavedRecipesController < ApplicationController
     @saved_recipe.user = current_user
     @saved_recipe.save
     redirect_to recipe_path(params[:recipe_id])
-    # if @saved_recipe.save
-    #   # Good flash notice goes here
-    #   redirect_to recipe_path
-    # else
-    #   # Bad flash notice goes here
-    #   redirect_to recipe_path
-    # end
   end
 
   def destroy
@@ -23,9 +16,6 @@ class SavedRecipesController < ApplicationController
     authorize @save_recipe
     @saved_recipe.destroy
     redirect_to recipe_path(params[:recipe_id])
-    # redirect_to recipe_path(@saved_recipe.recipe)
-    # redirect_to root_path
-
   end
 
   def toggle
