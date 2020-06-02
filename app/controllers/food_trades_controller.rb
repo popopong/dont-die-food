@@ -66,20 +66,21 @@ class FoodTradesController < ApplicationController
   end
 
   def destroy
+    authorize @food_trade
     if @food_trade.destroy
       redirect_to :index
     else
       render :show
     end
-
-    # authorize @food_trade
   end
 
   def edit
+    authorize @food_trade
   end
 
   def update
     @food_trade.update(food_trade_params)
+    authorize @food_trade
     if @food_trade.save
       redirect_to :show
     else
