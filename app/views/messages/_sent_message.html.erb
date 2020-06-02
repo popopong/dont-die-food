@@ -1,7 +1,11 @@
-<div class="message_current_user message d-block justify-content-left">
+<div class="convo-bubble">
   <li>
     <div id="message-<%= message.id %>">
-      <%= message.content %><br>
+      <div class="message_current_user message">
+        <%= message.content %><br>
+      </div>
+
+      <div style="text-align:right" class="message-time time">
       <% if message.created_at.strftime("%a %b %e") == Date.today.strftime("%a %b %e") %>
         <small><%= message.created_at.strftime("%l:%M%p") %></small>
       <% elsif  message.created_at.strftime("%a %b %e") == Date.yesterday.strftime("%a %b %e") %>
@@ -9,6 +13,7 @@
       <% else %>
         <small><% message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
       <% end %>
+      </div>
       
     </div>
   </li>
