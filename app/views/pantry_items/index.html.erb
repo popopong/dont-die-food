@@ -1,9 +1,13 @@
 <div class="container">
-  <h1> My pantry items </h1>
+  <h1 class="text-center"> My pantry items </h1>
 
-  <ul>
-    <% @pantry_items.each do |pantry_item |%>
-      <li><%= pantry_item.ingredient.name %></li>
+  <div class="pantry-container">
+    <% @pantry_items.each do |pantry_item| %>
+      <div class="pantry-card">
+        <%= image_tag(pantry_item.ingredient.photo) %>
+        <%= content_tag(:p, pantry_item.ingredient.name) %>
+      </div>
     <% end %>
-  </ul>
+  </div>
+
 </div>
