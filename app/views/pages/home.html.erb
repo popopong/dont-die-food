@@ -4,18 +4,14 @@
   </div>
   <br>
 
-  <%= form_tag recipes_path, method: :get do %>
-    <%= text_field_tag :query, params[:query], class: "form-control",    placeholder: "Enter an ingredient..." %><br>
-    <%= submit_tag "Make a dish!", class: "button-dark" %>
-    <%= submit_tag "Give away!", class: "button-dark" %>
+  <div class="search_form">
+    <%= form_tag recipes_path, method: :get do %>
+    <%= select_tag "ingredients", options_from_collection_for_select(Ingredient.joins(:recipe_ingredients).uniq, "id", "name"), { multiple: true } %> <br>
+    <%= submit_tag "Find a Recipe!", formaction: recipe_search_path, class: "button-dark" %>
+    <%= submit_tag "Give away!", formaction: new_food_trade_path, class: "button-dark" %>
   <% end %>
   <br>
-<<<<<<< HEAD
-
-  <div class="recipes-container">
-    <h2>Help your neighbours...</h2>
-=======
->>>>>>> e88d0dff7505f929f1925216eb6fbba70f918239
+  </div>
 
 </div>
 
@@ -23,11 +19,11 @@
   <div class="container">
     <div class="carousel-title"><h2>Help your neighbours...</h2>
       <%= link_to "see more", food_trades_path %>
-    </div>
   </div>
+</div>
 
   <div class="cards-carousel">
-  <% @food_trades = FoodTrade.where(status: "Available") %>
+  <% @food_trades = FoodTrade.includes(user_owned_ingredient: [:ingredient, :user]).where(status: "Available") %>
     <% @food_trades.last(10).shuffle.each do |food_trade| %>
       <div class="carousel-card">
         <%= image_tag("#{food_trade.user_owned_ingredient.ingredient.photo}", size:"150x90", alt: "#{food_trade.user_owned_ingredient.ingredient.photo}", class: "recipe-image") %>
@@ -55,10 +51,9 @@
         <%= link_to recipe_path(recipe), class: "carousel-card" do %>
           <%= image_tag("#{recipe.photo}", size:"150x90", alt: "#{recipe.title}", class: "cards-carousel") %>
           <div class="carousel-card-title"><%= recipe.title %></div>
-        <% end %>
       <% end %>
-    </div>
+    <% end %>
   </div>
-
+</div>
 
 

@@ -75,20 +75,25 @@
 }
 
 .message-form {
+  // Display
   position: fixed;
-  bottom: 76px;
-  margin: auto 0;
-  display: inline;
+  bottom: 70px;
+  display: inline-block;
   textarea {
     // Styling
     background: $f-lightgrey;
     border: 1px solid $f-nav-green;
     box-sizing: border-box;
     border-radius: 25px;
-    
+
     // Dimensions
-    width: 90%;
+    width: 90vw;
     height: 40px;
+
+    // Resizing
+    resize: vertical;
+    max-height: 100px;
+    min-height: 40px;
   }
 }
 
@@ -113,7 +118,7 @@
     border: 1px solid $f-nav-green;
     box-sizing: border-box;
     border-radius: 25px;
-    
+
     // Dimensions
     width: 80%;
     height: 40px;
@@ -127,7 +132,7 @@
     background-color: inherit;
     border: none;
   }
-  
+
   // Image upload styles
 
   .cloudinary-fileupload {
@@ -161,4 +166,35 @@
   }
 }
 
+.search_form {
+  text-align: center;
+  .select2 {
+    margin: 10px 0;
+    padding: 0px 10px;
+    width: 80% !important;
+  }
+  .select2-selection {
+    border-radius: 30px;
+    border: 1px solid $f-nav-green !important;
+    width: 100%;
+    padding: 15px 0;
+  }
+  .select2-selection__choice {
+    background: $turquoise !important;
+    color: $f-lightgrey !important;
+    border-radius: 15px !important;
+    padding: 0px 10px !important;
+    border: none !important;
+    font-weight: bold;
+    font-family: $comfortaa;
+  }
 
+  .select2-selection__choice__remove {
+    color: $f-lightgrey !important;
+    padding: 5px;
+  }
+
+  .select2-selection__rendered {
+    padding: 0px 20px !important;
+  }
+}

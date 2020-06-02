@@ -11,7 +11,7 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
-    
+
     <link rel="icon" type="image/png" href="https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/avocado_scream_avatar_food-512.png">
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -24,17 +24,15 @@
     <% else%>
       <%= render 'shared/navbar_visitor' %>
     <% end %>
-    <%= render 'shared/btm_navbar' %>
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
 
     <!-- adding padding-bottom on all pages to avoid btm navbar -->
     <div class="content">
       <%= yield %>
     </div>
-    
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= render 'shared/btm_navbar' %>
-    
+
   </body>
 </html>
