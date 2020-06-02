@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
   def create
+    @chatroom = Chatroom.find(params[:message][:chatroom_id])
     @message = Message.new(message_params)
     @chatroom = Chatroom.find(params[:message][:chatroom_id])
     @other_user = @chatroom.other_user(current_user)
