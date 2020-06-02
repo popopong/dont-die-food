@@ -10,7 +10,7 @@
 <div class="btm-navbar sticky" id="btm-navbar" >
 
   <%= link_to pantry_items_path, class: "btm-nav-icons" do %>
-    <% if current_page?(controller: 'pantry_items') %>
+    <% if current_page?(controller: '/pantry_items') %>
       <object data="<%= asset_path("icons/pantry-dark.svg") %>" type="image/svg+xml" ></object>
     <% else %>
       <object data="<%= asset_path("icons/pantry.svg") %>" type="image/svg+xml" ></object>
@@ -18,7 +18,7 @@
   <% end %>
 
   <%= link_to saved_recipes_path, class: "btm-nav-icons" do %>
-    <% if current_page?(controller: 'saved_recipes') %>
+    <% if current_page?(controller: '/saved_recipes') %>
       <object data="<%= asset_path("icons/cookbook-dark.svg") %>" type="image/svg+xml" ></object>
     <% else %>
       <object data="<%= asset_path("icons/cookbook.svg") %>" type="image/svg+xml" ></object>
@@ -34,15 +34,15 @@
   <% end %>
 
   <%= link_to food_trades_path, class: "btm-nav-icons" do %>
-    <% if current_page?(controller: 'food_trades') %>
+    <% if current_page?(controller: '/food_trades') %>
       <object data="<%= asset_path("icons/community-dark.svg") %>" type="image/svg+xml" ></object>
     <% else %>
       <object data="<%= asset_path("icons/community.svg") %>" type="image/svg+xml" ></object>
     <% end %>
   <% end %>
-
+  
   <%= link_to chatrooms_path, class: "btm-nav-icons" do %>
-    <% if current_page?(controller: 'chatrooms') %>
+    <% if current_page?(controller: '/chatrooms') %>
       <object data="<%= asset_path("icons/message-dark.svg") %>" type="image/svg+xml" ></object>
     <% else %>
       <object data="<%= asset_path("icons/message.svg") %>" type="image/svg+xml" ></object>
