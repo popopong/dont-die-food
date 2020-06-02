@@ -1,17 +1,21 @@
-<div class="container">
+<div class="container text-center">
 
   <h1>Fruits</h1>
+
   <div class="cards">
-    <div>
-      <% @food_trades.shuffle.each do |food_trade| %>
-        <div>
-          <p><strong><%= food_trade.user_owned_ingredient.user.first_name %> : </strong><br>
-          Food to trade: <%= link_to food_trade.user_owned_ingredient.ingredient.name.capitalize, food_trade_path(food_trade) %><br>
-          Description: <%= food_trade.description %><br>
-          Catgeory: <%= food_trade.category %><br>
-          Address: <%= food_trade.location %></p>
-        </div>
-      <% end %>
-    </div>
+    <% @food_trades.shuffle.each do |food_trade| %>
+      <div class="small-food-card">
+        <%= image_tag("#{food_trade.user_owned_ingredient.ingredient.photo}", size:"150x90", alt: "#{food_trade.user_owned_ingredient.ingredient.photo}" ) %>
+        <p class="small-card-title"><%= link_to food_trade.user_owned_ingredient.ingredient.name.capitalize, food_trade_path(food_trade) %></p>
+      </div>
+    <% end %>
   </div>
+
 </div>
+
+
+
+
+
+
+
