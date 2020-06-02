@@ -1,13 +1,13 @@
 <div class="container">
   <h2>Recipes to the rescue</h2>
 
+<div class="recipe-card">
   <% if @results %>
     <% @results.each do |result| %>
-    <div class="recipe-big-card">
-      <div><%= image_tag(result.photo) %></div>
-      <div class="recipe-big-card-title"><%= link_to result.title, recipe_path(result) %></div>
-      <div class="recipe-big-card-content"><%= "You have #{@pantry_ings} ingredients already!" %></div>
-    </div>
+      <div class="recipe-big-card"><%= image_tag("#{result.photo}", size:"350x250", alt: "Recipe image", class: "recipe-card")%>
+        <div class="recipe-big-card-title"><%= link_to result.title, recipe_path(result) %></div>
+        <div class="recipe-big-card-ingredients"> You have <%= current_user.number_of_pantry_items_for(result) %> ingredients already!</div>
+      </div>
     <% end %>
   <% end %>
 </div>

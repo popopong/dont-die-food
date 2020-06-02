@@ -40,8 +40,9 @@
 
   // Image
   img {
-    object-fit: cover;
-    max-width: 100%;
+    -o-object-fit: cover !important;
+    object-fit: cover !important;
+    width: 100%;
     overflow: hidden;
     border-radius: 25px 25px 0px 0px;
   }
@@ -77,17 +78,17 @@
     text-overflow: ellipsis;
   }
 
-  // Ingredient that user have
-  // .recipe-big-card-ingredients{
-  //   font-family: Hind Vadodara;
-  //   font-style: normal;
-  //   font-weight: normal;
-  //   font-size: 12px;
-  //   line-height: 10px;
-  //   color: $f-nav-green;
-  //   margin-bottom: 0px;
-  //   padding: 5px;
-  // }
+  // Ingredients that user have
+  .recipe-big-card-ingredients{
+    font-family: Hind Vadodara;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 10px;
+    color: $f-nav-green;
+    margin-bottom: 0px;
+    padding: 5px;
+  }
 }
 
 // Specific category card

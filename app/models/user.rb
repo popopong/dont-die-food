@@ -16,4 +16,10 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true,
             format: { with: /\w+@\w+\.[a-z]{2,4}\z/, message: "Please enter a valid email address"}
   validates :encrypted_password, presence: true
+
+  def number_of_pantry_items_for(recipe)
+    pantry_items.count do |pantry_item|
+      recipe.ingredient_ids.include?( pantry_item.ingredient_id )
+    end
+  end
 end

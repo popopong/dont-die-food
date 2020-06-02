@@ -16,6 +16,7 @@ class RecipesController < ApplicationController
                             .include?(id) }
       end
     end
-    @pantry_ings = 5
+
+    @pantry_ings = current_user.pantry_items
   end
 end
