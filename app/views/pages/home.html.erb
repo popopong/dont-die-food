@@ -23,8 +23,8 @@
   <div class="container">
     <div class="carousel-title"><h2>Help your neighbours...</h2>
       <%= link_to "see more", food_trades_path %>
-    </div>
   </div>
+</div>
 
   <div class="cards-carousel">
   <% @food_trades = FoodTrade.includes(user_owned_ingredient: [:ingredient, :user]).where(status: "Available") %>
@@ -55,10 +55,10 @@
         <%= link_to recipe_path(recipe), class: "carousel-card" do %>
           <%= image_tag("#{recipe.photo}", size:"150x90", alt: "#{recipe.title}", class: "cards-carousel") %>
           <div class="carousel-card-title"><%= recipe.title %></div>
-        <% end %>
       <% end %>
-    </div>
+    <% end %>
   </div>
+</div>
 
 <script>
   let ingredient = document.querySelector(".ingredient_select");

@@ -8,21 +8,26 @@
   max-width: 100%;
 }
 
-// Recipe show card
-.curved-recipe-card {
-  // background-image: url();
-  // background: transparent;
-  // background: $turquoise;
+.curved-div {
+  position: relative;
+  margin-bottom: 30px;
+}
 
+
+.img_recipe_abs {
+  position: absolute;
 }
 
 .curved-div {
-  width: 100%;
-  margin: 0px;
-  overflow: hidden;
-  background-image: url()
+  position:relative;
+  margin-bottom: 30px;
 }
 
+.svg_recipe_abs {
+  position: absolute;
+  bottom: -30px;
+  margin-bottom: 10px;
+}
 
 // Index Recipes
 .recipe-big-card {
@@ -31,8 +36,6 @@
   flex-shrink:0;
   display: flex;
   flex-direction: column;
-  width: 350px;
-  height: 410px;
   background: #FBFBFF;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
   border-radius: 25px;
@@ -40,8 +43,9 @@
 
   // Image
   img {
-    object-fit: cover;
-    max-width: 100%;
+    -o-object-fit: cover !important;
+    object-fit: cover !important;
+    width: 100%;
     overflow: hidden;
     border-radius: 25px 25px 0px 0px;
   }
@@ -58,36 +62,36 @@
       line-height: 36px;
       color: $f-green;
       margin-bottom: 0px;
+    }
+    // Ingredients that user have
+    .recipe-big-card-ingredients{
+      font-family: Hind Vadodara;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 12px;
+      line-height: 10px;
+      color: $f-nav-green;
+      margin-bottom: 0px;
       padding: 5px;
     }
   }
 
-  // Recipe Description
-  .recipe-big-card-content{
-    font-family: Hind Vadodara;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 18px;
-    line-height: 27px;
-    color: $f-green;
-    margin-bottom: 0px;
-    padding: 5px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
 
-  // Ingredient that user have
-  // .recipe-big-card-ingredients{
+  // // Recipe Description (Hidden because recipes don't have descriptions)
+  // .recipe-big-card-content{
   //   font-family: Hind Vadodara;
   //   font-style: normal;
   //   font-weight: normal;
-  //   font-size: 12px;
-  //   line-height: 10px;
-  //   color: $f-nav-green;
+  //   font-size: 18px;
+  //   line-height: 27px;
+  //   color: $f-green;
   //   margin-bottom: 0px;
   //   padding: 5px;
+  //   overflow: hidden;
+  //   white-space: nowrap;
+  //   text-overflow: ellipsis;
   // }
+
 }
 
 // Specific category card

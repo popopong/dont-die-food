@@ -7,6 +7,14 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    @save_recipe = SavedRecipe.new
+    @user_saved_recipe = SavedRecipe.where(user: current_user, recipe: @recipe)
+
+    if user_signed_in?
+      @user_owned_ingredients_name = current_user.ingredients.pluck(:name)
+    else
+      @user_owned_ingredients_name = []
+    end
   end
 
   def search
