@@ -17,8 +17,11 @@
 
 <% else %>
   <%= simple_form_for [ @user, @food_trade ] do |f|%>
-    <% @user_input_ing.each do |ingredient| %>
+    <% @user_input_ing.each_with_index do |ingredient, index| %>
       <%= render 'form_subcomponent', f: f, ingredient: ingredient %>
+      <% unless index == @user_input_ing.length - 1 %>
+        <object data="<%= asset_path("icons/dotted-line.svg") %>" type="image/svg+xml" style="margin: auto; display: block; padding: 10px 0" ></object>
+      <% end %>
     <% end %>
     <%= f.button :submit, 'Share', class: "button-dark mx-auto mt-4", style: "display: block;" %>
   <% end %>

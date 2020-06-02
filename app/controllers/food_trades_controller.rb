@@ -45,6 +45,8 @@ class FoodTradesController < ApplicationController
       @new_trade.save
     end
 
+    # Still some limitations, cant validate the form... its a could-have
+
     # @food_trade = FoodTrade.new(food_trade_params)
 
     # if @food_trade.save!
