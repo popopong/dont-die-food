@@ -11,4 +11,13 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     skip_authorization
   end
+
+  def search
+    if params[:ingredients]
+      @results = Recipe.all.to_a.select do |recipe|
+        params[:ingredients].all? { |id| recipe.ingredient_ids.map { |id| id.to_s }
+                            .include?(id) }
+      end
+    end
+  end
 end

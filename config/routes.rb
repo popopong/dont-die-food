@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 # /recipes/:id	GET	recipes	show
 # /POST	recipes	index (search a recipe)
 
+  get '/recipes/search', to: 'recipes#search', as: 'recipe_search'
   resources :recipes, only: [:index, :show] do
     resources :saved_recipes, only: [:create]
   end
