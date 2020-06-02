@@ -8,7 +8,7 @@ class ChatroomsController < ApplicationController
   end
 
   def show
-    @chatroom = Chatroom.find(params[:id])
+    @chatroom = Chatroom.includes(messages: :sender).find(params[:id])
     @other_user = @chatroom.other_user(current_user)
     @message = Message.new
     authorize @chatroom
