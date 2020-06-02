@@ -1,0 +1,9 @@
+<div class="container">
+  <h2>Recipes to the rescue</h2>
+
+  <% if @results %>
+    <% @results.each do |result| %>
+    <li><%= result.title %></li>
+    <% end %>
+  <% end %>
+</div>

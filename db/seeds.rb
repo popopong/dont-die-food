@@ -275,8 +275,8 @@ puts "🔗 Linking ingredients and recipes together..."
 recipes = Recipe.all
 
 recipes.each do |recipe|
-  new_recipe_ingredient = RecipeIngredient.new(recipe: recipe)
   recipe.ingredients_data.each do |ingredient|
+    new_recipe_ingredient = RecipeIngredient.new(recipe: recipe)
     found_ingredient = Ingredient.find_by(name: ingredient["name"])
     new_recipe_ingredient.ingredient = found_ingredient
     new_recipe_ingredient.save!

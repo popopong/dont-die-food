@@ -4,12 +4,14 @@
   </div>
   <br>
 
-  <%= form_tag recipes_path, method: :get do %>
-    <%= text_field_tag :query, params[:query], class: "form-control",    placeholder: "Enter an ingredient..." %><br>
-    <%= submit_tag "Make a dish!", class: "button-dark" %>
-    <%= submit_tag "Give away!", class: "button-dark" %>
+  <div class="search_form">
+    <%= form_tag recipes_path, method: :get do %>
+    <%= select_tag "ingredients", options_from_collection_for_select(Ingredient.joins(:recipe_ingredients).uniq, "id", "name"), { multiple: true } %> <br>
+    <%= submit_tag "Find a Recipe!", formaction: recipe_search_path, class: "button-dark" %>
+    <%= submit_tag "Give away!", formaction: new_food_trade_path, class: "button-dark" %>
   <% end %>
   <br>
+  </div>
 
 </div>
 
