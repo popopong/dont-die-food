@@ -15,7 +15,7 @@ const chatroom = () => {
 
     message.forEach((m) => {
       m.addEventListener("click", (event) => {
-        const time = document.querySelector('.message-time');
+        const time = document.querySelectorAll('.message-time');
         console.log(time);
         time.classList.toggle("time");
       });
