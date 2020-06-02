@@ -30,7 +30,11 @@
           <label>
             <p>
               <strong>
-                <%= (ingredient_data["measures"]["metric"]["amount"]).floor %>
+                <% if (ingredient_data["measures"]["metric"]["amount"]) <= 0.5 %>
+                  <%= (ingredient_data["measures"]["metric"]["amount"]).round(1)%>
+                <% else (ingredient_data["measures"]["metric"]["amount"]) <=1 %>
+                  <%= (ingredient_data["measures"]["metric"]["amount"]).round %>
+                <% end %>
                 <%= ingredient_data["measures"]["metric"]["unitLong"] %>
               </strong>
               <%= ingredient_data["name"] %>
