@@ -49,7 +49,9 @@ Rails.application.routes.draw do
 # I can delete a food trade               /users/:id/food_trades  DELETE  food_trades destroy
 # I can update a food trade               /users/:id/food_trades/:food_trade_id PATCH food_trades update
 
-  resources :food_trades, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  resources :food_trades, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
+    resources :chatrooms, only: [:create]
+  end
   # Get User Food Trades
   get '/my_food_trades', to: 'food_trades#user_food_trades', as: 'private_user_food_trades'
 

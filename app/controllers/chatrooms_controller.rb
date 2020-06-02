@@ -13,6 +13,16 @@ class ChatroomsController < ApplicationController
     @message = Message.new()
   end
 
+  def create
+    @chatroom = Chatroom.new(food_trade_id: params[:food_trade_id])
+
+    if @chatroom.save!
+      redirect_to chatroom_path(@chatroom)
+    else
+      redirect_to food_trade_path(params[:id])
+    end
+  end
+
   def update
     @chatroom = Chatroom.find(params[:id])
     @chatroom.update(chatroom_params)
@@ -26,6 +36,6 @@ class ChatroomsController < ApplicationController
   private
 
   def chatroom_params
-    params.require(:chatroom).permit(:starred, :sender_id, :receiver_id)
+    params.require(:chatroom).permit(:starred, :food_trade_id)
   end
 end
