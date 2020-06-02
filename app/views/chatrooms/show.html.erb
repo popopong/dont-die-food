@@ -4,7 +4,7 @@
 
   <div class="messages-box overflow-auto" id="messages" data-chatroom-id="<%= @chatroom.id %>">
 
-      <% @chatroom.messages.each do |message| %>
+      <% @chatroom.messages.order(created_at: :asc).each do |message| %>
         <% if message.sender == current_user %>
           <%= render partial: "messages/sent_message", locals: { message: message }%>
         <% else %>
