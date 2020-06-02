@@ -145,6 +145,9 @@
       font-size: 15px;
       line-height: 16px;
       color: $f-green;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
   }
 
