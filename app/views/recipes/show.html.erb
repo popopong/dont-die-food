@@ -30,7 +30,7 @@
           <label>
             <p>
               <strong>
-                <%= ingredient_data["measures"]["metric"]["amount"] %>
+                <%= (ingredient_data["measures"]["metric"]["amount"]).floor %>
                 <%= ingredient_data["measures"]["metric"]["unitLong"] %>
               </strong>
               <%= ingredient_data["name"] %>
