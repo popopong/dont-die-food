@@ -26,23 +26,32 @@ class FoodTradesController < ApplicationController
     @ingredients = Ingredient.all
     @ingredients_name = @ingredients.map { |ing| ing.name }
     @ingredients_name.sort!
+
+    @user_input_ing = params[:ingredients]&.map {|id| Ingredient.find(id.to_i)}
   end
 
   def create
+    # raise
     # find the ingredient and its id
-    ing = params[:food_trade][:user_owned_ingredient_id]
-    ing_id = Ingredient.where(name: ing).first.id
+    # ing = params[:food_trade][:user_owned_ingredient_id]
+    # ing_id = Ingredient.where(name: ing).first.id
     # create new user_owned_ingredient
-    new_user_own = UserOwnedIngredient.create(user_id: current_user.id, ingredient_id: ing_id)
 
-    @food_trade = FoodTrade.new(food_trade_params)
-    @food_trade.user_owned_ingredient = new_user_own
 
-    if @food_trade.save!
-      redirect_to :index
-    else
-      render :new
+    multiple_food_trade_params.each do |param|
+      new_user_own = UserOwnedIngredient.find_or_create_by(user_id: current_user.id, ingredient_id: param[:ingredient_id])
+      @new_trade = FoodTrade.new(param.except(:ingredient_id))
+      @new_trade.user_owned_ingredient = new_user_own
+      @new_trade.save
     end
+
+    # @food_trade = FoodTrade.new(food_trade_params)
+
+    # if @food_trade.save!
+      redirect_to food_trades_path
+    # else
+    #   render :new
+    # end
   end
 
   def edit
@@ -100,6 +109,10 @@ class FoodTradesController < ApplicationController
 
   def find_food_trade
     @food_trade = FoodTrade.find(params[:id])
+  end
+
+  def multiple_food_trade_params
+    params.require(:food_trade).map{|food_trade| food_trade.permit(:ingredient_id, :category, :description, :location, :photo)}
   end
 
   def food_trade_params
