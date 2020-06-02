@@ -26,7 +26,11 @@
       <% @recipe.ingredients_data.each do |ingredient_data| %>
         <%# Do a condition to round amount %>
         <div class="group">
-          <input type="checkbox" name="ingredient_data"/>
+          <% if @user_owned_ingredients_name.include?(ingredient_data["name"]) %>
+            <input type="checkbox" checked name="ingredient_data"/>
+          <% else %>
+            <input type="checkbox" name="ingredient_data"/>
+          <% end %>
           <label>
             <p>
               <strong>
