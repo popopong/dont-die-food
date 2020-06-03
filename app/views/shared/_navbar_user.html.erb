@@ -24,13 +24,21 @@
     <div class="top-nav-container collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav">
         <li class="nav-item text-center">
-          <%= image_tag "https://cdn0.iconfinder.com/data/icons/elasto-online-store/26/00-ELASTOFONT-STORE-READY_user-circle-512.png" %>
-          <%= link_to "View my profile", user_path(current_user), class: "nav-link align-middle" %>
+          <%= link_to user_path(current_user), class: "navbar-brand" do %>
+            <div id="navbar-user-avatar">
+              <% if current_user.photo.attached? %>
+                <%= cl_image_tag(current_user.photo.key) %>
+              <% else %>
+                <%= image_tag"https://cdn0.iconfinder.com/data/icons/elasto-online-store/26/00-ELASTOFONT-STORE-READY_user-circle-512.png"%>
+              <% end %>
+            </div>
+            <h2>View my profile</h2>
+          <% end %>
+
         </li>
 
         <li class="nav-item text-center ">
           <object data="<%= asset_path("icons/giveaways.svg") %>" type="image/svg+xml" class="align-middle"></object>
-
           <%= link_to "My giveaways", private_user_food_trades_path, class: "nav-link align-middle" %>
         </li>
 

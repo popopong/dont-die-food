@@ -18,3 +18,28 @@
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   border: white 1px solid;
 }
+
+#chats-user-avatar img {
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 16px;
+}
+
+#user-avatar img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+#navbar-user-avatar img {
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+#profile-page-avatar img {
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+}
