@@ -1,6 +1,6 @@
 <div class="container">
   <div id="typed_strings">
-    <h1 style="font-size: 28px;">Save my <span id="typed" style="text-decoration: underline;"></span></h1>
+    <h1>Save my <span id="typed"></span></h1>
   </div>
   <br>
 
@@ -8,7 +8,7 @@
   <div class="search_form">
     <%= form_tag recipes_path, method: :get do %>
     <%= select_tag "ingredients", options_from_collection_for_select(Ingredient.all, "id", "name"), multiple: true, class: "ingredient_select" %> <br>
-    <%= submit_tag "Find a Recipe!", formaction: recipe_search_path, class: "button-dark" %>
+    <%= submit_tag "Make a dish!", formaction: recipe_search_path, class: "button-dark", id: "recipe_search_btn" %>
     <%= form_for @food_trade do |f| %>
       <%= f.submit "Give away!", class: "button-dark", id: "food_trade_create", formaction: new_food_trade_path %>
       <%= f.hidden_field :ingredient, value: "", id: "food_trade_hidden_field" %>
@@ -19,12 +19,15 @@
 
 </div>
 
-<div class="carousel-card-container">
+<div class="food-card-carousel carousel-card-container">
   <div class="container">
-    <div class="carousel-title"><h2>Help your neighbours...</h2>
-      <%= link_to "see more", food_trades_path %>
+    <div class="carousel-title">
+      <div class="d-flex justify-content-between">
+        <h2>Help your neighbours...</h2>
+        <%= link_to "see more", food_trades_path, class: "more" %>
+      </div>
+    </div>
   </div>
-</div>
 
   <div class="cards-carousel">
   <% @food_trades = FoodTrade.includes(user_owned_ingredient: [:ingredient, :user]).where(status: "Available") %>
@@ -39,14 +42,14 @@
   </div>
 </div>
 
-<br>
-<br>
-
-<div class="recipes-container mb-5">
-  <div class="carousel-card-container">
+<!-- <div class="recipes-container mb-5"> -->
+  <div class="food-card-carousel carousel-card-container">
     <div class="container">
-      <div class="carousel-title"><h2>Popular recipes...</h2>
-        <%= link_to "see more", recipes_path %>
+      <div class="carousel-title">
+        <div class="d-flex justify-content-between">
+          <h2>Popular recipes...</h2>
+          <%= link_to "see more", recipes_path, class: "more" %>
+        </div>
       </div>
     </div>
 
@@ -58,7 +61,7 @@
       <% end %>
     <% end %>
   </div>
-</div>
+<!-- </div> -->
 
 <script>
   let ingredient = document.querySelector(".ingredient_select");

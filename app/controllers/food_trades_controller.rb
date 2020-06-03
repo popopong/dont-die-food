@@ -1,5 +1,5 @@
 class FoodTradesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show, :veggies, :fruits, :dairy, :meats, :other]
   before_action :find_food_trade, only: [:destroy, :edit, :update]
 
   def index
