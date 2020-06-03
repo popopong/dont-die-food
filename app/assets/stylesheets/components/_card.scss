@@ -338,7 +338,7 @@
 }
 
 .pantry-card {
-  width: 75%;
+  width: 85%;
   padding: 10px 0;
   display: flex;
   align-items: center;
@@ -352,8 +352,10 @@
   p {
     font-family: $comfortaa;
     margin: 10px;
+    padding-right: 35px;
   }
   a {
+    display: inline-block;
     position: absolute;
     right: 0;
   }
