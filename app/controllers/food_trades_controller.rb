@@ -75,31 +75,6 @@ class FoodTradesController < ApplicationController
         end
       end
     end
-
-    # if params[:food_trade][:single_food_trade] == "true"
-    #   @new_trade = FoodTrade.new(food_trade_params.except(:ingredient_id))
-    #   ingredient = Ingredient.find_by(name: params["food_trade"]["user_owned_ingredient_id"])
-    #   new_user_own = UserOwnedIngredient.find_or_create_by(user_id: current_user.id, ingredient_id: ingredient.id)
-    #   @new_trade.save
-    # else
-    #   multiple_food_trade_params.each do |param|
-    #     new_user_own = UserOwnedIngredient.find_or_create_by(user_id: current_user.id, ingredient_id: param[:ingredient_id])
-    #     @new_trade = FoodTrade.new(param.except(:ingredient_id))
-    #     @new_trade.user_owned_ingredient = new_user_own
-    #     @new_trade.save
-    #   end
-    # end
-
-
-    # Still some limitations, cant validate the form... its a could-have
-
-    # @food_trade = FoodTrade.new(food_trade_params)
-
-    # if @food_trade.save!
-      # redirect_to food_trades_path
-    # else
-    #   render :new
-    # end
   end
 
   def edit

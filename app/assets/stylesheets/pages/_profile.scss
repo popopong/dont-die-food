@@ -1,0 +1,20 @@
+.profile-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.user-details {
+  text-align: left;
+  margin: 0 50px;
+}
+
+.profile-top {
+  display: flex;
+  justify-content: center;
+}
+
+.profile-top a {
+  margin-left: 16px;
+}
