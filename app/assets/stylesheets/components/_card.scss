@@ -176,7 +176,7 @@
 // Carousel container + card
 .carousel-card-container {
   width: 100vw;
-  height: 250px;
+  height: 240px;
   margin-top: 15px;
 
   .cards-carousel {
@@ -218,6 +218,7 @@
         white-space: nowrap;
         text-overflow: ellipsis;
         a{
+          justify-content: space-between;
           font-family: Comfortaa;
           font-style: normal;
           font-weight: bold;
