@@ -21,9 +21,9 @@
           <div class="chat-info">
 
             <div class="chat-info-top">
-              <%# Showing the other user's first name  %>
-              <div class="chat-user">
-                <%= message.other_user(current_user).first_name.downcase %> 
+              <%# Showing the food_trade's ingredient %>
+              <div class="chat-listing">
+                <%= message.chatroom.food_trade.user_owned_ingredient.ingredient.name.capitalize %>
               </div>
 
               <%# Showing the date and time %>
@@ -41,10 +41,9 @@
 
             <div class="chat-info-bottom">
               <div class="chat-listing-and-message d-block">
-
-                <%# Showing the food_trade's ingredient %>
-                <div class="chat-listing">
-                  <%= message.chatroom.food_trade.user_owned_ingredient.ingredient.name %>
+                <%# Showing the other user's first name  %>
+                <div class="chat-user">
+                  <%= message.other_user(current_user).first_name %>
                 </div>
 
                 <%# Showing the latest message %>
@@ -58,7 +57,7 @@
               </div>
 
             </div>
-          </div>   
+          </div>
         <% end %>
       </div>
 

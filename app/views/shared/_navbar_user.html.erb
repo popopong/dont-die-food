@@ -20,7 +20,7 @@
         </svg>
       </div>
     <% end %>
-      
+
     <div class="top-nav-container collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav">
         <li class="nav-item text-center">
@@ -35,12 +35,12 @@
         </li>
 
         <li class="nav-item text-center ">
-          <object data="<%= asset_path("icons/giveaways.svg") %>" type="image/svg+xml" class="align-middle"></object>
+          <object data="<%= asset_path('icons/giveaways.svg') %>" type="image/svg+xml" class="align-middle"></object>
           <%= link_to "My giveaways", private_user_food_trades_path, class: "nav-link align-middle" %>
         </li>
 
         <li class="nav-item text-center ">
-          <object data="<%= asset_path("icons/logout.svg") %>" type="image/svg+xml" class="align-middle"></object>
+          <object data="<%= asset_path('icons/logout.svg') %>" type="image/svg+xml" class="align-middle"></object>
 
           <%= link_to "Log out",  destroy_user_session_path, method: :delete, class: "nav-link align-middle" %>
         </li>
