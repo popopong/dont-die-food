@@ -1,6 +1,10 @@
  <%# When we'll have Cloudinary, we'll need to change the photo to @food_trade.photo %>
-<div id="food_trade_show_img">
-    <%= image_tag("#{@food_trade.user_owned_ingredient.ingredient.photo}")%>
+  <div id="food_trade_show_img">
+    <% if @food_trade.photo.attached? %>
+      <%= cl_image_tag(@food_trade.photo.key) %>
+    <% else %>
+      <%= image_tag("#{@food_trade.user_owned_ingredient.ingredient.photo}")%>
+    <% end %>
   </div>
 
   <div class="food_trade_show_top">

@@ -15,6 +15,8 @@
   </head>
 
   <body>
+    <%= render 'shared/flashes' %>
+    
     <%# Navbar %>
     <% if user_signed_in? %>
       <%= render 'shared/navbar_user' %>

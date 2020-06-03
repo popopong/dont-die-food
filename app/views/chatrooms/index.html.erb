@@ -8,9 +8,14 @@
 
         <%= link_to(chatroom_path(message.chatroom.id)) do %>
         <div class="inbox-card">
-          <div class="user-avatar">
+          <div id="chats-user-avatar">
+            <% if message.other_user(current_user).photo.attached? %>
+              <%= cl_image_tag(message.other_user(current_user).photo.key)%>
+            <% else %>
+              <%= image_tag("https://cdn0.iconfinder.com/data/icons/elasto-online-store/26/00-ELASTOFONT-STORE-READY_user-circle-512.png")%>
+            <% end %>
             <%# Showing the other user's avatar %>
-            <%= image_tag("https://cdn0.iconfinder.com/data/icons/elasto-online-store/26/00-ELASTOFONT-STORE-READY_user-circle-512.png", height:'45', class:"message-user-avatar")%>
+            <%# image_tag("https://cdn0.iconfinder.com/data/icons/elasto-online-store/26/00-ELASTOFONT-STORE-READY_user-circle-512.png", height:'45', class:"message-user-avatar")%>
           </div>
 
           <div class="chat-info">

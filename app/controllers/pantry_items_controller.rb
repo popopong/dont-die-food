@@ -7,13 +7,15 @@ class PantryItemsController < ApplicationController
     @pantry_item = PantryItem.new(pantry_item_params)
     @pantry_item.user = current_user
 
-    if @pantry_item.save
+    if @pantry_item.save!
       UserOwnedIngredient.find_or_create_by(user: current_user, ingredient_id: params[:pantry_item][:ingredient_id])
       
-      redirect_to pantry "/users/:user_id/pantry_items"
+      pantry_array = ["🧂", "🧈", "🥛", "🧅", "🥜", "🍞"]
+      flash.notice = "#{pantry_array.sample} Food trade successfully added!"
+      redirect_to pantry_items_path
     else
       # Redirect to pantry_items index page for now because don't know how to render popup
-      render "/users/:user_id/pantry_items"
+      redirect_to pantry_items_path
     end
   end
 
