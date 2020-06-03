@@ -14,19 +14,19 @@ User.destroy_all
 
 puts "🧑 Creating users"
 elie_avatar = URI.open('https://avatars2.githubusercontent.com/u/1916741?s=460&u=e951179af4188f831a907fee881c8e00e0ab1583&v=4')
-elie = User.create!(first_name: "Elie", last_name: "Hymowitz", email: "elie@hello.com", password: "1234567", address: "3819 Avenue Calixa-Lavallée, Montréal, QC H2L 3A7")
+elie = User.create!(first_name: "Elie", last_name: "Hymowitz", email: "elie@foodie.com", password: "1234567", address: "3819 Avenue Calixa-Lavallée, Montréal, QC H2L 3A7")
 elie.photo.attach(io: elie_avatar, filename: 'elie.jpeg', content_type: 'image/jpeg')
 
 sd_avatar = URI.open('https://avatars3.githubusercontent.com/u/61625854?s=460&u=571abe2a475f5ac22dc6cb262a57929a0e9f4874&v=4')
-stephd = User.create!(first_name: "Stephanie", last_name: "Diep", email: "stephd@hello.com", password: "1234567", address: "4141 Pierre-de Coubertin Ave, Montreal, Quebec H1V 3N7")
+stephd = User.create!(first_name: "Stephanie", last_name: "Diep", email: "stephd@foodie.com", password: "1234567", address: "4141 Pierre-de Coubertin Ave, Montreal, Quebec H1V 3N7")
 stephd.photo.attach(io: sd_avatar, filename: 'stephd.jpeg', content_type: 'image/jpeg')
 
 po_avatar = URI.open('https://avatars1.githubusercontent.com/u/58827819?s=460&u=c17ec47cbd61879564cf1aec066a5041884f02d9&v=4')
-poyan = User.create!(first_name: "Poyan", last_name: "Ng", email: "poyan@hello.com", password: "1234567", address: "327 Avenue Melville, Westmount, Quebec H3Z 2J7")
+poyan = User.create!(first_name: "Poyan", last_name: "Ng", email: "poyan@foodie.com", password: "1234567", address: "327 Avenue Melville, Westmount, Quebec H3Z 2J7")
 poyan.photo.attach(io: po_avatar, filename: 'poyan.jpeg', content_type: 'image/jpeg')
 
 sbd_avatar = URI.open('https://avatars3.githubusercontent.com/u/59927242?s=460&u=5200cdcbde208c35eaaa7f04d83d78c121969b48&v=4')
-stephbd = User.create!(first_name: "Stephanie", last_name: "BD", email: "stephbd@hello.com", password: "1234567", address: "705 Saint-Catherine St W, Montreal, Quebec H3B 4G5")
+stephbd = User.create!(first_name: "Stephanie", last_name: "BD", email: "stephbd@foodie.com", password: "1234567", address: "705 Saint-Catherine St W, Montreal, Quebec H3B 4G5")
 stephbd.photo.attach(io: sbd_avatar, filename: 'stephbd.jpeg', content_type: 'image/jpeg')
 
 puts "👩‍🍳 Creating recipes..."
@@ -460,10 +460,6 @@ Chatroom.find_or_create_by(food_trade: User.second.food_trades.third, starred: t
 Message.find_or_create_by(content: "Hii Steph! Need some avocadoes for my avocado toast tomorrow morning!", sender_id: User.last.id, receiver_id: User.second.id, chatroom: Chatroom.find_by(food_trade: User.second.food_trades.third))
 Message.find_or_create_by(content: "OMG, avocado toasts are the best! I'm free tonight if you would like to drop by to pick them up!", sender_id: User.second.id, receiver_id: User.last.id, chatroom: Chatroom.find_by(food_trade: User.second.food_trades.third))
 
-Chatroom.find_or_create_by(food_trade: User.second.food_trades.second, starred: true) # Garlic
-Message.find_or_create_by(content: "Hey, how's is it going? Do you still have garlic?", sender_id: User.first.id, receiver_id: User.second.id, chatroom: Chatroom.find_by(food_trade: User.second.food_trades.second))
-Message.find_or_create_by(content: "Hey, I'm doing good! Yes I still have garlic. When are you free for the trade?", sender_id: User.second.id, receiver_id: User.first.id, chatroom: Chatroom.find_by(food_trade: User.second.food_trades.second))
-
 # Poyan
 Chatroom.find_or_create_by(food_trade: User.third.food_trades.first, starred: true) # Zucchini
 Message.find_or_create_by(content: "Hello! I need some zucchinis please!", sender_id: User.second.id, receiver_id: User.third.id, chatroom: Chatroom.find_by(food_trade: User.third.food_trades.first))
@@ -481,8 +477,8 @@ Message.find_or_create_by(content: "Hi Steph! How bad are the orange tomatoes?",
 Chatroom.find_or_create_by(food_trade: User.last.food_trades.second, starred: true) # Garlic
 Message.find_or_create_by(content: "Howdyyy! I would like to trade your garlic", sender_id: User.second.id, receiver_id: User.last.id, chatroom: Chatroom.find_by(food_trade: User.last.food_trades.second))
 
-Chatroom.find_or_create_by(food_trade: User.last.food_trades.third, starred: true) # Bacon
-Message.find_or_create_by(content: "Hey! I need some bacon, thanks!", sender_id: User.third.id, receiver_id: User.last.id, chatroom: Chatroom.last)
+Chatroom.find_or_create_by(food_trade: User.last.food_trades.third, starred: true) # Heavy cream
+Message.find_or_create_by(content: "Hey! I need some heavy cream, thanks!", sender_id: User.third.id, receiver_id: User.last.id, chatroom: Chatroom.last)
 Message.find_or_create_by(content: "Hey! Yes, when are you free to come pick it up?", sender_id: User.last.id, receiver_id: User.third.id, chatroom: Chatroom.find_by(food_trade: User.last.food_trades.third))
 
 
