@@ -3,9 +3,10 @@ class FoodTradesController < ApplicationController
   before_action :find_food_trade, only: [:destroy, :edit, :update]
 
   def index
-    @food_trades = FoodTrade.includes(user_owned_ingredient: [:user, :ingredient]).where(status: "Available")
-
-    @food_trades_geocoded = FoodTrade.includes(user_owned_ingredient: [:user, :ingredient]).geocoded
+    @food_trades = policy_scope(FoodTrade)
+    @food_trades = FoodTrade.where(status: "Available")
+    @food_trades_geocoded = FoodTrade.geocoded
+    authorize @food_trades
 
     @markers = @food_trades_geocoded.map do |food_trade|
       {
@@ -19,23 +20,23 @@ class FoodTradesController < ApplicationController
 
   def show
     @food_trade = FoodTrade.find(params[:id])
-
     @markers =[{
         lat: @food_trade.latitude,
         lng: @food_trade.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { food_trade: @food_trade }),
         image_url: helpers.asset_url('icons/location.svg')
       }]
+
+    authorize @food_trade
   end
 
   def new
     @food_trade = FoodTrade.new
+    # An ingredient list for the users to select
     @ingredients = Ingredient.all
     @ingredients_name = @ingredients.map { |ing| ing.name }
     @ingredients_name.sort!
-    @user_address = current_user.address
-
-    @user_input_ing = params[:ingredients]&.map {|id| Ingredient.find(id.to_i)}
+    authorize @food_trade
   end
 
   def create
@@ -48,7 +49,8 @@ class FoodTradesController < ApplicationController
       ingredient = Ingredient.find(params["food_trade"][0]["ingredient_id"])
       new_user_own = UserOwnedIngredient.find_or_create_by(user_id: current_user.id, ingredient_id: ingredient.id)
       @new_trade.user_owned_ingredient = new_user_own
-
+      authorize @new_trade
+      
       if @new_trade.save!
         flash.notice = "#{food_array.sample} Food trade successfully added!"
         redirect_to food_trade_path(@new_trade)
@@ -63,6 +65,7 @@ class FoodTradesController < ApplicationController
         @new_trade.user_owned_ingredient = new_user_own
         flash.notice = "#{food_array.sample} Food trade successfully added!"
 
+        authorize @new_trade
         if @new_trade.save!
           flash.notice = "#{food_array.sample} Multiple food trades successfully added!"
           redirect_to private_user_food_trades_path
@@ -75,6 +78,7 @@ class FoodTradesController < ApplicationController
   end
 
   def edit
+    authorize @food_trade
     @user_owned_ingredient = @food_trade.user_owned_ingredient
     @ingredients = Ingredient.all
     @ingredients_name = @ingredients.map { |ing| ing.name }
@@ -82,6 +86,7 @@ class FoodTradesController < ApplicationController
   end
 
   def update
+    authorize @food_trade
     @food_trade.update(food_trade_params)
     if @food_trade.save
       redirect_to food_trade_path(@food_trade)
@@ -91,6 +96,7 @@ class FoodTradesController < ApplicationController
   end
 
   def destroy
+    authorize @food_trade
     if @food_trade.destroy
       flash.notice = "Food trade successfully deleted!"
       redirect_to food_trades_path
@@ -103,27 +109,33 @@ class FoodTradesController < ApplicationController
   def user_food_trades
     @user = current_user
     @food_trades = @user.food_trades.includes(user_owned_ingredient: [:user, :ingredient])
+    authorize @food_trades
   end
 
   # FoodTrade categories start here
   def veggies
     @food_trades = FoodTrade.includes(user_owned_ingredient: [:user, :ingredient]).where(category: "Veggies")
+    authorize @food_trades
   end
 
   def fruits
     @food_trades = FoodTrade.includes(user_owned_ingredient: [:user, :ingredient]).where(category: "Fruits")
+    authorize @food_trades
   end
 
   def dairy
     @food_trades = FoodTrade.includes(user_owned_ingredient: [:user, :ingredient]).where(category: "Dairy")
+    authorize @food_trades
   end
 
   def meats
     @food_trades = FoodTrade.includes(user_owned_ingredient: [:user, :ingredient]).where(category: "Meats")
+    authorize @food_trades
   end
 
   def other
     @food_trades = FoodTrade.includes(user_owned_ingredient: [:user, :ingredient]).where(category: "Other")
+    authorize @food_trades
   end
 
   private

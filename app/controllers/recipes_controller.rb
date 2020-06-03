@@ -2,11 +2,14 @@ class RecipesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :search]
 
   def index
+    @recipes = policy_scope(Recipe)
     @recipes = Recipe.all
+    skip_authorization
   end
 
   def show
     @recipe = Recipe.find(params[:id])
+    skip_authorization
     @save_recipe = SavedRecipe.new
     @user_saved_recipe = SavedRecipe.where(user: current_user, recipe: @recipe)
 
