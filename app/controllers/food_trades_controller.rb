@@ -33,17 +33,12 @@ class FoodTradesController < ApplicationController
     @ingredients = Ingredient.all
     @ingredients_name = @ingredients.map { |ing| ing.name }
     @ingredients_name.sort!
+    @user_address = current_user.address
 
     @user_input_ing = params[:ingredients]&.map {|id| Ingredient.find(id.to_i)}
   end
 
   def create
-    # raise
-    # find the ingredient and its id
-    # ing = params[:food_trade][:user_owned_ingredient_id]
-    # ing_id = Ingredient.where(name: ing).first.id
-    # create new user_owned_ingredient
-
 
     multiple_food_trade_params.each do |param|
       new_user_own = UserOwnedIngredient.find_or_create_by(user_id: current_user.id, ingredient_id: param[:ingredient_id])
@@ -51,6 +46,7 @@ class FoodTradesController < ApplicationController
       @new_trade.user_owned_ingredient = new_user_own
       @new_trade.save
     end
+
 
     # Still some limitations, cant validate the form... its a could-have
 
