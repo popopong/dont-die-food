@@ -16,15 +16,15 @@ class FoodTradePolicy < ApplicationPolicy
   end
 
   def destroy?
-    trade_owner?
+    user_is_owner?
   end
 
   def edit?
-    trade_owner?
+    user_is_owner?
   end
 
   def update?
-    trade_owner?
+    user_is_owner?
   end
   
   def user_food_trades?
@@ -62,5 +62,9 @@ class FoodTradePolicy < ApplicationPolicy
 
   def trade_owner?
     record.each { |rec| rec.user_owned_ingredient.user == user } 
+  end
+
+  def user_is_owner?
+    record.user_owned_ingredient.user == user
   end
 end
