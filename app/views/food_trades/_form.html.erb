@@ -5,12 +5,8 @@
       <%= f.input :category, label: 'Category', collection: ["Veggies", "Fruits", "Dairy", "Meats", "Other"] %>
       <%= f.input :description, label: 'Description', value: "avocado?" %>
       <%= f.input :location, label: 'Address' %>
+      <%= f.input :photo, as: :file, input_html: { class: "photo-upload", name: "food_trade[][photo]" } %>
 
-      <label for="cloudinary-fileupload">Upload a photo</label>
-      <%= cl_image_upload_tag(:image_id,
-        :tags => "directly_uploaded",
-        :crop => :limit, :width => 1000, :height => 1000,
-        :eager => [{ :crop => :fill, :width => 150, :height => 100 }])  %>
     </div>
     <%= f.button :submit, 'Share', class: "button-dark mx-auto mt-4", style: "display: block;" %>
   <% end %>
