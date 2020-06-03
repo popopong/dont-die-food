@@ -21,6 +21,8 @@ class RecipesController < ApplicationController
   end
 
   def search
+    skip_authorization
+
     if params[:ingredients]
       @results = Recipe.all.to_a.select do |recipe|
         params[:ingredients].all? { |id| recipe.ingredient_ids.map { |id| id.to_s }
