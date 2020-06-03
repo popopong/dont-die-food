@@ -9,7 +9,7 @@ const initSelect2 = () => {
     $('#ingredients').select2({
       sorter: data => data.sort((a, b) => a.text.localeCompare(b.text)),
     });
-    
+
   document.querySelectorAll(".food_trade_select").forEach((select) => {
     $(select).select2()
   })
@@ -20,3 +20,4 @@ const initSelect2 = () => {
   }
 }
 
+export { initSelect2 };

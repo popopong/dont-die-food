@@ -103,24 +103,31 @@
   align-items: flex-start;
   width: 100%;
 
-  textarea, label, input, select, .select2  {
-    margin: 0 auto;
-  }
-
   label {
     margin-left: 13%;
   }
 
   textarea, input, select, .select2 {
     // Styling
+    margin: 0 auto;
     background: $f-lightgrey;
     border: 1px solid $f-nav-green;
     box-sizing: border-box;
     border-radius: 25px;
-
-    // Dimensions
     width: 80%;
+  }
+
+  input, select, .select2 {
+    // Dimensions
     height: 40px;
+  }
+
+  ::placeholder { 
+    opacity: .5;
+  }
+
+  textarea, input, select {
+    padding: 6px 20px;
   }
 
   .select2-container {
@@ -133,8 +140,8 @@
   }
 
   .select2-selection__rendered {
+    padding: 0px 20px;
     margin-top: 5px;
-    margin-left: 5px;
   }
 
   // Image upload styles
