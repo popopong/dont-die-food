@@ -14,7 +14,7 @@
       <%= link_to  edit_food_trade_path do %>
         <% image_tag "icons/edit.svg" %>
       <% end %>
-      <%= link_to  food_trade_path(@food_trade), method: :delete, data: { confirm: "Are you sure you want to delete #{@food_trade.user_owned_ingredient.ingredient.name} from your food trades?" }  do %>
+      <%= link_to  food_trade_path(@food_trade), method: :delete, data: { confirm: "Delete #{@food_trade.user_owned_ingredient.ingredient.name} from your food trades?" }  do %>
         <% image_tag "icons/garbage.svg" %>
       <% end %>
     </div>
