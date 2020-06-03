@@ -26,11 +26,16 @@ class SavedRecipesController < ApplicationController
     if params[:toggle_action] == "create"
       @saved_recipe = SavedRecipe.new(recipe_id: params[:recipe_id])
       @saved_recipe.user = current_user
+
       authorize @saved_recipe
+      
       @saved_recipe.save!
       redirect_to recipe_path(params[:recipe_id])
     else
       @saved_recipe = SavedRecipe.find(params[:saved_recipe_id])
+
+      authorize @saved_recipe
+
       @saved_recipe.destroy!
       redirect_to recipe_path(params[:recipe_id])
     end
