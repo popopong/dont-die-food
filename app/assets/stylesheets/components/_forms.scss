@@ -179,7 +179,6 @@
     width: 100%;
     padding: 6px 0;
     display: flex;
-
   }
   .select2-selection__choice {
     background: $turquoise !important;
@@ -205,4 +204,9 @@
 .pantry-form {
   text-align: center;
 
+}
+
+
+.select2-hidden-accessible {
+  border: 1px solid red!important;
 }
