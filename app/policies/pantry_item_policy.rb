@@ -4,11 +4,11 @@ class PantryItemPolicy < ApplicationPolicy
   end
 
   def create?
-    owner?
+    user_is_owner?
   end
 
   def destroy?
-    owner?
+    user_is_owner?
   end
 
   class Scope < Scope
@@ -20,5 +20,9 @@ class PantryItemPolicy < ApplicationPolicy
   private
     def owner?
       record.each {|r| r.user == user }
+    
+      
+    def user_is_owner?
+      record.user == user
     end
 end
