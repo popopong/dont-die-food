@@ -3,5 +3,6 @@ class PagesController < ApplicationController
 
   def home
     @recipes = Recipe.all
+    @food_trade = FoodTrade.new
   end
 end

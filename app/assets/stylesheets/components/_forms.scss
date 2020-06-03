@@ -135,17 +135,17 @@
 
   // Image upload styles
 
-  .cloudinary-fileupload {
+  .photo-upload {
     color: transparent;
     position: relative;
     color: $marine;
     padding: 3px 0 3px 0;
   }
-  .cloudinary-fileupload::-webkit-file-upload-button {
+  .photo-upload::-webkit-file-upload-button {
     visibility: hidden;
   }
 
-  .cloudinary-fileupload::before {
+  .photo-upload::before {
     content: 'Add';
     color: $marine;
     display: inline-block;
@@ -177,7 +177,9 @@
     border-radius: 30px;
     border: 1px solid $f-nav-green !important;
     width: 100%;
-    padding: 15px 0;
+    padding: 6px 0;
+    display: flex;
+
   }
   .select2-selection__choice {
     background: $turquoise !important;
@@ -187,6 +189,7 @@
     border: none !important;
     font-weight: bold;
     font-family: $comfortaa;
+    margin: 3px 0 !important;
   }
 
   .select2-selection__choice__remove {
