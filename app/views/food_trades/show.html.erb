@@ -1,41 +1,7 @@
 <div class="container">
-  <%# When we'll have Cloudinary, we'll need to change the photo to @food_trade.photo %>
-<div id="food_trade_show_img">
-    <%= image_tag("#{@food_trade.user_owned_ingredient.ingredient.photo}")%>
-  </div>
-
-  <div class="food_trade_show_top">
-    <p>Posted on <%= @food_trade.created_at.localtime.strftime("%d %b, %Y") %></p>
-    <% if current_user != @food_trade.user_owned_ingredient.user %>
-    <p>from <%= @food_trade.user_owned_ingredient.user.first_name.downcase  %></p>
-    <% end %>
-    
-    <% if current_user == @food_trade.user_owned_ingredient.user %>
-    <div class="food_trade_show_links">
-      <%= link_to  edit_food_trade_path do %>
-        <% image_tag "icons/edit.svg" %>
-      <% end %>
-      <%= link_to  edit_food_trade_path do %>
-        <% image_tag "icons/garbage.svg" %>
-      <% end %>
-    </div>
-    <% else %>
-      <div class="food_trade_links">
-        <%# Need to replace with user's avatar %>
-          <%= image_tag "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=60", id: "user-avatar" %>
-        <%= link_to  food_trade_chatrooms_path(@food_trade), method: :post do %>
-          <% image_tag "icons/message.svg" %>
-        <% end %>
-      </div>
-    <% end %>
-
-  </div>
-
-  <div class="food_trade_name_and_user">
-    <h1><%= @food_trade.user_owned_ingredient.ingredient.name.capitalize %></h1>
-  </div>
-
-  <div class="food_trade_desc">
-    <p><%= @food_trade.description %></p>
-  </div>
+  <% if current_user != @food_trade.user_owned_ingredient.user %>
+    <%= render 'show_other_user'%>
+  <% else %>
+    <%= render 'show_owner'%>
+  <% end %>
 </div>
