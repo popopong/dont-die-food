@@ -103,6 +103,10 @@
   align-items: flex-start;
   width: 100%;
 
+  h1 {
+    padding-bottom: 10px;
+  }
+
   textarea, label, input, select, .select2  {
     margin: 0 auto;
   }
