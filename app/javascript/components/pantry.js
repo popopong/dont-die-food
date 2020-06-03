@@ -1,3 +1,5 @@
+import $ from 'jquery'
+
 const trigger = document.getElementById("pantry-remove-trigger");
 
 const targets = document.querySelectorAll(".pantry-remove")
