@@ -19,6 +19,11 @@ class RecipesController < ApplicationController
 
   def search
     if params[:ingredients]
+      @results = Recipe.all.to_a.select do |recipe|
+        params[:ingredients].all? { |id| recipe.ingredient_ids.map { |id| id.to_s }
+                            .include?(id) }
+      end
+
       @search_terms_count = 0
       pantry_item_match = false
       current_user.pantry_items.each do |item|
@@ -31,6 +36,5 @@ class RecipesController < ApplicationController
         @search_terms_count = params[:ingredients].length
       end
     end
-
   end
 end
