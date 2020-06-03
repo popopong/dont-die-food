@@ -13,6 +13,21 @@ class ChatroomsController < ApplicationController
     @message = Message.new()
   end
 
+  def create
+    @food_trade = FoodTrade.find(params[:food_trade_id])
+    # If there's a chatroom where there's one message from me and for the same food trade, then go to that chatroom (and don't create a new one)
+    if Chatroom.find_by(food_trade: @food_trade)
+    end
+    @chatroom = Chatroom.new(food_trade: @food_trade)
+    @chatroom.messages.new(sender: current_user, receiver: @food_trade.user_owned_ingredient.user, chatroom: @chatroom, content: "Chatroom successfully created (this is an automated message).")
+
+    if @chatroom.save!
+      redirect_to chatroom_path(@chatroom)
+    else
+      redirect_to food_trade_path(params[:id])
+    end
+  end
+
   def update
     @chatroom = Chatroom.find(params[:id])
     @chatroom.update(chatroom_params)
@@ -26,6 +41,6 @@ class ChatroomsController < ApplicationController
   private
 
   def chatroom_params
-    params.require(:chatroom).permit(:starred, :sender_id, :receiver_id)
+    params.require(:chatroom).permit(:starred, :food_trade_id)
   end
 end
