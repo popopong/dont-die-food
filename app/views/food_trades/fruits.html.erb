@@ -7,7 +7,7 @@
   <div class="cards">
     <% @food_trades.shuffle.each do |food_trade| %>
       <div class="small-food-card">
-                <% if food_trade.photo.attached? %>
+        <% if food_trade.photo.attached? %>
           <%= cl_image_tag(food_trade.photo.key) %>
         <% else %>
           <%= image_tag("#{food_trade.user_owned_ingredient.ingredient.photo}", width: "100%", height: "70%", alt: "#{food_trade.user_owned_ingredient.ingredient.photo}", class: "recipe-image") %>
