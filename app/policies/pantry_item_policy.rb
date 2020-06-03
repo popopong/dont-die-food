@@ -20,7 +20,7 @@ class PantryItemPolicy < ApplicationPolicy
   private
     def owner?
       record.each {|r| r.user == user }
-    
+    end
       
     def user_is_owner?
       record.user == user
