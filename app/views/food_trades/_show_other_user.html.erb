@@ -1,0 +1,37 @@
+ <%# When we'll have Cloudinary, we'll need to change the photo to @food_trade.photo %>
+<div id="food_trade_show_img">
+    <%= image_tag("#{@food_trade.user_owned_ingredient.ingredient.photo}")%>
+  </div>
+
+  <div class="food_trade_show_top">
+    <div class="food_trade_posted_and_user">
+      <p>Posted on <%= @food_trade.created_at.localtime.strftime("%d %b, %Y") %></p>
+      <div class="food_trade_name_and_user">
+      <h1><%= @food_trade.user_owned_ingredient.ingredient.name.capitalize %></h1>
+      </div>
+      <p>from <%= @food_trade.user_owned_ingredient.user.first_name.downcase  %></p>
+    </div>
+
+    <div class="food_trade_links d-flex">
+      <%# Need to replace with user's avatar %>
+      <div class="food_trade_user_avatar">
+        <%= image_tag "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=60", id: "user-avatar" %>
+      </div>
+      <div class="create_chat">
+        <%= link_to  food_trade_chatrooms_path(@food_trade), method: :post do %>
+          <% image_tag "icons/message.svg" %>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="food_trade_desc">
+    <p><%= @food_trade.description %></p>
+    <p><%= @food_trade.location %></p>
+  </div>
+
+    <div id="map"
+        style="width: 100%; height: 200px;"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_APIKEY'] %>"></div>

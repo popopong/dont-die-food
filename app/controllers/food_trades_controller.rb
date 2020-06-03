@@ -19,6 +19,13 @@ class FoodTradesController < ApplicationController
 
   def show
     @food_trade = FoodTrade.find(params[:id])
+
+    @markers =[{
+        lat: @food_trade.latitude,
+        lng: @food_trade.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { food_trade: @food_trade }),
+        image_url: helpers.asset_url('icons/location.svg')
+      }]
   end
 
   def new

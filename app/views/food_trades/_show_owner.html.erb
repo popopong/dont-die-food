@@ -1,0 +1,26 @@
+ <%# When we'll have Cloudinary, we'll need to change the photo to @food_trade.photo %>
+<div id="food_trade_show_img">
+    <%= image_tag("#{@food_trade.user_owned_ingredient.ingredient.photo}")%>
+  </div>
+
+  <div class="food_trade_show_top">
+    <p>Posted on <%= @food_trade.created_at.localtime.strftime("%d %b, %Y") %></p>
+
+    <div class="food_trade_show_links">
+      <%= link_to  edit_food_trade_path do %>
+        <% image_tag "icons/edit.svg" %>
+      <% end %>
+      <%= link_to  food_trade_path(@food_trade), method: :delete do %>
+        <% image_tag "icons/garbage.svg" %>
+      <% end %>
+    </div>
+
+  </div>
+
+  <div class="food_trade_name_and_user">
+    <h1><%= @food_trade.user_owned_ingredient.ingredient.name.capitalize %></h1>
+  </div>
+
+  <div class="food_trade_desc">
+    <p><%= @food_trade.description %></p>
+  </div>
