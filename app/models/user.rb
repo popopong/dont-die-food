@@ -24,4 +24,9 @@ class User < ApplicationRecord
     end
     number.count
   end
+
+
+  def self.recipe_sorter(recipes)
+
+  end
 end

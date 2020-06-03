@@ -2,6 +2,7 @@
   <h2>Recipes to the rescue ...</h2>
 
   <div class="recipe-card">
+    <% # class method in recipe for sorting %>
     <% if @results && @results.length > 0 %>
       <% @results.each do |result| %>
         <div class="recipe-big-card"><%= link_to image_tag("#{result.photo}", size:"350x250", alt: "Recipe image", class: "recipe-card"), recipe_path(result) %>
