@@ -20,28 +20,24 @@
         </svg>
       </div>
     <% end %>
+      
+    <div class="top-nav-container collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <li class="nav-item text-center">
+          <%= image_tag "https://cdn0.iconfinder.com/data/icons/elasto-online-store/26/00-ELASTOFONT-STORE-READY_user-circle-512.png" %>
+          <%= link_to "View my profile", user_path(current_user), class: "nav-link align-middle" %>
+        </li>
 
-    <%= link_to user_path(current_user), class: "navbar-brand" do %>
-      <%# How do we add the avatar to User with Cloudinary? Need to use current_user.avatar %>
-      <%= image_tag "https://cdn0.iconfinder.com/data/icons/elasto-online-store/26/00-ELASTOFONT-STORE-READY_user-circle-512.png" %>
-    <% end %>
+        <li class="nav-item text-center ">
+          <object data="<%= asset_path("icons/giveaways.svg") %>" type="image/svg+xml" class="align-middle"></object>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <%= link_to "Log out",  destroy_user_session_path, method: :delete, class: "nav-link" %>
+          <%= link_to "My giveaways", private_user_food_trades_path, class: "nav-link align-middle" %>
         </li>
-        <li class="nav-item">
-          <%= link_to "My pantry", pantry_items_path(current_user), class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "My cookbook", saved_recipes_path(current_user), class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Community", food_trades_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Chat", chatrooms_path, class: "nav-link" %>
+
+        <li class="nav-item text-center ">
+          <object data="<%= asset_path("icons/logout.svg") %>" type="image/svg+xml" class="align-middle"></object>
+
+          <%= link_to "Log out",  destroy_user_session_path, method: :delete, class: "nav-link align-middle" %>
         </li>
       </ul>
     </div>
