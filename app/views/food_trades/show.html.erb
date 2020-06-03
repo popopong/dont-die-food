@@ -7,6 +7,7 @@
       <p><%= @food_trade.location %></p>
       <p><%= @food_trade.description %></p>
       <p><%= @food_trade.created_at %></p>
+      <%= cl_image_tag(@food_trade.photo.key) %>
     </li>
   </ul>
 </div>

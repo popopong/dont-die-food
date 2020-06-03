@@ -1,5 +1,9 @@
 <% if user_signed_in? %>
-  <%=  %>
+  <% if current_user.photo.key.present?%>
+    <%= cl_image_tag current_user.photo.key %>
+  <% else%>
+    <%= image_tag "https://cdn0.iconfinder.com/data/icons/elasto-online-store/26/00-ELASTOFONT-STORE-READY_user-circle-512.png" %>
+  <% end %>
 <% else%>
   <%= image_tag "https://cdn0.iconfinder.com/data/icons/elasto-online-store/26/00-ELASTOFONT-STORE-READY_user-circle-512.png" %>
 <% end %>
