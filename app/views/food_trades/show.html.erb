@@ -10,4 +10,10 @@
       <%= cl_image_tag(@food_trade.photo.key) %>
     </li>
   </ul>
+
+  <% if current_user != @food_trade.user_owned_ingredient.user %>
+    <%= render 'show_other_user'%>
+  <% else %>
+    <%= render 'show_owner'%>
+  <% end %>
 </div>

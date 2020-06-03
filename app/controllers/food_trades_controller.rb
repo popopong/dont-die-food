@@ -19,6 +19,13 @@ class FoodTradesController < ApplicationController
 
   def show
     @food_trade = FoodTrade.find(params[:id])
+
+    @markers =[{
+        lat: @food_trade.latitude,
+        lng: @food_trade.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { food_trade: @food_trade }),
+        image_url: helpers.asset_url('icons/location.svg')
+      }]
   end
 
   def new
@@ -26,6 +33,7 @@ class FoodTradesController < ApplicationController
     @ingredients = Ingredient.all
     @ingredients_name = @ingredients.map { |ing| ing.name }
     @ingredients_name.sort!
+    @user_address = current_user.address
 
     @user_input_ing = params[:ingredients]&.map {|id| Ingredient.find(id.to_i)}
   end
@@ -40,8 +48,6 @@ class FoodTradesController < ApplicationController
       @new_trade = FoodTrade.new(food_trade_params.except(:ingredient_id))
       ingredient = Ingredient.find_by(name: params["food_trade"]["user_owned_ingredient_id"])
       new_user_own = UserOwnedIngredient.find_or_create_by(user_id: current_user.id, ingredient_id: ingredient.id)
-      @new_trade.user_owned_ingredient = new_user_own
-      @new_trade.save
     else
       multiple_food_trade_params.each do |param|
         new_user_own = UserOwnedIngredient.find_or_create_by(user_id: current_user.id, ingredient_id: param[:ingredient_id])
@@ -50,6 +56,7 @@ class FoodTradesController < ApplicationController
         @new_trade.save
       end
     end
+
 
     # Still some limitations, cant validate the form... its a could-have
 

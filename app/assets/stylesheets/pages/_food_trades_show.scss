@@ -1,0 +1,32 @@
+#food_trade_show_img > img {
+  width: 372.95px;
+  height: 200px;
+  object-fit: cover;
+  justify-content: center;
+  border-radius: 16px;
+  margin-bottom: 16px;
+}
+
+.food_trade_show_top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  p {
+    color: $f-green;
+  }
+}
+
+.food_trade_show_links img:first-child {
+ margin-right: 12px; 
+}
+
+#user-avatar {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.food_trade_desc {
+  margin-bottom: 32px;
+}
