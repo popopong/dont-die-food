@@ -176,7 +176,7 @@
   }
 }
 
-.search_form {
+.search-form {
   text-align: center;
   .select2 {
     margin: 10px 0;
@@ -190,7 +190,6 @@
     width: 100%;
     padding: 6px 0;
     display: flex;
-
   }
 
   .select2-selection__choice {
@@ -213,11 +212,44 @@
   .select2-selection__rendered {
     padding: 0px 20px !important;
   }
-  
+
   #recipe_search_btn {
     // width: 42%;
     padding-left: 22px;
     margin-right: 10px;
 
   }
+}
+
+.pantry-form {
+  text-align: center;
+
+  .new_pantry_item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .select2-selection {
+    border-radius: 30px;
+    border: 1px solid #45C28F !important;
+    width: 100%;
+    padding: 0px 13px;
+    display: flex;
+    justify-content: center;
+    justify-content: left;
+    align-items: flex-end;
+    padding-left: 40px;
+    font-family: $comfortaa;
+    font-size: 15px;
+    font-weight: bold;
+    height: 33px;
+  }
+
+  input {
+    background:url(icons/pantry-add.svg);
+    background-repeat: no-repeat;
+    width: 40px;
+  }
+
 }

@@ -19,8 +19,14 @@ class User < ApplicationRecord
   validates :encrypted_password, presence: true
 
   def number_of_pantry_items_for(recipe)
-    pantry_items.count do |pantry_item|
+    number = pantry_items.select do |pantry_item|
       recipe.ingredient_ids.include?( pantry_item.ingredient_id )
     end
+    number.count
+  end
+
+
+  def self.recipe_sorter(recipes)
+
   end
 end
