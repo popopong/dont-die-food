@@ -1,7 +1,6 @@
 // Specific CSS for your home-page
-.homepage_community, .recipes-container {
-  position: relative;
 
+.food-card-carousel {
   h2 {
     font-size: 22px;
     display: inline;
@@ -9,17 +8,7 @@
   a.more {
     font-size: 16px;
     font-weight: 500;
-    position: absolute;
     right: 10px;
     color: $f-nav-green;
-  }
-
-}
-
-.homepage-carousel {
-  height: 200px;
-
-  .cards-carousel {
-    padding-top: 16px;
   }
 }
