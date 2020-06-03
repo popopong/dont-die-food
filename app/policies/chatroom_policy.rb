@@ -19,8 +19,9 @@ class ChatroomPolicy < ApplicationPolicy
 
   private
   def own_chatroom?
-    record.food_trade.user_owned_ingredient.user == user 
+    # record.food_trade.user_owned_ingredient.user == user 
     # || record.messages.any? {|msg| msg.sender == user}
+    record.each { |rec| rec.messages.find_by(sender: user) || record.messages.find_by(receiver: user) } 
   end
 
   def user_is_in_chat?
