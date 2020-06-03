@@ -1,5 +1,4 @@
-<div onload="myFunction()" id="main-content" style="display: none;">
-  <div class="container">
+<div class="container">
     <div id="typed_strings">
       <h1>Save my <span id="typed"></span></h1>
     </div>
@@ -63,7 +62,6 @@
     <% end %>
   </div>
   
-</div>
 
 
 <script>
@@ -76,15 +74,4 @@
     console.log(food_trade_hidden_field);
   });
 
-  let eggplant = document.getElementById("eggplant")
-  let main = document.getElementById("main-content")
-
-  function myFunction() {
-    setTimeout(showPage, 800);
-  }
-
-  function showPage() {
-    eggplant.style.display = "none";
-    main.style.display = "block";
-  }
 </script>

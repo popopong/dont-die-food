@@ -14,16 +14,14 @@
     <link rel="icon" type="image/png" href="https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/avocado_scream_avatar_food-512.png">
   </head>
 
-  <body onload="myFunction()">
+  <body>
     <%# Navbar %>
     <% if user_signed_in? %>
       <%= render 'shared/navbar_user' %>
     <% else%>
       <%= render 'shared/navbar_visitor' %>
     <% end %>
-    
-    <%= render 'shared/spinning-eggplant' %>
-    
+        
     <div class="container">
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
@@ -33,23 +31,7 @@
     <div class="content" id="main-content">
       <%= yield %>
     </div>
-
-    
     <%= render 'shared/btm_navbar' %>
-
-    <script>
-      let eggplant = document.getElementById("eggplant")
-      let main = document.getElementById("main-content")
-
-      function myFunction() {
-        setTimeout(showPage, 800);
-      }
-
-      function showPage() {
-        eggplant.style.display = "none";
-        main.style.display = "block";
-      }
-    </script>
 
   </body>
 </html>
