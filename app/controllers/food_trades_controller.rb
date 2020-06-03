@@ -39,11 +39,6 @@ class FoodTradesController < ApplicationController
   end
 
   def create
-    # raise
-    # find the ingredient and its id
-    # ing = params[:food_trade][:user_owned_ingredient_id]
-    # ing_id = Ingredient.where(name: ing).first.id
-    # create new user_owned_ingredient
     food_array = ["🍇", "🍉", "🥑", "🍅", "🥦", "🥩" ]
 
     # Single ingredient food_trade
