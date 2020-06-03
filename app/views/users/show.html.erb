@@ -1,7 +1,10 @@
 <div class="container">
   <h1>My profile</h1>
   <br>
+
   <%# User avatar goes here %>
+  <%= render 'shared/placeholder' %>
+
   <br>
   <p><strong>First name: </strong><%= @user.first_name %></p>
   <p><strong>Last name: </strong><%= @user.last_name %></p>
