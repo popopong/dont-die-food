@@ -1,3 +1,5 @@
+require 'open-uri'
+
 puts "🧹 Cleaning database"
 Message.destroy_all
 Chatroom.destroy_all
@@ -11,10 +13,21 @@ Recipe.destroy_all
 User.destroy_all
 
 puts "🧑 Creating users"
+elie_avatar = URI.open('https://avatars2.githubusercontent.com/u/1916741?s=460&u=e951179af4188f831a907fee881c8e00e0ab1583&v=4')
 elie = User.create!(first_name: "Elie", last_name: "Hymowitz", email: "elie@hello.com", password: "1234567", address: "3819 Avenue Calixa-Lavallée, Montréal, QC H2L 3A7")
+elie.photo.attach(io: elie_avatar, filename: 'elie.jpeg', content_type: 'image/jpeg')
+
+sd_avatar = URI.open('https://avatars3.githubusercontent.com/u/61625854?s=460&u=571abe2a475f5ac22dc6cb262a57929a0e9f4874&v=4')
 stephd = User.create!(first_name: "Stephanie", last_name: "Diep", email: "stephd@hello.com", password: "1234567", address: "4141 Pierre-de Coubertin Ave, Montreal, Quebec H1V 3N7")
+stephd.photo.attach(io: sd_avatar, filename: 'stephd.jpeg', content_type: 'image/jpeg')
+
+po_avatar = URI.open('https://avatars1.githubusercontent.com/u/58827819?s=460&u=c17ec47cbd61879564cf1aec066a5041884f02d9&v=4')
 poyan = User.create!(first_name: "Poyan", last_name: "Ng", email: "poyan@hello.com", password: "1234567", address: "327 Avenue Melville, Westmount, Quebec H3Z 2J7")
+poyan.photo.attach(io: po_avatar, filename: 'poyan.jpeg', content_type: 'image/jpeg')
+
+sbd_avatar = URI.open('https://avatars3.githubusercontent.com/u/59927242?s=460&u=5200cdcbde208c35eaaa7f04d83d78c121969b48&v=4')
 stephbd = User.create!(first_name: "Stephanie", last_name: "BD", email: "stephbd@hello.com", password: "1234567", address: "705 Saint-Catherine St W, Montreal, Quebec H3B 4G5")
+stephbd.photo.attach(io: sbd_avatar, filename: 'stephbd.jpeg', content_type: 'image/jpeg')
 
 puts "👩‍🍳 Creating recipes..."
 Recipe.create!([
