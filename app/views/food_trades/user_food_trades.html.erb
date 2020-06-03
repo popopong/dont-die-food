@@ -1,14 +1,23 @@
 <div class="container">
-  <h1>My Trades</h1>
+  <h1 style="text-align:center">My giveaways</h1>
 
-  <ul>
+  <div class=giveaway-cards>
     <% @food_trades.each do |food_trade| %>
-      <li>
-        <p> <strong> <%= food_trade.user_owned_ingredient.ingredient.name.capitalize %> </strong> </p>
-        <p> <%= food_trade.description %> </p>
-        <p>   <%= food_trade.status %> </p>
-        <p>   <%= food_trade.created_at %> </p>
-      </li>
+      <%= link_to food_trade_path(food_trade) do %>
+        <div class="wide-listing-card">
+            <%= image_tag("#{food_trade.user_owned_ingredient.ingredient.photo}", class: "recipe_index_img giveaway_img") %>
+
+          <div class="wide-listing-card-title giveaway-info">
+            <h2><%= food_trade.user_owned_ingredient.ingredient.name.capitalize %></h2>
+            <% if food_trade.created_at.localtime.strftime("%Y") == Date.today.strftime("%Y") %>
+              <p>Posted on <%= food_trade.created_at.localtime.strftime("%d %b") %></p>
+            <% else %>
+              <p>Posted on <%= food_trade.created_at.localtime.strftime("%d %b, %Y") %></p>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
     <% end %>
-  </ul>
+  </div>
+
 </div>

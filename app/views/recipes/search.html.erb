@@ -1,3 +1,4 @@
+<%= render "shared/spinning-eggplant" %>
 <div class="container">
   <h2>Recipes to the rescue ...</h2>
 
@@ -26,3 +27,11 @@
     <% end %>
   </div>
 </div>
+
+<script>
+  let eggplant = document.getElementById("eggplant");
+  setTimeout(() => {
+    eggplant.remove();
+  }, 1800);
+  
+</script>

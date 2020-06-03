@@ -1,11 +1,12 @@
 <% if @user_input_ing.blank? %>
     <%= simple_form_for [ @user, @food_trade ] do |f|%>
       <div class="form-group">
-      <%= f.association :user_owned_ingredient, collection: @ingredients_name, label: 'Name of the food', value: 'food' %>
+      <%= f.association :user_owned_ingredient, collection: @ingredients_name, label: 'Name of the food' %>
       <%= f.input :category, label: 'Category', collection: ["Veggies", "Fruits", "Dairy", "Meats", "Other"] %>
-      <%= f.input :description, label: 'Description', value: "avocado?" %>
-      <%= f.input :location, label: 'Address' %>
-      <%= f.input :photo, as: :file, input_html: { class: "photo-upload", name: "food_trade[][photo]" } %>
+      <%= f.input :description, label: 'Description', input_html: { placeholder: "Describe the condition, quantity etc..." } %>
+      <%= f.input :location, label: 'Address', input_html: { value: @user_address } %>
+      <%= f.input :photo, as: :file, input_html: { class: "photo-upload"} %>
+      <%= f.hidden_field :single_food_trade, value: "true" %>
 
     </div>
     <%= f.button :submit, 'Share', class: "button-dark mx-auto mt-4", style: "display: block;" %>
@@ -16,7 +17,8 @@
     <% @user_input_ing.each_with_index do |ingredient, index| %>
       <%= render 'form_subcomponent', f: f, ingredient: ingredient %>
       <% unless index == @user_input_ing.length - 1 %>
-        <object data="<%= asset_path("icons/dotted-line.svg") %>" type="image/svg+xml" style="margin: auto; display: block; padding: 10px 0" ></object>
+        <object data="<%= asset_path('icons/dotted-line.svg') %>" type="image/svg+xml" style="margin: auto; display: block; padding: 10px 0" ></object>
+        <br>
       <% end %>
     <% end %>
     <%= f.button :submit, 'Share', class: "button-dark mx-auto mt-4", style: "display: block;" %>

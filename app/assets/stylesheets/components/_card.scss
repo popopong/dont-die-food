@@ -117,13 +117,14 @@
   background: #FFFF;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
   border-radius: 15px;
-  margin: 10px;
+  margin: 10px auto;
 
   // Image (to adjust)
   img {
     object-fit: cover;
+    height: 100%;
     max-width: 100%;
-    max-height: 80%;
+    max-height: 70%;
     overflow: hidden;
     border-radius: 15px 15px 0px 0px;
   }
@@ -201,8 +202,9 @@
       // Image
       img {
         object-fit: cover !important;
+        height: 100%;
         max-width: 100%;
-        max-height: 80%;
+        max-height: 70%;
         overflow: hidden;
         border-radius: 15px 15px 0px 0px;
       }
@@ -236,7 +238,7 @@
         font-size: 10px;
         line-height: 15px;
         color: $f-green;
-        margin: 5px 10px 10px 10px;
+        margin: 1px 10px 10px 10px;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
@@ -256,6 +258,7 @@
 // Card for Cookbook and saved recipes
 .wide-listing-card {
   // Outer Box
+  max-width: 90vw;
   flex-grow: 0;
   flex-shrink:0;
   display: flex;
@@ -265,7 +268,7 @@
   background: #FBFBFF;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
   border-radius: 15px;
-  margin: 25px 0px;
+  margin: 25px auto;
 
   // Image
   img {
@@ -307,7 +310,6 @@
   }
 }
 
-
 // Card for My item page and food for share
 .food-to-share-picture {
   flex-grow: 0;
@@ -318,7 +320,7 @@
   height: 230px;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
   border-radius: 25px;
-  margin: 45px 0px;
+  margin: 45px auto;
   object-fit: cover;
 }
 

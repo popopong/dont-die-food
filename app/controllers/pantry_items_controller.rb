@@ -11,9 +11,10 @@ class PantryItemsController < ApplicationController
     @pantry_item.user = current_user
     @pantry_item.ingredient_id = pantry_item_params[:ingredient_id]
 
-    if @pantry_item.save
-      UserOwnedIngredient.find_or_create_by(user: current_user, ingredient_id: params[:pantry_item][:ingredient_id])
-
+    if @pantry_item.save!
+      UserOwnedIngredient.find_or_create_by(user: current_user, ingredient_id: params[:pantry_item][:ingredient_id])      
+      pantry_array = ["🧂", "🧈", "🥛", "🧅", "🥜", "🍞"]
+      flash.notice = "#{pantry_array.sample} Food trade successfully added!"
       redirect_to pantry_items_path
     else
       flash[:notice] = "Item already in your pantry!"

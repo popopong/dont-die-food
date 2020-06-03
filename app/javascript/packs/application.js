@@ -29,6 +29,7 @@ import "bootstrap";
 // import { initSelect2 } from '../components/init_select2';
 // import { typed } from "../components/typed_js"
 import { typed } from "../components/typed_js"
+import { flashes } from "../components/flashes"
 import { initMapbox } from '../plugins/init_mapbox';
 import { initSelect2 } from '../plugins/init_select2';
 import { chatroom } from "../components/chatroom"
@@ -45,4 +46,5 @@ document.addEventListener('turbolinks:load', () => {
   initChatroomCable();
   chatroom();
   removeItem();
+  flashes();
  });

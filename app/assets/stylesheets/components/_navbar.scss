@@ -34,21 +34,59 @@
 }
 .navbar-green {
   background: $turquoise;
+  padding: 16px;
 }
 
 .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-brand img {
-  width: 40px;
-}
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+
+.top-nav-container {
+  padding-top: 25px;
+
+  img {
+    width: 40px;
+    padding-right: 5px;
+  }
+  object {
+    display: inline;
+    padding-right: 5px;
+  }
+  a {
+    display: inline;
+  }
+  li {
+    padding-top: 16px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  .top-nav-container {
+    position: absolute;
+    top: 5px;
+    right: 30px;
+
+    img {
+      width: 40px;
+      padding-right: 5px;
+      display: none;
+    }
+    object {
+      display: inline;
+      padding-right: 2px;
+      display: none;
+    }
+    a {
+      display: inline;
+    }
+  }
+
 }
 
