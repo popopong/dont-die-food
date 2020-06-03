@@ -15,15 +15,17 @@
 
   label::before {
     content: "";
-    background: url("icons/circle-tick.svg");
+    background-color: $marine;
+    border: 2px solid $marine;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
     transform: translate(-9px, -2px) scale(0);
     background-position: center;
     background-size: contain;
-    width: 13px;
-    height: 13px;
     position: absolute;
-    left: -15px;
-    top: 9px;
+    left: -16px;
+    top: 8px;
     transition: all 0.2s
   }
 
