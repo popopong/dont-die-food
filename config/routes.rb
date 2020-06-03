@@ -72,8 +72,4 @@ Rails.application.routes.draw do
   resources :messages, only: :create
 
   resources :users, only: [:show, :edit, :update]
-
-  MyApp::Application.routes.draw do
-    get "*any", via: :all, to: "errors#not_found"
-  end
 end
