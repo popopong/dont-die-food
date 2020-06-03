@@ -12,7 +12,7 @@
             <% if user_signed_in? %>
               <div class="recipe-big-card-ingredients">
                 <p>
-                  You have <%= current_user.number_of_pantry_items_for(result) %> <%= current_user.number_of_pantry_items_for(result) == 1 ? "ingredient" : "ingredients" %> so far!
+                  You have <%= current_user.number_of_pantry_items_for(result) + @search_terms_count %> <%= current_user.number_of_pantry_items_for(result) + @search_terms_count  == 1 ? "ingredient" : "ingredients" %> so far!
                 </p>
               </div>
             <% end %>
