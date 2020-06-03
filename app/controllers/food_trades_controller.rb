@@ -95,6 +95,7 @@ class FoodTradesController < ApplicationController
 
   def destroy
     if @food_trade.destroy
+      flash.notice = "Food trade successfully deleted!"
       redirect_to food_trades_path
     else
       render :show

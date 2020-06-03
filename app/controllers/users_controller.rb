@@ -5,15 +5,15 @@ class UsersController < ApplicationController
   end
 
   def edit
-    
   end
 
   def update
 
     if @user.update(user_params)
-      redirect_to 'show'
+      flash.notice = "Profile successfully updated!"
+      redirect_to user_path(current_user)
     else
-      render 'edit'
+      render :edit
     end
   end
 
