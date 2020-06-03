@@ -1,7 +1,7 @@
 class ChatroomsController < ApplicationController
 
   def index
-    @messages = Message.includes({chatroom: {food_trade: {user_owned_ingredient: :ingredient}}}, :sender, :receiver)
+    @messages = policy_scope(Message).includes({chatroom: {food_trade: {user_owned_ingredient: :ingredient}}}, :sender, :receiver)
                        .order(created_at: :desc)
                        .where("sender_id = ? OR receiver_id = ?", current_user.id, current_user.id)
                        .uniq{ |message| message.sender_id && message.chatroom_id }
@@ -10,7 +10,8 @@ class ChatroomsController < ApplicationController
   def show
     @chatroom = Chatroom.includes(messages: :sender).find(params[:id])
     @other_user = @chatroom.other_user(current_user)
-    @message = Message.new()
+    @message = Message.new
+    authorize @chatroom
   end
 
   def create
@@ -34,6 +35,8 @@ class ChatroomsController < ApplicationController
   def update
     @chatroom = Chatroom.find(params[:id])
     @chatroom.update(chatroom_params)
+    authorize @chatroom
+    
     if @chatroom.save
       redirect_to :show
     else

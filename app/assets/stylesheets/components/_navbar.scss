@@ -21,6 +21,7 @@
   top: 20px; left: 0; bottom: 0; right: 0;
   max-width: 155px;
   max-height: 500px;
+  z-index: 1;
   width: 100%;
 }
 
@@ -49,6 +50,7 @@
 
 .top-nav-container {
   padding-top: 25px;
+  z-index: 1000;
 
   img {
     width: 40px;
