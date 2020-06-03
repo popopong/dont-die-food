@@ -14,7 +14,12 @@ class ChatroomsController < ApplicationController
   end
 
   def create
-    @chatroom = Chatroom.new(food_trade_id: params[:food_trade_id])
+    @food_trade = FoodTrade.find(params[:food_trade_id])
+    # If there's a chatroom where there's one message from me and for the same food trade, then go to that chatroom (and don't create a new one)
+    if Chatroom.find_by(food_trade: @food_trade)
+    end
+    @chatroom = Chatroom.new(food_trade: @food_trade)
+    @chatroom.messages.new(sender: current_user, receiver: @food_trade.user_owned_ingredient.user, chatroom: @chatroom, content: "Chatroom successfully created (this is an automated message).")
 
     if @chatroom.save!
       redirect_to chatroom_path(@chatroom)
