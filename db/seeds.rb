@@ -478,8 +478,8 @@ Message.find_or_create_by(content: "Hey! I need cocoa powder for my recipe, is i
 Chatroom.find_or_create_by(food_trade: User.last.food_trades.first, starred: true) # Orange tomatoes
 Message.find_or_create_by(content: "Hi Steph! How bad are the orange tomatoes?", sender_id: User.first.id, receiver_id: User.last.id, chatroom: Chatroom.find_by(food_trade: User.last.food_trades.first))
 
-Chatroom.find_or_create_by(food_trade: User.last.food_trades.second, starred: true) # Raisins
-Message.find_or_create_by(content: "Howdyyy! I would like to trade your raisins", sender_id: User.second.id, receiver_id: User.last.id, chatroom: Chatroom.find_by(food_trade: User.last.food_trades.second))
+Chatroom.find_or_create_by(food_trade: User.last.food_trades.second, starred: true) # Garlic
+Message.find_or_create_by(content: "Howdyyy! I would like to trade your garlic", sender_id: User.second.id, receiver_id: User.last.id, chatroom: Chatroom.find_by(food_trade: User.last.food_trades.second))
 
 Chatroom.find_or_create_by(food_trade: User.last.food_trades.third, starred: true) # Bacon
 Message.find_or_create_by(content: "Hey! I need some bacon, thanks!", sender_id: User.third.id, receiver_id: User.last.id, chatroom: Chatroom.last)
