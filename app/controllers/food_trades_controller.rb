@@ -42,9 +42,10 @@ class FoodTradesController < ApplicationController
     food_array = ["🍇", "🍉", "🥑", "🍅", "🥦", "🥩" ]
 
     # Single ingredient food_trade
-    if params[:food_trade][:single_food_trade] == "true"
-      @new_trade = FoodTrade.new(food_trade_params.except(:ingredient_id))
-      ingredient = Ingredient.find_by(name: params["food_trade"]["user_owned_ingredient_id"])
+    if params[:food_trade].length == 1
+      food_trade = params[:food_trade][0]
+      @new_trade = FoodTrade.new(category: food_trade["category"], location: food_trade["location"], description: food_trade["description"])
+      ingredient = Ingredient.find(params["food_trade"][0]["ingredient_id"])
       new_user_own = UserOwnedIngredient.find_or_create_by(user_id: current_user.id, ingredient_id: ingredient.id)
       @new_trade.user_owned_ingredient = new_user_own
 
@@ -64,7 +65,8 @@ class FoodTradesController < ApplicationController
 
         if @new_trade.save!
           flash.notice = "#{food_array.sample} Multiple food trades successfully added!"
-          redirect_to private_user_food_trades
+          redirect_to private_user_food_trades_path
+          return
         else
           render :new
         end
