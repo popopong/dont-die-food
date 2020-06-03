@@ -4,11 +4,15 @@
   </div>
   <br>
 
+
   <div class="search_form">
     <%= form_tag recipes_path, method: :get do %>
-    <%= select_tag "ingredients", options_from_collection_for_select(Ingredient.all, "id", "name"), { multiple: true } %> <br>
+    <%= select_tag "ingredients", options_from_collection_for_select(Ingredient.all, "id", "name"), multiple: true, class: "ingredient_select" %> <br>
     <%= submit_tag "Find a Recipe!", formaction: recipe_search_path, class: "button-dark" %>
-    <%= submit_tag "Give away!", formaction: new_food_trade_path, class: "button-dark" %>
+    <%= form_for @food_trade do |f| %>
+      <%= f.submit "Give away!", class: "button-dark", id: "food_trade_create", formaction: new_food_trade_path %>
+      <%= f.hidden_field :ingredient, value: "", id: "food_trade_hidden_field" %>
+    <% end %>
   <% end %>
   <br>
   </div>
@@ -56,4 +60,13 @@
   </div>
 </div>
 
+<script>
+  let ingredient = document.querySelector(".ingredient_select");
+  let food_trade_btn = document.querySelector("#food_trade_create");
+  let food_trade_hidden_field = document.querySelector("#food_trade_hidden_field");
 
+  food_trade_btn.addEventListener("click", (event) => {
+    food_trade_hidden_field.value = ingredient.value;
+    console.log(food_trade_hidden_field);
+  });
+</script>

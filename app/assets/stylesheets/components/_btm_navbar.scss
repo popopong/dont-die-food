@@ -1,5 +1,3 @@
-
-
 #btm-navbar {
   overflow: hidden;
   background-color: #FBFBFF;
@@ -27,30 +25,12 @@
   }
 }
 
-// #btm-navbar a:hover {
-//   color: black;
-// }
-
-// #btm-navbar a.active {
-//   background-color: #4CAF50;
-//   color: white;
-// }
-
 .sticky {
   position: fixed;
   bottom: 0;
 }
 
-// .sticky + .content {
-//   // padding-top: 60px;
-// }
-
 object {
     pointer-events: none;
-}
-
-
-.btm-icon {
-  fill: red;
 }
 
