@@ -58,21 +58,22 @@
       font-family: Comfortaa;
       font-style: normal;
       font-weight: bold;
-      font-size: 28px;
+      font-size: 22px;
       line-height: 36px;
       color: $f-green;
       margin-bottom: 0px;
     }
     // Ingredients that user have
-    .recipe-big-card-ingredients{
+    .recipe-big-card-ingredients p{
       font-family: Hind Vadodara;
       font-style: normal;
       font-weight: normal;
-      font-size: 12px;
+      font-size: 18px;
       line-height: 10px;
       color: $f-nav-green;
       margin-bottom: 0px;
       padding: 5px;
+      padding-top: 10px;
     }
   }
 

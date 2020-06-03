@@ -7,7 +7,9 @@
         <div class="recipe-big-card-title">
           <%= link_to recipe.title, recipe_path(recipe) %>
           <div class="recipe-big-card-ingredients">
-            You have <%= current_user.number_of_pantry_items_for(recipe) %> ingredients already!
+            <p>
+              You have <%= current_user.number_of_pantry_items_for(recipe) %> <%= current_user.number_of_pantry_items_for(recipe) == 1 ? "ingredient" : "ingredients" %> so far!
+            </p>
           </div>
         </div>
       </div>

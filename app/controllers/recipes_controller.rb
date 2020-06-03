@@ -18,7 +18,6 @@ class RecipesController < ApplicationController
   end
 
   def search
-    @sum_of_search = params[:ingredients].size
     if params[:ingredients]
       @results = Recipe.all.to_a.select do |recipe|
         params[:ingredients].all? { |id| recipe.ingredient_ids.map { |id| id.to_s }
