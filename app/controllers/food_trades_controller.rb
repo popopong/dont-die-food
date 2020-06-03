@@ -98,8 +98,8 @@ class FoodTradesController < ApplicationController
   def destroy
     authorize @food_trade
     if @food_trade.destroy
-      flash.notice = "Food trade successfully deleted!"
-      redirect_to food_trades_path
+      flash.notice = "Giveaway successfully deleted!"
+      redirect_to private_user_food_trades_path(current_user)
     else
       render :show
     end
