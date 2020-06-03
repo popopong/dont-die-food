@@ -27,13 +27,17 @@ class RecipesController < ApplicationController
       @search_terms_count = 0
       pantry_item_match = false
       current_user.pantry_items.each do |item|
-        if params[:ingredients].include?(item.ingredient_id.to_s)
+        if params[:ingredients].include?(item.ingredient_id.to_s) &&
           pantry_item_match = true
         end
       end
 
       if pantry_item_match
         @search_terms_count = params[:ingredients].length
+        @matches = params[:ingredients].select do |ingredient|
+          PantryItem.where(ingredient_id: ingredient.to_i, user_id: current_user.id)
+        end
+        @search_terms_count -= @matches.count
       end
     end
   end
