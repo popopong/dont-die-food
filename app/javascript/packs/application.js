@@ -33,6 +33,8 @@ import { initMapbox } from '../plugins/init_mapbox';
 import { initSelect2 } from '../plugins/init_select2';
 import { chatroom } from "../components/chatroom"
 import { initChatroomCable  } from '../channels/chatroom_channel';
+import { removeItem } from "../components/pantry";
+
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -42,4 +44,5 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
   initChatroomCable();
   chatroom();
+  removeItem();
  });
