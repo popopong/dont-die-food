@@ -1,0 +1,32 @@
+
+.spinner-container {
+  position: relative;
+  top: 60px;
+  margin: auto;
+  padding: 1.25rem;
+  font-family: 'Arial';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.spinner-eggplant {
+  width: 12.25rem;
+  height: 12.25rem;
+  animation: spinEggplant 0.8s infinite;
+}
+
+.spinner-text {
+  margin: 2.5rem 0 0 0 ;
+  letter-spacing: 0.3125rem;
+}
+
+@keyframes spinEggplant {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

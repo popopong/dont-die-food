@@ -1,46 +1,47 @@
-<div class="container">
-  <div id="typed_strings">
-    <h1>Save my <span id="typed"></span></h1>
-  </div>
-  <br>
-
-
-  <div class="search_form">
-    <%= form_tag recipes_path, method: :get do %>
-    <%= select_tag "ingredients", options_from_collection_for_select(Ingredient.all, "id", "name"), multiple: true, class: "ingredient_select" %> <br>
-    <%= submit_tag "Make a dish!", formaction: recipe_search_path, class: "button-dark", id: "recipe_search_btn" %>
-    <%= form_for @food_trade do |f| %>
-      <%= f.submit "Give away!", class: "button-dark", id: "food_trade_create", formaction: new_food_trade_path %>
-      <%= f.hidden_field :ingredient, value: "", id: "food_trade_hidden_field" %>
-    <% end %>
-  <% end %>
-  <br>
-  </div>
-
-</div>
-
-<div class="food-card-carousel carousel-card-container">
+<div onload="myFunction()" id="main-content" style="display: none;">
   <div class="container">
-    <div class="carousel-title">
-      <div class="d-flex justify-content-between">
-        <h2>Help your neighbours...</h2>
-        <%= link_to "see more", food_trades_path, class: "more" %>
+    <div id="typed_strings">
+      <h1>Save my <span id="typed"></span></h1>
+    </div>
+    <br>
+
+
+    <div class="search_form">
+      <%= form_tag recipes_path, method: :get do %>
+      <%= select_tag "ingredients", options_from_collection_for_select(Ingredient.all, "id", "name"), multiple: true, class: "ingredient_select" %> <br>
+      <%= submit_tag "Make a dish!", formaction: recipe_search_path, class: "button-dark", id: "recipe_search_btn" %>
+      <%= form_for @food_trade do |f| %>
+        <%= f.submit "Give away!", class: "button-dark", id: "food_trade_create", formaction: new_food_trade_path %>
+        <%= f.hidden_field :ingredient, value: "", id: "food_trade_hidden_field" %>
+      <% end %>
+    <% end %>
+    <br>
+    </div>
+
+  </div>
+
+  <div class="food-card-carousel carousel-card-container">
+    <div class="container">
+      <div class="carousel-title">
+        <div class="d-flex justify-content-between">
+          <h2>Help your neighbours...</h2>
+          <%= link_to "see more", food_trades_path, class: "more" %>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="cards-carousel">
-  <% @food_trades = FoodTrade.includes(user_owned_ingredient: [:ingredient, :user]).where(status: "Available") %>
-    <% @food_trades.last(10).shuffle.each do |food_trade| %>
-      <div class="carousel-card">
-        <%= image_tag("#{food_trade.user_owned_ingredient.ingredient.photo}", size:"150x90", alt: "#{food_trade.user_owned_ingredient.ingredient.photo}", class: "recipe-image") %>
-        <%= link_to food_trade.user_owned_ingredient.ingredient.name.capitalize,  food_trade_path(food_trade), class: "carousel-card-title" %>
-        <p class="carousel-card-content"> <%= food_trade.user_owned_ingredient.user.first_name %> </p>
-        <%#= food_trade.location %>
-      </div>
-    <% end %>
+    <div class="cards-carousel">
+    <% @food_trades = FoodTrade.includes(user_owned_ingredient: [:ingredient, :user]).where(status: "Available") %>
+      <% @food_trades.last(10).shuffle.each do |food_trade| %>
+        <div class="carousel-card">
+          <%= image_tag("#{food_trade.user_owned_ingredient.ingredient.photo}", size:"150x90", alt: "#{food_trade.user_owned_ingredient.ingredient.photo}", class: "recipe-image") %>
+          <%= link_to food_trade.user_owned_ingredient.ingredient.name.capitalize,  food_trade_path(food_trade), class: "carousel-card-title" %>
+          <p class="carousel-card-content"> <%= food_trade.user_owned_ingredient.user.first_name %> </p>
+          <%#= food_trade.location %>
+        </div>
+      <% end %>
+    </div>
   </div>
-</div>
 
 <!-- <div class="recipes-container mb-5"> -->
   <div class="food-card-carousel carousel-card-container">
@@ -61,7 +62,9 @@
       <% end %>
     <% end %>
   </div>
-<!-- </div> -->
+  
+</div>
+
 
 <script>
   let ingredient = document.querySelector(".ingredient_select");
@@ -72,4 +75,16 @@
     food_trade_hidden_field.value = ingredient.value;
     console.log(food_trade_hidden_field);
   });
+
+  let eggplant = document.getElementById("eggplant")
+  let main = document.getElementById("main-content")
+
+  function myFunction() {
+    setTimeout(showPage, 800);
+  }
+
+  function showPage() {
+    eggplant.style.display = "none";
+    main.style.display = "block";
+  }
 </script>
