@@ -1,9 +1,30 @@
 <div class="container">
-  <h2>Recipes to the rescue</h2>
+  <h2>Recipes to the rescue ...</h2>
 
-  <% if @results %>
-    <% @results.each do |result| %>
-    <li><%= result.title %></li>
+  <div class="recipe-card">
+    <% if @results && @results.length > 0 %>
+      <% @results.each do |result| %>
+        <div class="recipe-big-card"><%= image_tag("#{result.photo}", size:"350x250", alt: "Recipe image", class: "recipe-card")%>
+          <div class="recipe-big-card-title">
+            <!-- Use link_to do to create multiple lines tag -> include the photo in the block so its clickable too :) -->
+            <%= link_to result.title, recipe_path(result) %>
+
+            <% if user_signed_in? %>
+              <div class="recipe-big-card-ingredients">
+                <!-- need to take the searched ingredients into consideration too, but if the searched item is also a pantry item, it will show you have 2! need to compare the two in the controller? -->
+                You have <%= current_user.number_of_pantry_items_for(result) + @searched_ingredients.size %> ingredients already!
+              </div>
+            <% else %>
+              <div class="recipe-big-card-ingredients">
+                You have <%= @sum_of_search %> <%= @sum_of_search > 1 ? "ingredients" : "ingredient" %> already!
+              </div>
+            <% end %>
+
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <%= content_tag(:p, "No recipes match your selection!") %>
     <% end %>
-  <% end %>
+  </div>
 </div>

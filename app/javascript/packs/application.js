@@ -42,4 +42,4 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
   initChatroomCable();
   chatroom();
-});
+ });
