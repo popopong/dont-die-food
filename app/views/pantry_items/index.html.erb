@@ -1,9 +1,24 @@
 <div class="container">
-  <h1> My pantry items </h1>
+  <h1 class="text-center"> My pantry <%= image_tag("icons/garbage.svg", id: "pantry-remove-trigger") %></h1>
 
-  <ul>
-    <% @pantry_items.each do |pantry_item |%>
-      <li><%= pantry_item.ingredient.name %></li>
+  <div class="pantry-container">
+    <% @pantry_items.each do |pantry_item| %>
+      <div class="pantry-card">
+        <%= image_tag(pantry_item.ingredient.photo) %>
+        <%= content_tag(:p, pantry_item.ingredient.name.capitalize) %>
+        <%= link_to pantry_item_path(pantry_item.id), class: "pantry_hide pantry-remove", inner_html: { disabled: true }, method: :delete do %>
+          <%= image_tag("icons/cross.svg") %>
+        <% end %>
+
+      </div>
     <% end %>
-  </ul>
+  </div>
+
+  <div class="pantry-form">
+    <%= simple_form_for @pantry_item do |f| %>
+      <%= f.select :ingredient_id, collection: @addable_items %>
+      <%= f.button :submit, "", class: "pantry-add-button" %>
+    <% end %>
+  </div>
+
 </div>

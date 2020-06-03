@@ -1,0 +1,9 @@
+<div class="container trade-form">
+  <%= simple_form_for(current_user) do |f| %>
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :address %>
+    <%= f.input :photo, label: 'Avatar', as: :file, input_html: { class: "photo-upload"} %>
+    <%= f.button :submit, 'Update my profile', class: "button-dark mx-auto mt-4", style: "display: block;" %>
+  <% end %>
+</div>

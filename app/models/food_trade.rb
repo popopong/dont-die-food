@@ -4,6 +4,7 @@ class FoodTrade < ApplicationRecord
 
   belongs_to :user_owned_ingredient
   has_many :chatrooms
+  has_one_attached :photo
 
   validates :status, inclusion: { in: ["Available", "Unavailable"]}
   validates :user_owned_ingredient, presence: true

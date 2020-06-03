@@ -33,7 +33,8 @@ Rails.application.routes.draw do
 # I can click on a saved recipe   /recipes/:id  POST  saved_recipes create
 # I can see my saved recipes      /users/:id/saved_recipes  GET saved_recipes index
 
-  resources :saved_recipes, only: [:index]
+  resources :saved_recipes, only: [:index, :destroy, :create]
+  get "/saved_recipes/toggle", to: "saved_recipes#toggle", as: :toggle
 
 # USER_OWNED INGREDIENTS
 # I can check an ingredient on the ingredients list on the recipe show page    /recipes/:id  POST  user_owned_ingredients  Create
@@ -48,7 +49,9 @@ Rails.application.routes.draw do
 # I can delete a food trade               /users/:id/food_trades  DELETE  food_trades destroy
 # I can update a food trade               /users/:id/food_trades/:food_trade_id PATCH food_trades update
 
-  resources :food_trades, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  resources :food_trades, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
+    resources :chatrooms, only: [:create]
+  end
   # Get User Food Trades
   get '/my_food_trades', to: 'food_trades#user_food_trades', as: 'private_user_food_trades'
 

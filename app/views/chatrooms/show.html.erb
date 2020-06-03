@@ -1,10 +1,21 @@
 <div class="container">
-  <h1><%= image_tag("https://cdn0.iconfinder.com/data/icons/elasto-online-store/26/00-ELASTOFONT-STORE-READY_user-circle-512.png", height:'45', class:"message-user-avatar")%> <%= @other_user.first_name %></h1>
-  <br>
+  <div class="chat-show-top d-flex mb-2">
+    <div id="chats-user-avatar">
+      <% if @other_user.photo.attached? %>
+        <%= cl_image_tag(@other_user.photo.key)%>
+      <% else %>
+        <%= image_tag("https://cdn0.iconfinder.com/data/icons/elasto-online-store/26/00-ELASTOFONT-STORE-READY_user-circle-512.png")%>
+      <% end %>
+    </div>
+    <div class="chat-show-info d-inline-block">
+      <h2 class="mb-0"><strong><%= @other_user.first_name %></strong></h2> 
+      <p>for <%= @chatroom.food_trade.user_owned_ingredient.ingredient.name %></p>
+    </div>
+  </div>
 
   <div class="messages-box overflow-auto" id="messages" data-chatroom-id="<%= @chatroom.id %>">
 
-      <% @chatroom.messages.each do |message| %>
+      <% @chatroom.messages.order(created_at: :asc).each do |message| %>
         <% if message.sender == current_user %>
           <%= render partial: "messages/sent_message", locals: { message: message }%>
         <% else %>

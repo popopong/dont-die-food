@@ -1,48 +1,58 @@
 <div class="container">
-  <div id="typed_strings">
-    <h1 style="font-size: 28px;">Save my <span id="typed" style="text-decoration: underline;"></span></h1>
-  </div>
-  <br>
-
-  <div class="search_form">
-    <%= form_tag recipes_path, method: :get do %>
-    <%= select_tag "ingredients", options_from_collection_for_select(Ingredient.joins(:recipe_ingredients).uniq, "id", "name"), { multiple: true } %> <br>
-    <%= submit_tag "Find a Recipe!", formaction: recipe_search_path, class: "button-dark" %>
-    <%= submit_tag "Give away!", formaction: new_food_trade_path, class: "button-dark" %>
-  <% end %>
-  <br>
-  </div>
-
-</div>
-
-<div class="carousel-card-container">
-  <div class="container">
-    <div class="carousel-title"><h2>Help your neighbours...</h2>
-      <%= link_to "see more", food_trades_path %>
+    <div id="typed_strings">
+      <h1>Save my <span id="typed"></span></h1>
     </div>
+    <br>
+
+    <div class="search-form">
+      <%= form_tag recipes_path, method: :get do %>
+        <%= select_tag "ingredients", options_from_collection_for_select(Ingredient.all, "id", "name"), multiple: true, class: "ingredient_select" %> <br>
+        <%= submit_tag "Make a dish!", formaction: recipe_search_path, class: "button-dark", id: "recipe_search_btn" %>
+        <%= form_for @food_trade do |f| %>
+          <%= f.submit "Give away!", class: "button-dark", id: "food_trade_create", formaction: new_food_trade_path %>
+          <%= f.hidden_field :ingredient, value: "", id: "food_trade_hidden_field" %>
+        <% end %>
+      <%end %>
+      <br>
+    </div>
+
   </div>
+
+  <div class="food-card-carousel carousel-card-container">
+    <div class="container">
+      <div class="carousel-title">
+        <div class="d-flex justify-content-between">
+          <h2>Help your neighbours...</h2>
+          <%= link_to "see more", food_trades_path, class: "more" %>
+        </div>
+      </div>
+    </div>
+
 
   <div class="cards-carousel">
   <% @food_trades = FoodTrade.includes(user_owned_ingredient: [:ingredient, :user]).where(status: "Available") %>
     <% @food_trades.last(10).shuffle.each do |food_trade| %>
       <div class="carousel-card">
-        <%= image_tag("#{food_trade.user_owned_ingredient.ingredient.photo}", size:"150x90", alt: "#{food_trade.user_owned_ingredient.ingredient.photo}", class: "recipe-image") %>
+        <% if food_trade.photo.attached? %>
+          <%= cl_image_tag(food_trade.photo.key) %>
+        <% else %>
+          <%= image_tag("#{food_trade.user_owned_ingredient.ingredient.photo}", size:"150x90", alt: "#{food_trade.user_owned_ingredient.ingredient.photo}", class: "recipe-image") %>
+        <% end %>
         <%= link_to food_trade.user_owned_ingredient.ingredient.name.capitalize,  food_trade_path(food_trade), class: "carousel-card-title" %>
         <p class="carousel-card-content"> <%= food_trade.user_owned_ingredient.user.first_name %> </p>
         <%#= food_trade.location %>
       </div>
     <% end %>
   </div>
-</div>
 
-<br>
-<br>
-
-<div class="recipes-container mb-5">
-  <div class="carousel-card-container">
+<!-- <div class="recipes-container mb-5"> -->
+  <div class="food-card-carousel carousel-card-container">
     <div class="container">
-      <div class="carousel-title"><h2>Popular recipes...</h2>
-        <%= link_to "see more", recipes_path %>
+      <div class="carousel-title">
+        <div class="d-flex justify-content-between">
+          <h2>Popular recipes...</h2>
+          <%= link_to "see more", recipes_path, class: "more" %>
+        </div>
       </div>
     </div>
 
@@ -51,10 +61,20 @@
         <%= link_to recipe_path(recipe), class: "carousel-card" do %>
           <%= image_tag("#{recipe.photo}", size:"150x90", alt: "#{recipe.title}", class: "cards-carousel") %>
           <div class="carousel-card-title"><%= recipe.title %></div>
-        <% end %>
       <% end %>
-    </div>
+    <% end %>
   </div>
 
 
 
+<script>
+  let ingredient = document.querySelector(".ingredient_select");
+  let food_trade_btn = document.querySelector("#food_trade_create");
+  let food_trade_hidden_field = document.querySelector("#food_trade_hidden_field");
+
+  food_trade_btn.addEventListener("click", (event) => {
+    food_trade_hidden_field.value = ingredient.value;
+    console.log(food_trade_hidden_field);
+  });
+
+</script>

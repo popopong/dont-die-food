@@ -1,11 +1,21 @@
 <div class="container">
-  <h1>My profile</h1>
+  <div class="profile-top">
+    <h1 style="text-align:center">My profile</h1>
+    <%= link_to edit_user_path(current_user) do %>
+      <% image_tag "icons/edit.svg"%>
+    <% end %>
+  </div>
   <br>
-  <%# User avatar goes here %>
-  <br>
-  <% if policy(@user).show? %>
-    <p><strong>First name: </strong><%= @user.first_name %></p>
-    <p><strong>Last name: </strong><%= @user.last_name %></p>
-    <p><strong>Address: </strong><%= @user.address %></p>
-  <% end %>
+
+  <div class="profile-info">
+    <%= render 'shared/placeholder' %>
+
+    <br>
+
+    <div class="user-details">
+      <p><strong>First name: </strong><%= @user.first_name %></p>
+      <p><strong>Last name: </strong><%= @user.last_name %></p>
+      <p><strong>Address: </strong><%= @user.address %></p>
+    </div>
+  </div>
 </div>

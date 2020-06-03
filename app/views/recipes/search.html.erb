@@ -1,9 +1,37 @@
+<%= render "shared/spinning-eggplant" %>
 <div class="container">
-  <h2>Recipes to the rescue</h2>
+  <h2>Recipes to the rescue ...</h2>
 
-  <% if @results %>
-    <% @results.each do |result| %>
-    <li><%= result.title %></li>
+  <div class="recipe-card">
+    <% # class method in recipe for sorting %>
+    <% if @results && @results.length > 0 %>
+      <% @results.each do |result| %>
+        <div class="recipe-big-card"><%= link_to image_tag("#{result.photo}", size:"350x250", alt: "Recipe image", class: "recipe-card"), recipe_path(result) %>
+          <div class="recipe-big-card-title">
+            <!-- Use link_to do to create multiple lines tag -> include the photo in the block so its clickable too :) -->
+            <%= link_to result.title, recipe_path(result) %>
+
+            <% if user_signed_in? %>
+              <div class="recipe-big-card-ingredients">
+                <p>
+                  You have <%= current_user.number_of_pantry_items_for(result) + @search_terms_count %> <%= current_user.number_of_pantry_items_for(result) + @search_terms_count  == 1 ? "ingredient" : "ingredients" %> so far!
+                </p>
+              </div>
+            <% end %>
+
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <%= content_tag(:p, "No recipes match your selection!") %>
     <% end %>
-  <% end %>
+  </div>
 </div>
+
+<script>
+  let eggplant = document.getElementById("eggplant");
+  setTimeout(() => {
+    eggplant.remove();
+  }, 1800);
+  
+</script>

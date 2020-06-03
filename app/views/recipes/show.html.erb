@@ -1,48 +1,63 @@
-<div class="curved-recipe-card">
+<div class="page-vertical-offset">
+
+  <div class="curved-div">
+    <svg class="svg_recipe_abs" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#FBFBFF" fill-opacity="1"
+      d="M0,128L80,112C160,96,320,64,480,80C640,96,800,160,960,165.3C1120,171,1280,117,1360,90.7L1440,64L1440,
+      320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
+    </svg>
+    <%= image_tag("#{@recipe.photo}", size:"500x400", alt: "Recipe image", class: "recipe_show_img") %>
+  </div>
 
 
-  <%#= image_tag("#{@recipe.photo}", size:"500x400", alt: "Recipe image", class: "recipe_show_img") %>
-  <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#FBFBFF" fill-opacity="1"
-    d="M0,128L80,112C160,96,320,64,480,80C640,96,800,160,960,165.3C1120,171,1280,117,1360,90.7L1440,64L1440,
-    320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
-  </svg> -->
+  <div class="container">
 
-  <svg class="curved-div" viewBox="0 0 415 550" fill="#36827F" xmlns="http://www.w3.org/2000/svg">
-    <%#= image_tag("#{@recipe.photo}", size:"500x400", alt: "Recipe image", class: "recipe_show_img") %>
-    <path d="M139.832 405C76.7353 393.153 22.8059 402.639 0 436.55V0H415V358.641C399.796 375.382 378.045 419.166 319.615 436.55C247.03 458.147 218.702 419.809 139.832 405Z" fill="" fill-opacity="0.97"/>
-  </svg>
+    <%# Recipe title %>
+    <div class=" title_heart d-flex">
+      <h1><%= @recipe.title %></h1>
+      <%= render 'recipe_heart', recipe: @recipe %>
+    </div>
 
-</div>
+    <br>
+    <br>
 
+    <%# Ingredients %>
+    <p><strong>You will need</strong></p>
+    <div>
+      <% @recipe.ingredients_data.each do |ingredient_data| %>
+        <div class="group">
+          <% if @user_owned_ingredients_name.include?(ingredient_data["name"]) %>
+            <input type="checkbox" checked name="ingredient_data"/>
+          <% else %>
+            <input type="checkbox" name="ingredient_data"/>
+          <% end %>
+          <label>
+            <p>
+              <strong>
+                <% if (ingredient_data["measures"]["metric"]["amount"]) <= 0.5 %>
+                  <%= (ingredient_data["measures"]["metric"]["amount"]).round(1)%>
+                <% else (ingredient_data["measures"]["metric"]["amount"]) <=1 %>
+                  <%= (ingredient_data["measures"]["metric"]["amount"]).round %>
+                <% end %>
+                <%= ingredient_data["measures"]["metric"]["unitLong"] %>
+              </strong>
+              <%= ingredient_data["name"] %>
+            </p>
+          </label>
+        </div>
+      <% end %>
+    </div>
 
-<div class="container">
+    <br>
 
-  <%# Recipe title %>
-  <h1><%= @recipe.title %></h1> <i class="far fa-heart">
-
-  <br>
-
-  <br>
-
-  <%# Ingredients %>
-  <p><strong>You will need</strong></p>
-  <ul>
-  <% @recipe.ingredients_data.each do |ingredient_data| %>
-    <%# Do a condition to round amount %>
-    <li><strong><%= ingredient_data["measures"]["metric"]["amount"] %>
-    <%= ingredient_data["measures"]["metric"]["unitLong"] %></strong>
-    <%= ingredient_data["name"] %></li>
-  <% end %>
-  </ul>
-  <br>
-
-  <%# Instructions %>
-  <p><strong>Directions</strong></p>
-  <ul>
-  <% @recipe.steps_data.each do |step_data| %>
-    <li><strong><%= step_data["number"] %></strong>
-    <%= step_data["step"]%>
-    </li>
-  <% end %>
-  </ul>
+    <%# Instructions %>
+    <p><strong>DIRECTIONS</strong></p>
+    <div>
+      <% @recipe.steps_data.each do |step_data| %>
+        <div class="recipe-direction">
+          <p><strong><%= step_data["number"] %><span style="color: #45C28F"> | </span></strong>
+          <%= step_data["step"]%></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

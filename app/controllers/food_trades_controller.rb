@@ -1,5 +1,5 @@
 class FoodTradesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show, :veggies, :fruits, :dairy, :meats, :other]
   before_action :find_food_trade, only: [:destroy, :edit, :update]
 
   def index
@@ -20,6 +20,13 @@ class FoodTradesController < ApplicationController
 
   def show
     @food_trade = FoodTrade.find(params[:id])
+    @markers =[{
+        lat: @food_trade.latitude,
+        lng: @food_trade.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { food_trade: @food_trade }),
+        image_url: helpers.asset_url('icons/location.svg')
+      }]
+
     authorize @food_trade
   end
 
@@ -29,33 +36,44 @@ class FoodTradesController < ApplicationController
     @ingredients = Ingredient.all
     @ingredients_name = @ingredients.map { |ing| ing.name }
     @ingredients_name.sort!
-
     authorize @food_trade
   end
 
   def create
-    # An ingredient list for the users to select
-    @ingredients = Ingredient.all
-    @ingredients_name = @ingredients.map { |ing| ing.name }
-    @ingredients_name.sort!
-    # find the ingredient
-    ing = params[:food_trade][:user_owned_ingredient_id]
-    ing_object = Ingredient.where(name: ing).first
-    # create new user_owned_ingredient
-    user_owned = UserOwnedIngredient.new
-    user_owned.user = current_user
-    user_owned.ingredient = ing_object
-    user_owned.save
+    food_array = ["🍇", "🍉", "🥑", "🍅", "🥦", "🥩" ]
 
-    @food_trade = FoodTrade.new(food_trade_params)
-    @food_trade.user_owned_ingredient = user_owned
-    authorize @food_trade
-
-    if @food_trade.save
-      flash.notice = "Thanks for sharing your #{ing}!"
-      redirect_to food_trades_path
+    # Single ingredient food_trade
+    if params[:food_trade].length == 1
+      food_trade = params[:food_trade][0]
+      @new_trade = FoodTrade.new(category: food_trade["category"], location: food_trade["location"], description: food_trade["description"])
+      ingredient = Ingredient.find(params["food_trade"][0]["ingredient_id"])
+      new_user_own = UserOwnedIngredient.find_or_create_by(user_id: current_user.id, ingredient_id: ingredient.id)
+      @new_trade.user_owned_ingredient = new_user_own
+      authorize @new_trade
+      
+      if @new_trade.save!
+        flash.notice = "#{food_array.sample} Food trade successfully added!"
+        redirect_to food_trade_path(@new_trade)
+      else
+        render :new
+      end
     else
-      render :new
+      # Multiple ingredients food_trades
+      multiple_food_trade_params.each do |param|
+        new_user_own = UserOwnedIngredient.find_or_create_by(user_id: current_user.id, ingredient_id: param[:ingredient_id])
+        @new_trade = FoodTrade.new(param.except(:ingredient_id))
+        @new_trade.user_owned_ingredient = new_user_own
+        flash.notice = "#{food_array.sample} Food trade successfully added!"
+
+        authorize @new_trade
+        if @new_trade.save!
+          flash.notice = "#{food_array.sample} Multiple food trades successfully added!"
+          redirect_to private_user_food_trades_path
+          return
+        else
+          render :new
+        end
+      end
     end
   end
 
@@ -66,12 +84,12 @@ class FoodTradesController < ApplicationController
     @ingredients_name = @ingredients.map { |ing| ing.name }
     @ingredients_name.sort!
   end
-  
+
   def update
     authorize @food_trade
     @food_trade.update(food_trade_params)
     if @food_trade.save
-      redirect_to :show
+      redirect_to food_trade_path(@food_trade)
     else
       render :edit
     end
@@ -80,12 +98,13 @@ class FoodTradesController < ApplicationController
   def destroy
     authorize @food_trade
     if @food_trade.destroy
-      redirect_to :index
+      flash.notice = "Food trade successfully deleted!"
+      redirect_to food_trades_path
     else
       render :show
     end
   end
-  
+
   # Current user's own food_trades
   def user_food_trades
     @user = current_user
@@ -125,7 +144,11 @@ class FoodTradesController < ApplicationController
     @food_trade = FoodTrade.find(params[:id])
   end
 
+  def multiple_food_trade_params
+    params.require(:food_trade).map{|food_trade| food_trade.permit(:ingredient_id, :category, :description, :location, :photo)}
+  end
+
   def food_trade_params
-    params.require(:food_trade).permit(:description, :location, :category)
+    params.require(:food_trade).permit(:description, :location, :category, :photo)
   end
 end

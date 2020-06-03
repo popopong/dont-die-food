@@ -8,21 +8,26 @@
   max-width: 100%;
 }
 
-// Recipe show card
-.curved-recipe-card {
-  // background-image: url();
-  // background: transparent;
-  // background: $turquoise;
+.curved-div {
+  position: relative;
+  margin-bottom: 30px;
+}
 
+
+.img_recipe_abs {
+  position: absolute;
 }
 
 .curved-div {
-  width: 100%;
-  margin: 0px;
-  overflow: hidden;
-  background-image: url()
+  position:relative;
+  margin-bottom: 30px;
 }
 
+.svg_recipe_abs {
+  position: absolute;
+  bottom: -30px;
+  margin-bottom: 10px;
+}
 
 // Index Recipes
 .recipe-big-card {
@@ -31,8 +36,6 @@
   flex-shrink:0;
   display: flex;
   flex-direction: column;
-  width: 350px;
-  height: 410px;
   background: #FBFBFF;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
   border-radius: 25px;
@@ -40,8 +43,9 @@
 
   // Image
   img {
-    object-fit: cover;
-    max-width: 100%;
+    -o-object-fit: cover !important;
+    object-fit: cover !important;
+    width: 100%;
     overflow: hidden;
     border-radius: 25px 25px 0px 0px;
   }
@@ -54,61 +58,73 @@
       font-family: Comfortaa;
       font-style: normal;
       font-weight: bold;
-      font-size: 28px;
+      font-size: 22px;
       line-height: 36px;
       color: $f-green;
       margin-bottom: 0px;
+    }
+    // Ingredients that user have
+    .recipe-big-card-ingredients p{
+      font-family: Hind Vadodara;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 10px;
+      color: $f-nav-green;
+      margin-bottom: 0px;
       padding: 5px;
+      padding-top: 10px;
     }
   }
 
-  // Recipe Description
-  .recipe-big-card-content{
-    font-family: Hind Vadodara;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 18px;
-    line-height: 27px;
-    color: $f-green;
-    margin-bottom: 0px;
-    padding: 5px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
 
-  // Ingredient that user have
-  // .recipe-big-card-ingredients{
+  // // Recipe Description (Hidden because recipes don't have descriptions)
+  // .recipe-big-card-content{
   //   font-family: Hind Vadodara;
   //   font-style: normal;
   //   font-weight: normal;
-  //   font-size: 12px;
-  //   line-height: 10px;
-  //   color: $f-nav-green;
+  //   font-size: 18px;
+  //   line-height: 27px;
+  //   color: $f-green;
   //   margin-bottom: 0px;
   //   padding: 5px;
+  //   overflow: hidden;
+  //   white-space: nowrap;
+  //   text-overflow: ellipsis;
   // }
+
+}
+
+// Grid for specific category
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 15px;
+  grid-column-gap: 15px;
+  margin: 0px;
 }
 
 // Specific category card
 .small-food-card {
   // Outer Box
+  max-width: 40vw;
   flex-grow: 0;
   flex-shrink:0;
   display: flex;
   flex-direction: column;
-  width: 150px;
+  width: 100%;
   height: 170px;
-  background: #FBFBFF;
+  background: #FFFF;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
   border-radius: 15px;
-  margin: 5px;
-  padding: 5px;
+  margin: 10px auto;
 
   // Image (to adjust)
   img {
     object-fit: cover;
-    max-width: 80%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 70%;
     overflow: hidden;
     border-radius: 15px 15px 0px 0px;
   }
@@ -120,12 +136,22 @@
     font-size: 15px;
     line-height: 16px;
     color: $f-green;
-    margin-bottom: 0px;
+    margin: 10px 10px 0px 10px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    a {
+      font-family: Comfortaa;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 15px;
+      line-height: 16px;
+      color: $f-green;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
   }
-
 
   .small-card-content{
     font-family: Hind Vadodara;
@@ -138,13 +164,21 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    a {
+      font-family: Hind Vadodara;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 10px;
+      line-height: 15px;
+      color: $f-green;
+    }
   }
 }
 
 // Carousel container + card
 .carousel-card-container {
   width: 100vw;
-  height: 250px;
+  height: 240px;
   margin-top: 15px;
 
   .cards-carousel {
@@ -168,8 +202,9 @@
       // Image
       img {
         object-fit: cover !important;
+        height: 100%;
         max-width: 100%;
-        max-height: 80%;
+        max-height: 70%;
         overflow: hidden;
         border-radius: 15px 15px 0px 0px;
       }
@@ -185,6 +220,15 @@
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
+        a{
+          justify-content: space-between;
+          font-family: Comfortaa;
+          font-style: normal;
+          font-weight: bold;
+          font-size: 15px;
+          line-height: 16px;
+          color: $f-green;
+        }
       }
 
       .carousel-card-content{
@@ -194,10 +238,18 @@
         font-size: 10px;
         line-height: 15px;
         color: $f-green;
-        margin: 5px 10px 10px 10px;
+        margin: 1px 10px 10px 10px;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
+        a{
+          font-family: Comfortaa;
+          font-style: normal;
+          font-weight: bold;
+          font-size: 15px;
+          line-height: 16px;
+          color: $f-green;
+        }
       }
     }
   }
@@ -206,6 +258,7 @@
 // Card for Cookbook and saved recipes
 .wide-listing-card {
   // Outer Box
+  max-width: 90vw;
   flex-grow: 0;
   flex-shrink:0;
   display: flex;
@@ -215,7 +268,7 @@
   background: #FBFBFF;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
   border-radius: 15px;
-  margin: 25px 0px;
+  margin: 25px auto;
 
   // Image
   img {
@@ -257,7 +310,6 @@
   }
 }
 
-
 // Card for My item page and food for share
 .food-to-share-picture {
   flex-grow: 0;
@@ -268,8 +320,44 @@
   height: 230px;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
   border-radius: 25px;
-  margin: 45px 0px;
+  margin: 45px auto;
   object-fit: cover;
 }
 
+.pantry-container {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.pantry_hide {
+  opacity: 0 !important;
+  transition: 0.3s !important;
+}
+
+.pantry-card {
+  width: 85%;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  position: relative;
+  .pantry-remove {
+    margin: 0 8px 0 0;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.06);
+    border-radius: 10px;
+    padding: 2px;
+    opacity: 1;
+    transition: 0.3s !important;
+  }
+  p {
+    font-family: $comfortaa;
+    margin: 10px;
+    padding-right: 35px;
+  }
+  a {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+}

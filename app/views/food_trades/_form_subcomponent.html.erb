@@ -1,0 +1,8 @@
+<div class="form-group">
+  <%= f.association :user_owned_ingredient, collection: Ingredient.all, label: 'Name of the food', selected: ingredient.id, input_html: { class: "food_trade_select", id: ingredient.id, name: "food_trade[][ingredient_id]" } %>
+  <%= f.input :category, label: 'Category', collection: ["Veggies", "Fruits", "Dairy", "Meats", "Other"], input_html: { name: "food_trade[][category]" } %>
+  <%= f.input :description, label: 'Description', input_html: { name: "food_trade[][description]", placeholder: "Describe the condition, quantity etc..." } %>
+  <%= f.input :location, label: 'Address', input_html: { name: "food_trade[][location]", value: @user_address } %>
+  <%= f.input :photo, as: :file, input_html: { class: "photo-upload", name: "food_trade[][photo]" } %>
+</div>
+

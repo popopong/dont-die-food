@@ -1,7 +1,8 @@
 
 <div class="curved-navbar">
-  <div class="navbar navbar-expand-sm navbar-visitor">
+  <div class="navbar navbar-expand-sm navbar-visitor navbar-green">
     <%= link_to root_path, class: "navbar-brand" do %>
+      <!-- Logo -->
       <div class="flex-logo-visitor">
         <svg width="122" height="66.24" viewBox="0 0 264 144" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <rect y="33.3777" width="114.825" height="114.825" transform="rotate(-16.8989 0 33.3777)" fill="url(#pattern0)"/>
@@ -17,15 +18,15 @@
       </div>
     <% end %>
 
-    <%= link_to new_user_session_path, class: "navbar-brand" do %>
-      <%= image_tag "https://cdn0.iconfinder.com/data/icons/elasto-online-store/26/00-ELASTOFONT-STORE-READY_user-circle-512.png" %>
+    <%= link_to new_user_session_path, class: "navbar-brand top-nav-container" do %>
+      <%= image_tag "https://cdn0.iconfinder.com/data/icons/elasto-online-store/26/00-ELASTOFONT-STORE-READY_user-circle-512.png"%>
     <% end %>
   </div>
-
-  <svg viewBox="0 0 1200 170">
-    <path fill="#FBFBFF" fill-opacity="1"
-    d="M0,128L80,112C160,96,320,64,480,80C640,96,800,160,960,165.3C1120,171,1280,117,1360,90.7L1440,64L1440,
-    320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z">
-    </path>
+  <!-- curve -->
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+    <path fill="#A6E7CF" fill-opacity="1"
+    d="M0,96L48,90.7C96,85,192,75,288,74.7C384,75,480,85,576,101.3C672,117,768,139,864,154.7C960,171,1056,181,
+    1152,176C1248,171,1344,149,1392,138.7L1440,128L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,
+    0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
   </svg>
 </div>

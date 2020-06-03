@@ -1,10 +1,11 @@
 class ChatroomsController < ApplicationController
+
   def index
-    @messages = policy_scope(Message)
+    @messages = policy_scope(Message).includes({chatroom: {food_trade: {user_owned_ingredient: :ingredient}}}, :sender, :receiver)
+                       .order(created_at: :desc)
+                       .where("sender_id = ? OR receiver_id = ?", current_user.id, current_user.id)
+                       .uniq{ |message| message.sender_id && message.chatroom_id }
     authorize @messages
-    @messages = Message.order(created_at: :desc)
-                        .where("sender_id = ? OR receiver_id = ?", current_user.id, current_user.id)
-                        .uniq{ |message| message.sender_id }
   end
 
   def show
@@ -12,6 +13,24 @@ class ChatroomsController < ApplicationController
     @other_user = @chatroom.other_user(current_user)
     @message = Message.new
     authorize @chatroom
+  end
+
+  def create
+    @food_trade = FoodTrade.find(params[:food_trade_id])
+    # If there's a chatroom where there's one message from me and for the same food trade, then go to that chatroom (and don't create a new one)
+    
+    if chatroom_exists
+      redirect_to chatroom_path(chatroom_exists)
+    else
+      @chatroom = Chatroom.new(food_trade: @food_trade)
+      @chatroom.messages.new(sender: current_user, receiver: @food_trade.user_owned_ingredient.user, chatroom: @chatroom, content: "Chatroom successfully created (this is an automated message).")
+
+      if @chatroom.save!
+        redirect_to chatroom_path(@chatroom)
+      else
+        redirect_to food_trade_path(params[:id])
+      end
+    end
   end
 
   def update
@@ -29,6 +48,14 @@ class ChatroomsController < ApplicationController
   private
 
   def chatroom_params
-    params.require(:chatroom).permit(:starred, :sender_id, :receiver_id)
+    params.require(:chatroom).permit(:starred, :food_trade_id)
+  end
+
+  def chatroom_exists
+    if Chatroom.find_by(food_trade: @food_trade)
+      if Chatroom.find_by(food_trade: @food_trade).messages.find_by(sender: current_user) 
+        Chatroom.find_by(food_trade: @food_trade).id
+      end
+    end
   end
 end
