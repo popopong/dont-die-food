@@ -4,15 +4,15 @@
   <div class="recipe-card">
     <% if @results && @results.length > 0 %>
       <% @results.each do |result| %>
-        <div class="recipe-big-card"><%= link_to image_tag("#{result.photo}", size:"350x250", alt: "Recipe image", class: "recipe-card"), recipe_path(result) %>
+        <div class="recipe-big-card"><%= link_to image_tag("#{result[:recipe_object].photo}", size:"350x250", alt: "Recipe image", class: "recipe-card"), recipe_path(result[:recipe_object]) %>
           <div class="recipe-big-card-title">
             <!-- Use link_to do to create multiple lines tag -> include the photo in the block so its clickable too :) -->
-            <%= link_to result.title, recipe_path(result) %>
+            <%= link_to result[:recipe_object].title, recipe_path(result[:recipe_object]) %>
 
             <% if user_signed_in? %>
               <div class="recipe-big-card-ingredients">
                 <p>
-                  You have <%= current_user.number_of_pantry_items_for(result) + @search_terms_count %> <%= current_user.number_of_pantry_items_for(result) + @search_terms_count  == 1 ? "ingredient" : "ingredients" %> so far!
+                  You have <%= current_user.number_of_pantry_items_for(result[:recipe_object]) + result[:matched_ings] %> <%= current_user.number_of_pantry_items_for(result[:recipe_object]) + result[:matched_ings]  == 1 ? "ingredient" : "ingredients" %> so far!
                 </p>
               </div>
             <% end %>

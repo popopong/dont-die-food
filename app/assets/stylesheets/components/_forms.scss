@@ -216,4 +216,17 @@
 .pantry-form {
   text-align: center;
 
+  .new_pantry_item {
+    display: flex;
+  }
+
+  .select2-selection {
+    border-radius: 30px;
+    border: 1px solid #45C28F !important;
+    width: 100%;
+    padding: 0px 13px;
+    display: flex;
+    justify-content: center;
+  }
+
 }

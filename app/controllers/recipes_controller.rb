@@ -19,18 +19,21 @@ class RecipesController < ApplicationController
 
   def search
     if params[:ingredients]
-      @results = Recipe.all.to_a.select do |recipe|
-        params[:ingredients].all? { |id| recipe.ingredient_ids.map { |id| id.to_s }
-                            .include?(id) }
-      end
-
       @search_terms_count = 0
-
       current_user.pantry_items.each do |item|
         if !(params[:ingredients].include?(item.ingredient_id.to_s))
           @search_terms_count+=1
         end
       end
+
+      @results = Recipe.all.to_a.map do |recipe|
+        next unless params[:ingredients].all? { |id| recipe.ingredient_ids.map { |id| id.to_s }.include?(id.to_s) }
+        { recipe_object: recipe, matched_ings: current_user.number_of_pantry_items_for(recipe) }
+      end
+
+      raise
+      @results = @results.compact
     end
+
   end
 end
