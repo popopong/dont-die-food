@@ -4,7 +4,7 @@
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
 
-    <div class="form-inputs signing-form">
+    <div class="form-inputs signing-form trade-form">
       <%= f.input :email,
                   required: true,
                   autofocus: true,
@@ -16,6 +16,7 @@
       <%= f.input :password_confirmation,
                   required: true,
                   input_html: { autocomplete: "new-password" } %>
+      <%= f.input :photo, label: 'Avatar', as: :file, input_html: { class: "photo-upload"} %>
     </div>
 
     <div class="form-actions" id="submit-button-container">
