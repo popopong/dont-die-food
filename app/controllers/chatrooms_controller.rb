@@ -5,6 +5,7 @@ class ChatroomsController < ApplicationController
                        .order(created_at: :desc)
                        .where("sender_id = ? OR receiver_id = ?", current_user.id, current_user.id)
                        .uniq{ |message| message.sender_id && message.chatroom_id }
+    authorize @chatroom = policy_scope(Chatroom)
   end
 
   def show
