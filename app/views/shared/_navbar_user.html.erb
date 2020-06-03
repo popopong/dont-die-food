@@ -23,7 +23,13 @@
 
     <%= link_to user_path(current_user), class: "navbar-brand" do %>
       <%# How do we add the avatar to User with Cloudinary? Need to use current_user.avatar %>
-      <%= image_tag "https://cdn0.iconfinder.com/data/icons/elasto-online-store/26/00-ELASTOFONT-STORE-READY_user-circle-512.png" %>
+      <div id="navbar-user-avatar">
+        <% if current_user.photo.attached? %>
+          <%= cl_image_tag(current_user.photo.key) %>
+        <% else %>
+          <%= image_tag"https://cdn0.iconfinder.com/data/icons/elasto-online-store/26/00-ELASTOFONT-STORE-READY_user-circle-512.png"%>
+        <% end %>
+      </div>
     <% end %>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">

@@ -44,18 +44,35 @@ class FoodTradesController < ApplicationController
     # ing = params[:food_trade][:user_owned_ingredient_id]
     # ing_id = Ingredient.where(name: ing).first.id
     # create new user_owned_ingredient
+    food_array = ["🍇", "🍉", "🥑", "🍅", "🥦", "🥩" ]
+
+    # Single ingredient food_trade
     if params[:food_trade][:single_food_trade] == "true"
       @new_trade = FoodTrade.new(food_trade_params.except(:ingredient_id))
       ingredient = Ingredient.find_by(name: params["food_trade"]["user_owned_ingredient_id"])
       new_user_own = UserOwnedIngredient.find_or_create_by(user_id: current_user.id, ingredient_id: ingredient.id)
       @new_trade.user_owned_ingredient = new_user_own
-      @new_trade.save
+
+      if @new_trade.save!
+        flash.notice = "#{food_array.sample} Food trade successfully added!"
+        redirect_to food_trade_path(@new_trade)
+      else
+        render :new
+      end
     else
+      # Multiple ingredients food_trades
       multiple_food_trade_params.each do |param|
         new_user_own = UserOwnedIngredient.find_or_create_by(user_id: current_user.id, ingredient_id: param[:ingredient_id])
         @new_trade = FoodTrade.new(param.except(:ingredient_id))
         @new_trade.user_owned_ingredient = new_user_own
-        @new_trade.save
+        flash.notice = "#{food_array.sample} Food trade successfully added!"
+
+        if @new_trade.save!
+          flash.notice = "#{food_array.sample} Multiple food trades successfully added!"
+          redirect_to private_user_food_trades
+        else
+          render :new
+        end
       end
     end
 
@@ -79,7 +96,7 @@ class FoodTradesController < ApplicationController
     # @food_trade = FoodTrade.new(food_trade_params)
 
     # if @food_trade.save!
-      redirect_to food_trades_path
+      # redirect_to food_trades_path
     # else
     #   render :new
     # end
@@ -95,7 +112,7 @@ class FoodTradesController < ApplicationController
   def update
     @food_trade.update(food_trade_params)
     if @food_trade.save
-      redirect_to :show
+      redirect_to food_trade_path(@food_trade)
     else
       render :edit
     end
@@ -103,7 +120,7 @@ class FoodTradesController < ApplicationController
 
   def destroy
     if @food_trade.destroy
-      redirect_to :index
+      redirect_to food_trades_path
     else
       render :show
     end

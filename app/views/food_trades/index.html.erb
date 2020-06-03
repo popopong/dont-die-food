@@ -29,7 +29,11 @@
   <div class="cards-carousel">
     <% @food_trades.where(category: "Fruits").shuffle.last(10).each do |food_trade| %>
       <div class="carousel-card">
-        <%= image_tag("#{food_trade.user_owned_ingredient.ingredient.photo}", size:"150x90", alt: "#{food_trade.user_owned_ingredient.ingredient.photo}", class: "recipe-image") %>
+        <% if food_trade.photo.attached? %>
+          <%= cl_image_tag(food_trade.photo.key) %>
+        <% else %>
+          <%= image_tag("#{food_trade.user_owned_ingredient.ingredient.photo}", size:"150x90", alt: "#{food_trade.user_owned_ingredient.ingredient.photo}", class: "recipe-image") %>
+        <% end %>
         <p class="carousel-card-title"><%= link_to food_trade.user_owned_ingredient.ingredient.name.capitalize, food_trade_path(food_trade) %></p>
       </div>
     <% end %>
@@ -49,7 +53,11 @@
   <div class="cards-carousel">
     <% @food_trades.where(category: "Veggies").shuffle.last(10).each do |food_trade| %>
       <div class="carousel-card">
-        <%= image_tag("#{food_trade.user_owned_ingredient.ingredient.photo}", size:"150x90", alt: "#{food_trade.user_owned_ingredient.ingredient.photo}", class: "recipe-image") %>
+        <% if food_trade.photo.attached? %>
+          <%= cl_image_tag(food_trade.photo.key) %>
+        <% else %>
+          <%= image_tag("#{food_trade.user_owned_ingredient.ingredient.photo}", size:"150x90", alt: "#{food_trade.user_owned_ingredient.ingredient.photo}", class: "recipe-image") %>
+        <% end %>
         <p class="carousel-card-title"><%= link_to food_trade.user_owned_ingredient.ingredient.name.capitalize, food_trade_path(food_trade) %></p>
       </div>
     <% end %>
@@ -69,7 +77,11 @@
   <div class="cards-carousel">
     <% @food_trades.where(category: "Dairy").shuffle.last(10).each do |food_trade| %>
      <div class="carousel-card">
-        <%= image_tag("#{food_trade.user_owned_ingredient.ingredient.photo}", size:"150x90", alt: "#{food_trade.user_owned_ingredient.ingredient.photo}", class: "recipe-image") %>
+        <% if food_trade.photo.attached? %>
+          <%= cl_image_tag(food_trade.photo.key) %>
+        <% else %>
+          <%= image_tag("#{food_trade.user_owned_ingredient.ingredient.photo}", size:"150x90", alt: "#{food_trade.user_owned_ingredient.ingredient.photo}", class: "recipe-image") %>
+        <% end %>
         <p class="carousel-card-title"><%= link_to food_trade.user_owned_ingredient.ingredient.name.capitalize, food_trade_path(food_trade) %></p>
        </div>
     <% end %>
@@ -89,7 +101,11 @@
   <div class="cards-carousel">
     <% @food_trades.where(category: "Meats").shuffle.last(10).each do |food_trade| %>
       <div class="carousel-card">
-        <%= image_tag("#{food_trade.user_owned_ingredient.ingredient.photo}", size:"150x90", alt: "#{food_trade.user_owned_ingredient.ingredient.photo}", class: "recipe-image") %>
+        <% if food_trade.photo.attached? %>
+          <%= cl_image_tag(food_trade.photo.key) %>
+        <% else %>
+          <%= image_tag("#{food_trade.user_owned_ingredient.ingredient.photo}", size:"150x90", alt: "#{food_trade.user_owned_ingredient.ingredient.photo}", class: "recipe-image") %>
+        <% end %>
         <p class="carousel-card-title"><%= link_to food_trade.user_owned_ingredient.ingredient.name.capitalize, food_trade_path(food_trade) %></p>
       </div>
     <% end %>
@@ -109,7 +125,11 @@
   <div class="cards-carousel">
     <% @food_trades.where(category: "Other").shuffle.last(10).each do |food_trade| %>
       <div class="carousel-card">
-        <%= image_tag("#{food_trade.user_owned_ingredient.ingredient.photo}", size:"150x90", alt: "#{food_trade.user_owned_ingredient.ingredient.photo}", class: "recipe-image") %>
+        <% if food_trade.photo.attached? %>
+          <%= cl_image_tag(food_trade.photo.key) %>
+        <% else %>
+          <%= image_tag("#{food_trade.user_owned_ingredient.ingredient.photo}", size:"150x90", alt: "#{food_trade.user_owned_ingredient.ingredient.photo}", class: "recipe-image") %>
+        <% end %>
         <p class="carousel-card-title"><%= link_to food_trade.user_owned_ingredient.ingredient.name.capitalize, food_trade_path(food_trade) %></p>
       </div>
     <% end %>
