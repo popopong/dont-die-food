@@ -62,7 +62,6 @@ document.addEventListener('turbolinks:load', () => {
     title: "Are you sure?",
     dangerMode: true,
     buttons: ["Cancel", "Delete"]
-    // icon: "warning"
     }, (value) => {
       if (value) {
         const link = document.getElementById('delete-link');
