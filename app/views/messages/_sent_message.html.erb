@@ -11,7 +11,7 @@
       <% elsif  message.created_at.localtime.strftime("%a %b %e") == Date.yesterday.strftime("%a %b %e") %>
         <small><%= message.created_at.localtime.strftime("Yesterday at %l:%M%p")%></small>
       <% else %>
-        <small><% message.created_at.localtime.strftime("%a %b %e at %l:%M%p") %></small>
+        <small><%= message.created_at.localtime.strftime("%a %b %e at %l:%M%p") %></small>
       <% end %>
       </div>
       

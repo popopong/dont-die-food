@@ -5,7 +5,7 @@
   </div>
 
   <div class="cards">
-    <% @food_trades.shuffle.each do |food_trade| %>
+    <% @food_trades.each do |food_trade| %>
       <div class="small-food-card">
         <% if food_trade.photo.attached? %>
           <%= cl_image_tag(food_trade.photo.key) %>
