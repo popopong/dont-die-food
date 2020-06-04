@@ -55,8 +55,6 @@ class FoodTradesController < ApplicationController
       authorize @new_trade
       
       if @new_trade.save
-        flash.notice = "#{food_array.sample} Food trade successfully added!"
-        # redirect_to food_trade_path(@new_trade)
       else
         render :new
       end
@@ -69,8 +67,6 @@ class FoodTradesController < ApplicationController
       authorize @new_trade
       
       if @new_trade.save
-        flash.notice = "#{food_array.sample} Food trade successfully added!"
-        # redirect_to food_trade_path(@new_trade)
       else
         render :new
       end
@@ -84,8 +80,6 @@ class FoodTradesController < ApplicationController
 
         authorize @new_trade
         if @new_trade.save
-          flash.notice = "#{food_array.sample} Multiple food trades successfully added!"
-          redirect_to private_user_food_trades_path
           return
         else
           render :new

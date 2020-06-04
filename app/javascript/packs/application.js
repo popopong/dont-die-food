@@ -50,25 +50,25 @@ document.addEventListener('turbolinks:load', () => {
   removeItem();
   // flashes();
   initSweetalert('#sweet-alert', {
-    title: "Food Trade created!",
+    title: "Successfully created!",
     icon: "success"
   }, (value) => {
     if (value) {
       const link = document.getElementById('create-link');
-      console.log(link)
       link.click();
     }
   });
 
   initSweetalertDelete('#sweet-alert-delete', {
     title: "Are you sure?",
-    icon: "warning"
-  }, (value) => {
-    if (value) {
-      const link = document.getElementById('delete-link');
-      console.log(link)
-      link.click();
-    }
+    dangerMode: true,
+    buttons: ["Cancel", "Delete"]
+    // icon: "warning"
+    }, (value) => {
+      if (value) {
+        const link = document.getElementById('delete-link');
+        link.click();
+      }
   });
 
  });

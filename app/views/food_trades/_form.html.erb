@@ -8,9 +8,9 @@
         <%= f.input :location, label: 'Address', input_html: { value: @user_address } %>
         <%= f.input :photo, as: :file, input_html: { class: "photo-upload"} %>
         <%= f.hidden_field :single_food_trade, value: "true" %>
-    </div>
-    <%= f.button :submit, 'Share', class: "button-dark mx-auto mt-4", id: "sweet-alert", style: "display: block;" %>
-  <% end %>
+        </div>
+        <%= f.button :submit, 'Share', class: "button-dark mx-auto mt-4", id: "sweet-alert", style: "display: block;" %>
+      <% end %>
 
   <% else %>
     <%= simple_form_for [ @user, @food_trade ] do |f|%>
@@ -23,4 +23,5 @@
       <% end %>
     <%= f.button :submit, 'Share', class: "button-dark mx-auto mt-4", id: "sweet-alert", style: "display: block;" %>
   <% end %>
+<% end %>
 </div>
