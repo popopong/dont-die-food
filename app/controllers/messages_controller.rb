@@ -17,10 +17,8 @@ class MessagesController < ApplicationController
         @chatroom,
         render_to_string(partial: "messages/received_message", locals: { message: @message })
       )
-    if @message.save
-      redirect_to chatroom_path(@message.chatroom.id)
     else
-      render "chatrooms/show"
+      redirect_to chatroom_path(@message.chatroom.id)
     end
   end
 

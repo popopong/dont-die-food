@@ -7,8 +7,8 @@ class MessagePolicy < ApplicationPolicy
   end
   class Scope < Scope
     def resolve
-      # scope.all
-      scope.where("message.receiver_id = ? OR message.sender_id = ?", user.id, user.id)
+      scope.all
+      # scope.where("message.receiver_id = ? OR message.sender_id = ?", user.id, user.id)
     end
   end
 
