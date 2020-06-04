@@ -4,8 +4,8 @@ class FoodTradesController < ApplicationController
 
   def index
     @food_trades = policy_scope(FoodTrade)
-    @food_trades = FoodTrade.where(status: "Available")
-    @food_trades_geocoded = FoodTrade.geocoded
+    @food_trades = FoodTrade.includes(:photo_attachment, user_owned_ingredient: [:user, :ingredient]).where(status: "Available")
+    @food_trades_geocoded = FoodTrade.includes(user_owned_ingredient: [:user, :ingredient]).geocoded
     authorize @food_trades
 
     @markers = @food_trades_geocoded.map do |food_trade|
@@ -111,27 +111,27 @@ class FoodTradesController < ApplicationController
 
   # FoodTrade categories start here
   def veggies
-    @food_trades = FoodTrade.includes(user_owned_ingredient: [:user, :ingredient]).where(category: "Veggies")
+    @food_trades = FoodTrade.includes(:photo_attachment, user_owned_ingredient: [:user, :ingredient]).where(category: "Veggies")
     authorize @food_trades
   end
 
   def fruits
-    @food_trades = FoodTrade.includes(user_owned_ingredient: [:user, :ingredient]).where(category: "Fruits")
+    @food_trades = FoodTrade.includes(:photo_attachment, user_owned_ingredient: [:user, :ingredient]).where(category: "Fruits")
     authorize @food_trades
   end
 
   def dairy
-    @food_trades = FoodTrade.includes(user_owned_ingredient: [:user, :ingredient]).where(category: "Dairy")
+    @food_trades = FoodTrade.includes(:photo_attachment, user_owned_ingredient: [:user, :ingredient]).where(category: "Dairy")
     authorize @food_trades
   end
 
   def meats
-    @food_trades = FoodTrade.includes(user_owned_ingredient: [:user, :ingredient]).where(category: "Meats")
+    @food_trades = FoodTrade.includes(:photo_attachment, user_owned_ingredient: [:user, :ingredient]).where(category: "Meats")
     authorize @food_trades
   end
 
   def other
-    @food_trades = FoodTrade.includes(user_owned_ingredient: [:user, :ingredient]).where(category: "Other")
+    @food_trades = FoodTrade.includes(:photo_attachment, user_owned_ingredient: [:user, :ingredient]).where(category: "Other")
     authorize @food_trades
   end
 
