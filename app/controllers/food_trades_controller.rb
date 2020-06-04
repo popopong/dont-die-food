@@ -51,39 +51,43 @@ class FoodTradesController < ApplicationController
       ingredient = Ingredient.find_by(name: params["food_trade"]["user_owned_ingredient_id"])
       new_user_own = UserOwnedIngredient.find_or_create_by(user_id: current_user.id, ingredient_id: ingredient.id)
       @new_trade.user_owned_ingredient = new_user_own
+
       authorize @new_trade
 
-      if @new_trade.save
-      else
-        render :new
-      end
+      # if @new_trade.save
+      flash.notice = "#{food_array.sample} Successfully added!!"
+      # else
+      #   render :new
+      # end
     elsif params[:food_trade].length == 1
       food_trade = params[:food_trade][0]
       @new_trade = FoodTrade.new(food_trade_params)
       ingredient = Ingredient.find(params["food_trade"][0]["ingredient_id"])
       new_user_own = UserOwnedIngredient.find_or_create_by(user_id: current_user.id, ingredient_id: ingredient.id)
       @new_trade.user_owned_ingredient = new_user_own
+
       authorize @new_trade
 
-      if @new_trade.save
-      else
-        render :new
-      end
+      # if @new_trade.save
+      flash.notice = "#{food_array.sample} Successfully added!"
+      # else
+      #   render :new
+      # end
     else
       # Multiple ingredients food_trades
       multiple_food_trade_params.each do |param|
         new_user_own = UserOwnedIngredient.find_or_create_by(user_id: current_user.id, ingredient_id: param[:ingredient_id])
         @new_trade = FoodTrade.new(param.except(:ingredient_id))
         @new_trade.user_owned_ingredient = new_user_own
-        flash.notice = "#{food_array.sample} Food trade successfully added!"
-
         authorize @new_trade
-        if @new_trade.save
-          return
-        else
-          render :new
-        end
+        # if @new_trade.save
+        flash.notice = "#{food_array.sample} Successfully added!"
+        #   return
+        # else
+        #   render :new
+        # end
       end
+        raise
     end
   end
 
