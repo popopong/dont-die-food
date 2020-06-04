@@ -317,7 +317,7 @@ stephbd_pantry_array.each do |pantry_item|
   PantryItem.find_or_create_by(user: User.last, ingredient: found_ingredient)
 end
 
-poyan_pantry_array = ["salt", "extra virgin olive oil", "cocoa powder", "onion"]
+poyan_pantry_array = ["salt", "cauliflower", "olive oil", "salt and pepper" "extra virgin olive oil", "cocoa powder", "onion"]
 poyan_pantry_array.each do |pantry_item|
   found_ingredient = Ingredient.find_by(name: pantry_item)
   PantryItem.find_or_create_by(user: User.third, ingredient: found_ingredient)
@@ -342,10 +342,10 @@ stephbd_saved_recipes.each do |recipe_title|
   SavedRecipe.find_or_create_by(user: User.last, recipe: found_recipe)
 end
 
-poyan_saved_recipes = ["Blueberry Pie with Lemon Sauce", "Grilled Peach, Avocado, and Crab Salad with Avocado & Peach Dressing", "Melon Smoothie"]
+poyan_saved_recipes = ["Leek Quiche", "Grilled Peach, Avocado, and Crab Salad with Avocado & Peach Dressing", "Melon Smoothie", "Pineapple Wassail", "Rice Pizza", "Coconut Macaroons"]
 poyan_saved_recipes.each do |recipe_title|
   found_recipe = Recipe.find_by(title: recipe_title)
-  SavedRecipe.find_or_create_by(user: User.last, recipe: found_recipe)
+  SavedRecipe.find_or_create_by(user: User.third, recipe: found_recipe)
 end
 
 puts "🍎 Creating user_owned_ingredients..."
