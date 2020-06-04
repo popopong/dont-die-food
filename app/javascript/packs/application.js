@@ -35,7 +35,8 @@ import { initSelect2 } from '../plugins/init_select2';
 import { chatroom } from "../components/chatroom"
 import { initChatroomCable  } from '../channels/chatroom_channel';
 import { removeItem } from "../components/pantry";
-
+import { initSweetalert } from '../plugins/init_sweetalert';
+import { initSweetalertDelete } from '../plugins/init_sweetalert_delete';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -47,4 +48,24 @@ document.addEventListener('turbolinks:load', () => {
   chatroom();
   removeItem();
   flashes();
+  initSweetalert('#sweet-alert', {
+    title: "Successfully created!",
+    icon: "success"
+  }, (value) => {
+    if (value) {
+      const link = document.getElementById('create-link');
+      link.click();
+    }
+  });
+
+  initSweetalertDelete('#sweet-alert-delete', {
+    title: "Are you sure?",
+    dangerMode: true,
+    buttons: ["Cancel", "Delete"]
+    }, (value) => {
+      if (value) {
+        const link = document.getElementById('delete-link');
+        link.click();
+      }
+    });
  });
