@@ -10,7 +10,7 @@ class PagesController < ApplicationController
         food_trade.user_owned_ingredient.user != current_user
       end
     else
-      @food_trades = FoodTrade.all.shuffle
+      @food_trades = FoodTrade.includes(user_owned_ingredient: [:ingredient, :user]).where(status: "Available").shuffle
     end
   end
 end
