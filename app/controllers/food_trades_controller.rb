@@ -56,7 +56,7 @@ class FoodTradesController < ApplicationController
       
       if @new_trade.save
         flash.notice = "#{food_array.sample} Food trade successfully added!"
-        redirect_to food_trade_path(@new_trade)
+        # redirect_to food_trade_path(@new_trade)
       else
         render :new
       end
@@ -70,7 +70,7 @@ class FoodTradesController < ApplicationController
       
       if @new_trade.save
         flash.notice = "#{food_array.sample} Food trade successfully added!"
-        redirect_to food_trade_path(@new_trade)
+        # redirect_to food_trade_path(@new_trade)
       else
         render :new
       end

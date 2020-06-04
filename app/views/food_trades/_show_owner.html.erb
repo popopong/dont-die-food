@@ -14,9 +14,8 @@
       <%= link_to  edit_food_trade_path do %>
         <% image_tag "icons/edit.svg" %>
       <% end %>
-      <%= link_to  food_trade_path(@food_trade), method: :delete, data: { confirm: "Delete #{@food_trade.user_owned_ingredient.ingredient.name} from your giveaways?" }  do %>
-        <% image_tag "icons/garbage.svg" %>
-      <% end %>
+      <a id="sweet-alert-delete"><%= image_tag("icons/garbage.svg") %></a>
+      <%= link_to "", food_trade_path(@food_trade), method: :delete, id: "delete-link"  %>
     </div>
 
   </div>

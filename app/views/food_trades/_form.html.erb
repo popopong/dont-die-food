@@ -9,7 +9,7 @@
       <%= f.hidden_field :single_food_trade, value: "true" %>
 
     </div>
-    <%= f.button :submit, 'Share', class: "button-dark mx-auto mt-4", style: "display: block;" %>
+    <%= f.button :submit, 'Share', class: "button-dark mx-auto mt-4", id: "sweet-alert", style: "display: block;" %>
   <% end %>
 
 <% else %>
@@ -21,6 +21,6 @@
         <br>
       <% end %>
     <% end %>
-    <%= f.button :submit, 'Share', class: "button-dark mx-auto mt-4", style: "display: block;" %>
+    <%= f.button :submit, 'Share', class: "button-dark mx-auto mt-4", id: "sweet-alert", style: "display: block;" %>
   <% end %>
 <% end %>

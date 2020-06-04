@@ -35,6 +35,8 @@ import { initSelect2 } from '../plugins/init_select2';
 import { chatroom } from "../components/chatroom"
 import { initChatroomCable  } from '../channels/chatroom_channel';
 import { removeItem } from "../components/pantry";
+import { initSweetalert } from '../plugins/init_sweetalert';
+import { initSweetalertDelete } from '../plugins/init_sweetalert_delete';
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -46,5 +48,27 @@ document.addEventListener('turbolinks:load', () => {
   initChatroomCable();
   chatroom();
   removeItem();
-  flashes();
+  // flashes();
+  initSweetalert('#sweet-alert', {
+    title: "Food Trade created!",
+    icon: "success"
+  }, (value) => {
+    if (value) {
+      const link = document.getElementById('create-link');
+      console.log(link)
+      link.click();
+    }
+  });
+
+  initSweetalertDelete('#sweet-alert-delete', {
+    title: "Are you sure?",
+    icon: "warning"
+  }, (value) => {
+    if (value) {
+      const link = document.getElementById('delete-link');
+      console.log(link)
+      link.click();
+    }
+  });
+
  });
