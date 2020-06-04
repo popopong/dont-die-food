@@ -61,8 +61,9 @@
 }
 
 #user_remember_me {
+  border: 1px solid $f-nav-green;
   height: 20px;
-  margin-left: 25px;
+  margin-left: -25px;
 }
 
 #submit-button-container {
@@ -122,7 +123,7 @@
     height: 40px;
   }
 
-  ::placeholder { 
+  ::placeholder {
     opacity: .5;
   }
 

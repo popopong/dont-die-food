@@ -10,8 +10,9 @@
       <%= f.input :password,
                   required: false,
                   input_html: { autocomplete: "current-password" } %>
-      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
     </div>
+      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+
 
     <div class="form-actions" id="submit-button-container">
       <%= f.button :submit, "Log in", class: "button-dark" %>
