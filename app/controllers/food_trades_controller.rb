@@ -50,6 +50,7 @@ class FoodTradesController < ApplicationController
       ingredient = Ingredient.find_by(name: params["food_trade"]["user_owned_ingredient_id"])
       new_user_own = UserOwnedIngredient.find_or_create_by(user_id: current_user.id, ingredient_id: ingredient.id)
       @new_trade.user_owned_ingredient = new_user_own
+
       authorize @new_trade
 
       if @new_trade.save
