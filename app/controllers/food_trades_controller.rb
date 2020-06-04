@@ -38,20 +38,21 @@ class FoodTradesController < ApplicationController
     @ingredients_name = @ingredients.map { |ing| ing.name }
     @ingredients_name.sort!
     @user_address = current_user.address
-    
+
     @user_input_ing = params[:ingredients]&.map {|id| Ingredient.find(id.to_i)}
   end
 
   def create
+    food_array = ["🍇", "🍉", "🥑", "🍅", "🥦", "🥩" ]
     # Single ingredient food_trade
     if params[:food_trade].class == ActionController::Parameters
       food_trade = params[:food_trade]
-      @new_trade = FoodTrade.new(category: food_trade["category"], location: food_trade["location"], description: food_trade["description"])
+      @new_trade = FoodTrade.new(food_trade_params)
       ingredient = Ingredient.find_by(name: params["food_trade"]["user_owned_ingredient_id"])
       new_user_own = UserOwnedIngredient.find_or_create_by(user_id: current_user.id, ingredient_id: ingredient.id)
       @new_trade.user_owned_ingredient = new_user_own
       authorize @new_trade
-      
+
       if @new_trade.save
       else
         flash.notice = "An error occured, please try again later"
@@ -59,12 +60,12 @@ class FoodTradesController < ApplicationController
       end
     elsif params[:food_trade].length == 1
       food_trade = params[:food_trade][0]
-      @new_trade = FoodTrade.new(category: food_trade["category"], location: food_trade["location"], description: food_trade["description"])
+      @new_trade = FoodTrade.new(food_trade_params)
       ingredient = Ingredient.find(params["food_trade"][0]["ingredient_id"])
       new_user_own = UserOwnedIngredient.find_or_create_by(user_id: current_user.id, ingredient_id: ingredient.id)
       @new_trade.user_owned_ingredient = new_user_own
       authorize @new_trade
-      
+
       if @new_trade.save
       else
         flash.notice = "An error occured, please try again later"
