@@ -29,8 +29,8 @@
 
 
   <div class="cards-carousel">
-    <% @food_trades = FoodTrade.includes(user_owned_ingredient: [:ingredient, :user]).where(status: "Available") %>
-    <% @food_trades.last(10).shuffle.each do |food_trade| %>
+  <% @food_trades = FoodTrade.includes(user_owned_ingredient: [:ingredient, :user]).where(status: "Available") %>
+    <% @food_trades.last(10).each do |food_trade| %>
       <div class="carousel-card">
         <% if food_trade.photo.attached? %>
           <%= cl_image_tag(food_trade.photo.key) %>
@@ -56,13 +56,11 @@
     </div>
   </div>
 
-  <div class="cards-carousel">
-    <% @recipes.shuffle.last(10).each do |recipe|%>
-      <%= link_to recipe_path(recipe), class: "carousel-card" do %>
-        <%= image_tag("#{recipe.photo}", size:"150x90", alt: "#{recipe.title}", class: "cards-carousel") %>
-        <div class="carousel-card-title">
-          <%= recipe.title %>
-        </div>
+    <div class="cards-carousel">
+      <% @recipes.last(10).each do |recipe|%>
+        <%= link_to recipe_path(recipe), class: "carousel-card" do %>
+          <%= image_tag("#{recipe.photo}", size:"150x90", alt: "#{recipe.title}", class: "cards-carousel") %>
+          <div class="carousel-card-title"><%= recipe.title %></div>
       <% end %>
     <% end %>
   </div>

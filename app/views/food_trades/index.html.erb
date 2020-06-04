@@ -27,7 +27,7 @@
   </div>
 
   <div class="cards-carousel">
-    <% @food_trades.where(category: "Fruits").shuffle.last(10).each do |food_trade| %>
+    <% @food_trades.where(category: "Fruits").last(10).each do |food_trade| %>
       <div class="carousel-card">
         <% if food_trade.photo.attached? %>
           <%= cl_image_tag(food_trade.photo.key) %>
@@ -51,7 +51,7 @@
   </div>
 
   <div class="cards-carousel">
-    <% @food_trades.where(category: "Veggies").shuffle.last(10).each do |food_trade| %>
+    <% @food_trades.where(category: "Veggies").last(10).each do |food_trade| %>
       <div class="carousel-card">
         <% if food_trade.photo.attached? %>
           <%= cl_image_tag(food_trade.photo.key) %>
@@ -75,7 +75,7 @@
   </div>
 
   <div class="cards-carousel">
-    <% @food_trades.where(category: "Dairy").shuffle.last(10).each do |food_trade| %>
+    <% @food_trades.where(category: "Dairy").last(10).each do |food_trade| %>
      <div class="carousel-card">
         <% if food_trade.photo.attached? %>
           <%= cl_image_tag(food_trade.photo.key) %>
@@ -99,7 +99,7 @@
   </div>
 
   <div class="cards-carousel">
-    <% @food_trades.where(category: "Meats").shuffle.last(10).each do |food_trade| %>
+    <% @food_trades.where(category: "Meats").last(10).each do |food_trade| %>
       <div class="carousel-card">
         <% if food_trade.photo.attached? %>
           <%= cl_image_tag(food_trade.photo.key) %>
@@ -123,7 +123,7 @@
   </div>
 
   <div class="cards-carousel">
-    <% @food_trades.where(category: "Other").shuffle.last(10).each do |food_trade| %>
+    <% @food_trades.where(category: "Other").last(10).each do |food_trade| %>
       <div class="carousel-card">
         <% if food_trade.photo.attached? %>
           <%= cl_image_tag(food_trade.photo.key) %>
