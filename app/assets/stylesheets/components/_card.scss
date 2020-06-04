@@ -340,11 +340,12 @@
   display: flex;
   align-items: center;
   position: relative;
-  .pantry-remove {
-    margin: 0 8px 0 0;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.06);
+  margin-left: 15%;
+  .ingredient-photo {
     border-radius: 10px;
-    padding: 2px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+    padding: 5px;
+    width: 100px;
   }
   p {
     font-family: $comfortaa;
@@ -355,5 +356,9 @@
     display: inline-block;
     position: absolute;
     right: 0;
+  }
+  .pantry-remove {
+    margin: 0 8px 0 0;
+    padding: 2px;
   }
 }
