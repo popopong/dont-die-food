@@ -53,7 +53,6 @@ class FoodTradesController < ApplicationController
       authorize @new_trade
 
       if @new_trade.save
-        raise
       else
         render :new
       end
