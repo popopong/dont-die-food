@@ -32,11 +32,14 @@ class FoodTradesController < ApplicationController
 
   def new
     @food_trade = FoodTrade.new
+    authorize @food_trade
     # An ingredient list for the users to select
     @ingredients = Ingredient.all
     @ingredients_name = @ingredients.map { |ing| ing.name }
     @ingredients_name.sort!
-    authorize @food_trade
+    @user_address = current_user.address
+    
+    @user_input_ing = params[:ingredients]&.map {|id| Ingredient.find(id.to_i)}
   end
 
   def create

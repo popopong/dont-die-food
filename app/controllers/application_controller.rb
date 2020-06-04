@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
+  before_action :set_title
   include Pundit
 
   after_action :verify_authorized, unless: :skip_pundit?
@@ -18,4 +19,7 @@ class ApplicationController < ActionController::Base
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
   end
 
+  def set_title
+    @title = "Don't Die Food"
+  end
 end
