@@ -43,8 +43,6 @@ class FoodTradesController < ApplicationController
   end
 
   def create
-    food_array = ["🍇", "🍉", "🥑", "🍅", "🥦", "🥩" ]
-
     # Single ingredient food_trade
     if params[:food_trade].class == ActionController::Parameters
       food_trade = params[:food_trade]

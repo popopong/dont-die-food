@@ -6,10 +6,11 @@
       <div class="pantry-card">
         <%= image_tag(pantry_item.ingredient.photo, class: "ingredient-photo") %>
         <%= content_tag(:p, pantry_item.ingredient.name.capitalize) %>
-        <%= link_to pantry_item_path(pantry_item.id), class: "pantry_hide pantry-remove", inner_html: { disabled: true }, method: :delete, data: { confirm: "Are you sure you want to #{pantry_item.ingredient.name.capitalize} from your pantry?" } do %>
-          <%= image_tag("icons/cross.svg") %>
-        <% end %>
-
+        <%#= link_to pantry_item_path(pantry_item.id), class: "pantry_hide pantry-remove", inner_html: { disabled: true }, method: :delete, data: { confirm: "Are you sure you want to #{pantry_item.ingredient.name.capitalize} from your pantry?" } do %>
+          <%#= image_tag("icons/cross.svg") %>
+        <%# end %>
+        <a id="sweet-alert-pantry" class="pantry_hide pantry-remove" disabled="true"><%= image_tag("icons/cross.svg") %></a>
+        <%= link_to "", pantry_item_path(pantry_item.id), class: "hidden", id:"delete-pantry-item", method: :delete %>
       </div>
     <% end %>
   </div>
