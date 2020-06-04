@@ -1,7 +1,6 @@
 <div class="container">
   <h1 style="text-align:center">My giveaways</h1>
 
-  <div class=giveaway-cards>
     <% @food_trades.each do |food_trade| %>
       <%= link_to food_trade_path(food_trade) do %>
         <div class="wide-listing-card">
@@ -18,6 +17,4 @@
         </div>
       <% end %>
     <% end %>
-  </div>
-
 </div>

@@ -34,7 +34,13 @@
 }
 
 .chat-last-mess {
-  font-weight: lighter;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.chat-last-mess-date small {
+  font-weight: 300;
+  font-size: 12px;
 }
 
 .chat-info {
@@ -48,13 +54,15 @@
 }
 
 .chat-listing {
-  color: $marine !important;
-  font-size: 26px;
-  font-weight: lighter;
+  font-weight: 500;
+  font-size: 23px;
 }
 
 .chat-user {
-  font-weight: lighter;
+  color: $marine !important;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 25px;
 }
 
 .chat-notification {

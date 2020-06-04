@@ -1,13 +1,20 @@
+
 .giveaway-info h2, .giveaway-info p {
+  padding-left: 10px;
   color: $f-green;
+}
+
+.giveaway-info h2 {
+  padding-top: 20px;
+}
+
+.giveaway-info p {
+  font-weight: 300;
+  font-size: 16px;
 }
 
 .giveaway_img {
   width: 155px;
   height: 120px;
   object-fit: cover;
-}
-
-.giveaway-cards {
-  margin-left: 18px;
 }
