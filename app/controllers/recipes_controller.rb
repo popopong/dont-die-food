@@ -3,8 +3,12 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = policy_scope(Recipe)
-    @recipes = Recipe.all
+    # @recipes = Recipe.all
+    if user_signed_in?
+      @recipes = current_user.sort_by_pantry_items(@recipes)
+    end
     skip_authorization
+
   end
 
   def show
@@ -27,6 +31,10 @@ class RecipesController < ApplicationController
       @results = Recipe.all.to_a.select do |recipe|
         params[:ingredients].all? { |id| recipe.ingredient_ids.map { |id| id.to_s }
                             .include?(id) }
+      end
+
+      if user_signed_in?
+        @results = current_user.sort_by_pantry_items(@results)
       end
 
       @search_terms_count = 0
