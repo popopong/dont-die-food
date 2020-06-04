@@ -3,7 +3,7 @@ class PantryItemsController < ApplicationController
     @pantry_items = policy_scope(PantryItem).includes([:ingredient]).where(user: current_user)
     @pantry_item = PantryItem.new
     authorize @pantry_items
-    
+
     @addable_items = Ingredient.all.map { |ing| [ing.name, ing.id] }.sort!
   end
 
@@ -13,8 +13,8 @@ class PantryItemsController < ApplicationController
     @pantry_item.ingredient_id = pantry_item_params[:ingredient_id]
 
     authorize @pantry_item
-    if @pantry_item.save!
-      UserOwnedIngredient.find_or_create_by(user: current_user, ingredient_id: params[:pantry_item][:ingredient_id])      
+    if @pantry_item.save
+      UserOwnedIngredient.find_or_create_by(user: current_user, ingredient_id: params[:pantry_item][:ingredient_id])
       pantry_array = ["🧂", "🧈", "🥛", "🧅", "🥜", "🍞"]
       flash.notice = "#{pantry_array.sample} Pantry item successfully added!"
       redirect_to pantry_items_path
@@ -27,7 +27,7 @@ class PantryItemsController < ApplicationController
   def destroy
     @pantry_item = PantryItem.find(params[:id])
     authorize @pantry_item
-    
+
     @pantry_item.destroy
     redirect_to pantry_items_path
   end
