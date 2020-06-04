@@ -1,3 +1,18 @@
 <div class="container">
-  <%= render 'form' %>
+
+  <div class="trade-form">
+    <%#= render 'form'%>
+    <%= simple_form_for [ @user, @food_trade ] do |f|%>
+        <div class="form-group">
+        <%= f.association :user_owned_ingredient, collection: @ingredients_name, label: 'Name of the food' %>
+        <%= f.input :category, label: 'Category', collection: ["Veggies", "Fruits", "Dairy", "Meats", "Other"] %>
+        <%= f.input :description, label: 'Description', input_html: { placeholder: "Describe the condition, quantity etc..." } %>
+        <%= f.input :location, label: 'Address', input_html: { value: @user_address } %>
+        <%= f.input :photo, as: :file, input_html: { class: "photo-upload"} %>
+        <%= f.hidden_field :single_food_trade, value: "true" %>
+
+      </div>
+      <%= f.button :submit, 'Save', class: "button-dark mx-auto mt-4", style: "display: block;" %>
+    <% end %>
+  </div>
 </div>
