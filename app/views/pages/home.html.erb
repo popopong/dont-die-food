@@ -49,7 +49,6 @@
         <% end %>
         <%= link_to food_trade.user_owned_ingredient.ingredient.name.capitalize,  food_trade_path(food_trade), class: "carousel-card-title" %>
         <p class="carousel-card-content"> <%= food_trade.user_owned_ingredient.user.first_name %> </p>
-        <%#= food_trade.location %>
       </div>
     <% end %>
   </div>
