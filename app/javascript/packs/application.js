@@ -37,8 +37,6 @@ import { initChatroomCable  } from '../channels/chatroom_channel';
 import { removeItem } from "../components/pantry";
 import { initSweetalert } from '../plugins/init_sweetalert';
 import { initSweetalertDelete } from '../plugins/init_sweetalert_delete';
-import { initSweetalertPantry } from '../plugins/init_sweetalert_pantry';
-
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -68,18 +66,6 @@ document.addEventListener('turbolinks:load', () => {
     }, (value) => {
       if (value) {
         const link = document.getElementById('delete-link');
-        link.click();
-      }
-    });
-
-  initSweetalertPantry('#sweet-alert-pantry', {
-    title: "Are you sure?",
-    dangerMode: true,
-    buttons: ["Cancel", "Delete"]
-    // icon: "warning"
-    }, (value) => {
-      if (value) {
-        const link = document.getElementById('delete-pantry-item');
         link.click();
       }
     });
