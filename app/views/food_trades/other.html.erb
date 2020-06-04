@@ -10,7 +10,7 @@
         <% if food_trade.photo.attached? %>
           <%= cl_image_tag(food_trade.photo.key) %>
         <% else %>
-          <%= image_tag("#{food_trade.user_owned_ingredient.ingredient.photo}", width: "100%", height: "70%", alt: "#{food_trade.user_owned_ingredient.ingredient.photo}", class: "recipe-image") %>
+          <%= image_tag("https://images.unsplash.com/photo-1542990253-a781e04c0082?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1884&q=80", width: "100%", height: "70%", alt: "#{food_trade.user_owned_ingredient.ingredient.photo}", class: "recipe-image") %>
         <% end %>
         <p class="small-card-title"><%= link_to food_trade.user_owned_ingredient.ingredient.name.capitalize, food_trade_path(food_trade) %></p>
       </div>
