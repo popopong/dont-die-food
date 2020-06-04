@@ -1,9 +1,25 @@
 .navbar{
-  .navbar-visitor{
-  position: relative;
-  display:flex;
-  justify-content: flex-end;
+  padding-top: 19px;
+  flex-direction: row-reverse;
+  min-height: 68px;
+  &.navbar-visitor{
+    padding-top: 10px;
+    flex-direction: row;
+    min-height: 68px;
+    position: relative;
+    display:flex;
+    justify-content: flex-end;
   }
+}
+
+.navbar-toggler-icon {
+  padding-top: 5px;
+  z-index: 1000;
+  margin-top: 10px;
+}
+
+.navbar-nav {
+  padding-top: 10px;
 }
 
 .flex-logo-visitor {
