@@ -1,36 +1,35 @@
 <div class="container">
-    <div id="typed_strings">
-      <h1>Save my <span id="typed"></span></h1>
-    </div>
-    <br>
-
-    <div class="search-form">
-      <%= form_tag recipes_path, method: :get do %>
-        <%= select_tag "ingredients", options_from_collection_for_select(Ingredient.all, "id", "name"), multiple: true, class: "ingredient_select" %> <br>
-        <%= submit_tag "Make a dish!", formaction: recipe_search_path, class: "button-dark", id: "recipe_search_btn" %>
-        <%= form_for @food_trade do |f| %>
-          <%= f.submit "Give away!", class: "button-dark", id: "food_trade_create", formaction: new_food_trade_path %>
-          <%= f.hidden_field :ingredient, value: "", id: "food_trade_hidden_field" %>
-        <% end %>
-      <%end %>
-      <br>
-    </div>
-
+  <div id="typed_strings">
+    <h1>Save my <span id="typed"></span></h1>
   </div>
+  <br>
 
-  <div class="food-card-carousel carousel-card-container">
-    <div class="container">
-      <div class="carousel-title">
-        <div class="d-flex justify-content-between">
-          <h2>Help your neighbours...</h2>
-          <%= link_to "see more", food_trades_path, class: "more" %>
-        </div>
+  <div class="search-form">
+    <%= form_tag recipes_path, method: :get do %>
+      <%= select_tag "ingredients", options_from_collection_for_select(Ingredient.all, "id", "name"), multiple: true, class: "ingredient_select" %> <br>
+      <%= submit_tag "Make a dish!", formaction: recipe_search_path, class: "button-dark", id: "recipe_search_btn" %>
+      <%= form_for @food_trade do |f| %>
+        <%= f.submit "Give away!", class: "button-dark", id: "food_trade_create", formaction: new_food_trade_path %>
+        <%= f.hidden_field :ingredient, value: "", id: "food_trade_hidden_field" %>
+      <% end %>
+    <%end %>
+    <br>
+  </div>
+</div>
+
+<div class="food-card-carousel carousel-card-container">
+  <div class="container">
+    <div class="carousel-title">
+      <div class="d-flex justify-content-between">
+        <h2>Help your neighbours...</h2>
+        <%= link_to "see more", food_trades_path, class: "more" %>
       </div>
     </div>
+  </div>
 
 
   <div class="cards-carousel">
-  <% @food_trades = FoodTrade.includes(user_owned_ingredient: [:ingredient, :user]).where(status: "Available") %>
+    <% @food_trades = FoodTrade.includes(user_owned_ingredient: [:ingredient, :user]).where(status: "Available") %>
     <% @food_trades.last(10).shuffle.each do |food_trade| %>
       <div class="carousel-card">
         <% if food_trade.photo.attached? %>
@@ -44,27 +43,30 @@
       </div>
     <% end %>
   </div>
+</div>
 
 <!-- <div class="recipes-container mb-5"> -->
-  <div class="food-card-carousel carousel-card-container">
-    <div class="container">
-      <div class="carousel-title">
-        <div class="d-flex justify-content-between">
-          <h2>Popular recipes...</h2>
-          <%= link_to "see more", recipes_path, class: "more" %>
-        </div>
+<div class="food-card-carousel carousel-card-container">
+  <div class="container">
+    <div class="carousel-title">
+      <div class="d-flex justify-content-between">
+        <h2>Popular recipes...</h2>
+        <%= link_to "see more", recipes_path, class: "more" %>
       </div>
     </div>
+  </div>
 
-    <div class="cards-carousel">
-      <% @recipes.shuffle.last(10).each do |recipe|%>
-        <%= link_to recipe_path(recipe), class: "carousel-card" do %>
-          <%= image_tag("#{recipe.photo}", size:"150x90", alt: "#{recipe.title}", class: "cards-carousel") %>
-          <div class="carousel-card-title"><%= recipe.title %></div>
+  <div class="cards-carousel">
+    <% @recipes.shuffle.last(10).each do |recipe|%>
+      <%= link_to recipe_path(recipe), class: "carousel-card" do %>
+        <%= image_tag("#{recipe.photo}", size:"150x90", alt: "#{recipe.title}", class: "cards-carousel") %>
+        <div class="carousel-card-title">
+          <%= recipe.title %>
+        </div>
       <% end %>
     <% end %>
   </div>
-
+</div>
 
 
 <script>
