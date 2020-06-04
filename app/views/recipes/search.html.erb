@@ -1,5 +1,5 @@
 <%= render "shared/spinning-eggplant" %>
-<div class="container">
+<div class="container" id="search-result" style="display: none;">
   <h2>Recipes to the rescue ...</h2>
 
   <div class="recipe-card">
@@ -30,8 +30,9 @@
 
 <script>
   let eggplant = document.getElementById("eggplant");
+  let content = document.getElementById("search-result");
   setTimeout(() => {
     eggplant.remove();
+    content.style.display = "block";
   }, 1800);
-
 </script>
