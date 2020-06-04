@@ -1,6 +1,7 @@
 # 🥑 Don't Die Food
 
-A community-based mobile website to save recipes - users can search for recipes or create a giveaway in order to save their food.  
+A community-based mobile website to save recipes - users can search for recipes or create a giveaway in order to save their food.
+  
 [Visit the live app](https://dont-die-food.herokuapp.com/)
 
 ## Built with
