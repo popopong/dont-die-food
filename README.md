@@ -1,6 +1,6 @@
 <h1>🥑 Don't Die Food</h1>
 <p>A community-based mobile website to save recipes - users can search for recipes or create a giveaway in order to save their food</p>
-<p>Visit the live app at <a href="www.dont-die-food.herokuapp.com">dont-die-food.herokuapp.com</a></p>
+<p>Visit the live app at www.dont-die-food.herokuapp.com</p>
 
 <h2>Built with</h2>
 <ul>
