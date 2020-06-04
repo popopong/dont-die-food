@@ -7,6 +7,10 @@ class ChatroomPolicy < ApplicationPolicy
     user_is_in_chat?
   end
 
+  def create?
+    true
+  end
+
   def update?
     user_is_in_chat?
   end

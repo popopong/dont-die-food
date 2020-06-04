@@ -43,7 +43,6 @@ class FoodTradesController < ApplicationController
   end
 
   def create
-    food_array = ["🍇", "🍉", "🥑", "🍅", "🥦", "🥩" ]
     # Single ingredient food_trade
     if params[:food_trade].class == ActionController::Parameters
       food_trade = params[:food_trade]
@@ -54,40 +53,25 @@ class FoodTradesController < ApplicationController
 
       authorize @new_trade
 
-      # if @new_trade.save
-      flash.notice = "#{food_array.sample} Successfully added!!"
-      # else
-      #   render :new
-      # end
-    elsif params[:food_trade].length == 1
-      food_trade = params[:food_trade][0]
-      @new_trade = FoodTrade.new(food_trade_params)
-      ingredient = Ingredient.find(params["food_trade"][0]["ingredient_id"])
-      new_user_own = UserOwnedIngredient.find_or_create_by(user_id: current_user.id, ingredient_id: ingredient.id)
-      @new_trade.user_owned_ingredient = new_user_own
-
-      authorize @new_trade
-
-      # if @new_trade.save
-      flash.notice = "#{food_array.sample} Successfully added!"
-      # else
-      #   render :new
-      # end
+      if @new_trade.save
+      else
+        flash.notice = "An error occured, please try again later"
+        render :new
+      end
     else
       # Multiple ingredients food_trades
       multiple_food_trade_params.each do |param|
         new_user_own = UserOwnedIngredient.find_or_create_by(user_id: current_user.id, ingredient_id: param[:ingredient_id])
         @new_trade = FoodTrade.new(param.except(:ingredient_id))
         @new_trade.user_owned_ingredient = new_user_own
+
         authorize @new_trade
-        # if @new_trade.save
-        flash.notice = "#{food_array.sample} Successfully added!"
-        #   return
-        # else
-        #   render :new
-        # end
+        if @new_trade.save
+        else
+          flash.notice = "An error occured, please try again later"
+          render :new
+        end
       end
-        raise
     end
   end
 
@@ -122,7 +106,7 @@ class FoodTradesController < ApplicationController
   # Current user's own food_trades
   def user_food_trades
     @user = current_user
-    @food_trades = @user.food_trades.includes(user_owned_ingredient: [:user, :ingredient])
+    @food_trades = @user.food_trades.includes(user_owned_ingredient: [:user, :ingredient]).order(created_at: :desc)
     authorize @food_trades
   end
 
@@ -164,5 +148,9 @@ class FoodTradesController < ApplicationController
 
   def food_trade_params
     params.require(:food_trade).permit(:description, :location, :category, :photo)
+  end
+
+  def food_trade_single_params
+    params.permit(:food_trade[0]).permit(:description, :location, :category, :photo)
   end
 end

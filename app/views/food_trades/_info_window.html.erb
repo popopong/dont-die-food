@@ -1,2 +1,2 @@
 <p><%= food_trade.user_owned_ingredient.user.first_name %> has some 
-<strong><%= food_trade.user_owned_ingredient.ingredient.name %></strong> to share!</p>
+<strong><%= link_to food_trade.user_owned_ingredient.ingredient.name, food_trade_path(food_trade) %></strong> to share!</p>
