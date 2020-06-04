@@ -29,14 +29,14 @@ class SavedRecipesController < ApplicationController
 
       authorize @saved_recipe
       
-      @saved_recipe.save!
+      @saved_recipe.save
       redirect_to recipe_path(params[:recipe_id])
     else
       @saved_recipe = SavedRecipe.find(params[:saved_recipe_id])
 
       authorize @saved_recipe
 
-      @saved_recipe.destroy!
+      @saved_recipe.destroy
       redirect_to recipe_path(params[:recipe_id])
     end
   end

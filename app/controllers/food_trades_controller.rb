@@ -46,7 +46,21 @@ class FoodTradesController < ApplicationController
     food_array = ["🍇", "🍉", "🥑", "🍅", "🥦", "🥩" ]
 
     # Single ingredient food_trade
-    if params[:food_trade].length == 1
+    if params[:food_trade].class == ActionController::Parameters
+      food_trade = params[:food_trade]
+      @new_trade = FoodTrade.new(category: food_trade["category"], location: food_trade["location"], description: food_trade["description"])
+      ingredient = Ingredient.find_by(name: params["food_trade"]["user_owned_ingredient_id"])
+      new_user_own = UserOwnedIngredient.find_or_create_by(user_id: current_user.id, ingredient_id: ingredient.id)
+      @new_trade.user_owned_ingredient = new_user_own
+      authorize @new_trade
+      
+      if @new_trade.save
+        flash.notice = "#{food_array.sample} Food trade successfully added!"
+        redirect_to food_trade_path(@new_trade)
+      else
+        render :new
+      end
+    elsif params[:food_trade].length == 1
       food_trade = params[:food_trade][0]
       @new_trade = FoodTrade.new(category: food_trade["category"], location: food_trade["location"], description: food_trade["description"])
       ingredient = Ingredient.find(params["food_trade"][0]["ingredient_id"])
@@ -54,7 +68,7 @@ class FoodTradesController < ApplicationController
       @new_trade.user_owned_ingredient = new_user_own
       authorize @new_trade
       
-      if @new_trade.save!
+      if @new_trade.save
         flash.notice = "#{food_array.sample} Food trade successfully added!"
         redirect_to food_trade_path(@new_trade)
       else
@@ -69,7 +83,7 @@ class FoodTradesController < ApplicationController
         flash.notice = "#{food_array.sample} Food trade successfully added!"
 
         authorize @new_trade
-        if @new_trade.save!
+        if @new_trade.save
           flash.notice = "#{food_array.sample} Multiple food trades successfully added!"
           redirect_to private_user_food_trades_path
           return

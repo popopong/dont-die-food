@@ -25,7 +25,7 @@ class ChatroomsController < ApplicationController
       @chatroom = Chatroom.new(food_trade: @food_trade)
       @chatroom.messages.new(sender: current_user, receiver: @food_trade.user_owned_ingredient.user, chatroom: @chatroom, content: "Chatroom successfully created (this is an automated message).")
 
-      if @chatroom.save!
+      if @chatroom.save
         redirect_to chatroom_path(@chatroom)
       else
         redirect_to food_trade_path(params[:id])
