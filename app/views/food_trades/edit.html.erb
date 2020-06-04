@@ -1,7 +1,5 @@
 <div class="container">
-
   <div class="trade-form">
-    <%#= render 'form'%>
     <%= simple_form_for [ @user, @food_trade ] do |f|%>
         <div class="form-group">
         <%= f.association :user_owned_ingredient, collection: @ingredients_name, label: 'Name of the food' %>
