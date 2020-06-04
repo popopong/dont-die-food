@@ -25,8 +25,7 @@ class User < ApplicationRecord
     number.count
   end
 
-
-  def self.recipe_sorter(recipes)
-
+  def sort_by_pantry_items(recipes)
+    recipes.to_a.sort_by { |recipe| number_of_pantry_items_for(recipe) }.reverse
   end
 end
