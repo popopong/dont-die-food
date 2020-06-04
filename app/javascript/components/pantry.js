@@ -1,15 +1,7 @@
 import $ from 'jquery'
 
-// const trigger = $("#pantry-remove-trigger");
-// const targets = $(".pantry-remove")
-
 const removeItem = () => {
-  // trigger.addEventListener("click", (event) => {
-  //   targets.forEach( element => {
-  //     element.classList.toggle("pantry_hide");
-  //     element.disabled = "true";
-  //   });
-  // });
+
   $(".pantry_hide").each(function(event) {
     $( this ).hide();
   });
