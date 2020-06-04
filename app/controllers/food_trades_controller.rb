@@ -54,6 +54,7 @@ class FoodTradesController < ApplicationController
       
       if @new_trade.save
       else
+        flash.notice = "An error occured, please try again later"
         render :new
       end
     elsif params[:food_trade].length == 1
@@ -66,6 +67,7 @@ class FoodTradesController < ApplicationController
       
       if @new_trade.save
       else
+        flash.notice = "An error occured, please try again later"
         render :new
       end
     else
@@ -78,8 +80,8 @@ class FoodTradesController < ApplicationController
 
         authorize @new_trade
         if @new_trade.save
-          return
         else
+          flash.notice = "An error occured, please try again later"
           render :new
         end
       end
