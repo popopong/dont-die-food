@@ -19,6 +19,7 @@ class ChatroomsController < ApplicationController
 
   def create
     @food_trade = FoodTrade.find(params[:food_trade_id])
+    authorize (@food_trade)
     # If there's a chatroom where there's one message from me and for the same food trade, then go to that chatroom (and don't create a new one)
     
     if chatroom_exists
