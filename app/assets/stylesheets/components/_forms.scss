@@ -80,7 +80,7 @@
   position: fixed;
   bottom: 70px;
   display: inline-block;
-  textarea {
+  input {
     // Styling
     background: $f-lightgrey;
     border: 1px solid $f-nav-green;
@@ -254,7 +254,7 @@
   }
 
   input {
-    background:url(icons/pantry-add.svg);
+    background-image: asset-url("icons/pantry-add.svg");
     background-repeat: no-repeat;
     width: 40px;
   }

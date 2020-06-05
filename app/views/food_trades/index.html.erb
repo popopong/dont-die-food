@@ -27,6 +27,7 @@
   </div>
 
   <div class="cards-carousel">
+
     <% @food_trades.where(category: "Fruits").last(10).each do |food_trade| %>
       <%= link_to food_trade_path(food_trade) do %>
         <div class="carousel-card">
@@ -54,6 +55,7 @@
   </div>
 
   <div class="cards-carousel">
+
     <% @food_trades.where(category: "Veggies").last(10).each do |food_trade| %>
       <%= link_to food_trade_path(food_trade) do %>
         <div class="carousel-card">
@@ -81,6 +83,7 @@
   </div>
 
   <div class="cards-carousel">
+
     <% @food_trades.where(category: "Dairy").last(10).each do |food_trade| %>
       <%= link_to food_trade_path(food_trade) do %>
         <div class="carousel-card">
@@ -108,6 +111,7 @@
   </div>
 
   <div class="cards-carousel">
+
     <% @food_trades.where(category: "Meats").last(10).each do |food_trade| %>
       <%= link_to food_trade_path(food_trade) do %>
         <div class="carousel-card">
@@ -135,6 +139,7 @@
   </div>
 
   <div class="cards-carousel">
+
     <% @food_trades.where(category: "Other").last(10).each do |food_trade| %>
       <%= link_to food_trade_path(food_trade) do %>
         <div class="carousel-card">

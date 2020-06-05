@@ -13,16 +13,10 @@ const chatroom = () => {
       }
     });
 
+    // Show time when clicked on message
     message.forEach((m) => {
       m.addEventListener("click", (event) => {
-        // document.querySelectorAll('.message-time').forEach((time) => {
-        //   if (document.querySelectorAll('.d-none') === null) {
-        //     console.log(document.querySelectorAll('.d-none') === null);
-        //     time.classList.add("d-none");
-        //   }
-        // })
         let id = event.currentTarget.id;
-        // document.getElementById(`time-${id}`).classList.remove('d-none');
         document.getElementById(`time-${id}`).classList.toggle("d-none");
       });
     })
