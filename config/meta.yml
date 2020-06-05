@@ -1,0 +1,5 @@
+meta_product_name: "Don't Die Food"
+meta_title: "Don't Die Food - Save them together!"
+meta_description: "Customized recipes base on what you have, and a food-loving community to exchange food!"
+meta_image: "og-image-avocado.PNG" # should exist in `app/assets/images/`
+twitter_account: "@product_twitter_account"   # required for Twitter Cards

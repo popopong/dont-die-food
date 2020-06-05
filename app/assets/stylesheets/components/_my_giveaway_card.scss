@@ -1,11 +1,11 @@
 
 .giveaway-info h2, .giveaway-info p {
-  padding-left: 10px;
   color: $f-green;
 }
 
 .giveaway-info h2 {
-  padding-top: 20px;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 .giveaway-info p {
@@ -14,7 +14,7 @@
 }
 
 .giveaway_img {
-  width: 155px;
+  width: 100%;
   height: 120px;
   object-fit: cover;
 }

@@ -1,3 +1,6 @@
+<% content_for :meta_title, "#{@food_trade.user_owned_ingredient.ingredient.name} is on #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_description, @food_trade.description %>
+
 <div class="container">
   <% if current_user != @food_trade.user_owned_ingredient.user %>
     <%= render 'show_other_user'%>

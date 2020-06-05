@@ -26,7 +26,7 @@
 .flex-logo-visitor {
   position: absolute;
   margin: auto;
-  top: 20px; left: 0; bottom: 0; right: 0;
+  top: 20px; left: 0; bottom: 0; right: 60px;
   max-width: 155px;
   max-height: 200px;
   width: 100%;
@@ -35,7 +35,7 @@
 .flex-logo {
   position: absolute;
   margin: auto;
-  top: 20px; left: 0; bottom: 0; right: 0;
+  top: 20px; left: 0; bottom: 0; right: 60px;
   max-width: 155px;
   max-height: 500px;
   z-index: 1;
@@ -66,7 +66,6 @@
 
 
 .top-nav-container {
-  padding-top: 25px;
   z-index: 1000;
 
   img {
@@ -82,28 +81,26 @@
   }
   li {
     padding-top: 16px;
+    padding-left: 20px;
   }
   #navbar-user-avatar {
     display: inline;
   }
 }
 
-@media only screen and (min-width: 768px) {
-  /* For desktop: */
+@media only screen and (min-width: 1024px) {
+  /* For smaller than desktop: */
   .top-nav-container {
-    position: absolute;
     top: 5px;
     right: 30px;
 
     img {
       width: 40px;
       padding-right: 5px;
-      display: none;
     }
     object {
       display: inline;
       padding-right: 2px;
-      display: none;
     }
     a {
       display: inline;
