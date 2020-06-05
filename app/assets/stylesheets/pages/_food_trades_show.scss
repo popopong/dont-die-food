@@ -24,6 +24,13 @@
  margin-right: 12px; 
 }
 
-.food_trade_desc {
-  margin-bottom: 32px;
+.food_trade_desc .location {
+  font-weight: 300;
+  margin-bottom: 0;
+  font-size: 16px;
+  margin-top: 50px;
+}
+
+.food_trade_posted_and_user .date {
+  font-weight: 300;
 }
