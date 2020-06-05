@@ -34,4 +34,8 @@ class PantryItemsController < ApplicationController
   def pantry_item_params
     params.require(:pantry_item).permit(:ingredient_id)
   end
+
+  def set_title
+    @title = "My pantry - Don't Die Food"
+  end
 end

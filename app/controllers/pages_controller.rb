@@ -13,4 +13,10 @@ class PagesController < ApplicationController
       @food_trades = FoodTrade.includes(:photo_attachment, user_owned_ingredient: [:ingredient, :user]).where(status: "Available").shuffle
     end
   end
+
+  private
+
+  def set_title
+    @title = "Don't Die Food - Save food together!"
+  end
 end

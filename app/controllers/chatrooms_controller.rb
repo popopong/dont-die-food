@@ -1,6 +1,7 @@
 class ChatroomsController < ApplicationController
 
   def index
+    @title = "My chats - Don't Die Food"
     @messages = policy_scope(Message).includes({chatroom: {food_trade: {user_owned_ingredient: :ingredient}}}, :sender, :receiver)
                        .order(created_at: :desc)
                        .where("sender_id = ? OR receiver_id = ?", current_user.id, current_user.id)
@@ -11,6 +12,7 @@ class ChatroomsController < ApplicationController
   def show
     @chatroom = Chatroom.includes(messages: :sender).find(params[:id])
     @other_user = @chatroom.other_user(current_user)
+    @title = "Messages with #{@other_user.first_name} - Don't Die Food"
     @message = Message.new
     authorize @chatroom
   end
