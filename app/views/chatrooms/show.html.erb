@@ -13,7 +13,7 @@
     </div>
   </div>
 
-  <div class="messages-box overflow-auto" id="messages" data-chatroom-id="<%= @chatroom.id %>">
+  <div class="messages-box overflow-auto" id="messages" data-chatroom-id="<%= @chatroom.id %>" data-current-user-id="<%= current_user.id %>">
 
       <% @chatroom.messages.order(created_at: :asc).each do |message| %>
         <% if message.sender == current_user %>
@@ -22,16 +22,16 @@
           <%= render partial: "messages/received_message", locals: { message: message }%>
         <% end %>
       <% end %>
-
-    <div class="message-form m-auto d-flex justify-content-center">
-      <%= simple_form_for @message do |f| %>
-        <%= f.input :content, placeholder: "Message #{@other_user.first_name}", label: false, autocomplete: "off" %>
-        <%= f.hidden_field :sender_id, value: current_user.id %>
-        <%= f.hidden_field :receiver_id, value: @other_user.id %>
-        <%= f.hidden_field :chatroom_id, value: @chatroom.id %>
-        <%= f.button :submit, "Send", class: "button-dark", id: "submit-mess", style: "display:none"; %> 
-      <% end %>
-    </div>
   </div>
+
+  <div class="message-form m-auto d-flex justify-content-center">
+  <%= simple_form_for @message do |f| %>
+    <%= f.input :content, placeholder: "Message #{@other_user.first_name}", label: false, as: :string, input_html: { autocomplete: "off" } %>
+    <%= f.hidden_field :sender_id, value: current_user.id %>
+    <%= f.hidden_field :receiver_id, value: @other_user.id %>
+    <%= f.hidden_field :chatroom_id, value: @chatroom.id %>
+    <%= f.button :submit, "Send", class: "button-dark", id: "submit-mess", style: "display:none"; %> 
+  <% end %>
+</div>
 </div>
 

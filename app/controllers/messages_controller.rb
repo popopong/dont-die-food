@@ -15,7 +15,10 @@ class MessagesController < ApplicationController
         @message.id}")
       ChatroomChannel.broadcast_to(
         @chatroom,
-        render_to_string(partial: "messages/received_message", locals: { message: @message })
+        JSON.generate({
+          receiver_id: @other_user.id,
+          message_html: render_to_string(partial: "messages/received_message", locals: { message: @message })
+        })
       )
     else
       redirect_to chatroom_path(@message.chatroom.id)
