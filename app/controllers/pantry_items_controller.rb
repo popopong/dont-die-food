@@ -1,6 +1,6 @@
 class PantryItemsController < ApplicationController
   def index
-    @pantry_items = policy_scope(PantryItem).includes([:ingredient]).where(user: current_user)
+    @pantry_items = policy_scope(PantryItem).includes(:ingredient, :user).where(user: current_user)
     @pantry_item = PantryItem.new
     authorize @pantry_items
 
@@ -33,5 +33,9 @@ class PantryItemsController < ApplicationController
   private
   def pantry_item_params
     params.require(:pantry_item).permit(:ingredient_id)
+  end
+
+  def set_title
+    @title = "My pantry - Don't Die Food"
   end
 end
