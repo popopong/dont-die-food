@@ -3,7 +3,7 @@ class FoodTrade < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_location?
 
   belongs_to :user_owned_ingredient
-  has_many :chatrooms
+  has_many :chatrooms, dependent: :destroy
   has_one_attached :photo
 
   validates :status, inclusion: { in: ["Available", "Unavailable"]}
