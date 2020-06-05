@@ -1,5 +1,6 @@
 class SavedRecipesController < ApplicationController
   def index
+    @title = "My cookbook - Don't Die Food"
     @saved_recipes = policy_scope(SavedRecipe)
     user = current_user
     @saved_recipes = user.saved_recipes.includes([:recipe])

@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update]
 
   def show
+    @title = "My profile - Don't Die Food"
     @user = current_user
     authorize @user
   end
