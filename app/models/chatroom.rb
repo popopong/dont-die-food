@@ -1,6 +1,6 @@
 class Chatroom < ApplicationRecord
   belongs_to :food_trade
-  has_many :messages
+  has_many :messages, dependent: :destroy
 
   validates :food_trade, presence: true
 
