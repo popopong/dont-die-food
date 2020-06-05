@@ -27,7 +27,15 @@
   </div>
 
   <div class="cards-carousel">
-    <% @food_trades.where(category: "Fruits").first(10).each do |food_trade| %>
+  <% if user_signed_in? %>
+    <% food_trades_selected = @food_trades.where(category: "Fruits").reject do |food_trade|%>
+      <% food_trade.user_owned_ingredient.user == current_user %>
+    <% end %>
+  <% else %>
+    <% food_trades_selected = @food_trades.where(category: "Fruits") %>
+  <% end %>
+
+    <% food_trades_selected.first(10).each do |food_trade| %>
       <div class="carousel-card">
         <%= link_to food_trade_path(food_trade) do %>
 
@@ -55,7 +63,15 @@
   </div>
 
   <div class="cards-carousel">
-    <% @food_trades.where(category: "Veggies").first(10).each do |food_trade| %>
+    <% if user_signed_in? %>
+      <% food_trades_selected = @food_trades.where(category: "Veggies").reject do |food_trade|%>
+        <% food_trade.user_owned_ingredient.user == current_user %>
+      <% end %>
+    <% else %>
+      <% food_trades_selected = @food_trades.where(category: "Veggies") %>
+    <% end %>
+
+    <% food_trades_selected.first(10).each do |food_trade| %>
       <div class="carousel-card">
         <%= link_to food_trade_path(food_trade) do %>
           <% if food_trade.photo.attached? %>
@@ -82,7 +98,15 @@
   </div>
 
   <div class="cards-carousel">
-    <% @food_trades.where(category: "Dairy").first(10).each do |food_trade| %>
+    <% if user_signed_in? %>
+      <% food_trades_selected = @food_trades.where(category: "Dairy").reject do |food_trade|%>
+        <% food_trade.user_owned_ingredient.user == current_user %>
+      <% end %>
+    <% else %>
+      <% food_trades_selected = @food_trades.where(category: "Dairy") %>
+    <% end %>
+
+    <% food_trades_selected.first(10).each do |food_trade| %>
      <div class="carousel-card">
         <%= link_to food_trade_path(food_trade) do %>
           <% if food_trade.photo.attached? %>
@@ -109,7 +133,15 @@
   </div>
 
   <div class="cards-carousel">
-    <% @food_trades.where(category: "Meats").first(10).each do |food_trade| %>
+    <% if user_signed_in? %>
+      <% food_trades_selected = @food_trades.where(category: "Meats").reject do |food_trade|%>
+        <% food_trade.user_owned_ingredient.user == current_user %>
+      <% end %>
+    <% else %>
+      <% food_trades_selected = @food_trades.where(category: "Meats") %>
+    <% end %>
+
+    <% food_trades_selected.first(10).each do |food_trade| %>
       <div class="carousel-card">
         <%= link_to food_trade_path(food_trade) do %>
           <% if food_trade.photo.attached? %>
@@ -136,7 +168,15 @@
   </div>
 
   <div class="cards-carousel">
-    <% @food_trades.where(category: "Other").first(10).each do |food_trade| %>
+    <% if user_signed_in? %>
+      <% food_trades_selected = @food_trades.where(category: "Other").reject do |food_trade|%>
+        <% food_trade.user_owned_ingredient.user == current_user %>
+      <% end %>
+    <% else %>
+      <% food_trades_selected = @food_trades.where(category: "Other") %>
+    <% end %>
+
+    <% food_trades_selected.first(10).each do |food_trade| %>
       <div class="carousel-card">
         <%= link_to food_trade_path(food_trade) do %>
           <% if food_trade.photo.attached? %>

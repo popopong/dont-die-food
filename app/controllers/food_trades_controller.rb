@@ -5,6 +5,7 @@ class FoodTradesController < ApplicationController
   def index
     @title = "Community - Don't Die Food"
     @food_trades = policy_scope(FoodTrade).includes(:photo_attachment, user_owned_ingredient: [:user, :ingredient]).where(status: "Available").order(created_at: :desc)
+
     @food_trades_geocoded = @food_trades.geocoded
     authorize @food_trades
 
