@@ -38,13 +38,12 @@ class RecipesController < ApplicationController
 
       if user_signed_in?
         @results = current_user.sort_by_pantry_items(@results)
-      end
-
-      @search_terms_count = params[:ingredients].length
-      pantry_item_match = false
-      current_user.pantry_items.each do |item|
-        if params[:ingredients].include?(item.ingredient_id.to_s)
-          pantry_item_match = true
+        @search_terms_count = params[:ingredients].length
+        pantry_item_match = false
+        current_user.pantry_items.each do |item|
+          if params[:ingredients].include?(item.ingredient_id.to_s)
+            pantry_item_match = true
+          end
         end
       end
 

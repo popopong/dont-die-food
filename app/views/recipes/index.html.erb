@@ -7,9 +7,11 @@
         <div class="recipe-big-card-title">
           <%= link_to recipe.title, recipe_path(recipe) %>
           <div class="recipe-big-card-ingredients">
-            <p>
-              You have <%= current_user.number_of_pantry_items_for(recipe) %> <%= current_user.number_of_pantry_items_for(recipe) == 1 ? "ingredient" : "ingredients" %> so far!
-            </p>
+            <% if user_signed_in? %>
+              <p>
+                You have <%= current_user.number_of_pantry_items_for(recipe) %> <%= current_user.number_of_pantry_items_for(recipe) == 1 ? "ingredient" : "ingredients" %> so far!
+              </p>
+            <% end %>
           </div>
         </div>
       </div>
