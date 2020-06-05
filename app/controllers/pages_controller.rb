@@ -10,7 +10,7 @@ class PagesController < ApplicationController
     @food_trade = FoodTrade.new
 
     if user_signed_in?
-      @food_trades = FoodTrade.includes(:photo_attachment, user_owned_ingredient: [:ingredient, :user]).where(status: "Available").select do |food_trade|
+      @food_trades = FoodTrade.includes({photo_attachment: :blob}, user_owned_ingredient: [:ingredient, :user]).where(status: "Available").select do |food_trade|
         food_trade.user_owned_ingredient.user != current_user
       end
     else
