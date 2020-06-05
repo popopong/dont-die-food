@@ -11,7 +11,7 @@
           <% if food_trade.photo.attached? %>
             <%= cl_image_tag(food_trade.photo.key) %>
           <% else %>
-            <%= image_tag("milk-crop.jpeg", width: "100%", height: "70%", alt: "#{food_trade.user_owned_ingredient.ingredient.photo}", class: "recipe-image") %>
+            <%= image_tag("milk-crop.jpg", width: "100%", height: "70%", alt: "#{food_trade.user_owned_ingredient.ingredient.photo}", class: "recipe-image") %>
           <% end %>
           <p class="small-card-title"><%= food_trade.user_owned_ingredient.ingredient.name.capitalize %></p>
           <p class="small-card-content"> <%= food_trade.user_owned_ingredient.user.first_name %> </p>
