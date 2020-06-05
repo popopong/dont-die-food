@@ -9,14 +9,14 @@ const initSelect2 = () => {
     $('#ingredients').select2({
       sorter: data => data.sort((a, b) => a.text.localeCompare(b.text)),
     });
-
-    document.querySelectorAll(".food_trade_select").forEach((select) => {
-      $(select).select2()
-    })
   }
 
-  if (!$('#food_trade_user_owned_ingredient_id').hasClass("select2-hidden-accessible")) {
-    $('#food_trade_user_owned_ingredient_id').select2(); // (~ document.querySelectorAll)
+  if (!$('.food_trade_select').hasClass("select2-hidden-accessible")) {
+    $('.food_trade_select').select2(); // (~ document.querySelectorAll)
+  }
+
+  if (!$('.food_trade_category_select').hasClass("select2-hidden-accessible")) {
+    $('.food_trade_category_select').select2(); // (~ document.querySelectorAll)
   }
 
   if (!$('#pantry_item_ingredient_id').hasClass("select2-hidden-accessible")) {
