@@ -24,14 +24,14 @@
       <% end %>
   </div>
 
-      <div class="message-form m-auto d-flex justify-content-center">
-      <%= simple_form_for @message do |f| %>
-        <%= f.input :content, placeholder: "Message #{@other_user.first_name}", label: false, as: :string, input_html: { autocomplete: "off" } %>
-        <%= f.hidden_field :sender_id, value: current_user.id %>
-        <%= f.hidden_field :receiver_id, value: @other_user.id %>
-        <%= f.hidden_field :chatroom_id, value: @chatroom.id %>
-        <%= f.button :submit, "Send", class: "button-dark", id: "submit-mess", style: "display:none"; %> 
-      <% end %>
-    </div>
+  <div class="message-form m-auto d-flex justify-content-center">
+  <%= simple_form_for @message do |f| %>
+    <%= f.input :content, placeholder: "Message #{@other_user.first_name}", label: false, as: :string, input_html: { autocomplete: "off" } %>
+    <%= f.hidden_field :sender_id, value: current_user.id %>
+    <%= f.hidden_field :receiver_id, value: @other_user.id %>
+    <%= f.hidden_field :chatroom_id, value: @chatroom.id %>
+    <%= f.button :submit, "Send", class: "button-dark", id: "submit-mess", style: "display:none"; %> 
+  <% end %>
+</div>
 </div>
 

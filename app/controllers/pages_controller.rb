@@ -2,6 +2,10 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home]
 
   def home
+    recipes_array = []
+    @recipes = recipes_array.map do |recipe_name|
+      Recipe.find_by(title: recipe_name)
+    end
     @recipes = Recipe.all
     @food_trade = FoodTrade.new
 
