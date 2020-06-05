@@ -3,8 +3,7 @@ class FoodTradesController < ApplicationController
   before_action :find_food_trade, only: [:destroy, :edit, :update]
 
   def index
-    @food_trades = policy_scope(FoodTrade)
-    @food_trades = FoodTrade.includes(:photo_attachment, user_owned_ingredient: [:user, :ingredient]).where(status: "Available")
+    @food_trades = policy_scope(FoodTrade).includes(:photo_attachment, user_owned_ingredient: [:user, :ingredient]).where(status: "Available")
     @food_trades_geocoded = FoodTrade.includes(user_owned_ingredient: [:user, :ingredient]).geocoded
     authorize @food_trades
 
