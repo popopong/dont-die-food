@@ -3,7 +3,9 @@ class FoodTradesController < ApplicationController
   before_action :find_food_trade, only: [:destroy, :edit, :update]
 
   def index
-    @food_trades = policy_scope(FoodTrade).includes(:photo_attachment, user_owned_ingredient: [:user, :ingredient]).where(status: "Available")
+    @title = "Community - Don't Die Food"
+    @food_trades = policy_scope(FoodTrade)
+    @food_trades = FoodTrade.includes(:photo_attachment, user_owned_ingredient: [:user, :ingredient]).where(status: "Available")
     @food_trades_geocoded = FoodTrade.includes(user_owned_ingredient: [:user, :ingredient]).geocoded
     authorize @food_trades
 
@@ -19,6 +21,7 @@ class FoodTradesController < ApplicationController
 
   def show
     @food_trade = FoodTrade.find(params[:id])
+    @title = "Details of #{@food_trade.user_owned_ingredient.ingredient.name} - Don't Die Food"
     @markers =[{
         lat: @food_trade.latitude,
         lng: @food_trade.longitude,
@@ -30,6 +33,7 @@ class FoodTradesController < ApplicationController
   end
 
   def new
+    @title = "Sharing food - Don't Die Food"
     @food_trade = FoodTrade.new
     authorize @food_trade
     # An ingredient list for the users to select
@@ -49,6 +53,7 @@ class FoodTradesController < ApplicationController
       ingredient = Ingredient.find_by(name: params["food_trade"]["user_owned_ingredient_id"])
       new_user_own = UserOwnedIngredient.find_or_create_by(user_id: current_user.id, ingredient_id: ingredient.id)
       @new_trade.user_owned_ingredient = new_user_own
+
       authorize @new_trade
 
       if @new_trade.save
@@ -76,6 +81,7 @@ class FoodTradesController < ApplicationController
   def edit
     authorize @food_trade
     @user_owned_ingredient = @food_trade.user_owned_ingredient
+    @title = "Edit #{@user_owned_ingredient.ingredient.name} - Don't Die Food"
     @ingredients = Ingredient.all
     @ingredients_name = @ingredients.map { |ing| ing.name }
     @ingredients_name.sort!
@@ -103,6 +109,7 @@ class FoodTradesController < ApplicationController
 
   # Current user's own food_trades
   def user_food_trades
+    @title = "My giveaways - Don't Die Food"
     @user = current_user
     @food_trades = @user.food_trades.includes(user_owned_ingredient: [:user, :ingredient]).order(created_at: :desc)
     authorize @food_trades
@@ -110,26 +117,31 @@ class FoodTradesController < ApplicationController
 
   # FoodTrade categories start here
   def veggies
+    @title = "Veggie giveaways - Don't Die Food"
     @food_trades = FoodTrade.includes(:photo_attachment, user_owned_ingredient: [:user, :ingredient]).where(category: "Veggies")
     authorize @food_trades
   end
 
   def fruits
+    @title = "Fruit giveaways - Don't Die Food"
     @food_trades = FoodTrade.includes(:photo_attachment, user_owned_ingredient: [:user, :ingredient]).where(category: "Fruits")
     authorize @food_trades
   end
 
   def dairy
+    @title = "Dairy giveaways - Don't Die Food"
     @food_trades = FoodTrade.includes(:photo_attachment, user_owned_ingredient: [:user, :ingredient]).where(category: "Dairy")
     authorize @food_trades
   end
 
   def meats
+    @title = "Meat giveaways - Don't Die Food"
     @food_trades = FoodTrade.includes(:photo_attachment, user_owned_ingredient: [:user, :ingredient]).where(category: "Meats")
     authorize @food_trades
   end
 
   def other
+    @title = "Other giveaways - Don't Die Food"
     @food_trades = FoodTrade.includes(:photo_attachment, user_owned_ingredient: [:user, :ingredient]).where(category: "Other")
     authorize @food_trades
   end

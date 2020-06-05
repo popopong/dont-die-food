@@ -19,7 +19,7 @@
     <%= simple_form_for @pantry_item do |f| %>
       <%= f.select :ingredient_id, collection: @addable_items %>
       <%= f.button :submit, "" do %>
-        <%= image_tag("icons/pantry-add.svg")%>
+        <object data="<%= asset_path("icons/pantry-add.svg") %>" type="image/svg+xml" ></object>
       <% end %>
     <% end %>
   </div>

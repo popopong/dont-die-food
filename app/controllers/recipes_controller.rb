@@ -2,6 +2,7 @@ class RecipesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :search]
 
   def index
+    @title = "Popular recipes - Don't Die Food"
     @recipes = policy_scope(Recipe)
     # @recipes = Recipe.all
     if user_signed_in?
@@ -13,6 +14,7 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    @title = "#{@recipe.title} - Don't Die Food"
     skip_authorization
     @save_recipe = SavedRecipe.new
     @user_saved_recipe = SavedRecipe.where(user: current_user, recipe: @recipe)
@@ -26,6 +28,7 @@ class RecipesController < ApplicationController
 
   def search
     skip_authorization
+    @title = "Recipes results - Don't Die Food"
 
     if params[:ingredients]
       @results = Recipe.all.to_a.select do |recipe|

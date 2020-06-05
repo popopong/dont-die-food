@@ -1,5 +1,9 @@
-#food_trade_show_img > img {
-  width: 372.95px;
+#food_trade_show_img {
+  margin: auto;
+}
+
+#food_trade_show_img img {
+  width: 100%;
   height: 200px;
   object-fit: cover;
   justify-content: center;
@@ -20,6 +24,13 @@
  margin-right: 12px; 
 }
 
-.food_trade_desc {
-  margin-bottom: 32px;
+.food_trade_desc .location {
+  font-weight: 300;
+  margin-bottom: 0;
+  font-size: 16px;
+  margin-top: 50px;
+}
+
+.food_trade_posted_and_user .date {
+  font-weight: 300;
 }
