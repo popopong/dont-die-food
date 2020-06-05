@@ -13,6 +13,7 @@ const chatroom = () => {
       }
     });
 
+    // Show time when clicked on message
     message.forEach((m) => {
       m.addEventListener("click", (event) => {
         // document.querySelectorAll('.message-time').forEach((time) => {
