@@ -28,20 +28,17 @@
 
   <div class="cards-carousel">
     <% @food_trades.where(category: "Fruits").last(10).each do |food_trade| %>
-      <div class="carousel-card">
-        <%= link_to food_trade_path(food_trade) do %>
-
+      <%= link_to food_trade_path(food_trade) do %>
+        <div class="carousel-card">
           <% if food_trade.photo.attached? %>
             <%= cl_image_tag(food_trade.photo.key) %>
           <% else %>
             <%= image_tag("https://images.unsplash.com/photo-1521732813055-61b789f61463?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80", size:"150x90", alt: "#{food_trade.user_owned_ingredient.ingredient.photo}", class: "recipe-image") %>
           <% end %>
-
           <p class="carousel-card-title"><%= food_trade.user_owned_ingredient.ingredient.name.capitalize %></p>
           <p class="carousel-card-content"> <%= food_trade.user_owned_ingredient.user.first_name %> </p>
-
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>
@@ -58,20 +55,17 @@
 
   <div class="cards-carousel">
     <% @food_trades.where(category: "Veggies").last(10).each do |food_trade| %>
-      <div class="carousel-card">
-        <%= link_to food_trade_path(food_trade) do %>
-
+      <%= link_to food_trade_path(food_trade) do %>
+        <div class="carousel-card">
           <% if food_trade.photo.attached? %>
             <%= cl_image_tag(food_trade.photo.key) %>
           <% else %>
             <%= image_tag("https://images.unsplash.com/photo-1575218823251-f9d243b6f720?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80", size:"150x90", alt: "#{food_trade.user_owned_ingredient.ingredient.photo}", class: "recipe-image") %>
           <% end %>
-
           <p class="carousel-card-title"><%= food_trade.user_owned_ingredient.ingredient.name.capitalize %></p>
           <p class="carousel-card-content"> <%= food_trade.user_owned_ingredient.user.first_name %> </p>
-
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>
@@ -88,8 +82,8 @@
 
   <div class="cards-carousel">
     <% @food_trades.where(category: "Dairy").last(10).each do |food_trade| %>
-     <div class="carousel-card">
-        <%= link_to food_trade_path(food_trade) do %>
+      <%= link_to food_trade_path(food_trade) do %>
+        <div class="carousel-card">
           <% if food_trade.photo.attached? %>
             <%= cl_image_tag(food_trade.photo.key) %>
           <% else %>
@@ -97,8 +91,8 @@
           <% end %>
           <p class="carousel-card-title"><%= food_trade.user_owned_ingredient.ingredient.name.capitalize %></p>
           <p class="carousel-card-content"> <%= food_trade.user_owned_ingredient.user.first_name %> </p>
-        <% end %>
-       </div>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>
@@ -115,8 +109,8 @@
 
   <div class="cards-carousel">
     <% @food_trades.where(category: "Meats").last(10).each do |food_trade| %>
-      <div class="carousel-card">
-        <%= link_to food_trade_path(food_trade) do %>
+      <%= link_to food_trade_path(food_trade) do %>
+        <div class="carousel-card">
           <% if food_trade.photo.attached? %>
             <%= cl_image_tag(food_trade.photo.key) %>
           <% else %>
@@ -124,8 +118,8 @@
           <% end %>
           <p class="carousel-card-title"><%= food_trade.user_owned_ingredient.ingredient.name.capitalize %></p>
           <p class="carousel-card-content"> <%= food_trade.user_owned_ingredient.user.first_name %> </p>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>
@@ -142,8 +136,8 @@
 
   <div class="cards-carousel">
     <% @food_trades.where(category: "Other").last(10).each do |food_trade| %>
-      <div class="carousel-card">
-        <%= link_to food_trade_path(food_trade) do %>
+      <%= link_to food_trade_path(food_trade) do %>
+        <div class="carousel-card">
           <% if food_trade.photo.attached? %>
             <%= cl_image_tag(food_trade.photo.key) %>
           <% else %>
@@ -151,8 +145,8 @@
           <% end %>
           <p class="carousel-card-title"><%= food_trade.user_owned_ingredient.ingredient.name.capitalize %></p>
           <p class="carousel-card-content"> <%= food_trade.user_owned_ingredient.user.first_name %> </p>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>

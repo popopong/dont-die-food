@@ -182,6 +182,10 @@
       border-radius: 15px;
       margin: 5px;
 
+      a {
+        text-decoration: none;
+      }
+
       // Image
       img {
         object-fit: cover !important;
