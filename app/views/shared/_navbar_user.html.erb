@@ -26,22 +26,25 @@
         <li class="nav-item text-center">
           <div id="navbar-user-avatar">
             <% if current_user.photo.attached? %>
-              <%= cl_image_tag(current_user.photo.key) %>
+              <%=  link_to cl_image_tag(current_user.photo.key), user_path(current_user.id) %>
             <% else %>
-              <%= image_tag"https://cdn0.iconfinder.com/data/icons/elasto-online-store/26/00-ELASTOFONT-STORE-READY_user-circle-512.png"%>
+              <%= link_to image_tag("https://cdn0.iconfinder.com/data/icons/elasto-online-store/26/00-ELASTOFONT-STORE-READY_user-circle-512.png"), user_path(current_user.id)%>
             <% end %>
           </div>
           <%= link_to "View my profile", user_path(current_user.id), class: "nav-link"%>
         </li>
 
         <li class="nav-item text-center ">
-          <object data="<%= asset_path('icons/giveaways.svg') %>" type="image/svg+xml" class="align-middle"></object>
+          <%= link_to private_user_food_trades_path do %>
+            <object data="<%= asset_path('icons/giveaways.svg') %>" type="image/svg+xml" class="align-middle"></object>
+          <% end %>
           <%= link_to "My giveaways", private_user_food_trades_path, class: "nav-link align-middle" %>
         </li>
 
         <li class="nav-item text-center ">
-          <object data="<%= asset_path('icons/logout.svg') %>" type="image/svg+xml" class="align-middle"></object>
-
+          <%= link_to destroy_user_session_path, method: :delete do %>
+            <object data="<%= asset_path('icons/logout.svg') %>" type="image/svg+xml" class="align-middle"></object>
+          <% end %>
           <%= link_to "Log out",  destroy_user_session_path, method: :delete, class: "nav-link align-middle" %>
         </li>
       </ul>
