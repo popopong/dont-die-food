@@ -2,7 +2,7 @@
 
 A community-based mobile website to save recipes - users can search for recipes or create a giveaway in order to save their food.
   
-[Visit the live app](https://dont-die-food.herokuapp.com/)
+[Visit the live app](https://www.dontdiefood.com/)
 
 ## Built with
  * [Ruby on Rails](https://rubyonrails.org/)
